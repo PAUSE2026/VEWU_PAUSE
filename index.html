@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>PAUSE — Positive Discipline Flipbook</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -21,15 +21,18 @@
   --accent-l:#EEEDFE;
 }
 
+html, body { height: 100%; }
+
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--surface);
   color: var(--ink);
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem 4rem;
+  padding: 14px;
+  overflow: hidden;
 }
 
 h1,h2,h3 { font-family: 'DM Serif Display', serif; }
@@ -39,43 +42,91 @@ h1,h2,h3 { font-family: 'DM Serif Display', serif; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink3);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.85rem;
   font-weight: 500;
+  flex-shrink: 0;
+  text-align: center;
 }
 
-.flipbook { width: 100%; max-width: 420px; }
+/* ===== Outer shell: fixed-size, never grows/shrinks with content ===== */
+.flipbook {
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  max-height: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
 
+/* ===== Card: fixed frame, content area scrolls internally ===== */
 .page {
   display: none;
+  flex-direction: column;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 2rem 1.75rem 1.5rem;
-  min-height: 560px;
-  flex-direction: column;
-  justify-content: space-between;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06);
   animation: fadeIn 0.22s ease;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 .page.active { display: flex; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== Page image header — fixed ratio of the card, image fits fully ===== */
+.page-art {
+  flex-shrink: 0;
+  width: 100%;
+  height: 42%;
+  max-height: 230px;
+  background-color: var(--surface);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ===== Scrollable text/content zone — this is what moves, not the card ===== */
+.page-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.5rem 1.6rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink4) transparent;
+}
+.page-body::-webkit-scrollbar { width: 5px; }
+.page-body::-webkit-scrollbar-track { background: transparent; }
+.page-body::-webkit-scrollbar-thumb { background: var(--ink4); border-radius: 4px; }
+
+.page-body-footer {
+  flex-shrink: 0;
+  padding-top: 0.6rem;
+}
 
 .page-label {
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink4);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.1rem;
   font-weight: 500;
 }
 
-.pbar { height: 2px; background: var(--border); border-radius: 2px; margin-bottom: 1.75rem; overflow: hidden; }
+.pbar { height: 2px; background: var(--border); border-radius: 2px; margin-bottom: 1.5rem; overflow: hidden; flex-shrink: 0; }
 .pbar-fill { height: 100%; background: var(--ink); border-radius: 2px; transition: width 0.4s ease; }
 
 /* Cover */
-.cover-title { font-size: 72px; line-height: 1; letter-spacing: -0.02em; margin-bottom: 0.2rem; }
-.cover-sub { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 1.5rem; }
-.cover-hook { font-size: 17px; line-height: 1.6; color: var(--ink2); margin-bottom: 1.75rem; }
+.cover-title { font-size: clamp(48px, 16vw, 72px); line-height: 1; letter-spacing: -0.02em; margin-bottom: 0.2rem; }
+.cover-sub { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 1.25rem; }
+.cover-hook { font-size: 17px; line-height: 1.6; color: var(--ink2); margin-bottom: 1.5rem; }
 .cover-desc { font-size: 13px; line-height: 1.7; color: var(--ink3); }
 
 /* Section headers */
@@ -83,8 +134,8 @@ h1,h2,h3 { font-family: 'DM Serif Display', serif; }
 .section-sub { font-size: 14px; line-height: 1.7; color: var(--ink2); margin-bottom: 1.25rem; }
 
 /* Step letter pages */
-.step-letter { font-size: 80px; line-height: 1; margin-bottom: 0.1rem; }
-.step-word { font-size: 13px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink3); margin-bottom: 1.5rem; }
+.step-letter { font-size: 64px; line-height: 1; margin-bottom: 0.1rem; }
+.step-word { font-size: 13px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink3); margin-bottom: 1.25rem; }
 .step-action { font-size: 15px; line-height: 1.65; color: var(--ink); margin-bottom: 1rem; }
 .step-why { font-size: 13px; line-height: 1.65; color: var(--ink2); padding: 0.875rem 0 0.875rem 1rem; border-left: 2px solid var(--border); margin-bottom: 1rem; }
 
@@ -161,7 +212,7 @@ textarea::placeholder, input::placeholder { color: var(--ink4); }
 .country-btn.selected { border-color: var(--ink); background: var(--surface); color: var(--ink); font-weight: 500; }
 
 /* Circle of change progress indicator */
-.circle-nav { display: flex; justify-content: center; gap: 6px; margin-bottom: 1.5rem; }
+.circle-nav { display: flex; justify-content: center; gap: 6px; margin-bottom: 1.25rem; }
 .c-dot { width: 28px; height: 4px; border-radius: 2px; background: var(--border); transition: background 0.3s; }
 .c-dot.done { background: var(--ink3); }
 .c-dot.active { background: var(--ink); }
@@ -213,8 +264,14 @@ textarea::placeholder, input::placeholder { color: var(--ink4); }
   color: var(--ink2);
 }
 
-/* Nav */
-.nav { display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem; gap: 12px; }
+/* ===== Nav — always pinned outside the scrolling card, always visible ===== */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-shrink: 0;
+}
 .nav button {
   font-family: 'DM Sans', sans-serif;
   font-size: 13px;
@@ -265,10 +322,25 @@ textarea::placeholder, input::placeholder { color: var(--ink4); }
 .other-country-field { display: none; margin-top: 8px; }
 .other-country-field.visible { display: block; }
 
+/* ===== Responsive tuning for small viewport heights ===== */
+@media (max-height: 680px) {
+  .page-art { height: 36%; }
+  .top-label { margin-bottom: 0.6rem; font-size: 10px; }
+  .flipbook { gap: 8px; }
+}
+@media (max-height: 560px) {
+  .page-art { height: 30%; }
+  .top-label { display: none; }
+}
+@media (max-width: 360px) {
+  .page-body { padding: 1.25rem 1.25rem 1rem; }
+}
+
 @media print {
-  body { background: white; padding: 0; }
+  body { background: white; padding: 0; overflow: visible; }
   .nav, .top-label { display: none !important; }
-  .page { display: flex !important; box-shadow: none; border: none; page-break-after: always; min-height: 100vh; }
+  .page { display: flex !important; box-shadow: none; border: none; page-break-after: always; height: auto; max-height: none; }
+  .page-body { overflow: visible; }
 }
 </style>
 </head>
@@ -277,177 +349,203 @@ textarea::placeholder, input::placeholder { color: var(--ink4); }
 <div class="top-label">Violence Ends With Us · PAUSE Toolkit · Pilot 2026</div>
 
 <div class="flipbook">
-
 <!-- ══ 0: COVER ══ -->
 <div id="page-0" class="page active">
-  <div>
-    <div class="page-label">A positive discipline toolkit</div>
-    <div class="cover-title">PAUSE</div>
-    <div class="cover-sub">Positive Alternatives to Unsafe &amp; Severe Enforcement</div>
-    <div class="cover-hook">What will you do in the next five seconds?</div>
-    <div class="cover-desc">
-      This flipbook walks you through a five-step framework for responding to children with care — not fear.<br><br>
-      It also asks you to tell your story. Your answers become part of a living collection of change — a module that will be shared with parents, teachers, and communities across the Asia-Pacific.
+  <div class="page-art" style="background-image:url('assets/1.png');"></div>
+  <div class="page-body">
+    <div>
+      <div class="page-label">A positive discipline toolkit</div>
+      <div class="cover-title">PAUSE</div>
+      <div class="cover-sub">Positive Alternatives to Unsafe &amp; Severe Enforcement</div>
+      <div class="cover-hook">What will you do in the next five seconds?</div>
+      <div class="cover-desc">
+        This flipbook walks you through a five-step framework for responding to children with care — not fear.<br><br>
+        It also asks you to tell your story. Your answers become part of a living collection of change — a module that will be shared with parents, teachers, and communities across the Asia-Pacific.
+      </div>
     </div>
+    <div class="page-body-footer" style="font-size:12px;color:var(--ink4);">15 pages · Pilot edition · Philippines · Vietnam · Cambodia</div>
   </div>
-  <div style="font-size:12px;color:var(--ink4);">15 pages · Pilot edition · Philippines · Vietnam · Cambodia</div>
 </div>
-
 <!-- ══ 1: SAFEGUARDING ══ -->
 <div id="page-1" class="page">
-  <div>
-    <div class="page-label">Before we begin</div>
-    <div class="pbar"><div class="pbar-fill" style="width:7%"></div></div>
-    <div class="section-head">Our commitment to safety</div>
-    <div class="section-sub">PAUSE is a safe space. Everything shared here stays within this group. No one will be judged for what they share or what they have experienced.</div>
-    <div class="info-box box-neutral">
-      <div class="lbl">If something difficult comes up</div>
-      If anything shared raises a concern about a child's safety — including your own — your facilitator is here to help connect you with the right support.
+  <div class="page-art" style="background-image:url('assets/2.png');"></div>
+  <div class="page-body">
+    <div>
+      <div class="page-label">Before we begin</div>
+      <div class="pbar"><div class="pbar-fill" style="width:7%"></div></div>
+      <div class="section-head">Our commitment to safety</div>
+      <div class="section-sub">PAUSE is a safe space. Everything shared here stays within this group. No one will be judged for what they share or what they have experienced.</div>
+      <div class="info-box box-neutral">
+        <div class="lbl">If something difficult comes up</div>
+        If anything shared raises a concern about a child's safety — including your own — your facilitator is here to help connect you with the right support.
+      </div>
+      <div style="border-radius:10px;border:1px solid var(--border);padding:1rem 1.125rem;">
+        <div class="scenario-lbl" style="margin-bottom:0.75rem;">Child protection hotlines</div>
+        <div class="hotline-row"><span class="hotline-country">🇵🇭 Philippines</span><span class="hotline-num">1343</span></div>
+        <div class="hotline-row"><span class="hotline-country">🇻🇳 Vietnam</span><span class="hotline-num">111</span></div>
+        <div class="hotline-row"><span class="hotline-country">🇰🇭 Cambodia</span><span class="hotline-num">1280</span></div>
+      </div>
+      <div style="font-size:12px;line-height:1.7;color:var(--ink3);margin-top:1rem;">
+        This toolkit follows the Save the Children Child Safeguarding Policy. Every facilitator has been briefed on do-no-harm principles and referral pathways.
+      </div>
     </div>
-    <div style="border-radius:10px;border:1px solid var(--border);padding:1rem 1.125rem;">
-      <div class="scenario-lbl" style="margin-bottom:0.75rem;">Child protection hotlines</div>
-      <div class="hotline-row"><span class="hotline-country">🇵🇭 Philippines</span><span class="hotline-num">1343</span></div>
-      <div class="hotline-row"><span class="hotline-country">🇻🇳 Vietnam</span><span class="hotline-num">111</span></div>
-      <div class="hotline-row"><span class="hotline-country">🇰🇭 Cambodia</span><span class="hotline-num">1280</span></div>
-    </div>
-    <div style="font-size:12px;line-height:1.7;color:var(--ink3);margin-top:1rem;">
-      This toolkit follows the Save the Children Child Safeguarding Policy. Every facilitator has been briefed on do-no-harm principles and referral pathways.
-    </div>
+    <div class="page-body-footer" style="font-size:11px;color:var(--ink4);">Violence Ends With Us · Asia-Pacific 2026</div>
   </div>
-  <div style="font-size:11px;color:var(--ink4);">Violence Ends With Us · Asia-Pacific 2026</div>
 </div>
-
 <!-- ══ 2: REFLECTION OPENER ══ -->
 <div id="page-2" class="page">
-  <div>
-    <div class="page-label">Opening reflection</div>
-    <div class="pbar"><div class="pbar-fill" style="width:14%"></div></div>
-    <div class="refl-q">"Think about how you were disciplined as a child."</div>
-    <div class="refl-sub">What happened when you made a mistake? How did it feel? Do you still carry that feeling today?</div>
-    <div class="info-box box-neutral">
-      <div class="lbl">A moment to reflect</div>
-      Allow 2–3 minutes of quiet reflection here. You may share if you feel ready — or simply sit with the memory.
+  <div class="page-art" style="background-image:url('assets/3.png');"></div>
+  <div class="page-body">
+    <div>
+      <div class="page-label">Opening reflection</div>
+      <div class="pbar"><div class="pbar-fill" style="width:14%"></div></div>
+      <div class="refl-q">"Think about how you were disciplined as a child."</div>
+      <div class="refl-sub">What happened when you made a mistake? How did it feel? Do you still carry that feeling today?</div>
+      <div class="info-box box-neutral">
+        <div class="lbl">A moment to reflect</div>
+        Allow 2–3 minutes of quiet reflection here. You may share if you feel ready — or simply sit with the memory.
+      </div>
+      <div class="info-box box-accent">
+        Most of us were never taught another way. PAUSE gives you one — not because you are wrong, but because you deserve better tools.
+      </div>
     </div>
-    <div class="info-box box-accent">
-      Most of us were never taught another way. PAUSE gives you one — not because you are wrong, but because you deserve better tools.
-    </div>
+    <div class="page-body-footer" style="font-size:13px;color:var(--ink3);">As you read each step, think of a real moment in your own life.</div>
   </div>
-  <div style="font-size:13px;color:var(--ink3);">As you read each step, think of a real moment in your own life.</div>
 </div>
-
-<!-- ══ 3–7: THE FIVE STEPS ══ -->
-
 <!-- P -->
 <div id="page-3" class="page">
-  <div>
-    <div class="page-label">Step 1 of 5</div>
-    <div class="pbar"><div class="pbar-fill" style="width:21%"></div></div>
-    <div style="width:24px;height:2px;background:var(--ink);margin-bottom:0.875rem;"></div>
-    <div class="step-letter">P</div>
-    <div class="step-word">Pause</div>
-    <div class="step-action">Stop before you react. Take one breath. Give yourself five seconds before you do or say anything.</div>
-    <div class="step-why">The urge to react comes from the body, not the mind. One breath creates enough space to choose what happens next.</div>
-  </div>
-  <div class="scenario-box">
-    <div class="scenario-lbl">In the moment</div>
-    <p>Your child broke something after you told them not to. You feel the anger rise. Before anything else — breathe. Just breathe.</p>
+  <div class="page-art" style="background-image:url('assets/4.png');"></div>
+  <div class="page-body">
+    <div>
+      <div class="page-label">Step 1 of 5</div>
+      <div class="pbar"><div class="pbar-fill" style="width:21%"></div></div>
+      <div style="width:24px;height:2px;background:var(--ink);margin-bottom:0.875rem;"></div>
+      <div class="step-letter">P</div>
+      <div class="step-word">Pause</div>
+      <div class="step-action">Stop before you react. Take one breath. Give yourself five seconds before you do or say anything.</div>
+      <div class="step-why">The urge to react comes from the body, not the mind. One breath creates enough space to choose what happens next.</div>
+    </div>
+    <div class="page-body-footer">
+      <div class="scenario-box">
+        <div class="scenario-lbl">In the moment</div>
+        <p>Your child broke something after you told them not to. You feel the anger rise. Before anything else — breathe. Just breathe.</p>
+      </div>
+    </div>
   </div>
 </div>
-
 <!-- A -->
 <div id="page-4" class="page">
-  <div>
-    <div class="page-label">Step 2 of 5</div>
-    <div class="pbar"><div class="pbar-fill" style="width:28%"></div></div>
-    <div style="width:24px;height:2px;background:var(--ink);margin-bottom:0.875rem;"></div>
-    <div class="step-letter">A</div>
-    <div class="step-word">Ask</div>
-    <div class="step-action">Ask the child what happened. Let them speak first. Listen without interrupting.</div>
-    <div class="step-why">Children often act out for reasons adults don't see. Asking before assuming shows respect — and gets you closer to the truth.</div>
-  </div>
-  <div class="scenario-box">
-    <div class="scenario-lbl">In the moment</div>
-    <p>"What happened?" — said calmly, not as an accusation. Wait for the answer even if it takes a moment to come.</p>
+  <div class="page-art" style="background-image:url('assets/5.png');"></div>
+  <div class="page-body">
+    <div>
+      <div class="page-label">Step 2 of 5</div>
+      <div class="pbar"><div class="pbar-fill" style="width:28%"></div></div>
+      <div style="width:24px;height:2px;background:var(--ink);margin-bottom:0.875rem;"></div>
+      <div class="step-letter">A</div>
+      <div class="step-word">Ask</div>
+      <div class="step-action">Ask the child what happened. Let them speak first. Listen without interrupting.</div>
+      <div class="step-why">Children often act out for reasons adults don't see. Asking before assuming shows respect — and gets you closer to the truth.</div>
+    </div>
+    <div class="page-body-footer">
+      <div class="scenario-box">
+        <div class="scenario-lbl">In the moment</div>
+        <p>"What happened?" — said calmly, not as an accusation. Wait for the answer even if it takes a moment to come.</p>
+      </div>
+    </div>
   </div>
 </div>
-
 <!-- U -->
 <div id="page-5" class="page">
-  <div>
-    <div class="page-label">Step 3 of 5</div>
-    <div class="pbar"><div class="pbar-fill" style="width:35%"></div></div>
-    <div style="width:24px;height:2px;background:var(--ink);margin-bottom:0.875rem;"></div>
-    <div class="step-letter">U</div>
-    <div class="step-word">Understand</div>
-    <div class="step-action">Consider why they did it. Were they scared? Confused? Bored? Testing limits? Still learning?</div>
-    <div class="step-why">Behavior is communication. What looks like defiance is often a need the child doesn't know how to express yet.</div>
-  </div>
-  <div class="scenario-box">
-    <div class="scenario-lbl">In the moment</div>
-    <p>"What was going on for them?" — not to excuse the behavior, but to understand it before you respond.</p>
+  <div class="page-art" style="background-image:url('assets/6.png');"></div>
+  <div class="page-body">
+    <div>
+      <div class="page-label">Step 3 of 5</div>
+      <div class="pbar"><div class="pbar-fill" style="width:35%"></div></div>
+      <div style="width:24px;height:2px;background:var(--ink);margin-bottom:0.875rem;"></div>
+      <div class="step-letter">U</div>
+      <div class="step-word">Understand</div>
+      <div class="step-action">Consider why they did it. Were they scared? Confused? Bored? Testing limits? Still learning?</div>
+      <div class="step-why">Behavior is communication. What looks like defiance is often a need the child doesn't know how to express yet.</div>
+    </div>
+    <div class="page-body-footer">
+      <div class="scenario-box">
+        <div class="scenario-lbl">In the moment</div>
+        <p>"What was going on for them?" — not to excuse the behavior, but to understand it before you respond.</p>
+      </div>
+    </div>
   </div>
 </div>
-
 <!-- S -->
 <div id="page-6" class="page">
-  <div>
-    <div class="page-label">Step 4 of 5</div>
-    <div class="pbar"><div class="pbar-fill" style="width:42%"></div></div>
-    <div style="width:24px;height:2px;background:var(--ink);margin-bottom:0.875rem;"></div>
-    <div class="step-letter">S</div>
-    <div class="step-word">Support</div>
-    <div class="step-action">Respond to the real need behind the behavior — not just the behavior itself. Guide, don't punish.</div>
-    <div class="step-why">Children learn better through guidance than fear. A child who is supported feels safe enough to do better next time.</div>
-  </div>
-  <div class="scenario-box">
-    <div class="scenario-lbl">In the moment</div>
-    <p>Calm redirection. A clear boundary, explained. Your presence, not your anger.</p>
+  <div class="page-art" style="background-image:url('assets/7.png');"></div>
+  <div class="page-body">
+    <div>
+      <div class="page-label">Step 4 of 5</div>
+      <div class="pbar"><div class="pbar-fill" style="width:42%"></div></div>
+      <div style="width:24px;height:2px;background:var(--ink);margin-bottom:0.875rem;"></div>
+      <div class="step-letter">S</div>
+      <div class="step-word">Support</div>
+      <div class="step-action">Respond to the real need behind the behavior — not just the behavior itself. Guide, don't punish.</div>
+      <div class="step-why">Children learn better through guidance than fear. A child who is supported feels safe enough to do better next time.</div>
+    </div>
+    <div class="page-body-footer">
+      <div class="scenario-box">
+        <div class="scenario-lbl">In the moment</div>
+        <p>Calm redirection. A clear boundary, explained. Your presence, not your anger.</p>
+      </div>
+    </div>
   </div>
 </div>
-
 <!-- E -->
 <div id="page-7" class="page">
-  <div>
-    <div class="page-label">Step 5 of 5</div>
-    <div class="pbar"><div class="pbar-fill" style="width:49%"></div></div>
-    <div style="width:24px;height:2px;background:var(--ink);margin-bottom:0.875rem;"></div>
-    <div class="step-letter">E</div>
-    <div class="step-word">Encourage</div>
-    <div class="step-action">End with something that builds trust, not fear. Let them know the mistake doesn't change how much you love them.</div>
-    <div class="step-why">Children who feel loved after a mistake are more likely to be honest, try again, and trust the adults in their lives.</div>
-  </div>
-  <div class="scenario-box">
-    <div class="scenario-lbl">In the moment</div>
-    <p>"I know you can do better. I'm here." That's it. That's enough.</p>
+  <div class="page-art" style="background-image:url('assets/8.png');"></div>
+  <div class="page-body">
+    <div>
+      <div class="page-label">Step 5 of 5</div>
+      <div class="pbar"><div class="pbar-fill" style="width:49%"></div></div>
+      <div style="width:24px;height:2px;background:var(--ink);margin-bottom:0.875rem;"></div>
+      <div class="step-letter">E</div>
+      <div class="step-word">Encourage</div>
+      <div class="step-action">End with something that builds trust, not fear. Let them know the mistake doesn't change how much you love them.</div>
+      <div class="step-why">Children who feel loved after a mistake are more likely to be honest, try again, and trust the adults in their lives.</div>
+    </div>
+    <div class="page-body-footer">
+      <div class="scenario-box">
+        <div class="scenario-lbl">In the moment</div>
+        <p>"I know you can do better. I'm here." That's it. That's enough.</p>
+      </div>
+    </div>
   </div>
 </div>
-
 <!-- ══ 8: CIRCLE OF CHANGE — INTRO ══ -->
 <div id="page-8" class="page">
-  <div>
-    <div class="page-label">Circle of change</div>
-    <div class="pbar"><div class="pbar-fill" style="width:56%"></div></div>
-    <div class="section-head">Your story matters.</div>
-    <div class="section-sub">The next few pages ask you to reflect honestly — on your past, your present, and the change you want to make. There are no wrong answers.</div>
-    <div class="info-box box-neutral">
-      <div class="lbl">What is the circle of change?</div>
-      It is the journey from how you were treated as a child, to how that shaped the way you discipline today, to the boundaries you want to set — for your child and for yourself — going forward.
+  <div class="page-art" style="background-image:url('assets/9.png');"></div>
+  <div class="page-body">
+    <div>
+      <div class="page-label">Circle of change</div>
+      <div class="pbar"><div class="pbar-fill" style="width:56%"></div></div>
+      <div class="section-head">Your story matters.</div>
+      <div class="section-sub">The next few pages ask you to reflect honestly — on your past, your present, and the change you want to make. There are no wrong answers.</div>
+      <div class="info-box box-neutral">
+        <div class="lbl">What is the circle of change?</div>
+        It is the journey from how you were treated as a child, to how that shaped the way you discipline today, to the boundaries you want to set — for your child and for yourself — going forward.
+      </div>
+      <div class="circle-nav" style="margin-bottom:0;">
+        <div class="c-dot active"></div>
+        <div class="c-dot"></div>
+        <div class="c-dot"></div>
+        <div class="c-dot"></div>
+        <div class="c-dot"></div>
+      </div>
+      <div style="text-align:center;font-size:11px;color:var(--ink4);margin-top:0.5rem;">Your past · Your now · The shift · Your limits · Your commitment</div>
     </div>
-    <div class="circle-nav" style="margin-bottom:0;">
-      <div class="c-dot active"></div>
-      <div class="c-dot"></div>
-      <div class="c-dot"></div>
-      <div class="c-dot"></div>
-      <div class="c-dot"></div>
-    </div>
-    <div style="text-align:center;font-size:11px;color:var(--ink4);margin-top:0.5rem;">Your past · Your now · The shift · Your limits · Your commitment</div>
+    <div class="page-body-footer" style="font-size:12px;color:var(--ink3);">Your answers become part of a collection of change — shared anonymously as a module for communities across the region.</div>
   </div>
-  <div style="font-size:12px;color:var(--ink3);">Your answers become part of a collection of change — shared anonymously as a module for communities across the region.</div>
 </div>
-
 <!-- ══ 9: YOUR PAST ══ -->
 <div id="page-9" class="page">
-  <div>
+  <div class="page-art" style="background-image:url('assets/10.png');"></div>
+  <div class="page-body">
     <div class="page-label">Circle of change · 1 of 5</div>
     <div class="pbar"><div class="pbar-fill" style="width:63%"></div></div>
     <div class="circle-nav">
@@ -477,10 +575,10 @@ textarea::placeholder, input::placeholder { color: var(--ink4); }
     </div>
   </div>
 </div>
-
 <!-- ══ 10: YOUR NOW ══ -->
 <div id="page-10" class="page">
-  <div>
+  <div class="page-art" style="background-image:url('assets/11.png');"></div>
+  <div class="page-body">
     <div class="page-label">Circle of change · 2 of 5</div>
     <div class="pbar"><div class="pbar-fill" style="width:70%"></div></div>
     <div class="circle-nav">
@@ -508,10 +606,10 @@ textarea::placeholder, input::placeholder { color: var(--ink4); }
     </div>
   </div>
 </div>
-
 <!-- ══ 11: THE SHIFT ══ -->
 <div id="page-11" class="page">
-  <div>
+  <div class="page-art" style="background-image:url('assets/12.png');"></div>
+  <div class="page-body">
     <div class="page-label">Circle of change · 3 of 5</div>
     <div class="pbar"><div class="pbar-fill" style="width:77%"></div></div>
     <div class="circle-nav">
@@ -533,10 +631,10 @@ textarea::placeholder, input::placeholder { color: var(--ink4); }
     </div>
   </div>
 </div>
-
 <!-- ══ 12: YOUR LIMITS ══ -->
 <div id="page-12" class="page">
-  <div>
+  <div class="page-art" style="background-image:url('assets/13.png');"></div>
+  <div class="page-body">
     <div class="page-label">Circle of change · 4 of 5</div>
     <div class="pbar"><div class="pbar-fill" style="width:84%"></div></div>
     <div class="circle-nav">
@@ -564,10 +662,10 @@ textarea::placeholder, input::placeholder { color: var(--ink4); }
     </div>
   </div>
 </div>
-
 <!-- ══ 13: COMMITMENT + FORM ══ -->
 <div id="page-13" class="page">
-  <div>
+  <div class="page-art" style="background-image:url('assets/14.png');"></div>
+  <div class="page-body">
     <div class="page-label">Circle of change · 5 of 5 · Your commitment</div>
     <div class="pbar"><div class="pbar-fill" style="width:91%"></div></div>
     <div class="refl-q" style="font-size:18px;">"Is that the memory you want your child to have of you?"</div>
@@ -629,59 +727,66 @@ textarea::placeholder, input::placeholder { color: var(--ink4); }
     </form>
   </div>
 </div>
-
 <!-- ══ 14: PAUSE POCKET CARD ══ -->
 <div id="page-14" class="page">
-  <div>
-    <div class="page-label">Your pocket card · Keep this close</div>
-    <div class="pbar"><div class="pbar-fill" style="width:100%"></div></div>
+  <div class="page-art" style="background-image:url('assets/15.png');"></div>
+  <div class="page-body">
+    <div>
+      <div class="page-label">Your pocket card · Keep this close</div>
+      <div class="pbar"><div class="pbar-fill" style="width:100%"></div></div>
 
-    <div style="font-size:13px;line-height:1.7;color:var(--ink3);margin-bottom:1.25rem;">
-      In a moment of stress, this is all you need. Screenshot it. Put it somewhere you will see it.
-    </div>
+      <div style="font-size:13px;line-height:1.7;color:var(--ink3);margin-bottom:1.25rem;">
+        In a moment of stress, this is all you need. Screenshot it. Put it somewhere you will see it.
+      </div>
 
-    <div class="pause-grid">
-      <div class="pause-item">
-        <span class="pi-letter">P</span>
-        <div class="pi-text">
-          <span class="pi-word">Pause</span>
-          <span class="pi-desc">Breathe. Five seconds before you react.</span>
+      <div class="pause-grid">
+        <div class="pause-item">
+          <span class="pi-letter">P</span>
+          <div class="pi-text">
+            <span class="pi-word">Pause</span>
+            <span class="pi-desc">Breathe. Five seconds before you react.</span>
+          </div>
+        </div>
+        <div class="pause-item">
+          <span class="pi-letter">A</span>
+          <div class="pi-text">
+            <span class="pi-word">Ask</span>
+            <span class="pi-desc">Ask the child what happened. Listen first.</span>
+          </div>
+        </div>
+        <div class="pause-item">
+          <span class="pi-letter">U</span>
+          <div class="pi-text">
+            <span class="pi-word">Understand</span>
+            <span class="pi-desc">Why did they do it? Behavior is communication.</span>
+          </div>
+        </div>
+        <div class="pause-item">
+          <span class="pi-letter">S</span>
+          <div class="pi-text">
+            <span class="pi-word">Support</span>
+            <span class="pi-desc">Respond to the need. Guide, don't punish.</span>
+          </div>
+        </div>
+        <div class="pause-item">
+          <span class="pi-letter">E</span>
+          <div class="pi-text">
+            <span class="pi-word">Encourage</span>
+            <span class="pi-desc">End with love. The mistake doesn't change that.</span>
+          </div>
         </div>
       </div>
-      <div class="pause-item">
-        <span class="pi-letter">A</span>
-        <div class="pi-text">
-          <span class="pi-word">Ask</span>
-          <span class="pi-desc">Ask the child what happened. Listen first.</span>
-        </div>
-      </div>
-      <div class="pause-item">
-        <span class="pi-letter">U</span>
-        <div class="pi-text">
-          <span class="pi-word">Understand</span>
-          <span class="pi-desc">Why did they do it? Behavior is communication.</span>
-        </div>
-      </div>
-      <div class="pause-item">
-        <span class="pi-letter">S</span>
-        <div class="pi-text">
-          <span class="pi-word">Support</span>
-          <span class="pi-desc">Respond to the need. Guide, don't punish.</span>
-        </div>
-      </div>
-      <div class="pause-item">
-        <span class="pi-letter">E</span>
-        <div class="pi-text">
-          <span class="pi-word">Encourage</span>
-          <span class="pi-desc">End with love. The mistake doesn't change that.</span>
-        </div>
+
+      <div class="info-box box-neutral">
+        <div class="lbl">Where your responses go</div>
+        Your story — collected anonymously alongside others — becomes part of a growing collection of change. These responses will be presented at the 2nd Global Ministerial Conference on Ending Violence Against Children, Manila, November 2026, and shaped into a module shared with communities across the region.
       </div>
     </div>
+    <div class="page-body-footer" style="font-size:11px;color:var(--ink4);text-align:center;">Designed by young people · Violence Ends With Us · Asia-Pacific</div>
   </div>
-  <div style="font-size:11px;color:var(--ink4);text-align:center;">Designed by young people · Violence Ends With Us · Asia-Pacific</div>
 </div>
 
-<!-- ══ NAVIGATION ══ -->
+<!-- ══ NAVIGATION — pinned outside the card, always visible ══ -->
 <div class="nav">
   <button id="prev-btn" onclick="changePage(-1)" disabled>Back</button>
   <div class="dots" id="dots"></div>
@@ -712,7 +817,9 @@ function goTo(n) {
   const nb = document.getElementById('next-btn');
   nb.disabled = cur === TOTAL - 1;
   nb.textContent = cur === TOTAL - 2 ? 'Finish' : 'Next';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // scroll the new page's own body to top, not the window
+  const body = document.querySelector('#page-' + cur + ' .page-body');
+  if (body) body.scrollTop = 0;
 }
 function changePage(dir) { goTo(cur + dir); }
 
