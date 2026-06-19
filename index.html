@@ -4,72 +4,85 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>PAUSE — Positive Discipline Flipbook</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink:     #1a1714;
-  --ink2:    #4a4742;
-  --ink3:    #8a8780;
-  --ink4:    #c4c1bb;
-  --surface: #faf9f7;
-  --card:    #ffffff;
-  --border:  rgba(0,0,0,0.09);
-  --radius:  16px;
-  --accent:  #3B2F7F;
-  --accent-l:#EEEDFE;
+  /* Palette drawn from the illustration artwork */
+  --sky:        #7BAFD4;   /* soft sky blue */
+  --sky-light:  #D6EAF5;   /* pale sky wash */
+  --grass:      #8DAE55;   /* warm sage green */
+  --grass-light:#EBF2DC;   /* pale green wash */
+  --gold:       #C8A84B;   /* ochre/sunlit gold */
+  --gold-light: #F5EDCF;   /* pale gold wash */
+  --earth:      #B06B3A;   /* earthy terracotta */
+  --earth-light:#F3E4D4;   /* pale terracotta wash */
+  --mauve:      #9E6B8A;   /* soft mauve/dusk */
+  --mauve-light:#F0E3EC;   /* pale mauve wash */
+  --cream:      #F7F4EF;   /* warm off-white */
+
+  /* PAUSE letter colors — from the same illustration palette */
+  --p-color:    #B06B3A;   /* P — earthy terracotta */
+  --a-color:    #8DAE55;   /* A — sage green */
+  --u-color:    #C8A84B;   /* U — warm gold */
+  --s-color:    #7BAFD4;   /* S — sky blue */
+  --e-color:    #9E6B8A;   /* E — soft mauve */
+
+  /* Text scale */
+  --ink:   #2C2820;
+  --ink2:  #5A5248;
+  --ink3:  #9A9188;
+  --ink4:  #C8C0B6;
+  --border: rgba(0,0,0,0.08);
 }
 
 html, body { height: 100%; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   color: var(--ink);
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 14px;
+  padding: 12px 14px 10px;
   overflow: hidden;
-  position: relative;
 }
 
-/* ===== Backdrop: blurred, zoomed version of the current page's image ===== */
+/* Blurred backdrop */
 .backdrop {
   position: fixed;
   inset: 0;
   z-index: -1;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   filter: blur(22px) saturate(110%) brightness(1.05);
   transform: scale(1.15);
   transition: background-image 0.35s ease;
 }
 .backdrop::after {
-  /* soft wash so the card and text always stay legible over any image */
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(250,249,247,0.72);
+  background: rgba(247,244,239,0.70);
 }
 
-h1,h2,h3 { font-family: 'DM Serif Display', serif; }
-
+/* Top label */
 .top-label {
+  font-family: 'Quicksand', sans-serif;
   font-size: 10.5px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   color: #fff;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.35);
-  margin-bottom: 0.85rem;
-  font-weight: 600;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.38);
+  margin-bottom: 8px;
+  font-weight: 700;
   flex-shrink: 0;
   text-align: center;
 }
 
-/* ===== Outer shell: fixed-size, never grows/shrinks with content ===== */
+/* Outer shell */
 .flipbook {
   width: 100%;
   max-width: 420px;
@@ -77,252 +90,430 @@ h1,h2,h3 { font-family: 'DM Serif Display', serif; }
   max-height: 720px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   min-height: 0;
 }
 
-/* ===== Card: the finalized glass-card design, fixed frame ===== */
+/* Card */
 .page {
   display: none;
   position: relative;
-  border-radius: 30px;
+  border-radius: 28px;
   background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(4px) saturate(110%);
-  -webkit-backdrop-filter: blur(4px) saturate(110%);
-  border: 1px solid rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.65);
   box-shadow:
-    0 18px 40px rgba(0,0,0,0.20),
-    0 2px 8px rgba(0,0,0,0.08),
-    inset 0 1px 1px rgba(255,255,255,0.6);
+    0 18px 40px rgba(0,0,0,0.18),
+    0 2px 8px rgba(0,0,0,0.07),
+    inset 0 1px 1px rgba(255,255,255,0.7);
   animation: fadeIn 0.22s ease;
   flex: 1;
   min-height: 0;
   overflow: hidden;
 }
 .page.active { display: flex; flex-direction: column; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ===== Art zone — sharp image, top portion of the card, fades to glass ===== */
+/* Art zone */
 .page-art {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 58%;
+  height: 36%;
   background-size: cover;
-  background-position: center 50%;
+  background-position: center 40%;
   background-repeat: no-repeat;
   z-index: 0;
+  border-radius: 28px 28px 0 0;
 }
 .page-art::after {
   content: "";
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  top: 55%;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0.85) 100%);
+  top: 46%;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 65%, rgba(255,255,255,0.92) 100%);
 }
 
-/* ===== Content zone — glass texture, scrolls internally when text overflows ===== */
+/* Content zone */
 .page-body {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  top: 52%;
+  top: 32%;
   z-index: 1;
-  padding: 1.2rem 1.6rem 1.3rem;
+  padding: 1.15rem 1.5rem 1.2rem;
   display: flex;
   flex-direction: column;
-  background: rgba(255,255,255,0.78);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background: rgba(255,255,255,0.84);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--ink4) transparent;
 }
-.page-body::-webkit-scrollbar { width: 5px; }
+.page-body::-webkit-scrollbar { width: 4px; }
 .page-body::-webkit-scrollbar-track { background: transparent; }
 .page-body::-webkit-scrollbar-thumb { background: var(--ink4); border-radius: 4px; }
 
-.page-body-footer {
-  flex-shrink: 0;
-  padding-top: 0.6rem;
-}
+/* ── Typography system ── */
+/* All headings: Fredoka */
+/* All body, labels, options: Quicksand */
 
 .page-label {
-  font-size: 10px;
-  letter-spacing: 0.1em;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--ink4);
-  margin-bottom: 1.1rem;
-  font-weight: 500;
+  margin-bottom: 0.7rem;
+  font-weight: 700;
 }
 
-/* Cover — Fredoka, matching the finalized title treatment */
+/* Cover */
 .cover-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-size: clamp(40px, 11vw, 50px);
-  line-height: 0.95;
-  letter-spacing: 0;
-  color: #1a1714;
+  font-size: 52px;
+  line-height: 0.92;
+  color: var(--ink);
   margin-bottom: 0.3rem;
+  letter-spacing: 0.01em;
 }
 .cover-sub {
   font-family: 'Quicksand', sans-serif;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #6b5640;
-  margin-bottom: 0.85rem;
-  line-height: 1.45;
+  color: var(--earth);
+  margin-bottom: 0.9rem;
+  line-height: 1.5;
 }
-.cover-hook { font-size: 14px; line-height: 1.55; color: var(--ink2); margin-bottom: 0.9rem; font-weight: 500; }
-.cover-desc { font-size: 11.5px; line-height: 1.5; color: #4a4742; font-weight: 500; }
+.cover-hook {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink2);
+  margin-bottom: 0.75rem;
+}
+.cover-desc {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink2);
+  font-weight: 500;
+}
 
-/* Section headers */
-.section-head { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 20px; line-height: 1.3; margin-bottom: 0.75rem; }
-.section-sub { font-size: 13px; line-height: 1.6; color: var(--ink2); margin-bottom: 1.1rem; }
+/* Section headings */
+.section-head {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.25;
+  margin-bottom: 0.55rem;
+}
+.section-sub {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink2);
+  margin-bottom: 0.9rem;
+  font-weight: 500;
+}
 
-/* Step letter pages */
-.step-letter { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 52px; line-height: 1; margin-bottom: 0.1rem; }
-.step-word { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); margin-bottom: 1.1rem; }
-.step-action { font-size: 14px; line-height: 1.6; color: var(--ink); margin-bottom: 0.9rem; }
-.step-why { font-size: 12.5px; line-height: 1.6; color: var(--ink2); padding: 0.8rem 0 0.8rem 1rem; border-left: 2px solid var(--border); margin-bottom: 0.9rem; }
+/* Step pages */
+.step-letter {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 1;
+  margin-bottom: 0;
+}
+.step-word {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 0.9rem;
+}
+.step-action {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.step-why {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--ink2);
+  font-weight: 500;
+  padding: 0.65rem 0 0.65rem 1rem;
+  border-left: 3px solid var(--border);
+  margin-bottom: 0.75rem;
+}
 
-.scenario-box { background: rgba(250,249,247,0.7); border-radius: 10px; padding: 0.9rem 1.05rem; }
-.scenario-lbl { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.09em; color: var(--ink4); margin-bottom: 0.5rem; }
-.scenario-box p { font-size: 12.5px; line-height: 1.6; color: var(--ink2); }
+/* Scenario box */
+.scenario-box {
+  border-radius: 14px;
+  padding: 0.85rem 1.05rem;
+}
+.scenario-lbl {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: var(--ink4);
+  margin-bottom: 0.4rem;
+}
+.scenario-box p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.65;
+  font-weight: 500;
+}
 
 /* Info boxes */
-.info-box { border-radius: 10px; padding: 0.8rem 0.95rem; font-size: 12.5px; line-height: 1.6; margin-bottom: 0.8rem; }
-.info-box .lbl { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.5rem; }
-.box-neutral { background: rgba(250,249,247,0.7); color: var(--ink2); }
-.box-neutral .lbl { color: var(--ink3); }
-.box-accent { background: rgba(238,237,254,0.7); color: var(--accent); }
-.box-accent .lbl { color: var(--accent); opacity: 0.7; }
+.info-box {
+  border-radius: 14px;
+  padding: 0.85rem 1.05rem;
+  font-size: 13.5px;
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+}
+.info-box .lbl {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  margin-bottom: 0.4rem;
+  display: block;
+}
 
-/* Reflection question */
-.refl-q { font-size: 18px; line-height: 1.4; color: var(--ink); font-family: 'DM Serif Display', serif; font-style: italic; margin-bottom: 0.8rem; }
-.refl-sub { font-size: 13px; line-height: 1.6; color: var(--ink2); margin-bottom: 1.2rem; }
+/* Reflection */
+.refl-q {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.refl-sub {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--ink2);
+  margin-bottom: 0.85rem;
+  font-weight: 500;
+}
 
 /* Form fields */
-.field { margin-bottom: 1.25rem; }
-.field label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink3); display: block; margin-bottom: 0.5rem; }
-textarea, input[type="text"], input[type="tel"] {
+.field { margin-bottom: 1rem; }
+.field label {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink3);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+textarea, input[type="text"] {
   width: 100%;
   border: none;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1.5px solid var(--border);
   background: transparent;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
   color: var(--ink);
-  padding: 5px 0 7px;
+  padding: 4px 0 7px;
   resize: none;
   outline: none;
   line-height: 1.55;
   transition: border-color 0.15s;
 }
 textarea:focus, input:focus { border-bottom-color: var(--ink2); }
-textarea::placeholder, input::placeholder { color: var(--ink4); }
+textarea::placeholder, input::placeholder {
+  color: var(--ink4);
+  font-weight: 500;
+}
 
-/* Radio-style option selectors */
-.opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1rem; }
+/* Option buttons */
+.opts { display: flex; flex-direction: column; gap: 6px; margin-bottom: 0.75rem; }
 .opt-btn {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.75rem 1rem;
-  font-size: 13px;
-  font-family: 'DM Sans', sans-serif;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 0.65rem 1rem;
+  font-size: 13.5px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
   cursor: pointer;
-  background: white;
+  background: rgba(255,255,255,0.8);
   color: var(--ink2);
   text-align: left;
-  line-height: 1.5;
+  line-height: 1.4;
   transition: all 0.15s;
 }
-.opt-btn:hover { border-color: var(--ink3); color: var(--ink); }
-.opt-btn.selected { border-color: var(--ink); background: var(--surface); color: var(--ink); font-weight: 500; }
+.opt-btn:hover { border-color: var(--ink3); color: var(--ink); background: #fff; }
+.opt-btn.selected { color: var(--ink); background: var(--cream); font-weight: 700; }
 
-/* Country button grid */
-.country-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.25rem; }
+.opt-other-input { display: none; margin-top: 5px; }
+.opt-other-input.visible { display: block; }
+
+/* Country grid */
+.country-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 0.9rem; }
 .country-btn {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.875rem 0.75rem;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 0.75rem 0.6rem;
   font-size: 13px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
   cursor: pointer;
-  background: white;
+  background: rgba(255,255,255,0.8);
   color: var(--ink2);
   text-align: center;
   line-height: 1.4;
   transition: all 0.15s;
 }
 .country-btn:hover { border-color: var(--ink3); color: var(--ink); }
-.country-btn.selected { border-color: var(--ink); background: var(--surface); color: var(--ink); font-weight: 500; }
+.country-btn.selected { color: var(--ink); background: var(--cream); font-weight: 700; }
 
-/* Circle of change progress indicator */
-.circle-nav { display: flex; justify-content: center; gap: 6px; margin-bottom: 1.25rem; }
-.c-dot { width: 28px; height: 4px; border-radius: 2px; background: var(--border); transition: background 0.3s; }
-.c-dot.done { background: var(--ink3); }
-.c-dot.active { background: var(--ink); }
+.other-country-field { display: none; margin-top: 7px; }
+.other-country-field.visible { display: block; }
 
 /* Hotlines */
-.hotline-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
-.hotline-row:last-child { border-bottom: none; }
-.hotline-country { font-size: 13px; color: var(--ink2); }
-.hotline-num { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); }
-
-/* ── PAUSE pocket card — individual cards, clean style ── */
-.pause-grid {
+.hotline-row {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 1.25rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
 }
+.hotline-row:last-child { border-bottom: none; }
+.hotline-country {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink2);
+}
+.hotline-num {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Pocket card PAUSE items */
+.pause-grid { display: flex; flex-direction: column; gap: 7px; margin-bottom: 0.9rem; }
 .pause-item {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1rem 1.125rem;
-  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 0.8rem 1rem;
+  background: rgba(255,255,255,0.85);
   display: flex;
-  gap: 14px;
-  align-items: flex-start;
+  gap: 12px;
+  align-items: center;
 }
 .pi-letter {
-  font-family: 'DM Serif Display', serif;
-  font-size: 32px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
   line-height: 1;
-  color: var(--ink);
   flex-shrink: 0;
   width: 26px;
-  padding-top: 1px;
+  text-align: center;
 }
-.pi-text {}
 .pi-word {
+  font-family: 'Quicksand', sans-serif;
   font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--ink3);
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 .pi-desc {
+  font-family: 'Quicksand', sans-serif;
   font-size: 13px;
-  line-height: 1.55;
+  line-height: 1.5;
+  font-weight: 500;
   color: var(--ink2);
 }
 
-.flipbook-footer {
-  font-size: 11px;
-  font-weight: 600;
+/* Submit */
+.submit-btn {
+  width: 100%;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 11px;
+  border: none;
+  border-radius: 14px;
+  background: var(--ink);
   color: #fff;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.35);
+  cursor: pointer;
+  margin-top: 0.75rem;
+  letter-spacing: 0.04em;
+  transition: opacity 0.15s;
+}
+.submit-btn:hover { opacity: 0.85; }
+.submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.success-msg {
+  display: none;
+  background: var(--grass-light);
+  border: 1.5px solid rgba(141,174,85,0.3);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  margin-top: 0.9rem;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4A6E28;
+  line-height: 1.65;
+  text-align: center;
+}
+.success-msg.visible { display: block; }
+
+.error-msg {
+  display: none;
+  background: var(--earth-light);
+  border: 1.5px solid rgba(176,107,58,0.25);
+  border-radius: 14px;
+  padding: 0.7rem 0.95rem;
+  margin-top: 0.65rem;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--earth);
+  line-height: 1.6;
+}
+.error-msg.visible { display: block; }
+
+/* Footer label */
+.flipbook-footer {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 7px rgba(0,0,0,0.38);
   text-align: center;
   flex-shrink: 0;
 }
 
-/* ===== Nav — always pinned outside the scrolling card, always visible ===== */
+/* Nav */
 .nav {
   display: flex;
   align-items: center;
@@ -331,73 +522,34 @@ textarea::placeholder, input::placeholder { color: var(--ink4); }
   flex-shrink: 0;
 }
 .nav button {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 14px;
-  font-weight: 600;
-  padding: 11px 28px;
+  font-weight: 700;
+  padding: 10px 30px;
   border: none;
   border-radius: 999px;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.96);
   color: var(--ink);
   cursor: pointer;
-  transition: opacity 0.15s;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  transition: opacity 0.15s;
 }
 .nav button:hover { opacity: 0.85; }
-.nav button:disabled { opacity: 0.35; cursor: default; pointer-events: none; }
-.nav button.primary { background: rgba(255,255,255,0.95); color: var(--ink); }
-.nav button.primary:hover { opacity: 0.85; }
+.nav button:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
 
-.dots { display: none; }
-
-/* Submit */
-.submit-btn {
-  width: 100%;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  padding: 11px;
-  border: 1px solid var(--ink);
-  border-radius: 8px;
-  background: var(--ink);
-  color: white;
-  cursor: pointer;
-  margin-top: 1rem;
-  letter-spacing: 0.02em;
-  transition: opacity 0.15s;
-}
-.submit-btn:hover { opacity: 0.85; }
-.submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
-.success-msg { display: none; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.125rem; margin-top: 1rem; font-size: 13px; color: var(--ink2); line-height: 1.65; text-align: center; }
-.success-msg.visible { display: block; }
-.error-msg { display: none; background: #FAEEDA; border: 1px solid rgba(133,79,11,0.2); border-radius: 10px; padding: 0.75rem 1rem; margin-top: 0.75rem; font-size: 12px; color: #854F0B; line-height: 1.65; }
-.error-msg.visible { display: block; }
-
-/* Other country field */
-.other-country-field { display: none; margin-top: 8px; }
-.other-country-field.visible { display: block; }
-
-/* ===== Responsive tuning for small viewport heights ===== */
+/* Responsive */
 @media (max-height: 680px) {
   .page-art { height: 36%; }
-  .top-label { margin-bottom: 0.6rem; font-size: 10px; }
-  .flipbook { gap: 8px; }
+  .top-label { margin-bottom: 5px; font-size: 10px; }
+  .flipbook { gap: 6px; }
 }
 @media (max-height: 560px) {
-  .page-art { height: 30%; }
+  .page-art { height: 28%; }
   .top-label { display: none; }
 }
 @media (max-width: 360px) {
-  .page-body { padding: 1.25rem 1.25rem 1rem; }
-}
-
-@media print {
-  body { background: white; padding: 0; overflow: visible; }
-  .nav, .top-label { display: none !important; }
-  .page { display: flex !important; box-shadow: none; border: none; page-break-after: always; height: auto; max-height: none; }
-  .page-body { overflow: visible; }
+  .page-body { padding: 1rem 1.15rem; }
 }
 </style>
 </head>
@@ -407,351 +559,302 @@ textarea::placeholder, input::placeholder { color: var(--ink4); }
 <div class="top-label">Violence Ends With Us · PAUSE Toolkit · Pilot 2026</div>
 
 <div class="flipbook">
-<!-- ══ 0: COVER ══ -->
+
+<!-- ══ PAGE 0: COVER ══ -->
 <div id="page-0" class="page active">
   <div class="page-art" style="background-image:url('assets/1.png');"></div>
   <div class="page-body">
-    <div>
-      <div class="page-label">A positive discipline toolkit</div>
-      <div class="cover-title">PAUSE</div>
-      <div class="cover-sub">Positive Alternatives to Unsafe &amp; Severe Enforcement</div>
-      <div class="cover-hook">What will you do in the next five seconds?</div>
-      <div class="cover-desc">
-        This flipbook walks you through a five-step framework for responding to children with care — not fear.<br><br>
-        It also asks you to tell your story. Your answers become part of a living collection of change — a module that will be shared with parents, teachers, and communities across the Asia-Pacific.
-      </div>
+    <div class="page-label">A positive discipline toolkit</div>
+    <div class="cover-title" style="color:var(--earth);">PAUSE</div>
+    <div class="cover-sub">Positive Alternatives to Unsafe &amp; Severe Enforcement</div>
+    <div class="cover-hook">What will you do in the next five seconds?</div>
+    <div class="cover-desc">
+      This flipbook walks you through a five-step framework for responding to children with care, not fear.<br><br>
+      Your answers become part of a living collection of change shared with parents, teachers, and communities across the Asia-Pacific.
     </div>
-    <div class="page-body-footer"></div>
   </div>
 </div>
-<!-- ══ 1: SAFEGUARDING ══ -->
+
+<!-- ══ PAGE 1: SAFEGUARDING ══ -->
 <div id="page-1" class="page">
   <div class="page-art" style="background-image:url('assets/2.png');"></div>
   <div class="page-body">
-    <div>
-      <div class="page-label">Before we begin</div>
-      <div class="section-head">Our commitment to safety</div>
-      <div class="section-sub">PAUSE is a safe space. Everything shared here stays within this group. No one will be judged for what they share or what they have experienced.</div>
-      <div class="info-box box-neutral">
-        <div class="lbl">If something difficult comes up</div>
-        If anything shared raises a concern about a child's safety — including your own — your facilitator is here to help connect you with the right support.
-      </div>
-      <div style="border-radius:10px;border:1px solid var(--border);padding:1rem 1.125rem;">
-        <div class="scenario-lbl" style="margin-bottom:0.75rem;">Child protection hotlines</div>
-        <div class="hotline-row"><span class="hotline-country">🇵🇭 Philippines</span><span class="hotline-num">1343</span></div>
-        <div class="hotline-row"><span class="hotline-country">🇻🇳 Vietnam</span><span class="hotline-num">111</span></div>
-        <div class="hotline-row"><span class="hotline-country">🇰🇭 Cambodia</span><span class="hotline-num">1280</span></div>
-      </div>
-      <div style="font-size:12px;line-height:1.7;color:var(--ink3);margin-top:1rem;">
-        This toolkit follows the Save the Children Child Safeguarding Policy. Every facilitator has been briefed on do-no-harm principles and referral pathways.
-      </div>
+    <div class="page-label">Before we begin</div>
+    <div class="section-head" style="color:var(--sky);">Our commitment to safety</div>
+    <div class="section-sub">PAUSE is a safe space. Everything shared here stays within this group. No one will be judged.</div>
+    <div class="info-box" style="background:var(--sky-light);color:var(--ink2);">
+      <span class="lbl" style="color:var(--sky);">If something difficult comes up</span>
+      If anything raises a concern about a child's safety, your facilitator is here to help connect you with the right support.
     </div>
-    <div class="page-body-footer" style="font-size:11px;color:var(--ink4);">Violence Ends With Us · Asia-Pacific 2026</div>
+    <div style="border-radius:14px;border:1.5px solid var(--border);padding:0.85rem 1.05rem;background:rgba(255,255,255,0.7);">
+      <div class="scenario-lbl" style="margin-bottom:0.65rem;">Child protection hotlines</div>
+      <div class="hotline-row"><span class="hotline-country">🇵🇭 Philippines</span><span class="hotline-num" style="color:var(--sky);">1343</span></div>
+      <div class="hotline-row"><span class="hotline-country">🇻🇳 Vietnam</span><span class="hotline-num" style="color:var(--grass);">111</span></div>
+      <div class="hotline-row"><span class="hotline-country">🇰🇭 Cambodia</span><span class="hotline-num" style="color:var(--gold);">1280</span></div>
+    </div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:12px;font-weight:500;line-height:1.65;color:var(--ink3);margin-top:0.85rem;">
+      This toolkit follows the Save the Children Child Safeguarding Policy. Every facilitator has been briefed on do-no-harm principles and referral pathways.
+    </div>
   </div>
 </div>
-<!-- ══ 2: REFLECTION OPENER ══ -->
+
+<!-- ══ PAGE 2: REFLECTION OPENER ══ -->
 <div id="page-2" class="page">
   <div class="page-art" style="background-image:url('assets/3.png');"></div>
   <div class="page-body">
-    <div>
-      <div class="page-label">Opening reflection</div>
-      <div class="refl-q">"Think about how you were disciplined as a child."</div>
-      <div class="refl-sub">What happened when you made a mistake? How did it feel? Do you still carry that feeling today?</div>
-      <div class="info-box box-neutral">
-        <div class="lbl">A moment to reflect</div>
-        Allow 2–3 minutes of quiet reflection here. You may share if you feel ready — or simply sit with the memory.
-      </div>
-      <div class="info-box box-accent">
-        Most of us were never taught another way. PAUSE gives you one — not because you are wrong, but because you deserve better tools.
-      </div>
+    <div class="page-label">Opening reflection</div>
+    <div class="refl-q" style="color:var(--grass);">"Think about how you were disciplined as a child."</div>
+    <div class="refl-sub">What happened when you made a mistake? How did it feel? Do you still carry that feeling today?</div>
+    <div class="info-box" style="background:var(--grass-light);color:var(--ink2);">
+      <span class="lbl" style="color:var(--grass);">A moment to reflect</span>
+      Allow 2 to 3 minutes of quiet reflection. You may share if you feel ready, or simply sit with the memory.
     </div>
-    <div class="page-body-footer" style="font-size:13px;color:var(--ink3);">As you read each step, think of a real moment in your own life.</div>
+    <div class="info-box" style="background:var(--gold-light);color:var(--ink2);">
+      Most of us were never taught another way. PAUSE gives you one, not because you are wrong, but because you deserve better tools.
+    </div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);">As you read each step, think of a real moment in your own life.</div>
   </div>
 </div>
-<!-- P -->
+
+<!-- ══ PAGE 3: P ══ -->
 <div id="page-3" class="page">
   <div class="page-art" style="background-image:url('assets/4.png');"></div>
   <div class="page-body">
-    <div>
-      <div class="page-label">Step 1 of 5</div>
-      <div style="width:24px;height:2px;background:#C1693F;margin-bottom:0.875rem;"></div>
-      <div class="step-letter" style="color:#C1693F;">P</div>
-      <div class="step-word">Pause</div>
-      <div class="step-action">Stop before you react. Take one breath. Give yourself five seconds before you do or say anything.</div>
-      <div class="step-why">The urge to react comes from the body, not the mind. One breath creates enough space to choose what happens next.</div>
-    </div>
-    <div class="page-body-footer">
-      <div class="scenario-box">
-        <div class="scenario-lbl">In the moment</div>
-        <p>Your child broke something after you told them not to. You feel the anger rise. Before anything else — breathe. Just breathe.</p>
-      </div>
+    <div class="page-label">Step 1 of 5</div>
+    <div class="step-letter" style="color:var(--p-color);">P</div>
+    <div class="step-word">Pause</div>
+    <div class="step-action">Stop before you react. Take one breath. Give yourself five seconds before you do or say anything.</div>
+    <div class="step-why" style="border-left-color:var(--earth-light);">The urge to react comes from the body, not the mind. One breath creates enough space to choose what happens next.</div>
+    <div class="scenario-box" style="background:var(--earth-light);">
+      <div class="scenario-lbl" style="color:var(--earth);">In the moment</div>
+      <p style="color:var(--ink2);">Your child broke something after you told them not to. You feel the anger rise. Before anything else, breathe.</p>
     </div>
   </div>
 </div>
-<!-- A -->
+
+<!-- ══ PAGE 4: A ══ -->
 <div id="page-4" class="page">
   <div class="page-art" style="background-image:url('assets/5.png');"></div>
   <div class="page-body">
-    <div>
-      <div class="page-label">Step 2 of 5</div>
-      <div style="width:24px;height:2px;background:#6F8A5C;margin-bottom:0.875rem;"></div>
-      <div class="step-letter" style="color:#6F8A5C;">A</div>
-      <div class="step-word">Ask</div>
-      <div class="step-action">Ask the child what happened. Let them speak first. Listen without interrupting.</div>
-      <div class="step-why">Children often act out for reasons adults don't see. Asking before assuming shows respect — and gets you closer to the truth.</div>
-    </div>
-    <div class="page-body-footer">
-      <div class="scenario-box">
-        <div class="scenario-lbl">In the moment</div>
-        <p>"What happened?" — said calmly, not as an accusation. Wait for the answer even if it takes a moment to come.</p>
-      </div>
+    <div class="page-label">Step 2 of 5</div>
+    <div class="step-letter" style="color:var(--a-color);">A</div>
+    <div class="step-word">Ask</div>
+    <div class="step-action">Ask the child what happened. Let them speak first. Listen without interrupting.</div>
+    <div class="step-why" style="border-left-color:var(--grass-light);">Children often act out for reasons adults don't see. Asking before assuming shows respect, and gets you closer to the truth.</div>
+    <div class="scenario-box" style="background:var(--grass-light);">
+      <div class="scenario-lbl" style="color:var(--grass);">In the moment</div>
+      <p style="color:var(--ink2);">"What happened?" Said calmly, not as an accusation. Wait for the answer even if it takes a moment to come.</p>
     </div>
   </div>
 </div>
-<!-- U -->
+
+<!-- ══ PAGE 5: U ══ -->
 <div id="page-5" class="page">
   <div class="page-art" style="background-image:url('assets/6.png');"></div>
   <div class="page-body">
-    <div>
-      <div class="page-label">Step 3 of 5</div>
-      <div style="width:24px;height:2px;background:#C79A3E;margin-bottom:0.875rem;"></div>
-      <div class="step-letter" style="color:#C79A3E;">U</div>
-      <div class="step-word">Understand</div>
-      <div class="step-action">Consider why they did it. Were they scared? Confused? Bored? Testing limits? Still learning?</div>
-      <div class="step-why">Behavior is communication. What looks like defiance is often a need the child doesn't know how to express yet.</div>
-    </div>
-    <div class="page-body-footer">
-      <div class="scenario-box">
-        <div class="scenario-lbl">In the moment</div>
-        <p>"What was going on for them?" — not to excuse the behavior, but to understand it before you respond.</p>
-      </div>
+    <div class="page-label">Step 3 of 5</div>
+    <div class="step-letter" style="color:var(--u-color);">U</div>
+    <div class="step-word">Understand</div>
+    <div class="step-action">Consider why they did it. Were they scared? Confused? Bored? Testing limits? Still learning?</div>
+    <div class="step-why" style="border-left-color:var(--gold-light);">Behavior is communication. What looks like defiance is often a need the child doesn't know how to express yet.</div>
+    <div class="scenario-box" style="background:var(--gold-light);">
+      <div class="scenario-lbl" style="color:var(--gold);">In the moment</div>
+      <p style="color:var(--ink2);">"What was going on for them?" Not to excuse the behavior, but to understand it before you respond.</p>
     </div>
   </div>
 </div>
-<!-- S -->
+
+<!-- ══ PAGE 6: S ══ -->
 <div id="page-6" class="page">
   <div class="page-art" style="background-image:url('assets/7.png');"></div>
   <div class="page-body">
-    <div>
-      <div class="page-label">Step 4 of 5</div>
-      <div style="width:24px;height:2px;background:var(--ink);margin-bottom:0.875rem;"></div>
-      <div class="step-letter" style="color:#5E84A3;">S</div>
-      <div class="step-word">Support</div>
-      <div class="step-action">Respond to the real need behind the behavior — not just the behavior itself. Guide, don't punish.</div>
-      <div class="step-why">Children learn better through guidance than fear. A child who is supported feels safe enough to do better next time.</div>
-    </div>
-    <div class="page-body-footer">
-      <div class="scenario-box">
-        <div class="scenario-lbl">In the moment</div>
-        <p>Calm redirection. A clear boundary, explained. Your presence, not your anger.</p>
-      </div>
+    <div class="page-label">Step 4 of 5</div>
+    <div class="step-letter" style="color:var(--s-color);">S</div>
+    <div class="step-word">Support</div>
+    <div class="step-action">Respond to the real need behind the behavior, not just the behavior itself. Guide, don't punish.</div>
+    <div class="step-why" style="border-left-color:var(--sky-light);">Children learn better through guidance than fear. A child who feels supported is safe enough to do better next time.</div>
+    <div class="scenario-box" style="background:var(--sky-light);">
+      <div class="scenario-lbl" style="color:var(--sky);">In the moment</div>
+      <p style="color:var(--ink2);">Calm redirection. A clear boundary, explained with love. Your presence, not your anger.</p>
     </div>
   </div>
 </div>
-<!-- E -->
+
+<!-- ══ PAGE 7: E ══ -->
 <div id="page-7" class="page">
   <div class="page-art" style="background-image:url('assets/8.png');"></div>
   <div class="page-body">
-    <div>
-      <div class="page-label">Step 5 of 5</div>
-      <div style="width:24px;height:2px;background:var(--ink);margin-bottom:0.875rem;"></div>
-      <div class="step-letter" style="color:#9C5B7A;">E</div>
-      <div class="step-word">Encourage</div>
-      <div class="step-action">End with something that builds trust, not fear. Let them know the mistake doesn't change how much you love them.</div>
-      <div class="step-why">Children who feel loved after a mistake are more likely to be honest, try again, and trust the adults in their lives.</div>
-    </div>
-    <div class="page-body-footer">
-      <div class="scenario-box">
-        <div class="scenario-lbl">In the moment</div>
-        <p>"I know you can do better. I'm here." That's it. That's enough.</p>
-      </div>
+    <div class="page-label">Step 5 of 5</div>
+    <div class="step-letter" style="color:var(--e-color);">E</div>
+    <div class="step-word">Encourage</div>
+    <div class="step-action">End with something that builds trust, not fear. Let them know the mistake doesn't change how much you love them.</div>
+    <div class="step-why" style="border-left-color:var(--mauve-light);">Children who feel loved after a mistake are more likely to be honest, try again, and trust the adults in their lives.</div>
+    <div class="scenario-box" style="background:var(--mauve-light);">
+      <div class="scenario-lbl" style="color:var(--mauve);">In the moment</div>
+      <p style="color:var(--ink2);">"I know you can do better. I'm here." That's enough.</p>
     </div>
   </div>
 </div>
-<!-- ══ 8: CIRCLE OF CHANGE — INTRO ══ -->
+
+<!-- ══ PAGE 8: CIRCLE OF CHANGE INTRO ══ -->
 <div id="page-8" class="page">
   <div class="page-art" style="background-image:url('assets/9.png');"></div>
   <div class="page-body">
-    <div>
-      <div class="page-label">Circle of change</div>
-      <div class="section-head">Your story matters.</div>
-      <div class="section-sub">The next few pages ask you to reflect honestly — on your past, your present, and the change you want to make. There are no wrong answers.</div>
-      <div class="info-box box-neutral">
-        <div class="lbl">What is the circle of change?</div>
-        It is the journey from how you were treated as a child, to how that shaped the way you discipline today, to the boundaries you want to set — for your child and for yourself — going forward.
-      </div>
-      <div class="circle-nav" style="margin-bottom:0;">
-        <div class="c-dot active"></div>
-        <div class="c-dot"></div>
-        <div class="c-dot"></div>
-        <div class="c-dot"></div>
-        <div class="c-dot"></div>
-      </div>
-      <div style="text-align:center;font-size:11px;color:var(--ink4);margin-top:0.5rem;">Your past · Your now · The shift · Your limits · Your commitment</div>
+    <div class="page-label">Circle of change</div>
+    <div class="section-head" style="color:var(--earth);">Your story matters.</div>
+    <div class="section-sub">The next pages ask you to reflect honestly on your past, your present, and the change you want to make. There are no wrong answers.</div>
+    <div class="info-box" style="background:var(--earth-light);color:var(--ink2);">
+      <span class="lbl" style="color:var(--earth);">What is the circle of change?</span>
+      The journey from how you were treated as a child, to how that shaped the way you discipline today, to the boundaries you want to set going forward.
     </div>
-    <div class="page-body-footer" style="font-size:12px;color:var(--ink3);">Your answers become part of a collection of change — shared anonymously as a module for communities across the region.</div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:12px;font-weight:600;text-align:center;color:var(--ink4);margin-top:0.4rem;">Your past · Your now · The shift · Your limits · Your commitment</div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);margin-top:0.75rem;">Your answers become part of a collection of change shared anonymously as a module for communities across the region.</div>
   </div>
 </div>
-<!-- ══ 9: YOUR PAST ══ -->
+
+<!-- ══ PAGE 9: YOUR PAST ══ -->
 <div id="page-9" class="page">
   <div class="page-art" style="background-image:url('assets/10.png');"></div>
   <div class="page-body">
     <div class="page-label">Circle of change · 1 of 5</div>
-    <div class="circle-nav">
-      <div class="c-dot done"></div>
-      <div class="c-dot active"></div>
-      <div class="c-dot"></div>
-      <div class="c-dot"></div>
-      <div class="c-dot"></div>
-    </div>
-    <div class="refl-q" style="font-size:18px;">Your past</div>
-    <div class="refl-sub" style="font-size:13px;">How were you disciplined as a child? What did the adults around you do when you made a mistake?</div>
+    <div class="refl-q" style="color:var(--earth);">Your past</div>
+    <div class="refl-sub">How were you disciplined as a child? What did the adults around you do when you made a mistake?</div>
     <div class="field">
       <label for="q_past">Describe what discipline looked like in your home growing up</label>
-      <textarea id="q_past" name="q_past" rows="4" placeholder="Write freely. This is your space."></textarea>
+      <textarea id="q_past" rows="3" placeholder="Write freely. This is your space."></textarea>
     </div>
     <div class="field">
       <label>How did it make you feel?</label>
-      <div class="opts" id="past_feeling_opts">
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Afraid')">Afraid</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Confused')">Confused</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Ashamed')">Ashamed</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Unloved')">Unloved</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','It felt normal')">It felt normal</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Other')">Other</button>
+      <div class="opts">
+        <button type="button" class="opt-btn" style="--sel:var(--earth-light);" onclick="pickOpt(this,'past_feeling','Afraid and anxious')">😟 Afraid and anxious</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Ashamed or hurt')">💔 Ashamed or hurt</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Confused. I didn\'t understand why')">😐 Confused. I didn't understand why</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','It felt normal. Just how things were')">🤷 It felt normal. Just how things were</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Mostly okay. It felt fair')">🙂 Mostly okay. It felt fair</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Safe and guided')">🌱 Safe and guided</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','other')">✏️ Other. I'll describe it</button>
       </div>
-      <input type="hidden" id="past_feeling" name="past_feeling" />
+      <input type="hidden" id="past_feeling" />
+      <div class="opt-other-input" id="past_feeling_other_wrap">
+        <input type="text" id="past_feeling_other" placeholder="Describe how it felt..." oninput="document.getElementById('past_feeling').value='Other: '+this.value;syncHidden();" />
+      </div>
     </div>
   </div>
 </div>
-<!-- ══ 10: YOUR NOW ══ -->
+
+<!-- ══ PAGE 10: YOUR NOW ══ -->
 <div id="page-10" class="page">
   <div class="page-art" style="background-image:url('assets/11.png');"></div>
   <div class="page-body">
     <div class="page-label">Circle of change · 2 of 5</div>
-    <div class="circle-nav">
-      <div class="c-dot done"></div>
-      <div class="c-dot done"></div>
-      <div class="c-dot active"></div>
-      <div class="c-dot"></div>
-      <div class="c-dot"></div>
-    </div>
-    <div class="refl-q" style="font-size:18px;">Your now</div>
-    <div class="refl-sub" style="font-size:13px;">How do you discipline the children in your life today? Be honest — this is not a test.</div>
+    <div class="refl-q" style="color:var(--grass);">Your now</div>
+    <div class="refl-sub">How do you discipline children in your life today? Be honest. This is not a test.</div>
     <div class="field">
-      <label for="q_now">When a child in your care misbehaves, what do you usually do?</label>
-      <textarea id="q_now" name="q_now" rows="3" placeholder="Be honest with yourself here."></textarea>
+      <label for="q_now">When a child misbehaves, what do you usually do?</label>
+      <textarea id="q_now" rows="3" placeholder="Be honest with yourself here."></textarea>
     </div>
     <div class="field">
       <label>Do you see a pattern from your own childhood in how you respond?</label>
       <div class="opts">
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','Yes, I do the same things')">Yes, I do the same things</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','Sometimes, without meaning to')">Sometimes, without meaning to</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','I try not to, but it is hard')">I try not to, but it is hard</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','No, I do things differently')">No, I do things differently</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','Yes. I repeat what I experienced')">😔 Yes. I repeat what I experienced</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','Sometimes, without meaning to')">😶 Sometimes, without meaning to</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','I haven\'t really thought about it')">🤔 I haven't really thought about it</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','I try not to, but it is hard')">💪 I try not to, but it is hard</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','No. I actively choose differently')">✨ No. I actively choose differently</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','I don\'t have children in my care')">📋 I don't have children in my care</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','other')">✏️ Other. I'll describe it</button>
       </div>
-      <input type="hidden" id="pattern" name="pattern" />
+      <input type="hidden" id="pattern" />
+      <div class="opt-other-input" id="pattern_other_wrap">
+        <input type="text" id="pattern_other" placeholder="Describe your experience..." oninput="document.getElementById('pattern').value='Other: '+this.value;syncHidden();" />
+      </div>
     </div>
   </div>
 </div>
-<!-- ══ 11: THE SHIFT ══ -->
+
+<!-- ══ PAGE 11: THE SHIFT ══ -->
 <div id="page-11" class="page">
   <div class="page-art" style="background-image:url('assets/12.png');"></div>
   <div class="page-body">
     <div class="page-label">Circle of change · 3 of 5</div>
-    <div class="circle-nav">
-      <div class="c-dot done"></div>
-      <div class="c-dot done"></div>
-      <div class="c-dot done"></div>
-      <div class="c-dot active"></div>
-      <div class="c-dot"></div>
-    </div>
-    <div class="refl-q" style="font-size:18px;">The shift</div>
-    <div class="refl-sub" style="font-size:13px;">What do you want to change? What kind of adult do you want to be in the moments that matter?</div>
+    <div class="refl-q" style="color:var(--gold);">The shift</div>
+    <div class="refl-sub">What do you want to change? What kind of adult do you want to be in the moments that matter?</div>
     <div class="field">
-      <label for="q_change">Describe the change you want to make in how you respond to children</label>
-      <textarea id="q_change" name="q_change" rows="3" placeholder="What does doing better look like for you?"></textarea>
+      <label for="q_change">Describe the change you want to make</label>
+      <textarea id="q_change" rows="3" placeholder="What does doing better look like for you?"></textarea>
     </div>
     <div class="field">
-      <label for="q_barrier">What makes it hard to change? What gets in the way?</label>
-      <textarea id="q_barrier" name="q_barrier" rows="2" placeholder="Stress, time, not knowing what else to do..."></textarea>
+      <label for="q_barrier">What makes it hard to change?</label>
+      <textarea id="q_barrier" rows="2" placeholder="Stress, time, not knowing what else to do..."></textarea>
     </div>
   </div>
 </div>
-<!-- ══ 12: YOUR LIMITS ══ -->
+
+<!-- ══ PAGE 12: YOUR LIMITS ══ -->
 <div id="page-12" class="page">
   <div class="page-art" style="background-image:url('assets/13.png');"></div>
   <div class="page-body">
     <div class="page-label">Circle of change · 4 of 5</div>
-    <div class="circle-nav">
-      <div class="c-dot done"></div>
-      <div class="c-dot done"></div>
-      <div class="c-dot done"></div>
-      <div class="c-dot done"></div>
-      <div class="c-dot active"></div>
-    </div>
-    <div class="refl-q" style="font-size:18px;">Your limits</div>
-    <div class="refl-sub" style="font-size:13px;">Positive parenting does not mean no boundaries. Children need limits — given with love and consistency, not pain or fear.</div>
+    <div class="refl-q" style="color:var(--sky);">Your limits</div>
+    <div class="refl-sub">Positive parenting still has boundaries. Children need limits given with love and consistency, not pain or fear.</div>
     <div class="field">
-      <label for="q_limits">What boundaries are important to you in raising or teaching children?</label>
-      <textarea id="q_limits" name="q_limits" rows="3" placeholder="What do you want your child to learn? What values matter most to you?"></textarea>
+      <label for="q_limits">What boundaries matter most to you in raising children?</label>
+      <textarea id="q_limits" rows="3" placeholder="What values do you want your child to carry?"></textarea>
     </div>
     <div class="field">
       <label>Can a child be disciplined without physical punishment?</label>
       <div class="opts">
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','Yes, I believe this now')">Yes, I believe this now</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I am starting to believe it')">I am starting to believe it</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I am not sure yet')">I am not sure yet</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I still have doubts')">I still have doubts</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','No. I think some physical discipline is needed')">❌ No. I think some physical discipline is needed</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I\'m not sure. It\'s what I grew up with')">🤷 I'm not sure. It's what I grew up with</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I have doubts but I\'m open to trying')">🌿 I have doubts but I'm open to trying</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I\'m starting to believe it\'s possible')">🙂 I'm starting to believe it's possible</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','Yes. I believe this fully')">✅ Yes. I believe this fully</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I already practice positive discipline')">🌟 I already practice positive discipline</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','other')">✏️ Other. I'll share my view</button>
       </div>
-      <input type="hidden" id="belief_shift" name="belief_shift" />
+      <input type="hidden" id="belief_shift" />
+      <div class="opt-other-input" id="belief_shift_other_wrap">
+        <input type="text" id="belief_shift_other" placeholder="Share your view..." oninput="document.getElementById('belief_shift').value='Other: '+this.value;syncHidden();" />
+      </div>
     </div>
   </div>
 </div>
-<!-- ══ 13: COMMITMENT + FORM ══ -->
+
+<!-- ══ PAGE 13: COMMITMENT + FORM ══ -->
 <div id="page-13" class="page">
   <div class="page-art" style="background-image:url('assets/14.png');"></div>
   <div class="page-body">
-    <div class="page-label">Circle of change · 5 of 5 · Your commitment</div>
-    <div class="refl-q" style="font-size:18px;">"Is that the memory you want your child to have of you?"</div>
-    <div style="font-size:13px;color:var(--ink3);margin-bottom:1.25rem;">You don't have to be perfect. You just have to pause — one moment at a time.</div>
+    <div class="page-label">Circle of change · 5 of 5</div>
+    <div class="refl-q" style="color:var(--mauve);">Your commitment</div>
+    <div class="refl-sub">"Is that the memory you want your child to have of you?" You don't have to be perfect. You just have to pause, one moment at a time.</div>
 
     <form id="pause-form">
       <input type="hidden" name="toolkit_version" value="Pilot Edition · Asia-Pacific 2026" />
-      <input type="hidden" id="h_past_feeling" name="past_feeling" />
-      <input type="hidden" id="h_pattern" name="pattern" />
-      <input type="hidden" id="h_belief" name="belief_shift" />
+      <input type="hidden" id="h_past_feeling" name="past_feeling_choice" />
+      <input type="hidden" id="h_pattern" name="pattern_choice" />
+      <input type="hidden" id="h_belief" name="belief_shift_choice" />
       <input type="hidden" id="h_country" name="country" />
+      <input type="hidden" id="h_q_past" name="q_past" />
+      <input type="hidden" id="h_q_now" name="q_now" />
+      <input type="hidden" id="h_q_change" name="q_change" />
+      <input type="hidden" id="h_q_barrier" name="q_barrier" />
+      <input type="hidden" id="h_q_limits" name="q_limits" />
 
       <div class="field">
         <label for="p_name">Your name (optional)</label>
         <input type="text" id="p_name" name="participant_name" placeholder="First name or leave blank" />
       </div>
-
       <div class="field">
         <label>Where are you joining from?</label>
         <div class="country-opts">
           <button type="button" class="country-btn" onclick="pickCountry(this,'🇵🇭 Philippines')">🇵🇭 Philippines</button>
           <button type="button" class="country-btn" onclick="pickCountry(this,'🇻🇳 Vietnam')">🇻🇳 Vietnam</button>
           <button type="button" class="country-btn" onclick="pickCountry(this,'🇰🇭 Cambodia')">🇰🇭 Cambodia</button>
-          <button type="button" class="country-btn" onclick="pickCountry(this,'other')">Other</button>
+          <button type="button" class="country-btn" onclick="pickCountry(this,'other')">Other country</button>
         </div>
         <div class="other-country-field" id="other_country_wrap">
-          <input type="text" id="other_country_input" placeholder="Please tell us your country" oninput="document.getElementById('h_country').value = this.value" />
+          <input type="text" id="other_country_input" placeholder="Please tell us your country" oninput="document.getElementById('h_country').value=this.value" />
         </div>
-      </div>
-
-      <div class="field">
-        <label for="p_past_txt">Your past <span style="font-weight:400;text-transform:none;">(from page 9)</span></label>
-        <textarea id="p_past_txt" name="q_past" rows="2" placeholder="How were you disciplined as a child?"></textarea>
-      </div>
-      <div class="field">
-        <label for="p_now_txt">Your now <span style="font-weight:400;text-transform:none;">(from page 10)</span></label>
-        <textarea id="p_now_txt" name="q_now" rows="2" placeholder="How do you discipline today?"></textarea>
-      </div>
-      <div class="field">
-        <label for="p_change_txt">The shift you want to make</label>
-        <textarea id="p_change_txt" name="q_change" rows="2" placeholder="What change do you want to make?"></textarea>
       </div>
       <div class="field">
         <label for="p_commit">I commit to trying PAUSE when...</label>
@@ -762,139 +865,117 @@ textarea::placeholder, input::placeholder { color: var(--ink4); }
         <input type="text" id="p_support" name="support_person" placeholder="Their name" required />
       </div>
       <div class="field">
-        <label for="p_followup">Phone or email for 2–4 week follow-up <span style="font-weight:400;text-transform:none;">(optional)</span></label>
+        <label for="p_followup">Phone or email for follow-up (optional)</label>
         <input type="text" id="p_followup" name="followup_contact" placeholder="Your number or email" />
       </div>
 
       <div class="error-msg" id="form-error">Something went wrong. Please try again.</div>
-      <div class="success-msg" id="form-success">✓ Your story has been saved. Thank you for choosing to pause. Violence ends with us.</div>
+      <div class="success-msg" id="form-success">Your story has been saved. Thank you for choosing to pause. Violence ends with us.</div>
       <button type="submit" class="submit-btn" id="submit-btn">Save my story</button>
     </form>
   </div>
 </div>
-<!-- ══ 14: PAUSE POCKET CARD ══ -->
+
+<!-- ══ PAGE 14: POCKET CARD ══ -->
 <div id="page-14" class="page">
   <div class="page-art" style="background-image:url('assets/15.png');"></div>
   <div class="page-body">
-    <div>
-      <div class="page-label">Your pocket card · Keep this close</div>
-
-      <div style="font-size:13px;line-height:1.7;color:var(--ink3);margin-bottom:1.25rem;">
-        In a moment of stress, this is all you need. Screenshot it. Put it somewhere you will see it.
-      </div>
-
-      <div class="pause-grid">
-        <div class="pause-item">
-          <span class="pi-letter">P</span>
-          <div class="pi-text">
-            <span class="pi-word">Pause</span>
-            <span class="pi-desc">Breathe. Five seconds before you react.</span>
-          </div>
-        </div>
-        <div class="pause-item">
-          <span class="pi-letter">A</span>
-          <div class="pi-text">
-            <span class="pi-word">Ask</span>
-            <span class="pi-desc">Ask the child what happened. Listen first.</span>
-          </div>
-        </div>
-        <div class="pause-item">
-          <span class="pi-letter">U</span>
-          <div class="pi-text">
-            <span class="pi-word">Understand</span>
-            <span class="pi-desc">Why did they do it? Behavior is communication.</span>
-          </div>
-        </div>
-        <div class="pause-item">
-          <span class="pi-letter">S</span>
-          <div class="pi-text">
-            <span class="pi-word">Support</span>
-            <span class="pi-desc">Respond to the need. Guide, don't punish.</span>
-          </div>
-        </div>
-        <div class="pause-item">
-          <span class="pi-letter">E</span>
-          <div class="pi-text">
-            <span class="pi-word">Encourage</span>
-            <span class="pi-desc">End with love. The mistake doesn't change that.</span>
-          </div>
+    <div class="page-label">Your pocket card · Keep this close</div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:13.5px;font-weight:500;line-height:1.65;color:var(--ink3);margin-bottom:0.9rem;">
+      In a moment of stress, this is all you need. Screenshot it and put it somewhere you will see it.
+    </div>
+    <div class="pause-grid">
+      <div class="pause-item">
+        <span class="pi-letter" style="color:var(--p-color);">P</span>
+        <div>
+          <span class="pi-word" style="color:var(--earth);">Pause</span>
+          <span class="pi-desc">Breathe. Five seconds before you react.</span>
         </div>
       </div>
-
-      <div class="info-box box-neutral">
-        <div class="lbl">Where your responses go</div>
-        Your story — collected anonymously alongside others — becomes part of a growing collection of change. These responses will be presented at the 2nd Global Ministerial Conference on Ending Violence Against Children, Manila, November 2026, and shaped into a module shared with communities across the region.
+      <div class="pause-item">
+        <span class="pi-letter" style="color:var(--a-color);">A</span>
+        <div>
+          <span class="pi-word" style="color:var(--grass);">Ask</span>
+          <span class="pi-desc">Ask the child what happened. Listen first.</span>
+        </div>
+      </div>
+      <div class="pause-item">
+        <span class="pi-letter" style="color:var(--u-color);">U</span>
+        <div>
+          <span class="pi-word" style="color:var(--gold);">Understand</span>
+          <span class="pi-desc">Why did they do it? Behavior is communication.</span>
+        </div>
+      </div>
+      <div class="pause-item">
+        <span class="pi-letter" style="color:var(--s-color);">S</span>
+        <div>
+          <span class="pi-word" style="color:var(--sky);">Support</span>
+          <span class="pi-desc">Respond to the need. Guide, don't punish.</span>
+        </div>
+      </div>
+      <div class="pause-item">
+        <span class="pi-letter" style="color:var(--e-color);">E</span>
+        <div>
+          <span class="pi-word" style="color:var(--mauve);">Encourage</span>
+          <span class="pi-desc">End with love. The mistake doesn't change that.</span>
+        </div>
       </div>
     </div>
-    <div class="page-body-footer" style="font-size:11px;color:var(--ink4);text-align:center;">Designed by young people · Violence Ends With Us · Asia-Pacific</div>
+    <div class="info-box" style="background:var(--cream);color:var(--ink2);">
+      <span class="lbl" style="color:var(--ink3);">Where your responses go</span>
+      Your story, collected anonymously alongside others, will be presented at the 2nd Global Ministerial Conference on Ending Violence Against Children, Manila, November 2026.
+    </div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:11px;font-weight:600;color:var(--ink4);text-align:center;margin-top:0.5rem;">Designed by young people · Violence Ends With Us · Asia-Pacific</div>
   </div>
 </div>
 
-<!-- ══ NAVIGATION — pinned outside the card, always visible ══ -->
-<div class="flipbook-footer" id="flipbook-footer">15 pages · Pilot edition · Philippines · Vietnam · Cambodia</div>
-
+<!-- Footer + Nav inside .flipbook, same as original -->
+<div class="flipbook-footer">15 pages · Pilot edition · Philippines · Vietnam · Cambodia</div>
 <div class="nav">
   <button id="prev-btn" onclick="changePage(-1)" disabled>Back</button>
-  <div class="dots" id="dots"></div>
-  <button id="next-btn" class="primary" onclick="changePage(1)">Next</button>
+  <button id="next-btn" onclick="changePage(1)">Next</button>
 </div>
 
-</div>
+</div><!-- end .flipbook -->
 
 <script>
-// Navigation
 let cur = 0;
 const TOTAL = 15;
-const dotsEl = document.getElementById('dots');
-for (let i = 0; i < TOTAL; i++) {
-  const d = document.createElement('div');
-  d.className = 'dot' + (i === 0 ? ' active' : '');
-  d.onclick = () => goTo(i);
-  dotsEl.appendChild(d);
-}
-// Page index → matching asset image, mirrors each page's own page-art header
 const PAGE_IMAGES = [
-  'assets/1.png', 'assets/2.png', 'assets/3.png', 'assets/4.png', 'assets/5.png',
-  'assets/6.png', 'assets/7.png', 'assets/8.png', 'assets/9.png', 'assets/10.png',
-  'assets/11.png', 'assets/12.png', 'assets/13.png', 'assets/14.png', 'assets/15.png'
+  'assets/1.png','assets/2.png','assets/3.png','assets/4.png','assets/5.png',
+  'assets/6.png','assets/7.png','assets/8.png','assets/9.png','assets/10.png',
+  'assets/11.png','assets/12.png','assets/13.png','assets/14.png','assets/15.png'
 ];
 const backdropEl = document.getElementById('backdrop');
 
 function goTo(n) {
-  syncFields();
+  syncAllToHidden();
   document.getElementById('page-' + cur).classList.remove('active');
-  document.querySelectorAll('.dot')[cur].classList.remove('active');
   cur = n;
   document.getElementById('page-' + cur).classList.add('active');
-  document.querySelectorAll('.dot')[cur].classList.add('active');
   document.getElementById('prev-btn').disabled = cur === 0;
   const nb = document.getElementById('next-btn');
   nb.disabled = cur === TOTAL - 1;
   nb.textContent = cur === TOTAL - 2 ? 'Finish' : 'Next';
-  // swap the blurred backdrop to match the current page's image
-  if (backdropEl && PAGE_IMAGES[cur]) {
-    backdropEl.style.backgroundImage = "url('" + PAGE_IMAGES[cur] + "')";
-  }
-  // scroll the new page's own body to top, not the window
+  if (PAGE_IMAGES[cur]) backdropEl.style.backgroundImage = "url('" + PAGE_IMAGES[cur] + "')";
   const body = document.querySelector('#page-' + cur + ' .page-body');
   if (body) body.scrollTop = 0;
 }
 function changePage(dir) { goTo(cur + dir); }
 
-// Option picker
 function pickOpt(el, field, val) {
   el.closest('.opts').querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
   el.classList.add('selected');
-  const hidden = document.getElementById(field);
-  if (hidden) hidden.value = val;
-  const formHidden = { past_feeling: 'h_past_feeling', pattern: 'h_pattern', belief_shift: 'h_belief' };
-  if (formHidden[field]) {
-    const fh = document.getElementById(formHidden[field]);
-    if (fh) fh.value = val;
+  const otherWrap = document.getElementById(field + '_other_wrap');
+  if (val === 'other') {
+    if (otherWrap) otherWrap.classList.add('visible');
+  } else {
+    if (otherWrap) otherWrap.classList.remove('visible');
+    document.getElementById(field).value = val;
+    syncHidden();
   }
 }
 
-// Country picker
 function pickCountry(el, val) {
   document.querySelectorAll('.country-btn').forEach(b => b.classList.remove('selected'));
   el.classList.add('selected');
@@ -908,21 +989,23 @@ function pickCountry(el, val) {
   }
 }
 
-// Sync textarea fields to form page
-function syncFields() {
-  const syncMap = [
-    ['q_past',   'p_past_txt'],
-    ['q_now',    'p_now_txt'],
-    ['q_change', 'p_change_txt'],
-  ];
-  syncMap.forEach(([src, dst]) => {
-    const s = document.getElementById(src);
-    const d = document.getElementById(dst);
-    if (s && d && s !== d && s.value) d.value = s.value;
+function syncHidden() {
+  const map = { past_feeling:'h_past_feeling', pattern:'h_pattern', belief_shift:'h_belief' };
+  Object.entries(map).forEach(([src,dst]) => {
+    const s = document.getElementById(src), d = document.getElementById(dst);
+    if (s && d && s.value) d.value = s.value;
   });
 }
 
-// Form submit — sends to Formspree
+function syncAllToHidden() {
+  [['q_past','h_q_past'],['q_now','h_q_now'],['q_change','h_q_change'],
+   ['q_barrier','h_q_barrier'],['q_limits','h_q_limits']].forEach(([src,dst]) => {
+    const s = document.getElementById(src), d = document.getElementById(dst);
+    if (s && d && s.value) d.value = s.value;
+  });
+  syncHidden();
+}
+
 const form = document.getElementById('pause-form');
 const submitBtn = document.getElementById('submit-btn');
 const successMsg = document.getElementById('form-success');
@@ -930,15 +1013,24 @@ const errorMsg = document.getElementById('form-error');
 
 form.addEventListener('submit', async function(e) {
   e.preventDefault();
-  syncFields();
+  syncAllToHidden();
   successMsg.classList.remove('visible');
   errorMsg.classList.remove('visible');
   submitBtn.disabled = true;
   submitBtn.textContent = 'Saving...';
   const data = new FormData(form);
+  // Also append the text-area fields directly
+  ['q_past','q_now','q_change','q_barrier','q_limits'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.value) data.set(id, el.value);
+  });
+  ['past_feeling','pattern','belief_shift'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.value) data.set(id + '_choice', el.value);
+  });
   try {
     const res = await fetch('https://formspree.io/f/mzdwqabv', {
-      method: 'POST', body: data, headers: { 'Accept': 'application/json' }
+      method:'POST', body:data, headers:{'Accept':'application/json'}
     });
     if (res.ok) {
       successMsg.classList.add('visible');
