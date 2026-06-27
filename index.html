@@ -9,27 +9,24 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* Palette drawn from the illustration artwork */
-  --sky:        #7BAFD4;   /* soft sky blue */
-  --sky-light:  #D6EAF5;   /* pale sky wash */
-  --grass:      #8DAE55;   /* warm sage green */
-  --grass-light:#EBF2DC;   /* pale green wash */
-  --gold:       #C8A84B;   /* ochre/sunlit gold */
-  --gold-light: #F5EDCF;   /* pale gold wash */
-  --earth:      #B06B3A;   /* earthy terracotta */
-  --earth-light:#F3E4D4;   /* pale terracotta wash */
-  --mauve:      #9E6B8A;   /* soft mauve/dusk */
-  --mauve-light:#F0E3EC;   /* pale mauve wash */
-  --cream:      #F7F4EF;   /* warm off-white */
+  --sky:        #7BAFD4;
+  --sky-light:  #D6EAF5;
+  --grass:      #8DAE55;
+  --grass-light:#EBF2DC;
+  --gold:       #C8A84B;
+  --gold-light: #F5EDCF;
+  --earth:      #B06B3A;
+  --earth-light:#F3E4D4;
+  --mauve:      #9E6B8A;
+  --mauve-light:#F0E3EC;
+  --cream:      #F7F4EF;
 
-  /* PAUSE letter colors — from the same illustration palette */
-  --p-color:    #B06B3A;   /* P — earthy terracotta */
-  --a-color:    #8DAE55;   /* A — sage green */
-  --u-color:    #C8A84B;   /* U — warm gold */
-  --s-color:    #7BAFD4;   /* S — sky blue */
-  --e-color:    #9E6B8A;   /* E — soft mauve */
+  --p-color:    #B06B3A;
+  --a-color:    #8DAE55;
+  --u-color:    #C8A84B;
+  --s-color:    #7BAFD4;
+  --e-color:    #9E6B8A;
 
-  /* Text scale */
   --ink:   #2C2820;
   --ink2:  #5A5248;
   --ink3:  #9A9188;
@@ -50,7 +47,6 @@ body {
   flex-direction: column;
   align-items: center;
   padding: clamp(6px, 1.5vh, 14px) 14px clamp(6px, 1.5vh, 12px);
-
 }
 
 .backdrop {
@@ -62,6 +58,30 @@ body {
   background-repeat: no-repeat;
   transition: background-image 0.35s ease;
 }
+
+/* ── Language switcher ── */
+.lang-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: clamp(4px, 1vh, 7px);
+  flex-shrink: 0;
+}
+.lang-btn {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 5px 13px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.55);
+  color: var(--ink2);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.15s, color 0.15s;
+}
+.lang-btn:hover { background: rgba(255,255,255,0.80); }
+.lang-btn.active { background: rgba(255,255,255,0.96); color: var(--ink); }
 
 /* Top label */
 .top-label {
@@ -77,7 +97,6 @@ body {
   text-align: center;
 }
 
-/* Outer shell — fills viewport height on any device */
 .flipbook {
   width: 100%;
   max-width: 460px;
@@ -90,7 +109,6 @@ body {
   min-height: 0;
 }
 
-/* Card */
 .page {
   display: none;
   position: relative;
@@ -109,7 +127,6 @@ body {
 .page.active { display: flex; flex-direction: column; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Art zone */
 .page-art {
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -128,7 +145,6 @@ body {
   background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 65%, rgba(255,255,255,0.92) 100%);
 }
 
-/* Content zone */
 .page-body {
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -149,10 +165,6 @@ body {
 .page-body::-webkit-scrollbar-track { background: transparent; }
 .page-body::-webkit-scrollbar-thumb { background: var(--ink4); border-radius: 4px; }
 
-/* ── Typography system ── */
-/* All headings: Fredoka */
-/* All body, labels, options: Quicksand */
-
 .page-label {
   font-family: 'Quicksand', sans-serif;
   font-size: 11px;
@@ -163,7 +175,6 @@ body {
   font-weight: 700;
 }
 
-/* Cover */
 .cover-title {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
@@ -199,7 +210,6 @@ body {
   font-weight: 500;
 }
 
-/* Section headings */
 .section-head {
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
@@ -216,7 +226,6 @@ body {
   font-weight: 500;
 }
 
-/* Step pages */
 .step-letter {
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
@@ -252,7 +261,6 @@ body {
   margin-bottom: 0.75rem;
 }
 
-/* Scenario box */
 .scenario-box {
   border-radius: 14px;
   padding: 0.85rem 1.05rem;
@@ -273,7 +281,6 @@ body {
   font-weight: 500;
 }
 
-/* Info boxes */
 .info-box {
   border-radius: 14px;
   padding: 0.85rem 1.05rem;
@@ -293,7 +300,6 @@ body {
   display: block;
 }
 
-/* Reflection */
 .refl-q {
   font-family: 'Fredoka', sans-serif;
   font-size: 19px;
@@ -311,7 +317,6 @@ body {
   font-weight: 500;
 }
 
-/* Form fields */
 .field { margin-bottom: 1rem; }
 .field label {
   font-family: 'Quicksand', sans-serif;
@@ -344,7 +349,6 @@ textarea::placeholder, input::placeholder {
   font-weight: 500;
 }
 
-/* Option buttons */
 .opts { display: flex; flex-direction: column; gap: 6px; margin-bottom: 0.75rem; }
 .opt-btn {
   border: 1.5px solid var(--border);
@@ -366,7 +370,6 @@ textarea::placeholder, input::placeholder {
 .opt-other-input { display: none; margin-top: 5px; }
 .opt-other-input.visible { display: block; }
 
-/* Country grid */
 .country-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 0.9rem; }
 .country-btn {
   border: 1.5px solid var(--border);
@@ -388,7 +391,6 @@ textarea::placeholder, input::placeholder {
 .other-country-field { display: none; margin-top: 7px; }
 .other-country-field.visible { display: block; }
 
-/* Hotlines */
 .hotline-row {
   display: flex;
   justify-content: space-between;
@@ -410,7 +412,6 @@ textarea::placeholder, input::placeholder {
   color: var(--ink);
 }
 
-/* Pocket card PAUSE items */
 .pause-grid { display: flex; flex-direction: column; gap: 7px; margin-bottom: 0.9rem; }
 .pause-item {
   border: 1.5px solid var(--border);
@@ -448,7 +449,6 @@ textarea::placeholder, input::placeholder {
   color: var(--ink2);
 }
 
-/* Submit */
 .submit-btn {
   width: 100%;
   font-family: 'Quicksand', sans-serif;
@@ -498,7 +498,6 @@ textarea::placeholder, input::placeholder {
 }
 .error-msg.visible { display: block; }
 
-/* Footer label */
 .flipbook-footer {
   font-family: 'Quicksand', sans-serif;
   font-size: 11px;
@@ -509,7 +508,6 @@ textarea::placeholder, input::placeholder {
   flex-shrink: 0;
 }
 
-/* Nav */
 .nav {
   display: flex;
   align-items: center;
@@ -534,7 +532,6 @@ textarea::placeholder, input::placeholder {
 .nav button:hover { opacity: 0.85; }
 .nav button:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
 
-/* Responsive */
 @media (max-height: 680px) {
   .page-art { height: 36%; }
   .top-label { margin-bottom: 5px; font-size: 10px; }
@@ -552,7 +549,16 @@ textarea::placeholder, input::placeholder {
 <body>
 
 <div class="backdrop" id="backdrop" style="background-image:url('assets1/1.png');"></div>
-<div class="top-label">Violence Ends With Us · PAUSE Toolkit · Pilot 2026</div>
+
+<!-- ── Language switcher ── -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('fil')">FIL</button>
+  <button class="lang-btn" onclick="setLang('vi')">VI</button>
+  <button class="lang-btn" onclick="setLang('kh')">ខ្មែរ</button>
+</div>
+
+<div class="top-label" id="top-label">Violence Ends With Us · PAUSE Toolkit · Pilot 2026</div>
 
 <div class="flipbook">
 
@@ -560,14 +566,11 @@ textarea::placeholder, input::placeholder {
 <div id="page-0" class="page active">
   <div class="page-art" style="background-image:url('assets1/1.png');"></div>
   <div class="page-body">
-    <div class="page-label">A positive discipline toolkit</div>
+    <div class="page-label" data-key="p0_label">A positive discipline toolkit</div>
     <div class="cover-title" style="color:var(--earth);">PAUSE</div>
-    <div class="cover-sub">Positive Alternatives to Unsafe &amp; Severe Enforcement</div>
-    <div class="cover-hook">What will you do in the next five seconds?</div>
-    <div class="cover-desc">
-      This flipbook walks you through a five-step framework for responding to children with care, not fear.<br><br>
-      Your answers become part of a living collection of change shared with parents, teachers, and communities across the Asia-Pacific.
-    </div>
+    <div class="cover-sub" data-key="p0_sub">Positive Alternatives to Unsafe &amp; Severe Enforcement</div>
+    <div class="cover-hook" data-key="p0_hook">What will you do in the next five seconds?</div>
+    <div class="cover-desc" data-key="p0_desc">This flipbook walks you through a five-step framework for responding to children with care, not fear.<br><br>Your answers become part of a living collection of change shared with parents, teachers, and communities across the Asia-Pacific.</div>
   </div>
 </div>
 
@@ -575,20 +578,20 @@ textarea::placeholder, input::placeholder {
 <div id="page-1" class="page">
   <div class="page-art" style="background-image:url('assets1/2.png');"></div>
   <div class="page-body">
-    <div class="page-label">Before we begin</div>
-    <div class="section-head" style="color:var(--sky);">Our commitment to safety</div>
-    <div class="section-sub">PAUSE is a safe space. Everything shared here stays within this group. No one will be judged.</div>
+    <div class="page-label" data-key="p1_label">Before we begin</div>
+    <div class="section-head" style="color:var(--sky);" data-key="p1_head">Our commitment to safety</div>
+    <div class="section-sub" data-key="p1_sub">PAUSE is a safe space. Everything shared here stays within this group. No one will be judged.</div>
     <div class="info-box" style="background:var(--sky-light);color:var(--ink2);">
-      <span class="lbl" style="color:var(--sky);">If something difficult comes up</span>
-      If anything raises a concern about a child's safety, your facilitator is here to help connect you with the right support.
+      <span class="lbl" style="color:var(--sky);" data-key="p1_box_lbl">If something difficult comes up</span>
+      <span data-key="p1_box_txt">If anything raises a concern about a child's safety, your facilitator is here to help connect you with the right support.</span>
     </div>
     <div style="border-radius:14px;border:1.5px solid var(--border);padding:0.85rem 1.05rem;background:rgba(255,255,255,0.7);">
-      <div class="scenario-lbl" style="margin-bottom:0.65rem;">Child protection hotlines</div>
+      <div class="scenario-lbl" style="margin-bottom:0.65rem;" data-key="p1_hotline_lbl">Child protection hotlines</div>
       <div class="hotline-row"><span class="hotline-country">🇵🇭 Philippines</span><span class="hotline-num" style="color:var(--sky);">1343</span></div>
       <div class="hotline-row"><span class="hotline-country">🇻🇳 Vietnam</span><span class="hotline-num" style="color:var(--grass);">111</span></div>
       <div class="hotline-row"><span class="hotline-country">🇰🇭 Cambodia</span><span class="hotline-num" style="color:var(--gold);">1280</span></div>
     </div>
-    <div style="font-family:'Quicksand',sans-serif;font-size:12px;font-weight:500;line-height:1.65;color:var(--ink3);margin-top:0.85rem;">
+    <div style="font-family:'Quicksand',sans-serif;font-size:12px;font-weight:500;line-height:1.65;color:var(--ink3);margin-top:0.85rem;" data-key="p1_footer">
       This toolkit follows the Save the Children Child Safeguarding Policy. Every facilitator has been briefed on do-no-harm principles and referral pathways.
     </div>
   </div>
@@ -598,17 +601,15 @@ textarea::placeholder, input::placeholder {
 <div id="page-2" class="page">
   <div class="page-art" style="background-image:url('assets1/3.png');"></div>
   <div class="page-body">
-    <div class="page-label">Opening reflection</div>
-    <div class="refl-q" style="color:var(--grass);">"Think about how you were disciplined as a child."</div>
-    <div class="refl-sub">What happened when you made a mistake? How did it feel? Do you still carry that feeling today?</div>
+    <div class="page-label" data-key="p2_label">Opening reflection</div>
+    <div class="refl-q" style="color:var(--grass);" data-key="p2_q">"Think about how you were disciplined as a child."</div>
+    <div class="refl-sub" data-key="p2_sub">What happened when you made a mistake? How did it feel? Do you still carry that feeling today?</div>
     <div class="info-box" style="background:var(--grass-light);color:var(--ink2);">
-      <span class="lbl" style="color:var(--grass);">A moment to reflect</span>
-      Allow 2 to 3 minutes of quiet reflection. You may share if you feel ready, or simply sit with the memory.
+      <span class="lbl" style="color:var(--grass);" data-key="p2_box_lbl">A moment to reflect</span>
+      <span data-key="p2_box_txt">Allow 2 to 3 minutes of quiet reflection. You may share if you feel ready, or simply sit with the memory.</span>
     </div>
-    <div class="info-box" style="background:var(--gold-light);color:var(--ink2);">
-      Most of us were never taught another way. PAUSE gives you one, not because you are wrong, but because you deserve better tools.
-    </div>
-    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);">As you read each step, think of a real moment in your own life.</div>
+    <div class="info-box" style="background:var(--gold-light);color:var(--ink2);" data-key="p2_gold">Most of us were never taught another way. PAUSE gives you one, not because you are wrong, but because you deserve better tools.</div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);" data-key="p2_note">As you read each step, think of a real moment in your own life.</div>
   </div>
 </div>
 
@@ -616,14 +617,14 @@ textarea::placeholder, input::placeholder {
 <div id="page-3" class="page">
   <div class="page-art" style="background-image:url('assets1/4.png');"></div>
   <div class="page-body">
-    <div class="page-label">Step 1 of 5</div>
+    <div class="page-label" data-key="p3_label">Step 1 of 5</div>
     <div class="step-letter" style="color:var(--p-color);">P</div>
-    <div class="step-word">Pause</div>
-    <div class="step-action">Stop before you react. Take one breath. Give yourself five seconds before you do or say anything.</div>
-    <div class="step-why" style="border-left-color:var(--earth-light);">The urge to react comes from the body, not the mind. One breath creates enough space to choose what happens next.</div>
+    <div class="step-word" data-key="p3_word">Pause</div>
+    <div class="step-action" data-key="p3_action">Stop before you react. Take one breath. Give yourself five seconds before you do or say anything.</div>
+    <div class="step-why" style="border-left-color:var(--earth-light);" data-key="p3_why">The urge to react comes from the body, not the mind. One breath creates enough space to choose what happens next.</div>
     <div class="scenario-box" style="background:var(--earth-light);">
-      <div class="scenario-lbl" style="color:var(--earth);">In the moment</div>
-      <p style="color:var(--ink2);">Your child broke something after you told them not to. You feel the anger rise. Before anything else, breathe.</p>
+      <div class="scenario-lbl" style="color:var(--earth);" data-key="p3_sc_lbl">In the moment</div>
+      <p style="color:var(--ink2);" data-key="p3_sc_txt">Your child broke something after you told them not to. You feel the anger rise. Before anything else, breathe.</p>
     </div>
   </div>
 </div>
@@ -632,14 +633,14 @@ textarea::placeholder, input::placeholder {
 <div id="page-4" class="page">
   <div class="page-art" style="background-image:url('assets1/5.png');"></div>
   <div class="page-body">
-    <div class="page-label">Step 2 of 5</div>
+    <div class="page-label" data-key="p4_label">Step 2 of 5</div>
     <div class="step-letter" style="color:var(--a-color);">A</div>
-    <div class="step-word">Ask</div>
-    <div class="step-action">Ask the child what happened. Let them speak first. Listen without interrupting.</div>
-    <div class="step-why" style="border-left-color:var(--grass-light);">Children often act out for reasons adults don't see. Asking before assuming shows respect, and gets you closer to the truth.</div>
+    <div class="step-word" data-key="p4_word">Ask</div>
+    <div class="step-action" data-key="p4_action">Ask the child what happened. Let them speak first. Listen without interrupting.</div>
+    <div class="step-why" style="border-left-color:var(--grass-light);" data-key="p4_why">Children often act out for reasons adults don't see. Asking before assuming shows respect, and gets you closer to the truth.</div>
     <div class="scenario-box" style="background:var(--grass-light);">
-      <div class="scenario-lbl" style="color:var(--grass);">In the moment</div>
-      <p style="color:var(--ink2);">"What happened?" Said calmly, not as an accusation. Wait for the answer even if it takes a moment to come.</p>
+      <div class="scenario-lbl" style="color:var(--grass);" data-key="p4_sc_lbl">In the moment</div>
+      <p style="color:var(--ink2);" data-key="p4_sc_txt">"What happened?" Said calmly, not as an accusation. Wait for the answer even if it takes a moment to come.</p>
     </div>
   </div>
 </div>
@@ -648,14 +649,14 @@ textarea::placeholder, input::placeholder {
 <div id="page-5" class="page">
   <div class="page-art" style="background-image:url('assets1/6.png');"></div>
   <div class="page-body">
-    <div class="page-label">Step 3 of 5</div>
+    <div class="page-label" data-key="p5_label">Step 3 of 5</div>
     <div class="step-letter" style="color:var(--u-color);">U</div>
-    <div class="step-word">Understand</div>
-    <div class="step-action">Consider why they did it. Were they scared? Confused? Bored? Testing limits? Still learning?</div>
-    <div class="step-why" style="border-left-color:var(--gold-light);">Behavior is communication. What looks like defiance is often a need the child doesn't know how to express yet.</div>
+    <div class="step-word" data-key="p5_word">Understand</div>
+    <div class="step-action" data-key="p5_action">Consider why they did it. Were they scared? Confused? Bored? Testing limits? Still learning?</div>
+    <div class="step-why" style="border-left-color:var(--gold-light);" data-key="p5_why">Behavior is communication. What looks like defiance is often a need the child doesn't know how to express yet.</div>
     <div class="scenario-box" style="background:var(--gold-light);">
-      <div class="scenario-lbl" style="color:var(--gold);">In the moment</div>
-      <p style="color:var(--ink2);">"What was going on for them?" Not to excuse the behavior, but to understand it before you respond.</p>
+      <div class="scenario-lbl" style="color:var(--gold);" data-key="p5_sc_lbl">In the moment</div>
+      <p style="color:var(--ink2);" data-key="p5_sc_txt">"What was going on for them?" Not to excuse the behavior, but to understand it before you respond.</p>
     </div>
   </div>
 </div>
@@ -664,14 +665,14 @@ textarea::placeholder, input::placeholder {
 <div id="page-6" class="page">
   <div class="page-art" style="background-image:url('assets1/7.png');"></div>
   <div class="page-body">
-    <div class="page-label">Step 4 of 5</div>
+    <div class="page-label" data-key="p6_label">Step 4 of 5</div>
     <div class="step-letter" style="color:var(--s-color);">S</div>
-    <div class="step-word">Support</div>
-    <div class="step-action">Respond to the real need behind the behavior, not just the behavior itself. Guide, don't punish.</div>
-    <div class="step-why" style="border-left-color:var(--sky-light);">Children learn better through guidance than fear. A child who feels supported is safe enough to do better next time.</div>
+    <div class="step-word" data-key="p6_word">Support</div>
+    <div class="step-action" data-key="p6_action">Respond to the real need behind the behavior, not just the behavior itself. Guide, don't punish.</div>
+    <div class="step-why" style="border-left-color:var(--sky-light);" data-key="p6_why">Children learn better through guidance than fear. A child who feels supported is safe enough to do better next time.</div>
     <div class="scenario-box" style="background:var(--sky-light);">
-      <div class="scenario-lbl" style="color:var(--sky);">In the moment</div>
-      <p style="color:var(--ink2);">Calm redirection. A clear boundary, explained with love. Your presence, not your anger.</p>
+      <div class="scenario-lbl" style="color:var(--sky);" data-key="p6_sc_lbl">In the moment</div>
+      <p style="color:var(--ink2);" data-key="p6_sc_txt">Calm redirection. A clear boundary, explained with love. Your presence, not your anger.</p>
     </div>
   </div>
 </div>
@@ -680,14 +681,14 @@ textarea::placeholder, input::placeholder {
 <div id="page-7" class="page">
   <div class="page-art" style="background-image:url('assets1/8.png');"></div>
   <div class="page-body">
-    <div class="page-label">Step 5 of 5</div>
+    <div class="page-label" data-key="p7_label">Step 5 of 5</div>
     <div class="step-letter" style="color:var(--e-color);">E</div>
-    <div class="step-word">Encourage</div>
-    <div class="step-action">End with something that builds trust, not fear. Let them know the mistake doesn't change how much you love them.</div>
-    <div class="step-why" style="border-left-color:var(--mauve-light);">Children who feel loved after a mistake are more likely to be honest, try again, and trust the adults in their lives.</div>
+    <div class="step-word" data-key="p7_word">Encourage</div>
+    <div class="step-action" data-key="p7_action">End with something that builds trust, not fear. Let them know the mistake doesn't change how much you love them.</div>
+    <div class="step-why" style="border-left-color:var(--mauve-light);" data-key="p7_why">Children who feel loved after a mistake are more likely to be honest, try again, and trust the adults in their lives.</div>
     <div class="scenario-box" style="background:var(--mauve-light);">
-      <div class="scenario-lbl" style="color:var(--mauve);">In the moment</div>
-      <p style="color:var(--ink2);">"I know you can do better. I'm here." That's enough.</p>
+      <div class="scenario-lbl" style="color:var(--mauve);" data-key="p7_sc_lbl">In the moment</div>
+      <p style="color:var(--ink2);" data-key="p7_sc_txt">"I know you can do better. I'm here." That's enough.</p>
     </div>
   </div>
 </div>
@@ -696,15 +697,15 @@ textarea::placeholder, input::placeholder {
 <div id="page-8" class="page">
   <div class="page-art" style="background-image:url('assets1/9.png');"></div>
   <div class="page-body">
-    <div class="page-label">Circle of change</div>
-    <div class="section-head" style="color:var(--earth);">Your story matters.</div>
-    <div class="section-sub">The next pages ask you to reflect honestly on your past, your present, and the change you want to make. There are no wrong answers.</div>
+    <div class="page-label" data-key="p8_label">Circle of change</div>
+    <div class="section-head" style="color:var(--earth);" data-key="p8_head">Your story matters.</div>
+    <div class="section-sub" data-key="p8_sub">The next pages ask you to reflect honestly on your past, your present, and the change you want to make. There are no wrong answers.</div>
     <div class="info-box" style="background:var(--earth-light);color:var(--ink2);">
-      <span class="lbl" style="color:var(--earth);">What is the circle of change?</span>
-      The journey from how you were treated as a child, to how that shaped the way you discipline today, to the boundaries you want to set going forward.
+      <span class="lbl" style="color:var(--earth);" data-key="p8_box_lbl">What is the circle of change?</span>
+      <span data-key="p8_box_txt">The journey from how you were treated as a child, to how that shaped the way you discipline today, to the boundaries you want to set going forward.</span>
     </div>
-    <div style="font-family:'Quicksand',sans-serif;font-size:12px;font-weight:600;text-align:center;color:var(--ink4);margin-top:0.4rem;">Your past · Your now · The shift · Your limits · Your commitment</div>
-    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);margin-top:0.75rem;">Your answers become part of a collection of change shared anonymously as a module for communities across the region.</div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:12px;font-weight:600;text-align:center;color:var(--ink4);margin-top:0.4rem;" data-key="p8_steps">Your past · Your now · The shift · Your limits · Your commitment</div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);margin-top:0.75rem;" data-key="p8_note">Your answers become part of a collection of change shared anonymously as a module for communities across the region.</div>
   </div>
 </div>
 
@@ -712,27 +713,27 @@ textarea::placeholder, input::placeholder {
 <div id="page-9" class="page">
   <div class="page-art" style="background-image:url('assets1/10.png');"></div>
   <div class="page-body">
-    <div class="page-label">Circle of change · 1 of 5</div>
-    <div class="refl-q" style="color:var(--earth);">Your past</div>
-    <div class="refl-sub">How were you disciplined as a child? What did the adults around you do when you made a mistake?</div>
+    <div class="page-label" data-key="p9_label">Circle of change · 1 of 5</div>
+    <div class="refl-q" style="color:var(--earth);" data-key="p9_head">Your past</div>
+    <div class="refl-sub" data-key="p9_sub">How were you disciplined as a child? What did the adults around you do when you made a mistake?</div>
     <div class="field">
-      <label for="q_past">Describe what discipline looked like in your home growing up</label>
-      <textarea id="q_past" rows="3" placeholder="Write freely. This is your space."></textarea>
+      <label for="q_past" data-key="p9_q1_lbl">Describe what discipline looked like in your home growing up</label>
+      <textarea id="q_past" rows="3" data-placeholder-key="p9_q1_ph" placeholder="Write freely. This is your space."></textarea>
     </div>
     <div class="field">
-      <label>How did it make you feel?</label>
+      <label data-key="p9_q2_lbl">How did it make you feel?</label>
       <div class="opts">
-        <button type="button" class="opt-btn" style="--sel:var(--earth-light);" onclick="pickOpt(this,'past_feeling','Afraid and anxious')">😟 Afraid and anxious</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Ashamed or hurt')">💔 Ashamed or hurt</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Confused. I didn\'t understand why')">😐 Confused. I didn't understand why</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','It felt normal. Just how things were')">🤷 It felt normal. Just how things were</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Mostly okay. It felt fair')">🙂 Mostly okay. It felt fair</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Safe and guided')">🌱 Safe and guided</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','other')">✏️ Other. I'll describe it</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Afraid and anxious')" data-key="p9_opt1">😟 Afraid and anxious</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Ashamed or hurt')" data-key="p9_opt2">💔 Ashamed or hurt</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Confused. I didn\'t understand why')" data-key="p9_opt3">😐 Confused. I didn't understand why</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','It felt normal. Just how things were')" data-key="p9_opt4">🤷 It felt normal. Just how things were</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Mostly okay. It felt fair')" data-key="p9_opt5">🙂 Mostly okay. It felt fair</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','Safe and guided')" data-key="p9_opt6">🌱 Safe and guided</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'past_feeling','other')" data-key="p9_opt7">✏️ Other. I'll describe it</button>
       </div>
       <input type="hidden" id="past_feeling" />
       <div class="opt-other-input" id="past_feeling_other_wrap">
-        <input type="text" id="past_feeling_other" placeholder="Describe how it felt..." oninput="document.getElementById('past_feeling').value='Other: '+this.value;syncHidden();" />
+        <input type="text" id="past_feeling_other" data-placeholder-key="p9_other_ph" placeholder="Describe how it felt..." oninput="document.getElementById('past_feeling').value='Other: '+this.value;syncHidden();" />
       </div>
     </div>
   </div>
@@ -742,27 +743,27 @@ textarea::placeholder, input::placeholder {
 <div id="page-10" class="page">
   <div class="page-art" style="background-image:url('assets1/11.png');"></div>
   <div class="page-body">
-    <div class="page-label">Circle of change · 2 of 5</div>
-    <div class="refl-q" style="color:var(--grass);">Your now</div>
-    <div class="refl-sub">How do you discipline children in your life today? Be honest. This is not a test.</div>
+    <div class="page-label" data-key="p10_label">Circle of change · 2 of 5</div>
+    <div class="refl-q" style="color:var(--grass);" data-key="p10_head">Your now</div>
+    <div class="refl-sub" data-key="p10_sub">How do you discipline children in your life today? Be honest. This is not a test.</div>
     <div class="field">
-      <label for="q_now">When a child misbehaves, what do you usually do?</label>
-      <textarea id="q_now" rows="3" placeholder="Be honest with yourself here."></textarea>
+      <label for="q_now" data-key="p10_q1_lbl">When a child misbehaves, what do you usually do?</label>
+      <textarea id="q_now" rows="3" data-placeholder-key="p10_q1_ph" placeholder="Be honest with yourself here."></textarea>
     </div>
     <div class="field">
-      <label>Do you see a pattern from your own childhood in how you respond?</label>
+      <label data-key="p10_q2_lbl">Do you see a pattern from your own childhood in how you respond?</label>
       <div class="opts">
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','Yes. I repeat what I experienced')">😔 Yes. I repeat what I experienced</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','Sometimes, without meaning to')">😶 Sometimes, without meaning to</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','I haven\'t really thought about it')">🤔 I haven't really thought about it</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','I try not to, but it is hard')">💪 I try not to, but it is hard</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','No. I actively choose differently')">✨ No. I actively choose differently</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','I don\'t have children in my care')">📋 I don't have children in my care</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','other')">✏️ Other. I'll describe it</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','Yes. I repeat what I experienced')" data-key="p10_opt1">😔 Yes. I repeat what I experienced</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','Sometimes, without meaning to')" data-key="p10_opt2">😶 Sometimes, without meaning to</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','I haven\'t really thought about it')" data-key="p10_opt3">🤔 I haven't really thought about it</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','I try not to, but it is hard')" data-key="p10_opt4">💪 I try not to, but it is hard</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','No. I actively choose differently')" data-key="p10_opt5">✨ No. I actively choose differently</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','I don\'t have children in my care')" data-key="p10_opt6">📋 I don't have children in my care</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'pattern','other')" data-key="p10_opt7">✏️ Other. I'll describe it</button>
       </div>
       <input type="hidden" id="pattern" />
       <div class="opt-other-input" id="pattern_other_wrap">
-        <input type="text" id="pattern_other" placeholder="Describe your experience..." oninput="document.getElementById('pattern').value='Other: '+this.value;syncHidden();" />
+        <input type="text" id="pattern_other" data-placeholder-key="p10_other_ph" placeholder="Describe your experience..." oninput="document.getElementById('pattern').value='Other: '+this.value;syncHidden();" />
       </div>
     </div>
   </div>
@@ -772,16 +773,16 @@ textarea::placeholder, input::placeholder {
 <div id="page-11" class="page">
   <div class="page-art" style="background-image:url('assets1/12.png');"></div>
   <div class="page-body">
-    <div class="page-label">Circle of change · 3 of 5</div>
-    <div class="refl-q" style="color:var(--gold);">The shift</div>
-    <div class="refl-sub">What do you want to change? What kind of adult do you want to be in the moments that matter?</div>
+    <div class="page-label" data-key="p11_label">Circle of change · 3 of 5</div>
+    <div class="refl-q" style="color:var(--gold);" data-key="p11_head">The shift</div>
+    <div class="refl-sub" data-key="p11_sub">What do you want to change? What kind of adult do you want to be in the moments that matter?</div>
     <div class="field">
-      <label for="q_change">Describe the change you want to make</label>
-      <textarea id="q_change" rows="3" placeholder="What does doing better look like for you?"></textarea>
+      <label for="q_change" data-key="p11_q1_lbl">Describe the change you want to make</label>
+      <textarea id="q_change" rows="3" data-placeholder-key="p11_q1_ph" placeholder="What does doing better look like for you?"></textarea>
     </div>
     <div class="field">
-      <label for="q_barrier">What makes it hard to change?</label>
-      <textarea id="q_barrier" rows="2" placeholder="Stress, time, not knowing what else to do..."></textarea>
+      <label for="q_barrier" data-key="p11_q2_lbl">What makes it hard to change?</label>
+      <textarea id="q_barrier" rows="2" data-placeholder-key="p11_q2_ph" placeholder="Stress, time, not knowing what else to do..."></textarea>
     </div>
   </div>
 </div>
@@ -790,27 +791,27 @@ textarea::placeholder, input::placeholder {
 <div id="page-12" class="page">
   <div class="page-art" style="background-image:url('assets1/13.png');"></div>
   <div class="page-body">
-    <div class="page-label">Circle of change · 4 of 5</div>
-    <div class="refl-q" style="color:var(--sky);">Your limits</div>
-    <div class="refl-sub">Positive parenting still has boundaries. Children need limits given with love and consistency, not pain or fear.</div>
+    <div class="page-label" data-key="p12_label">Circle of change · 4 of 5</div>
+    <div class="refl-q" style="color:var(--sky);" data-key="p12_head">Your limits</div>
+    <div class="refl-sub" data-key="p12_sub">Positive parenting still has boundaries. Children need limits given with love and consistency, not pain or fear.</div>
     <div class="field">
-      <label for="q_limits">What boundaries matter most to you in raising children?</label>
-      <textarea id="q_limits" rows="3" placeholder="What values do you want your child to carry?"></textarea>
+      <label for="q_limits" data-key="p12_q1_lbl">What boundaries matter most to you in raising children?</label>
+      <textarea id="q_limits" rows="3" data-placeholder-key="p12_q1_ph" placeholder="What values do you want your child to carry?"></textarea>
     </div>
     <div class="field">
-      <label>Can a child be disciplined without physical punishment?</label>
+      <label data-key="p12_q2_lbl">Can a child be disciplined without physical punishment?</label>
       <div class="opts">
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','No. I think some physical discipline is needed')">❌ No. I think some physical discipline is needed</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I\'m not sure. It\'s what I grew up with')">🤷 I'm not sure. It's what I grew up with</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I have doubts but I\'m open to trying')">🌿 I have doubts but I'm open to trying</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I\'m starting to believe it\'s possible')">🙂 I'm starting to believe it's possible</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','Yes. I believe this fully')">✅ Yes. I believe this fully</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I already practice positive discipline')">🌟 I already practice positive discipline</button>
-        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','other')">✏️ Other. I'll share my view</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','No. I think some physical discipline is needed')" data-key="p12_opt1">❌ No. I think some physical discipline is needed</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I\'m not sure. It\'s what I grew up with')" data-key="p12_opt2">🤷 I'm not sure. It's what I grew up with</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I have doubts but I\'m open to trying')" data-key="p12_opt3">🌿 I have doubts but I'm open to trying</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I\'m starting to believe it\'s possible')" data-key="p12_opt4">🙂 I'm starting to believe it's possible</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','Yes. I believe this fully')" data-key="p12_opt5">✅ Yes. I believe this fully</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','I already practice positive discipline')" data-key="p12_opt6">🌟 I already practice positive discipline</button>
+        <button type="button" class="opt-btn" onclick="pickOpt(this,'belief_shift','other')" data-key="p12_opt7">✏️ Other. I'll share my view</button>
       </div>
       <input type="hidden" id="belief_shift" />
       <div class="opt-other-input" id="belief_shift_other_wrap">
-        <input type="text" id="belief_shift_other" placeholder="Share your view..." oninput="document.getElementById('belief_shift').value='Other: '+this.value;syncHidden();" />
+        <input type="text" id="belief_shift_other" data-placeholder-key="p12_other_ph" placeholder="Share your view..." oninput="document.getElementById('belief_shift').value='Other: '+this.value;syncHidden();" />
       </div>
     </div>
   </div>
@@ -820,9 +821,9 @@ textarea::placeholder, input::placeholder {
 <div id="page-13" class="page">
   <div class="page-art" style="background-image:url('assets1/14.png');"></div>
   <div class="page-body">
-    <div class="page-label">Circle of change · 5 of 5</div>
-    <div class="refl-q" style="color:var(--mauve);">Your commitment</div>
-    <div class="refl-sub">"Is that the memory you want your child to have of you?" You don't have to be perfect. You just have to pause, one moment at a time.</div>
+    <div class="page-label" data-key="p13_label">Circle of change · 5 of 5</div>
+    <div class="refl-q" style="color:var(--mauve);" data-key="p13_head">Your commitment</div>
+    <div class="refl-sub" data-key="p13_sub">"Is that the memory you want your child to have of you?" You don't have to be perfect. You just have to pause, one moment at a time.</div>
 
     <form id="pause-form">
       <input type="hidden" name="toolkit_version" value="Pilot Edition · Asia-Pacific 2026" />
@@ -837,37 +838,37 @@ textarea::placeholder, input::placeholder {
       <input type="hidden" id="h_q_limits" name="q_limits" />
 
       <div class="field">
-        <label for="p_name">Your name (optional)</label>
-        <input type="text" id="p_name" name="participant_name" placeholder="First name or leave blank" />
+        <label for="p_name" data-key="p13_name_lbl">Your name (optional)</label>
+        <input type="text" id="p_name" name="participant_name" data-placeholder-key="p13_name_ph" placeholder="First name or leave blank" />
       </div>
       <div class="field">
-        <label>Where are you joining from?</label>
+        <label data-key="p13_country_lbl">Where are you joining from?</label>
         <div class="country-opts">
           <button type="button" class="country-btn" onclick="pickCountry(this,'🇵🇭 Philippines')">🇵🇭 Philippines</button>
           <button type="button" class="country-btn" onclick="pickCountry(this,'🇻🇳 Vietnam')">🇻🇳 Vietnam</button>
           <button type="button" class="country-btn" onclick="pickCountry(this,'🇰🇭 Cambodia')">🇰🇭 Cambodia</button>
-          <button type="button" class="country-btn" onclick="pickCountry(this,'other')">Other country</button>
+          <button type="button" class="country-btn" onclick="pickCountry(this,'other')" data-key="p13_other_country_btn">Other country</button>
         </div>
         <div class="other-country-field" id="other_country_wrap">
-          <input type="text" id="other_country_input" placeholder="Please tell us your country" oninput="document.getElementById('h_country').value=this.value" />
+          <input type="text" id="other_country_input" data-placeholder-key="p13_other_country_ph" placeholder="Please tell us your country" oninput="document.getElementById('h_country').value=this.value" />
         </div>
       </div>
       <div class="field">
-        <label for="p_commit">I commit to trying PAUSE when...</label>
-        <textarea id="p_commit" name="commit_moment" rows="2" placeholder="Describe your specific moment" required></textarea>
+        <label for="p_commit" data-key="p13_commit_lbl">I commit to trying PAUSE when...</label>
+        <textarea id="p_commit" name="commit_moment" rows="2" data-placeholder-key="p13_commit_ph" placeholder="Describe your specific moment" required></textarea>
       </div>
       <div class="field">
-        <label for="p_support">One person I can call when I'm struggling</label>
-        <input type="text" id="p_support" name="support_person" placeholder="Their name" required />
+        <label for="p_support" data-key="p13_support_lbl">One person I can call when I'm struggling</label>
+        <input type="text" id="p_support" name="support_person" data-placeholder-key="p13_support_ph" placeholder="Their name" required />
       </div>
       <div class="field">
-        <label for="p_followup">Phone or email for follow-up (optional)</label>
-        <input type="text" id="p_followup" name="followup_contact" placeholder="Your number or email" />
+        <label for="p_followup" data-key="p13_followup_lbl">Phone or email for follow-up (optional)</label>
+        <input type="text" id="p_followup" name="followup_contact" data-placeholder-key="p13_followup_ph" placeholder="Your number or email" />
       </div>
 
-      <div class="error-msg" id="form-error">Something went wrong. Please try again.</div>
-      <div class="success-msg" id="form-success">Your story has been saved. Thank you for choosing to pause. Violence ends with us.</div>
-      <button type="submit" class="submit-btn" id="submit-btn">Save my story</button>
+      <div class="error-msg" id="form-error" data-key="form_error">Something went wrong. Please try again.</div>
+      <div class="success-msg" id="form-success" data-key="form_success">Your story has been saved. Thank you for choosing to pause. Violence ends with us.</div>
+      <button type="submit" class="submit-btn" id="submit-btn" data-key="form_submit">Save my story</button>
     </form>
   </div>
 </div>
@@ -876,65 +877,645 @@ textarea::placeholder, input::placeholder {
 <div id="page-14" class="page">
   <div class="page-art" style="background-image:url('assets1/15.png');"></div>
   <div class="page-body">
-    <div class="page-label">Your pocket card · Keep this close</div>
-    <div style="font-family:'Quicksand',sans-serif;font-size:13.5px;font-weight:500;line-height:1.65;color:var(--ink3);margin-bottom:0.9rem;">
+    <div class="page-label" data-key="p14_label">Your pocket card · Keep this close</div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:13.5px;font-weight:500;line-height:1.65;color:var(--ink3);margin-bottom:0.9rem;" data-key="p14_intro">
       In a moment of stress, this is all you need. Screenshot it and put it somewhere you will see it.
     </div>
     <div class="pause-grid">
       <div class="pause-item">
         <span class="pi-letter" style="color:var(--p-color);">P</span>
         <div>
-          <span class="pi-word" style="color:var(--earth);">Pause</span>
-          <span class="pi-desc">Breathe. Five seconds before you react.</span>
+          <span class="pi-word" style="color:var(--earth);" data-key="pc_p_word">Pause</span>
+          <span class="pi-desc" data-key="pc_p_desc">Breathe. Five seconds before you react.</span>
         </div>
       </div>
       <div class="pause-item">
         <span class="pi-letter" style="color:var(--a-color);">A</span>
         <div>
-          <span class="pi-word" style="color:var(--grass);">Ask</span>
-          <span class="pi-desc">Ask the child what happened. Listen first.</span>
+          <span class="pi-word" style="color:var(--grass);" data-key="pc_a_word">Ask</span>
+          <span class="pi-desc" data-key="pc_a_desc">Ask the child what happened. Listen first.</span>
         </div>
       </div>
       <div class="pause-item">
         <span class="pi-letter" style="color:var(--u-color);">U</span>
         <div>
-          <span class="pi-word" style="color:var(--gold);">Understand</span>
-          <span class="pi-desc">Why did they do it? Behavior is communication.</span>
+          <span class="pi-word" style="color:var(--gold);" data-key="pc_u_word">Understand</span>
+          <span class="pi-desc" data-key="pc_u_desc">Why did they do it? Behavior is communication.</span>
         </div>
       </div>
       <div class="pause-item">
         <span class="pi-letter" style="color:var(--s-color);">S</span>
         <div>
-          <span class="pi-word" style="color:var(--sky);">Support</span>
-          <span class="pi-desc">Respond to the need. Guide, don't punish.</span>
+          <span class="pi-word" style="color:var(--sky);" data-key="pc_s_word">Support</span>
+          <span class="pi-desc" data-key="pc_s_desc">Respond to the need. Guide, don't punish.</span>
         </div>
       </div>
       <div class="pause-item">
         <span class="pi-letter" style="color:var(--e-color);">E</span>
         <div>
-          <span class="pi-word" style="color:var(--mauve);">Encourage</span>
-          <span class="pi-desc">End with love. The mistake doesn't change that.</span>
+          <span class="pi-word" style="color:var(--mauve);" data-key="pc_e_word">Encourage</span>
+          <span class="pi-desc" data-key="pc_e_desc">End with love. The mistake doesn't change that.</span>
         </div>
       </div>
     </div>
     <div class="info-box" style="background:var(--cream);color:var(--ink2);">
-      <span class="lbl" style="color:var(--ink3);">Where your responses go</span>
-      Your story, collected anonymously alongside others, will be presented at the 2nd Global Ministerial Conference on Ending Violence Against Children, Manila, November 2026.
+      <span class="lbl" style="color:var(--ink3);" data-key="p14_box_lbl">Where your responses go</span>
+      <span data-key="p14_box_txt">Your story, collected anonymously alongside others, will be presented at the 2nd Global Ministerial Conference on Ending Violence Against Children, Manila, November 2026.</span>
     </div>
-    <div style="font-family:'Quicksand',sans-serif;font-size:11px;font-weight:600;color:var(--ink4);text-align:center;margin-top:0.5rem;">Designed by young people · Violence Ends With Us · Asia-Pacific</div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:11px;font-weight:600;color:var(--ink4);text-align:center;margin-top:0.5rem;" data-key="p14_credit">Designed by young people · Violence Ends With Us · Asia-Pacific</div>
   </div>
 </div>
 
-<!-- Footer + Nav inside .flipbook, same as original -->
-<div class="flipbook-footer">15 pages · Pilot edition · Philippines · Vietnam · Cambodia</div>
+<div class="flipbook-footer" id="flipbook-footer" data-key="footer">15 pages · Pilot edition · Philippines · Vietnam · Cambodia</div>
 <div class="nav">
-  <button id="prev-btn" onclick="changePage(-1)" disabled>Back</button>
-  <button id="next-btn" onclick="changePage(1)">Next</button>
+  <button id="prev-btn" onclick="changePage(-1)" disabled data-key="nav_back">Back</button>
+  <button id="next-btn" onclick="changePage(1)" data-key="nav_next">Next</button>
 </div>
 
 </div><!-- end .flipbook -->
 
 <script>
+/* ══════════════════════════════════════════════
+   TRANSLATION DATA
+   ══════════════════════════════════════════════ */
+const TRANSLATIONS = {
+
+/* ── ENGLISH ── */
+en: {
+  top_label: 'Violence Ends With Us · PAUSE Toolkit · Pilot 2026',
+  footer: '15 pages · Pilot edition · Philippines · Vietnam · Cambodia',
+  nav_back: 'Back', nav_next: 'Next', nav_finish: 'Finish',
+
+  p0_label: 'A positive discipline toolkit',
+  p0_sub: 'Positive Alternatives to Unsafe & Severe Enforcement',
+  p0_hook: 'What will you do in the next five seconds?',
+  p0_desc: 'This flipbook walks you through a five-step framework for responding to children with care, not fear.<br><br>Your answers become part of a living collection of change shared with parents, teachers, and communities across the Asia-Pacific.',
+
+  p1_label: 'Before we begin',
+  p1_head: 'Our commitment to safety',
+  p1_sub: 'PAUSE is a safe space. Everything shared here stays within this group. No one will be judged.',
+  p1_box_lbl: 'If something difficult comes up',
+  p1_box_txt: 'If anything raises a concern about a child\'s safety, your facilitator is here to help connect you with the right support.',
+  p1_hotline_lbl: 'Child protection hotlines',
+  p1_footer: 'This toolkit follows the Save the Children Child Safeguarding Policy. Every facilitator has been briefed on do-no-harm principles and referral pathways.',
+
+  p2_label: 'Opening reflection',
+  p2_q: '"Think about how you were disciplined as a child."',
+  p2_sub: 'What happened when you made a mistake? How did it feel? Do you still carry that feeling today?',
+  p2_box_lbl: 'A moment to reflect',
+  p2_box_txt: 'Allow 2 to 3 minutes of quiet reflection. You may share if you feel ready, or simply sit with the memory.',
+  p2_gold: 'Most of us were never taught another way. PAUSE gives you one, not because you are wrong, but because you deserve better tools.',
+  p2_note: 'As you read each step, think of a real moment in your own life.',
+
+  p3_label: 'Step 1 of 5', p3_word: 'Pause',
+  p3_action: 'Stop before you react. Take one breath. Give yourself five seconds before you do or say anything.',
+  p3_why: 'The urge to react comes from the body, not the mind. One breath creates enough space to choose what happens next.',
+  p3_sc_lbl: 'In the moment',
+  p3_sc_txt: 'Your child broke something after you told them not to. You feel the anger rise. Before anything else, breathe.',
+
+  p4_label: 'Step 2 of 5', p4_word: 'Ask',
+  p4_action: 'Ask the child what happened. Let them speak first. Listen without interrupting.',
+  p4_why: 'Children often act out for reasons adults don\'t see. Asking before assuming shows respect, and gets you closer to the truth.',
+  p4_sc_lbl: 'In the moment',
+  p4_sc_txt: '"What happened?" Said calmly, not as an accusation. Wait for the answer even if it takes a moment to come.',
+
+  p5_label: 'Step 3 of 5', p5_word: 'Understand',
+  p5_action: 'Consider why they did it. Were they scared? Confused? Bored? Testing limits? Still learning?',
+  p5_why: 'Behavior is communication. What looks like defiance is often a need the child doesn\'t know how to express yet.',
+  p5_sc_lbl: 'In the moment',
+  p5_sc_txt: '"What was going on for them?" Not to excuse the behavior, but to understand it before you respond.',
+
+  p6_label: 'Step 4 of 5', p6_word: 'Support',
+  p6_action: 'Respond to the real need behind the behavior, not just the behavior itself. Guide, don\'t punish.',
+  p6_why: 'Children learn better through guidance than fear. A child who feels supported is safe enough to do better next time.',
+  p6_sc_lbl: 'In the moment',
+  p6_sc_txt: 'Calm redirection. A clear boundary, explained with love. Your presence, not your anger.',
+
+  p7_label: 'Step 5 of 5', p7_word: 'Encourage',
+  p7_action: 'End with something that builds trust, not fear. Let them know the mistake doesn\'t change how much you love them.',
+  p7_why: 'Children who feel loved after a mistake are more likely to be honest, try again, and trust the adults in their lives.',
+  p7_sc_lbl: 'In the moment',
+  p7_sc_txt: '"I know you can do better. I\'m here." That\'s enough.',
+
+  p8_label: 'Circle of change',
+  p8_head: 'Your story matters.',
+  p8_sub: 'The next pages ask you to reflect honestly on your past, your present, and the change you want to make. There are no wrong answers.',
+  p8_box_lbl: 'What is the circle of change?',
+  p8_box_txt: 'The journey from how you were treated as a child, to how that shaped the way you discipline today, to the boundaries you want to set going forward.',
+  p8_steps: 'Your past · Your now · The shift · Your limits · Your commitment',
+  p8_note: 'Your answers become part of a collection of change shared anonymously as a module for communities across the region.',
+
+  p9_label: 'Circle of change · 1 of 5', p9_head: 'Your past',
+  p9_sub: 'How were you disciplined as a child? What did the adults around you do when you made a mistake?',
+  p9_q1_lbl: 'Describe what discipline looked like in your home growing up',
+  p9_q1_ph: 'Write freely. This is your space.',
+  p9_q2_lbl: 'How did it make you feel?',
+  p9_opt1: '😟 Afraid and anxious', p9_opt2: '💔 Ashamed or hurt',
+  p9_opt3: '😐 Confused. I didn\'t understand why', p9_opt4: '🤷 It felt normal. Just how things were',
+  p9_opt5: '🙂 Mostly okay. It felt fair', p9_opt6: '🌱 Safe and guided',
+  p9_opt7: '✏️ Other. I\'ll describe it', p9_other_ph: 'Describe how it felt...',
+
+  p10_label: 'Circle of change · 2 of 5', p10_head: 'Your now',
+  p10_sub: 'How do you discipline children in your life today? Be honest. This is not a test.',
+  p10_q1_lbl: 'When a child misbehaves, what do you usually do?',
+  p10_q1_ph: 'Be honest with yourself here.',
+  p10_q2_lbl: 'Do you see a pattern from your own childhood in how you respond?',
+  p10_opt1: '😔 Yes. I repeat what I experienced', p10_opt2: '😶 Sometimes, without meaning to',
+  p10_opt3: '🤔 I haven\'t really thought about it', p10_opt4: '💪 I try not to, but it is hard',
+  p10_opt5: '✨ No. I actively choose differently', p10_opt6: '📋 I don\'t have children in my care',
+  p10_opt7: '✏️ Other. I\'ll describe it', p10_other_ph: 'Describe your experience...',
+
+  p11_label: 'Circle of change · 3 of 5', p11_head: 'The shift',
+  p11_sub: 'What do you want to change? What kind of adult do you want to be in the moments that matter?',
+  p11_q1_lbl: 'Describe the change you want to make',
+  p11_q1_ph: 'What does doing better look like for you?',
+  p11_q2_lbl: 'What makes it hard to change?',
+  p11_q2_ph: 'Stress, time, not knowing what else to do...',
+
+  p12_label: 'Circle of change · 4 of 5', p12_head: 'Your limits',
+  p12_sub: 'Positive parenting still has boundaries. Children need limits given with love and consistency, not pain or fear.',
+  p12_q1_lbl: 'What boundaries matter most to you in raising children?',
+  p12_q1_ph: 'What values do you want your child to carry?',
+  p12_q2_lbl: 'Can a child be disciplined without physical punishment?',
+  p12_opt1: '❌ No. I think some physical discipline is needed',
+  p12_opt2: '🤷 I\'m not sure. It\'s what I grew up with',
+  p12_opt3: '🌿 I have doubts but I\'m open to trying',
+  p12_opt4: '🙂 I\'m starting to believe it\'s possible',
+  p12_opt5: '✅ Yes. I believe this fully',
+  p12_opt6: '🌟 I already practice positive discipline',
+  p12_opt7: '✏️ Other. I\'ll share my view', p12_other_ph: 'Share your view...',
+
+  p13_label: 'Circle of change · 5 of 5', p13_head: 'Your commitment',
+  p13_sub: '"Is that the memory you want your child to have of you?" You don\'t have to be perfect. You just have to pause, one moment at a time.',
+  p13_name_lbl: 'Your name (optional)', p13_name_ph: 'First name or leave blank',
+  p13_country_lbl: 'Where are you joining from?',
+  p13_other_country_btn: 'Other country', p13_other_country_ph: 'Please tell us your country',
+  p13_commit_lbl: 'I commit to trying PAUSE when...', p13_commit_ph: 'Describe your specific moment',
+  p13_support_lbl: 'One person I can call when I\'m struggling', p13_support_ph: 'Their name',
+  p13_followup_lbl: 'Phone or email for follow-up (optional)', p13_followup_ph: 'Your number or email',
+  form_error: 'Something went wrong. Please try again.',
+  form_success: 'Your story has been saved. Thank you for choosing to pause. Violence ends with us.',
+  form_submit: 'Save my story',
+
+  p14_label: 'Your pocket card · Keep this close',
+  p14_intro: 'In a moment of stress, this is all you need. Screenshot it and put it somewhere you will see it.',
+  pc_p_word: 'Pause', pc_p_desc: 'Breathe. Five seconds before you react.',
+  pc_a_word: 'Ask', pc_a_desc: 'Ask the child what happened. Listen first.',
+  pc_u_word: 'Understand', pc_u_desc: 'Why did they do it? Behavior is communication.',
+  pc_s_word: 'Support', pc_s_desc: 'Respond to the need. Guide, don\'t punish.',
+  pc_e_word: 'Encourage', pc_e_desc: 'End with love. The mistake doesn\'t change that.',
+  p14_box_lbl: 'Where your responses go',
+  p14_box_txt: 'Your story, collected anonymously alongside others, will be presented at the 2nd Global Ministerial Conference on Ending Violence Against Children, Manila, November 2026.',
+  p14_credit: 'Designed by young people · Violence Ends With Us · Asia-Pacific',
+},
+
+/* ── FILIPINO ── */
+fil: {
+  top_label: 'Violence Ends With Us · PAUSE Toolkit · Pilot 2026',
+  footer: '15 pahina · Pilot na edisyon · Philippines · Vietnam · Cambodia',
+  nav_back: 'Bumalik', nav_next: 'Susunod', nav_finish: 'Tapusin',
+
+  p0_label: 'Isang toolkit para sa positibong disiplina',
+  p0_sub: 'Mga Positibong Alternatibo sa Hindi Ligtas at Matinding Pagpapairal ng Disiplina',
+  p0_hook: 'Ano ang gagawin mo sa susunod na limang segundo?',
+  p0_desc: 'Gagabayan ka ng flipbook na ito sa isang limang hakbang na balangkas para sa pagtugon sa mga bata nang may pagmamalasakit, hindi takot.<br><br>Ang iyong mga sagot ay magiging bahagi ng isang buhay na koleksyon ng pagbabago na ibabahagi sa mga magulang, guro, at komunidad sa buong Asya-Pasipiko.',
+
+  p1_label: 'Bago tayo magsimula',
+  p1_head: 'Ang aming pangako sa kaligtasan',
+  p1_sub: 'Ang PAUSE ay isang ligtas na lugar. Ang lahat ng ibabahagi dito ay mananatili sa loob ng grupong ito. Walang sinuman ang hahatulan.',
+  p1_box_lbl: 'Kung may mahirap na lumitaw',
+  p1_box_txt: 'Kung may anumang nagdudulot ng alalahanin tungkol sa kaligtasan ng isang bata, nandito ang iyong fasilitador upang tulungan kang makakonekta sa tamang suporta.',
+  p1_hotline_lbl: 'Mga hotline para sa proteksyon ng bata',
+  p1_footer: 'Sinusunod ng toolkit na ito ang Patakaran sa Pangangalaga ng Bata ng Save the Children. Bawat fasilitador ay nabriyfuhan na tungkol sa mga prinsipyo ng do-no-harm at mga landas ng referral.',
+
+  p2_label: 'Panimulang pagninilay',
+  p2_q: '"Isipin ang paraan ng iyong pagdidisiplina noong bata ka."',
+  p2_sub: 'Ano ang nangyari nang magkamali ka? Paano mo naramdaman ito? Dala-dala mo pa rin ba ang pakiramdam na iyon ngayon?',
+  p2_box_lbl: 'Isang sandali para mag-isip',
+  p2_box_txt: 'Maglaan ng 2 hanggang 3 minuto ng tahimik na pagninilay. Maaari kang magbahagi kung handa ka na, o manatili lamang kasama ang alaala.',
+  p2_gold: 'Karamihan sa atin ay hindi natutuan ng ibang paraan. Ibinibigay ng PAUSE ang isang paraan — hindi dahil mali ka, kundi dahil nararapat kang magkaroon ng mas magagandang kagamitan.',
+  p2_note: 'Habang binabasa mo ang bawat hakbang, mag-isip ng tunay na sandali sa iyong sariling buhay.',
+
+  p3_label: 'Hakbang 1 ng 5', p3_word: 'Huminto (Pause)',
+  p3_action: 'Huminto bago ka kumilos. Huminga nang isang beses. Bigyan ang iyong sarili ng limang segundo bago ka gumawa o magsabi ng anuman.',
+  p3_why: 'Ang pagnanais na kumilos ay nagmumula sa katawan, hindi sa isip. Ang isang paghinga ay lumilikha ng sapat na espasyo upang pumili kung ano ang mangyayari sa susunod.',
+  p3_sc_lbl: 'Sa sandaling iyon',
+  p3_sc_txt: 'Sinira ng iyong anak ang isang bagay pagkatapos sabihin mong huwag. Nararamdaman mong tumataas ang galit. Bago ang lahat ng iba pa, huminga.',
+
+  p4_label: 'Hakbang 2 ng 5', p4_word: 'Magtanong (Ask)',
+  p4_action: 'Tanungin ang bata kung ano ang nangyari. Hayaan silang magsalita muna. Makinig nang hindi nakakaabala.',
+  p4_why: 'Ang mga bata ay madalas na kumikilos nang may mga dahilan na hindi nakikita ng mga matatanda. Ang pagtatanong bago mag-assume ay nagpapakita ng paggalang at nagdadala sa iyo nang mas malapit sa katotohanan.',
+  p4_sc_lbl: 'Sa sandaling iyon',
+  p4_sc_txt: '"Ano ang nangyari?" Sinabi nang mahinahon, hindi bilang isang akusasyon. Hintayin ang sagot kahit tumagal pa ng sandali.',
+
+  p5_label: 'Hakbang 3 ng 5', p5_word: 'Umintindi (Understand)',
+  p5_action: 'Isaalang-alang kung bakit nila ito ginawa. Takot ba sila? Nalilito? Nababagot? Sinusubukan ang mga limitasyon? Nag-aaral pa?',
+  p5_why: 'Ang pag-uugali ay komunikasyon. Ang mukhang pagiging suwail ay madalas na isang pangangailangan na hindi pa alam ng bata kung paano ipahayag.',
+  p5_sc_lbl: 'Sa sandaling iyon',
+  p5_sc_txt: '"Ano ang nangyayari sa kanila?" Hindi upang bigyang-dahilan ang pag-uugali, kundi upang maunawaan ito bago ka tumugon.',
+
+  p6_label: 'Hakbang 4 ng 5', p6_word: 'Suportahan (Support)',
+  p6_action: 'Tumugon sa tunay na pangangailangan sa likod ng pag-uugali, hindi lamang sa pag-uugali mismo. Gabayan, huwag parusahan.',
+  p6_why: 'Mas natututo ang mga bata sa pamamagitan ng gabay kaysa sa takot. Ang isang batang nakaramdam ng suporta ay ligtas na gumawa ng mas mabuti sa susunod na pagkakataon.',
+  p6_sc_lbl: 'Sa sandaling iyon',
+  p6_sc_txt: 'Mahinahong pagsasaayos. Isang malinaw na hangganan, ipinaliwanag nang may pagmamahal. Ang iyong presensya, hindi ang iyong galit.',
+
+  p7_label: 'Hakbang 5 ng 5', p7_word: 'Hikayatin (Encourage)',
+  p7_action: 'Tapusin nang may isang bagay na nagtatayo ng tiwala, hindi takot. Ipaalam sa kanila na ang pagkakamali ay hindi nagbabago kung gaano mo sila kamahal.',
+  p7_why: 'Ang mga batang nakaramdam ng pagmamahal pagkatapos ng isang pagkakamali ay mas malamang na maging tapat, subukan muli, at magtiwala sa mga matatanda sa kanilang buhay.',
+  p7_sc_lbl: 'Sa sandaling iyon',
+  p7_sc_txt: '"Alam kong kaya mong gumawa ng mas mabuti. Nandito ako." Sapat na iyon.',
+
+  p8_label: 'Bilog ng pagbabago',
+  p8_head: 'Mahalaga ang iyong kwento.',
+  p8_sub: 'Hihilingin sa iyo ng mga susunod na pahina na taimtim na pagnilayan ang iyong nakaraan, kasalukuyan, at ang pagbabagong nais mong gawin. Walang maling sagot.',
+  p8_box_lbl: 'Ano ang bilog ng pagbabago?',
+  p8_box_txt: 'Ang paglalakbay mula sa kung paano ka tinrato noong bata, patungo sa kung paano ito humubog sa paraan ng iyong pagdidisiplina ngayon, patungo sa mga hangganan na nais mong itakda sa hinaharap.',
+  p8_steps: 'Ang iyong nakaraan · Ang iyong ngayon · Ang pagbabago · Ang iyong mga limitasyon · Ang iyong pangako',
+  p8_note: 'Ang iyong mga sagot ay magiging bahagi ng isang koleksyon ng pagbabago na ibabahagi nang hindi kilala bilang isang modyul para sa mga komunidad sa buong rehiyon.',
+
+  p9_label: 'Bilog ng pagbabago · 1 ng 5', p9_head: 'Ang iyong nakaraan',
+  p9_sub: 'Paano ka nadisiplina noong bata ka? Ano ang ginagawa ng mga matatanda sa paligid mo nang magkamali ka?',
+  p9_q1_lbl: 'Ilarawan kung ano ang hitsura ng disiplina sa iyong tahanan noong lumalaki ka',
+  p9_q1_ph: 'Sumulat nang malaya. Ito ang iyong espasyo.',
+  p9_q2_lbl: 'Paano ka naramdaman nito?',
+  p9_opt1: '😟 Takot at nag-aalala', p9_opt2: '💔 Nahihiyang o nasaktan',
+  p9_opt3: '😐 Nalito. Hindi ko naintindihan kung bakit', p9_opt4: '🤷 Normal lang para sa akin. Ganoon na ang mga bagay',
+  p9_opt5: '🙂 Medyo okay. Parang patas naman', p9_opt6: '🌱 Ligtas at ginagabayan',
+  p9_opt7: '✏️ Iba pa. Ilalarawan ko ito', p9_other_ph: 'Ilarawan kung paano mo naramdaman...',
+
+  p10_label: 'Bilog ng pagbabago · 2 ng 5', p10_head: 'Ang iyong ngayon',
+  p10_sub: 'Paano mo nadidisiplina ang mga bata sa iyong buhay ngayon? Maging tapat. Hindi ito isang pagsubok.',
+  p10_q1_lbl: 'Kapag nag-asal nang masama ang isang bata, ano ang karaniwang ginagawa mo?',
+  p10_q1_ph: 'Maging tapat sa iyong sarili dito.',
+  p10_q2_lbl: 'Nakikita mo ba ang isang pattern mula sa iyong sariling pagkabata sa iyong pagtugon?',
+  p10_opt1: '😔 Oo. Inuulit ko ang aking naranasan', p10_opt2: '😶 Minsan, nang hindi sinasadya',
+  p10_opt3: '🤔 Hindi ko pa ito naiisip', p10_opt4: '💪 Sinisikap kong huwag, pero mahirap',
+  p10_opt5: '✨ Hindi. Aktibo akong pumipili ng iba', p10_opt6: '📋 Wala akong mga batang nasa aking pag-aalaga',
+  p10_opt7: '✏️ Iba pa. Ilalarawan ko ito', p10_other_ph: 'Ilarawan ang iyong karanasan...',
+
+  p11_label: 'Bilog ng pagbabago · 3 ng 5', p11_head: 'Ang pagbabago',
+  p11_sub: 'Ano ang nais mong baguhin? Anong uri ng matatanda ang nais mong maging sa mga sandaling mahalaga?',
+  p11_q1_lbl: 'Ilarawan ang pagbabagong nais mong gawin',
+  p11_q1_ph: 'Ano ang hitsura ng paggawa ng mas mabuti para sa iyo?',
+  p11_q2_lbl: 'Ano ang nagpapadali sa pagbabago?',
+  p11_q2_ph: 'Stress, oras, hindi alam kung ano pa ang gagawin...',
+
+  p12_label: 'Bilog ng pagbabago · 4 ng 5', p12_head: 'Ang iyong mga limitasyon',
+  p12_sub: 'Ang positibong pagiging magulang ay may mga hangganan pa rin. Kailangan ng mga bata ng mga limitasyong ibinibigay nang may pagmamahal at pagkakapare-pareho, hindi sakit o takot.',
+  p12_q1_lbl: 'Anong mga hangganan ang pinakamahalaga sa iyo sa pagpapalaki ng mga bata?',
+  p12_q1_ph: 'Anong mga halaga ang nais mong dalhin ng iyong anak?',
+  p12_q2_lbl: 'Maaari bang maparusahan ang isang bata nang walang pisikal na parusa?',
+  p12_opt1: '❌ Hindi. Sa tingin ko kailangan ang ilang pisikal na disiplina',
+  p12_opt2: '🤷 Hindi ako sigurado. Iyon ang lumaki ako',
+  p12_opt3: '🌿 May mga duda ako pero bukas akong subukan',
+  p12_opt4: '🙂 Nagsisimula na akong maniwala na posible ito',
+  p12_opt5: '✅ Oo. Naniniwala ako rito nang buong-buo',
+  p12_opt6: '🌟 Nagsasanay na ako ng positibong disiplina',
+  p12_opt7: '✏️ Iba pa. Ibabahagi ko ang aking pananaw', p12_other_ph: 'Ibahagi ang iyong pananaw...',
+
+  p13_label: 'Bilog ng pagbabago · 5 ng 5', p13_head: 'Ang iyong pangako',
+  p13_sub: '"Iyon ba ang alaala na nais mong maiwanan sa iyong anak tungkol sa iyo?" Hindi mo kailangang maging perpekto. Huminto ka lang, isang sandali sa isang pagkakataon.',
+  p13_name_lbl: 'Ang iyong pangalan (opsyonal)', p13_name_ph: 'Unang pangalan o iwan nang blangko',
+  p13_country_lbl: 'Saan ka sumasali?',
+  p13_other_country_btn: 'Ibang bansa', p13_other_country_ph: 'Sabihin sa amin ang iyong bansa',
+  p13_commit_lbl: 'Nangangako ako na subukan ang PAUSE kapag...', p13_commit_ph: 'Ilarawan ang iyong tiyak na sandali',
+  p13_support_lbl: 'Isang tao na maaari kong tawagan kapag nahihirapan ako', p13_support_ph: 'Kanilang pangalan',
+  p13_followup_lbl: 'Telepono o email para sa follow-up (opsyonal)', p13_followup_ph: 'Ang iyong numero o email',
+  form_error: 'May nangyaring mali. Subukan muli.',
+  form_success: 'Nai-save na ang iyong kwento. Salamat sa pagpili na huminto. Ang karahasan ay nagtatapos sa atin.',
+  form_submit: 'I-save ang aking kwento',
+
+  p14_label: 'Ang iyong pocket card · Itago ito nang malapit',
+  p14_intro: 'Sa sandali ng stress, ito na ang kailangan mo. I-screenshot ito at ilagay sa lugar na makikita mo.',
+  pc_p_word: 'Huminto', pc_p_desc: 'Huminga. Limang segundo bago kumilos.',
+  pc_a_word: 'Magtanong', pc_a_desc: 'Tanungin ang bata kung ano ang nangyari. Makinig muna.',
+  pc_u_word: 'Umintindi', pc_u_desc: 'Bakit nila ito ginawa? Ang pag-uugali ay komunikasyon.',
+  pc_s_word: 'Suportahan', pc_s_desc: 'Tumugon sa pangangailangan. Gabayan, huwag parusahan.',
+  pc_e_word: 'Hikayatin', pc_e_desc: 'Tapusin nang may pagmamahal. Ang pagkakamali ay hindi nagbabago nito.',
+  p14_box_lbl: 'Kung saan napupunta ang iyong mga tugon',
+  p14_box_txt: 'Ang iyong kwento, na nakolekta nang hindi kilala kasama ang iba, ay ipapakita sa ika-2 Global Ministerial Conference on Ending Violence Against Children, Manila, Nobyembre 2026.',
+  p14_credit: 'Dinisenyo ng mga kabataan · Ang Karahasan ay Nagtatapos sa Atin · Asya-Pasipiko',
+},
+
+/* ── VIETNAMESE ── */
+vi: {
+  top_label: 'Bạo lực Chấm dứt Cùng Chúng ta · PAUSE Toolkit · Thí điểm 2026',
+  footer: '15 trang · Phiên bản thí điểm · Philippines · Việt Nam · Campuchia',
+  nav_back: 'Quay lại', nav_next: 'Tiếp theo', nav_finish: 'Hoàn thành',
+
+  p0_label: 'Bộ công cụ kỷ luật tích cực',
+  p0_sub: 'Những lựa chọn Tích cực Thay thế Hình phạt Quá tay & Gây hại',
+  p0_hook: 'Trong năm giây tới, bạn sẽ làm gì?',
+  p0_desc: 'Cuốn sách lật này hướng dẫn bạn qua một khung năm bước để ứng xử với trẻ em bằng sự quan tâm, không phải bằng nỗi sợ hãi.<br><br>Những gì bạn chia sẻ sẽ được gom lại cùng với câu chuyện của nhiều người khác, và được mang đến các cộng đồng khắp khu vực Châu Á - Thái Bình Dương.',
+
+  p1_label: 'Trước khi bắt đầu',
+  p1_head: 'Đây là không gian an toàn',
+  p1_sub: 'Mọi thứ bạn chia sẻ đều ở trong nhóm này. Không ai bị phán xét hay đánh giá.',
+  p1_box_lbl: 'Nếu có điều gì khó nói',
+  p1_box_txt: 'Nếu có điều gì gợi lên lo ngại về sự an toàn của một đứa trẻ, người điều phối sẽ giúp bạn kết nối với sự hỗ trợ phù hợp.',
+  p1_hotline_lbl: 'Đường dây bảo vệ trẻ em',
+  p1_footer: 'Chương trình này tuân theo Chính sách Bảo vệ Trẻ em của Save the Children. Người điều phối đã được tập huấn về nguyên tắc "không gây hại" và quy trình chuyển tuyến.',
+
+  p2_label: 'Dừng lại một chút',
+  p2_q: '"Hãy nghĩ về cách bạn được dạy dỗ khi còn nhỏ."',
+  p2_sub: 'Điều gì đã xảy ra khi bạn mắc lỗi? Lúc đó bạn cảm thấy thế nào? Và đến bây giờ, cảm giác đó còn đó không?',
+  p2_box_lbl: 'Một khoảnh khắc để chiêm nghiệm',
+  p2_box_txt: 'Dành 2–3 phút im lặng suy ngẫm. Bạn có thể chia sẻ nếu sẵn sàng, hoặc chỉ ngồi với ký ức đó.',
+  p2_gold: 'Hầu hết chúng ta lớn lên mà không ai dạy cho một cách khác. PAUSE cho bạn một cách mới — không phải vì bạn sai, mà vì bạn xứng đáng có những công cụ tốt hơn để nuôi dạy con.',
+  p2_note: 'Khi đọc từng bước, hãy nghĩ đến một khoảnh khắc thực tế trong cuộc sống của bạn.',
+
+  p3_label: 'Bước 1 / 5', p3_word: 'Dừng lại — Pause',
+  p3_action: 'Hãy ngừng lại trước khi phản ứng. Hít một hơi thật sâu. Cho bản thân 5 giây — trước khi nói hay làm bất cứ điều gì.',
+  p3_why: 'Cơn bực bội đến từ trong người, không phải từ lý trí. Chỉ một hơi thở thôi — và bạn đã có đủ khoảng lặng để chọn cách phản ứng tiếp theo.',
+  p3_sc_lbl: 'Ví dụ thực tế',
+  p3_sc_txt: 'Con bạn lại làm vỡ thứ gì đó dù đã được nhắc. Bạn cảm thấy cơn tức giận dâng lên. Hãy thở — trước hết hãy thở đã.',
+
+  p4_label: 'Bước 2 / 5', p4_word: 'Hỏi — Ask',
+  p4_action: 'Hỏi con chuyện gì đã xảy ra. Để con nói trước. Lắng nghe — đừng ngắt lời.',
+  p4_why: 'Trẻ con làm chuyện gì đó thường có lý do mà người lớn không thấy được. Hỏi trước khi kết luận — đó là cách thể hiện sự tôn trọng, và là cách nhanh nhất để hiểu đúng sự việc.',
+  p4_sc_lbl: 'Ví dụ thực tế',
+  p4_sc_txt: '"Con kể cho ba/mẹ nghe đi, chuyện gì xảy ra vậy?" — Nói thật bình tĩnh, không phải như một lời buộc tội. Chờ con trả lời, dù phải đợi một chút.',
+
+  p5_label: 'Bước 3 / 5', p5_word: 'Hiểu — Understand',
+  p5_action: 'Nghĩ xem tại sao con làm vậy. Con đang sợ? Đang bối rối? Chán? Đang thử xem giới hạn ở đâu? Hay đơn giản là chưa biết cách làm khác?',
+  p5_why: 'Hành vi của trẻ là một cách truyền đạt. Điều trông có vẻ như bướng bỉnh thật ra là một nhu cầu mà con chưa biết nói ra thành lời.',
+  p5_sc_lbl: 'Trong khoảnh khắc đó',
+  p5_sc_txt: '"Điều gì đang xảy ra với trẻ?" — Không phải để bào chữa cho hành vi, mà để hiểu trước khi phản ứng.',
+
+  p6_label: 'Bước 4 / 5', p6_word: 'Hỗ trợ — Support',
+  p6_action: 'Đáp ứng nhu cầu thật sự đằng sau hành vi đó — không chỉ phản ứng với bề ngoài. Hướng dẫn, đừng trừng phạt.',
+  p6_why: 'Trẻ tiếp thu tốt hơn khi được hướng dẫn, không phải khi bị trừng phạt. Một đứa trẻ cảm thấy được nâng đỡ sẽ tự tin hơn để làm tốt hơn lần sau.',
+  p6_sc_lbl: 'Trong khoảnh khắc đó',
+  p6_sc_txt: 'Hướng dẫn nhẹ nhàng. Một giới hạn rõ ràng, được giải thích với tình yêu thương. Sự hiện diện của bạn, không phải cơn giận của bạn.',
+
+  p7_label: 'Bước 5 / 5', p7_word: 'Động viên — Encourage',
+  p7_action: 'Kết thúc bằng điều gì đó xây dựng lại niềm tin — không phải nỗi sợ. Cho con biết rằng mắc lỗi không làm thay đổi tình yêu của bạn dành cho con.',
+  p7_why: 'Đứa trẻ nào cảm thấy được yêu thương ngay cả sau khi mắc lỗi — đứa trẻ đó sẽ dễ nói thật hơn, dễ cố gắng hơn, và tin tưởng người lớn hơn.',
+  p7_sc_lbl: 'Trong khoảnh khắc đó',
+  p7_sc_txt: '"Ba/Mẹ tin con làm được. Ba/Mẹ luôn ở đây với con." — Chỉ vậy thôi là đủ.',
+
+  p8_label: 'Vòng tròn thay đổi',
+  p8_head: 'Câu chuyện của bạn có giá trị.',
+  p8_sub: 'Các trang tiếp theo yêu cầu bạn suy ngẫm thành thật về quá khứ, hiện tại, và sự thay đổi bạn muốn thực hiện. Không có câu trả lời đúng hay sai.',
+  p8_box_lbl: 'Vòng tròn thay đổi là gì?',
+  p8_box_txt: 'Hành trình từ cách bạn được đối xử khi còn là trẻ, đến cách điều đó định hình cách bạn kỷ luật ngày hôm nay, đến những giới hạn bạn muốn đặt ra trong tương lai.',
+  p8_steps: 'Quá khứ của bạn · Hiện tại của bạn · Điều bạn muốn đổi · Giới hạn của bạn · Cam kết của bạn',
+  p8_note: 'Câu chuyện của bạn sẽ trở thành một phần trong bộ sưu tập thay đổi được chia sẻ ẩn danh như một mô-đun cho các cộng đồng trong khu vực.',
+
+  p9_label: 'Vòng tròn thay đổi · 1 / 5', p9_head: 'Quá khứ của bạn',
+  p9_sub: 'Bạn đã được dạy dỗ như thế nào khi còn nhỏ? Những người lớn xung quanh bạn đã làm gì khi bạn mắc lỗi?',
+  p9_q1_lbl: 'Kể lại cách kỷ luật trong gia đình bạn ngày đó trông như thế nào',
+  p9_q1_ph: 'Viết tự do. Đây là không gian của bạn.',
+  p9_q2_lbl: 'Lúc đó bạn cảm thấy thế nào?',
+  p9_opt1: '😟 Sợ hãi và bất an', p9_opt2: '💔 Xấu hổ, tủi thân',
+  p9_opt3: '😐 Bối rối — không hiểu tại sao lại bị phạt', p9_opt4: '🤷 Bình thường — đó là cách ai cũng làm',
+  p9_opt5: '🙂 Ổn, thấy cũng hợp lý', p9_opt6: '🌱 Được yêu thương và hướng dẫn',
+  p9_opt7: '✏️ Khác — tôi sẽ mô tả', p9_other_ph: 'Mô tả cảm giác của bạn...',
+
+  p10_label: 'Vòng tròn thay đổi · 2 / 5', p10_head: 'Hiện tại của bạn',
+  p10_sub: 'Bây giờ khi trẻ trong nhà làm sai, bạn thường xử lý thế nào? Hãy thành thật — đây không phải bài kiểm tra.',
+  p10_q1_lbl: 'Khi con hư, bạn thường làm gì?',
+  p10_q1_ph: 'Hãy thành thật với bản thân ở đây.',
+  p10_q2_lbl: 'Bạn có thấy mình đang lặp lại điều từng xảy ra với mình hồi nhỏ không?',
+  p10_opt1: '😔 Có — tôi đang làm y như những gì tôi từng trải qua', p10_opt2: '😶 Đôi khi, dù không cố ý',
+  p10_opt3: '🤔 Chưa bao giờ nghĩ đến chuyện này', p10_opt4: '💪 Tôi cố tránh, nhưng không dễ',
+  p10_opt5: '✨ Không — tôi chủ động chọn cách khác', p10_opt6: '📋 Tôi không có trẻ trong sự chăm sóc',
+  p10_opt7: '✏️ Khác — tôi sẽ mô tả', p10_other_ph: 'Mô tả trải nghiệm của bạn...',
+
+  p11_label: 'Vòng tròn thay đổi · 3 / 5', p11_head: 'Điều bạn muốn thay đổi',
+  p11_sub: 'Bạn muốn thay đổi điều gì? Bạn muốn trở thành người lớn như thế nào trong những khoảnh khắc quan trọng?',
+  p11_q1_lbl: 'Mô tả sự thay đổi bạn muốn thực hiện',
+  p11_q1_ph: 'Làm tốt hơn trông như thế nào với bạn?',
+  p11_q2_lbl: 'Điều gì khiến việc thay đổi trở nên khó khăn?',
+  p11_q2_ph: 'Căng thẳng, thời gian, không biết phải làm gì khác...',
+
+  p12_label: 'Vòng tròn thay đổi · 4 / 5', p12_head: 'Giới hạn của bạn',
+  p12_sub: 'Nuôi dạy con tích cực không có nghĩa là không có giới hạn. Trẻ vẫn cần khuôn khổ rõ ràng — nhưng được đặt ra bằng tình yêu và sự nhất quán, không phải đau đớn hay sợ hãi.',
+  p12_q1_lbl: 'Với bạn, điều gì là ranh giới quan trọng nhất khi nuôi dạy trẻ?',
+  p12_q1_ph: 'Bạn muốn con mang theo những giá trị gì?',
+  p12_q2_lbl: 'Trẻ em có thể được kỷ luật mà không có hình phạt thể chất không?',
+  p12_opt1: '❌ Không — tôi vẫn nghĩ đôi khi cần dùng',
+  p12_opt2: '🤷 Chưa chắc — đó là cách tôi lớn lên',
+  p12_opt3: '🌿 Còn hoài nghi, nhưng tôi sẵn sàng thử',
+  p12_opt4: '🙂 Tôi bắt đầu tin là có thể',
+  p12_opt5: '✅ Có — tôi tin điều này hoàn toàn',
+  p12_opt6: '🌟 Tôi đã đang làm được rồi',
+  p12_opt7: '✏️ Khác — tôi sẽ chia sẻ thêm', p12_other_ph: 'Chia sẻ quan điểm của bạn...',
+
+  p13_label: 'Vòng tròn thay đổi · 5 / 5', p13_head: 'Cam kết của bạn',
+  p13_sub: '"Đó có phải là ký ức bạn muốn để lại trong lòng con không?" Bạn không cần phải hoàn hảo. Chỉ cần dừng lại — từng khoảnh khắc một.',
+  p13_name_lbl: 'Tên của bạn (không bắt buộc)', p13_name_ph: 'Tên hoặc để trống',
+  p13_country_lbl: 'Bạn đang ở đâu?',
+  p13_other_country_btn: 'Quốc gia khác', p13_other_country_ph: 'Vui lòng cho chúng tôi biết quốc gia của bạn',
+  p13_commit_lbl: 'Tôi cam kết sử dụng PAUSE khi...', p13_commit_ph: 'Mô tả khoảnh khắc cụ thể của bạn',
+  p13_support_lbl: 'Một người tôi có thể gọi khi gặp khó khăn', p13_support_ph: 'Tên của họ',
+  p13_followup_lbl: 'Điện thoại hoặc email để theo dõi (không bắt buộc)', p13_followup_ph: 'Số điện thoại hoặc email của bạn',
+  form_error: 'Đã xảy ra lỗi. Vui lòng thử lại.',
+  form_success: 'Câu chuyện của bạn đã được lưu lại. Cảm ơn vì đã chọn dừng lại. Bạo lực chấm dứt cùng chúng ta.',
+  form_submit: 'Lưu câu chuyện của tôi',
+
+  p14_label: 'Thẻ bỏ túi · Giữ thẻ này bên mình',
+  p14_intro: 'Khi căng thẳng ập đến, đây là tất cả những gì bạn cần nhớ. Chụp màn hình và đặt ở nơi bạn sẽ thấy.',
+  pc_p_word: 'Dừng lại', pc_p_desc: 'Thở trong vòng năm giây trước khi phản ứng.',
+  pc_a_word: 'Hỏi trước', pc_a_desc: 'Hỏi trẻ chuyện gì xảy ra. Lắng nghe trước.',
+  pc_u_word: 'Hiểu con', pc_u_desc: 'Tại sao trẻ làm vậy? Hành vi là giao tiếp.',
+  pc_s_word: 'Hỗ trợ con', pc_s_desc: 'Đáp ứng nhu cầu. Hướng dẫn, đừng trừng phạt.',
+  pc_e_word: 'Động viên con', pc_e_desc: 'Kết thúc bằng tình yêu. Lỗi không xóa đi điều đó.',
+  p14_box_lbl: 'Câu chuyện của bạn sẽ đi đâu',
+  p14_box_txt: 'Câu chuyện của bạn, cùng với nhiều người khác, sẽ được trình bày ẩn danh tại Hội nghị Bộ trưởng Toàn cầu lần thứ 2 về Chấm dứt Bạo lực với Trẻ em, Manila, tháng 11 năm 2026.',
+  p14_credit: 'Được thiết kế bởi người trẻ · Bạo lực Chấm dứt Cùng Chúng ta · Châu Á - Thái Bình Dương',
+},
+
+/* ── KHMER ── */
+kh: {
+  top_label: 'អំពើហិង្សាបញ្ចប់ជាមួយយើង · PAUSE Toolkit · Pilot 2026',
+  footer: '15 ទំព័រ · ការបោះពុម្ពសាក · ហ្វីលីពីន · វៀតណាម · កម្ពុជា',
+  nav_back: 'ត្រឡប់', nav_next: 'បន្ត', nav_finish: 'បញ្ចប់',
+
+  p0_label: 'ឧបករណ៍នៃការអប់រំវិជ្ជមាន',
+  p0_sub: 'PAUSE : ជម្រើសវិជ្ជមានចំពោះការអនុវត្តដែលមិនមានសុវត្ថិភាព និងធ្ងន់ធ្ងរ',
+  p0_hook: 'តើអ្នកនឹងធ្វើអ្វីក្នុងរយៈពេលប្រាំវិនាទីបន្ទាប់?',
+  p0_desc: 'សៀវភៅណែនាំនេះនឹងណែនាំអ្នកអំពីក្របខ័ណ្ឌប្រាំជំហានសម្រាប់ឆ្លើយតបទៅនឹងកុមារដោយយកចិត្តទុកដាក់ មិនមែនដោយការភ័យខ្លាចនោះទេ។<br><br>ចម្លើយរបស់អ្នកក្លាយជាផ្នែកមួយនៃការបណ្តុំផ្លាស់ប្តូរដែលបានចែករំលែកជាមួយឪពុកម្តាយ គ្រូបង្រៀន និងសហគមន៍នានានៅទូទាំងតំបន់អាស៊ីប៉ាស៊ីហ្វិក។',
+
+  p1_label: 'មុនពេលយើងចាប់ផ្តើម',
+  p1_head: 'ការប្តេជ្ញាចិត្តរបស់យើងចំពោះសុវត្ថិភាព',
+  p1_sub: 'PAUSE គឺជាកន្លែងសុវត្ថិភាព។ អ្វីគប់យ៉ាងដែលបានចែករំលែកនៅទីនេះនៅតែស្ថិតនៅក្នុងក្រុមនេះ។ គ្មាននរណាម្នាក់នឹងត្រូវបានវិនិច្ឆ័យឡើយ។',
+  p1_box_lbl: 'បើសិនជាមានអ្វីមួយពិបាកកើតឡើង',
+  p1_box_txt: 'បើសិនជាមានអ្វីមួយលើកឡើងពីការព្រួយបារម្ភអំពីសុវត្ថិភាពរបស់កុមារ អ្នកសម្របសម្រួលរបស់អ្នកនៅទីនេះដើម្បីជួយភ្ជាប់អ្នកជាមួយនឹងការគាំទ្រត្រឹមត្រូវ។',
+  p1_hotline_lbl: 'ខ្សែទូរស័ព្ទទាន់ហេតុការណ៍ការពារកុមារ',
+  p1_footer: 'សំណុំឧបករណ៍នេះអនុវត្តតាមគោលនយោបាយការពារកុមាររបស់អង្គការ Save the Children។ អ្នកសម្របសម្រួលម្នាក់ៗត្រូវបានជូនដំណឹងអំពីគោលការណ៍មិនធ្វើបាប និងផ្លូវបញ្ជូនបន្ត។',
+
+  p2_label: 'ការឆ្លុះបញ្ចាំងបើក',
+  p2_q: '"សូមគិតអំពីរបៀបដែលអ្នកត្រូវបានអប់រំតាំងពីកុមារភាព"។',
+  p2_sub: 'មានអ្វីកើតឡើងនៅពេលអ្នកធ្វើខុស? តើវាមានអារម្មណ៍យ៉ាងណា? តើអ្នកនៅតែមានអារម្មណ៍បែបនោះរហូតមកដល់សព្វថ្ងៃនេះទេ?',
+  p2_box_lbl: 'ពេលវេលាមួយដើម្បីគិតវិញ',
+  p2_box_txt: 'សូមចំណាយពេល 2 ទៅ 3 នាទីសម្រាប់ការឆ្លុះបញ្ចាំងដោយស្ងប់ស្ងាត់។ អ្នកអាចចែករំលែកបើសិនជាអ្នកមានអារម្មណ៍ថារួចរាល់ ឬគ្រាន់តែអង្គុយជាមួយការចងចាំ។',
+  p2_gold: 'យើងភាគច្រើនមិនដែលត្រូវបានបង្រៀនតាមរបៀបផ្សេងទៀតទេ។ ការផ្អាកផ្តល់ឱ្យអ្នកនូវមួយ — មិនមែនដោយសារតែអ្នកខុសនោះទេ ប៉ុន្តែដោយសារតែអ្នកសមនឹងទទួលបានឧបករណ៍ល្អជាង។',
+  p2_note: 'នៅពេលអ្នកអានជំហាននីមួយៗ សូមគិតអំពីពេលវេលាពិតប្រាកដមួយនៅក្នុងជីវិតរបស់អ្នកផ្ទាល់។',
+
+  p3_label: 'ជំហានទី១ ក្នុង ៥', p3_word: 'ផ្អាក (Pause)',
+  p3_action: 'ឈប់មុនពេលអ្នកប្រតិកម្មទៅនឹងអ្វីមួយ។ ដកដង្ហើមមួយ! ផ្តល់ពេលឱ្យខ្លួនឯងប្រាំវិនាទីមុនពេលអ្នកធ្វើឬនិយាយអ្វីមួយ។',
+  p3_why: 'ការជំរុញឱ្យមានប្រតិកម្មកើតចេញពីរាងកាយ មិនមែនចិត្តទេ។ ដង្ហើមមួយដងបង្កើតកន្លែងគ្រប់គ្រាន់ដើម្បីជើសរើសអ្វីដែលនឹងកើតឡើងបន្ទាប់។',
+  p3_sc_lbl: 'នៅពេលនោះ',
+  p3_sc_txt: 'កូនរបស់អ្នកបានបំបែកអ្វីមួយបន្ទាប់ពីអ្នកបានប្រាប់ពួកគេកុំឱ្យធ្វើ។ អ្នកមានអារម្មណ៍ថាកំហឹងកើនឡើង។ មុនអ្វីផ្សេងទៀត សូមដកដង្ហើម។',
+
+  p4_label: 'ជំហានទី២ ក្នុង ៥', p4_word: 'សួរ (Ask)',
+  p4_action: 'សួរកុមារថាមានអ្វីកើតឡើង។ ទុកឲ្យពួកគេនិយាយមុន។ ស្តាប់ដោយមិនរំខាន។',
+  p4_why: 'កុមារច្រើនតែធ្វើសកម្មភាពដោយហេតុផលដែលមនុស្សពេញវ័យមើលមិនឃើញ។ ការសួរមុនពេលសន្មត់បង្ហាញពីការគោរព និងនាំអ្នកឱ្យខិតទៅជិតការពិត។',
+  p4_sc_lbl: 'ក្នុងពេលនោះ',
+  p4_sc_txt: '"មានអ្វីកើតឡើង?" និយាយដោយស្ងប់ស្ងាត់ មិនមែនជាការចោទប្រកាន់ទេ។ រង់ចាំចម្លើយ ទោះបីជាវាត្រូវការពេលមួយភ្លែតក៏ដោយ។',
+
+  p5_label: 'ជំហានទី៣ ក្នុង ៥', p5_word: 'យល់ (Understand)',
+  p5_action: 'សូមពិចារណាពីមូលហេតុដែលពួកគេបានធ្វើវា។ តើពួកគេខ្លាចទេ? ច្របូកច្របល់ទេ? ធុញទ្រាន់ទេ? កំពុងសាកល្បងដែនកំណត់? នៅតែរៀន?',
+  p5_why: 'ឥរិយាបថគឺជាការទំនាក់ទំនង។ អ្វីដែលមើលទៅដូចជាការប្រឆាំង ជារឿយៗជាតម្រូវការដែលកុមារមិនទាន់ដឹងពីរបៀបបង្ហាញនៅឡើយទេ។',
+  p5_sc_lbl: 'ក្នុងពេលនោះ',
+  p5_sc_txt: '"តើមានអ្វីកើតឡើងចំពោះពួកគេ?" មិនមែនដើម្បីលើកលែងទោសចំពោះឥរិយាបថនោះទេ ប៉ុន្តែដើម្បីយល់វាមុនពេលអ្នកឆ្លើយតប។',
+
+  p6_label: 'ជំហានទី៤ ក្នុង ៥', p6_word: 'គាំទ្រ (Support)',
+  p6_action: 'ឆ្លើយតបទៅនឹងតម្រូវការពិតប្រាកដនៅពីក្រោយឥរិយាបថ មិនមែនគ្រាន់តែឥរិយាបថនោះទេ។ ចូរណែនាំ កុំដាក់ទោស។',
+  p6_why: 'កុមាររៀនបានល្អជាងតាមរយៈការណែនាំជាជាងការភ័យខ្លាច។ កុមារដែលមានអារម្មណ៍ថាមានការគាំទ្រមានសុវត្ថិភាពគ្រប់គ្រាន់ដើម្បីធ្វើបានល្អជាងនៅពេលខាងមុខ។',
+  p6_sc_lbl: 'ក្នុងពេលនោះ',
+  p6_sc_txt: 'ការបង្វែរទិសដៅដោយស្ងប់ស្ងាត់។ ព្រំដែនច្បាស់លាស់ ពន្យល់ដោយក្តីស្រលាញ់។ វត្តមានរបស់អ្នក មិនមែនកំហឹងរបស់អ្នកទេ។',
+
+  p7_label: 'ជំហានទី៥ ក្នុង ៥', p7_word: 'លើកទឹកចិត្ត (Encourage)',
+  p7_action: 'បញ្ចប់ដោយអ្វីមួយដែលបង្កើតទំនុកចិត្តមិនមែនការភ័យខ្លាចទេ។ ឲ្យពួកគេដឹងថាកំហុសមិនផ្លាស់ប្តូរចំនួនដែលអ្នកស្រលាញ់ពួកគេនោះទេ។',
+  p7_why: 'កុមារដែលមានអារម្មណ៍ថាត្រូវបានស្រលាញ់បន្ទាប់ពីមានកំហុសទំនងជាមានភាពស្មោះត្រង់ ព្យាយាមមើ្តងទៀត និងទុកចិត្តមនុស្សពេញវ័យក្នុងជីវិតរបស់ពួកគេ។',
+  p7_sc_lbl: 'នៅពេលនោះ',
+  p7_sc_txt: '"ខ្ញុំដឹងថាអ្នកអាចធ្វើបានល្អជាង។ ខ្ញុំនៅទីនេះ។" គ្រប់គ្រាន់ហើយ។',
+
+  p8_label: 'រង្វង់នៃការផ្លាស់ប្តូរ',
+  p8_head: 'រឿងរ៉ាវរបស់អ្នកមានសារៈសំខាន់។',
+  p8_sub: 'ទំព័របន្ទាប់សូមឱ្យអ្នកឆ្លុះបញ្ចាំងដោយស្មោះត្រង់អំពីអតីតកាល បច្ចុប្បន្នកាលរបស់អ្នក និងការផ្លាស់ប្តូរដែលអ្នកចង់ធ្វើ។ មិនមានចម្លើយខុសទេ។',
+  p8_box_lbl: 'តើរង្វង់នៃការផ្លាស់ប្តូរជាអ្វី?',
+  p8_box_txt: 'ដំណើរពីរបៀបដែលអ្នកត្រូវបានគប់បង្ខំកាលពីនៅក្មេង រហូតដល់របៀបដែលវាបានបង្កើតវិធីដែលអ្នកអប់រំនៅថ្ងៃនេះ រហូតដល់ព្រំដែនដែលអ្នកចង់កំណត់នៅពេលអនាគត។',
+  p8_steps: 'អតីតកាលរបស់អ្នក · បច្ចុប្បន្នកាលរបស់អ្នក · ការផ្លាស់ប្តូរ · ដែនកំណត់របស់អ្នក · ការប្តេជ្ញាចិត្តរបស់អ្នក',
+  p8_note: 'ចម្លើយរបស់អ្នកក្លាយជាផ្នែកមួយនៃការបណ្តុំផ្លាស់ប្តូរដែលបានចែករំលែកដោយអនាមិកជាម៉ូឌុលសម្រាប់សហគមន៍នានាទូទាំងតំបន់។',
+
+  p9_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ១ ក្នុង ៥', p9_head: 'អតីតកាលរបស់អ្នក',
+  p9_sub: 'តើអ្នកត្រូវបានវិន័យយ៉ាងដូចម្តេចកាលនៅក្មេង? តើមនុស្សពេញវ័យនៅជុំវិញអ្នកបានធ្វើអ្វីខ្លះនៅពេលអ្នកធ្វើខុស?',
+  p9_q1_lbl: 'ពិពណ៌នាអំពីរបៀបដែលវិន័យមើលទៅដូចនៅក្នុងផ្ទះរបស់អ្នកនៅពេលធំឡើង',
+  p9_q1_ph: 'សរសេរដោយសេរី។ នេះជាកន្លែងរបស់អ្នក។',
+  p9_q2_lbl: 'តើវាធ្វើឱ្យអ្នកមានអារម្មណ៍យ៉ាងណា?',
+  p9_opt1: '😟 ភ័យខ្លាច និងថប់បារម្ភ', p9_opt2: '💔 ខ្មាស់អៀន ឬឈឺចាប់',
+  p9_opt3: '😐 ច្របូកច្របល់។ ខ្ញុំមិនយល់ថាហេតុអ្វីទេ', p9_opt4: '🤷 វាមានអារម្មណ៍ធម្មតា។ គ្រាន់តែថាអ្វីៗមានសភាពបែបណា',
+  p9_opt5: '🙂 ភាគច្រើនមិនអីទេ។ វាមានអារម្មណ៍យុត្តិធម៌', p9_opt6: '🌱 មានសុវត្ថិភាព និងត្រូវបានណែនាំ',
+  p9_opt7: '✏️ ផ្សេងទៀត។ ខ្ញុំនឹងពិពណ៌នាវា', p9_other_ph: 'ពិពណ៌នាអំពីអារម្មណ៍...',
+
+  p10_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ២ ក្នុង ៥', p10_head: 'បច្ចុប្បន្នកាលរបស់អ្នក',
+  p10_sub: 'តើអ្នកអប់រំកូនៗយ៉ាងដូចម្តេចនៅក្នុងជីវិតរបស់អ្នកនៅថ្ងៃនេះ? ចូរនិយាយដោយស្មោះត្រង់។ នេះមិនមែនជាការសាកល្បងទេ។',
+  p10_q1_lbl: 'នៅពេលកូនធ្វើខុស តើអ្នកតែងតែធ្វើអ្វី?',
+  p10_q1_ph: 'ចូរស្មោះត្រង់ជាមួយខ្លួនឯង។',
+  p10_q2_lbl: 'តើអ្នកឃើញគំរូពីកុមារភាពរបស់អ្នកក្នុងរបៀបដែលអ្នកឆ្លើយតបទេ?',
+  p10_opt1: '😔 បាទ/ចាស។ ខ្ញុំនិយាយឡើងវិញនូវអ្វីដែលខ្ញុំបានជួបប្រទះ', p10_opt2: '😶 ពេលខ្លះ ដោយមិនមានបំណង',
+  p10_opt3: '🤔 ខ្ញុំមិនបានគិតអំពីវាទេ', p10_opt4: '💪 ខ្ញុំព្យាយាមមិនធ្វើ ប៉ុន្តែវាពិបាក',
+  p10_opt5: '✨ ទេ។ ខ្ញុំជើសរើសខុសគ្នាយ៉ាងសកម្ម', p10_opt6: '📋 ខ្ញុំមិនមានកូននៅក្នុងការថែទាំរបស់ខ្ញុំទេ',
+  p10_opt7: '✏️ ផ្សេងទៀត។ ខ្ញុំនឹងពិពណ៌នាវា', p10_other_ph: 'ពិពណ៌នាបទពិសោធន៍របស់អ្នក...',
+
+  p11_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ៣ ក្នុង ៥', p11_head: 'ការផ្លាស់ប្តូរ',
+  p11_sub: 'តើអ្នកចង់ផ្លាស់ប្តូរអ្វី? តើអ្នកចង់ក្លាយជាមនុស្សពេញវ័យប្រភេទណានៅក្នុងគ្រាដ៏សំខាន់?',
+  p11_q1_lbl: 'ពិពណ៌នាអំពីការផ្លាស់ប្តូរដែលអ្នកចង់ធ្វើ',
+  p11_q1_ph: 'តើការធ្វើបានល្អជាងមើលទៅដូចម្តេចសម្រាប់អ្នក?',
+  p11_q2_lbl: 'អ្វីដែលធ្វើឱ្យវាពិបាកក្នុងការផ្លាស់ប្តូរ?',
+  p11_q2_ph: 'ភាពតានតឹង ពេលវេលា មិនដឹងថាត្រូវធ្វើអ្វីផ្សេង...',
+
+  p12_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ៤ ក្នុង ៥', p12_head: 'ដែនកំណត់របស់អ្នក',
+  p12_sub: 'ការចិញ្ចឹមកូនដោយវិជ្ជមាននៅតែមានព្រំដែន។ កុមារត្រូវការដែនកំណត់ដែលផ្តល់ឱ្យដោយស្នេហា និងភាពស៊ីសង្វាក់គ្នា មិនមែនការឈឺចាប់ ឬការភ័យខ្លាចទេ។',
+  p12_q1_lbl: 'តើព្រំដែនអ្វីដែលសំខាន់បំផុតសម្រាប់អ្នកក្នុងការចិញ្ចឹមកូន?',
+  p12_q1_ph: 'តើអ្នកចង់ឱ្យកូនរបស់អ្នកដឹកនាំតម្លៃអ្វីខ្លះ?',
+  p12_q2_lbl: 'តើកុមារអាចត្រូវបានដាក់វិន័យដោយមិនដាក់ទណ្ឌកម្មរាងកាយបានទេ?',
+  p12_opt1: '❌ ទេ។ ខ្ញុំគិតថាវិន័យរាងកាយខ្លះគឺត្រូវការ',
+  p12_opt2: '🤷 ខ្ញុំមិនប្រាកដទេ។ វាជាអ្វីដែលខ្ញុំធំឡើងជាមួយ',
+  p12_opt3: '🌿 ខ្ញុំមានការសង្ស័យ ប៉ុន្តែខ្ញុំបើកចំហចំពោះការព្យាយាម',
+  p12_opt4: '🙂 ខ្ញុំចាប់ផ្តើមជឿថាវាអាចទៅរួច',
+  p12_opt5: '✅ បាទ/ចាស។ ខ្ញុំជឿរឿងនេះយ៉ាងពេញលេញ',
+  p12_opt6: '🌟 ខ្ញុំបានអនុវត្តវិន័យវិជ្ជមានរួចហើយ',
+  p12_opt7: '✏️ ផ្សេងទៀត។ ខ្ញុំនឹងចែករំលែកទស្សនៈរបស់ខ្ញុំ', p12_other_ph: 'ចែករំលែកទស្សនៈរបស់អ្នក...',
+
+  p13_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ៥ ក្នុង ៥', p13_head: 'ការប្តេជ្ញាចិត្តរបស់អ្នក',
+  p13_sub: '"តើនោះជាការចងចាំដែលអ្នកចង់ឱ្យកូនរបស់អ្នកមានចំពោះអ្នកមែនទេ?" អ្នកមិនចាំបាច់ល្អឥតខ្ចះនោះទេ។ អ្នកគ្រាន់តែត្រូវផ្អាកមួយភ្លែតម្តងមួយៗ។',
+  p13_name_lbl: 'ឈ្មោះរបស់អ្នក (ស្ម័គ្រចិត្ត)', p13_name_ph: 'ឈ្មោះដំបូង ឬទុកទំនេរ',
+  p13_country_lbl: 'តើអ្នកចូលរួមមកពីណា?',
+  p13_other_country_btn: 'ប្រទេសផ្សេងទៀត', p13_other_country_ph: 'សូមប្រាប់ប្រទេសរបស់អ្នក',
+  p13_commit_lbl: 'ខ្ញុំប្តេជ្ញាចិត្តសាកល្បងផ្អាកនៅពេល...', p13_commit_ph: 'ពណ៌នាពេលវេលាជាក់លាក់របស់អ្នក',
+  p13_support_lbl: 'មនុស្សម្នាក់ដែលខ្ញុំអាចទូរស័ព្ទទៅបាននៅពេលដែលខ្ញុំកំពុងជួបការលំបាក', p13_support_ph: 'ឈ្មោះរបស់ពួកគេ',
+  p13_followup_lbl: 'ទូរស័ព្ទឬអ៊ីម៉ែលសម្រាប់ការតាមដាន (ស្ម័គ្រចិត្ត)', p13_followup_ph: 'លេខ ឬអ៊ីម៉ែលរបស់អ្នក',
+  form_error: 'មានអ្វីមួយខុស។ សូមព្យាយាមមើ្តងទៀត។',
+  form_success: 'រឿងរ៉ាវរបស់អ្នកត្រូវបានរក្សាទុក។ សូមអរគុណដែលបានជ្រើសរើសផ្អាក។ អំពើហិង្សាបញ្ចប់ជាមួយយើង។',
+  form_submit: 'រក្សាទុករឿងរ៉ាវរបស់ខ្ញុំ',
+
+  p14_label: 'កាតហោប៉ករបស់អ្នក · រក្សាវាឱ្យជិត',
+  p14_intro: 'ក្នុងពេលមានភាពតានតឹង នេះជាអ្វីទាំងអស់ដែលអ្នកត្រូវការ។ ថតអេក្រង់វា ហើយដាក់វានៅកន្លែងណាមួយដែលអ្នកនឹងឃើញវា។',
+  pc_p_word: 'ផ្អាក', pc_p_desc: 'ដកដង្ហើម។ ប្រាំវិនាទីមុនពេលអ្នកប្រតិកម្ម។',
+  pc_a_word: 'សួរ', pc_a_desc: 'សួរកុមារថាមានអ្វីកើតឡើង។ ស្តាប់ជាមុនសិន។',
+  pc_u_word: 'យល់', pc_u_desc: 'ហេតុអ្វីបានជាពួកគេធ្វើវា? អាកប្បកិរិយាគឺជាការទំនាក់ទំនង។',
+  pc_s_word: 'គាំទ្រ', pc_s_desc: 'ឆ្លើយតបទៅនឹងតម្រូវការ។ ណែនាំ កុំដាក់ទោស។',
+  pc_e_word: 'លើកទឹកចិត្ត', pc_e_desc: 'បញ្ចប់ដោយស្នេហា។ កំហុសមិនផ្លាស់ប្តូររឿងនោះទេ។',
+  p14_box_lbl: 'ចម្លើយរបស់អ្នកនឹងទៅណា',
+  p14_box_txt: 'រឿងរ៉ាវរបស់អ្នក ដែលបានប្រមូលដោយអនាមិកជាមួយអ្នកដទៃ នឹងត្រូវបានបង្ហាញនៅក្នុងសន្និបាតរដ្ឋមន្ត្រីសកលលោកលើកទី ២ ស្តីពីការបញ្ចប់អំពើហិង្សាលើកុមារ ទីក្រុងម៉ានីល ខែវិច្ឆិកា ២០២៦។',
+  p14_credit: 'រចនាដោយយុវវ័យ · អំពើហិង្សាបញ្ចប់ជាមួយយើង · អាស៊ី-ប៉ាស៊ីហ្វិក',
+},
+
+}; /* end TRANSLATIONS */
+
+/* ══════════════════════════════════════════════
+   LANGUAGE SWITCH ENGINE
+   ══════════════════════════════════════════════ */
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = TRANSLATIONS[lang];
+  if (!t) return;
+
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  const idx = {en:0,fil:1,vi:2,kh:3}[lang];
+  document.querySelectorAll('.lang-btn')[idx].classList.add('active');
+
+  // Top label
+  const topEl = document.getElementById('top-label');
+  if (topEl) topEl.textContent = t.top_label;
+
+  // Footer
+  const footerEl = document.getElementById('flipbook-footer');
+  if (footerEl) footerEl.setAttribute('data-key','footer');
+
+  // Nav buttons (update based on current page)
+  updateNavText();
+
+  // All data-key elements
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (t[key] !== undefined) {
+      el.innerHTML = t[key];
+    }
+  });
+
+  // Placeholder elements
+  document.querySelectorAll('[data-placeholder-key]').forEach(el => {
+    const key = el.getAttribute('data-placeholder-key');
+    if (t[key] !== undefined) {
+      el.setAttribute('placeholder', t[key]);
+    }
+  });
+
+  // Footer special
+  if (footerEl && t.footer) footerEl.textContent = t.footer;
+}
+
+function updateNavText() {
+  const t = TRANSLATIONS[currentLang];
+  if (!t) return;
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  if (prevBtn) prevBtn.textContent = t.nav_back;
+  if (nextBtn) nextBtn.textContent = (cur === TOTAL - 2) ? t.nav_finish : t.nav_next;
+}
+
+/* ══════════════════════════════════════════════
+   FLIPBOOK NAVIGATION
+   ══════════════════════════════════════════════ */
 let cur = 0;
 const TOTAL = 15;
 const PAGE_IMAGES = [
@@ -952,7 +1533,8 @@ function goTo(n) {
   document.getElementById('prev-btn').disabled = cur === 0;
   const nb = document.getElementById('next-btn');
   nb.disabled = cur === TOTAL - 1;
-  nb.textContent = cur === TOTAL - 2 ? 'Finish' : 'Next';
+  const t = TRANSLATIONS[currentLang];
+  nb.textContent = cur === TOTAL - 2 ? (t ? t.nav_finish : 'Finish') : (t ? t.nav_next : 'Next');
   if (PAGE_IMAGES[cur]) backdropEl.style.backgroundImage = "url('" + PAGE_IMAGES[cur] + "')";
   const body = document.querySelector('#page-' + cur + ' .page-body');
   if (body) body.scrollTop = 0;
@@ -1013,9 +1595,9 @@ form.addEventListener('submit', async function(e) {
   successMsg.classList.remove('visible');
   errorMsg.classList.remove('visible');
   submitBtn.disabled = true;
-  submitBtn.textContent = 'Saving...';
+  const t = TRANSLATIONS[currentLang];
+  submitBtn.textContent = currentLang === 'vi' ? 'Đang lưu...' : currentLang === 'kh' ? 'កំពុងរក្សាទុក...' : currentLang === 'fil' ? 'Sini-save...' : 'Saving...';
   const data = new FormData(form);
-  // Also append the text-area fields directly
   ['q_past','q_now','q_change','q_barrier','q_limits'].forEach(id => {
     const el = document.getElementById(id);
     if (el && el.value) data.set(id, el.value);
@@ -1034,12 +1616,12 @@ form.addEventListener('submit', async function(e) {
     } else {
       errorMsg.classList.add('visible');
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Save my story';
+      submitBtn.textContent = t ? t.form_submit : 'Save my story';
     }
   } catch(err) {
     errorMsg.classList.add('visible');
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Save my story';
+    submitBtn.textContent = t ? t.form_submit : 'Save my story';
   }
 });
 </script>
