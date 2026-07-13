@@ -560,20 +560,6 @@ textarea::placeholder, input::placeholder {
   height: 100%;
   border: none;
 }
-.video-toggle { display: flex; gap: 6px; margin-bottom: 0.5rem; }
-.video-tab {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 11.5px;
-  font-weight: 700;
-  padding: 5px 12px;
-  border: 1.5px solid var(--border);
-  border-radius: 999px;
-  background: rgba(255,255,255,0.8);
-  color: var(--ink3);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.video-tab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
 .video-caption {
   font-family: 'Quicksand', sans-serif;
   font-size: 11.5px;
@@ -583,6 +569,33 @@ textarea::placeholder, input::placeholder {
   margin-top: 0.5rem;
 }
 .video-caption a { color: var(--ink2); font-weight: 700; }
+
+.cite {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink3);
+  margin-top: 0.4rem;
+  font-style: italic;
+}
+
+.program-item { margin-top: 0.55rem; }
+.program-item .ptitle {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink2);
+  margin-bottom: 0.15rem;
+}
+.program-item .pdesc {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ink3);
+}
+.program-item .pdesc a { color: var(--ink2); font-weight: 700; }
 
 .tts-btn {
   font-family: 'Quicksand', sans-serif;
@@ -663,14 +676,21 @@ textarea::placeholder, input::placeholder {
     <div class="info-box" style="background:var(--sky-light);color:var(--ink2);">
       <span class="lbl" style="color:var(--sky);" data-key="p2_box_lbl">How common is it, really</span>
       <span data-key="p2_box_txt">Across the Philippines, Vietnam, and Cambodia, most children experience some form of violent discipline at home. Most parents who use it experienced it themselves as children.</span>
+      <div class="cite" data-key="p2_box_cite">National Baseline Study on Violence Against Children, Council for the Welfare of Children &amp; UNICEF, 2016 · Cambodia Demographic and Health Survey, 2021–2022</div>
     </div>
     <div class="info-box" style="background:var(--gold-light);color:var(--ink2);">
       <span class="lbl" style="color:var(--gold);" data-key="p2_box2_lbl">What the research found</span>
       <span data-key="p2_box2_txt">Decades of studies link it to more aggression, anxiety, and a weaker bond between parent and child, not better behavior. The one thing it reliably teaches is fear, in that moment.</span>
+      <div class="cite" data-key="p2_box2_cite">Gershoff &amp; Grogan-Kaylor, meta-analysis of 75 studies, Journal of Family Psychology, 2016</div>
     </div>
-    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);" data-key="p2_note">That is why PAUSE exists. Not to judge you, but to give you what you were never given: another way.</div>
+    <div class="video-frame-wrap" style="margin-top:0.75rem;">
+      <iframe class="video-frame" src="https://www.youtube.com/embed/yZON-FsIv2Y" title="Effects of Corporal Punishment on Children" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <div class="video-caption" data-key="p2_video_cap">"Effects of Corporal Punishment on Children" · animated research summary citing Alampay, Godwin &amp; Lansford (English) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);margin-top:0.6rem;" data-key="p2_note">That is why PAUSE exists. Not to judge you, but to give you what you were never given: another way.</div>
   </div>
 </div>
+
 
 <!-- ══ PAGE 3: REFLECTION OPENER ══ -->
 <div id="page-3" class="page">
@@ -698,11 +718,20 @@ textarea::placeholder, input::placeholder {
     <div class="info-box" style="background:var(--grass-light);color:var(--ink2);">
       <span class="lbl" style="color:var(--grass);" data-key="p4_box_lbl">Not new. Tested.</span>
       <span data-key="p4_box_txt">Programs built on positive discipline have been studied with thousands of parents across Asia, including here in the Philippines, and consistently lower harsh punishment.</span>
+      <div class="cite" data-key="p4_box_cite">Lachman et al., randomized controlled trial of the MaPa parenting program, The Lancet Regional Health – Western Pacific, 2021</div>
     </div>
-    <div class="info-box" style="background:var(--gold-light);color:var(--ink2);" data-key="p4_gold">The five steps ahead, Pause, Ask, Understand, Support, Encourage, are your tool for putting this into practice, one moment at a time.</div>
-    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);" data-key="p4_note">Punishment stops a behavior for a moment. Teaching changes it for good.</div>
+    <div class="info-box" style="background:var(--gold-light);color:var(--ink2);">
+      <span data-key="p4_gold">The five steps ahead, Pause, Ask, Understand, Support, Encourage, are your tool for putting this into practice, one moment at a time.</span>
+      <div class="cite" data-key="p4_gold_cite">Positive discipline is also the standard named in Philippine law: Republic Act No. 11648 (2022)</div>
+    </div>
+    <div class="video-frame-wrap" style="margin-top:0.75rem;">
+      <iframe class="video-frame" src="https://www.youtube.com/embed/YNr6vSgkzBI" title="UNICEF Positive Discipline Short Film" loading="lazy" allowfullscreen></iframe>
+    </div>
+    <div class="video-caption" data-key="p4_video_cap">"Positive Discipline Short Film" · UNICEF (English) · <a href="https://www.youtube.com/watch?v=YNr6vSgkzBI" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);margin-top:0.6rem;" data-key="p4_note">Punishment stops a behavior for a moment. Teaching changes it for good.</div>
   </div>
 </div>
+
 
 <!-- ══ PAGE 5: P ══ -->
 <div id="page-5" class="page">
@@ -971,42 +1000,53 @@ textarea::placeholder, input::placeholder {
   <div class="page-art" style="background-image:url('assets1/14.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p16_label">Moving forward</div>
-    <div class="section-head" style="color:var(--mauve);" data-key="p16_head">You do not have to do this alone.</div>
-    <div class="section-sub" data-key="p16_sub">If you want ongoing support, or you are worried about a child right now, here is where to go.</div>
+    <div class="section-head" style="color:var(--mauve);" data-key="p16_head">Your next step, guided.</div>
+    <div class="section-sub" data-key="p16_sub">Whatever you need next, here is exactly where to go. You do not have to figure this out alone.</div>
 
     <div style="border-radius:14px;border:1.5px solid var(--border);padding:0.85rem 1.05rem;background:rgba(255,255,255,0.7);">
-      <div class="scenario-lbl" style="margin-bottom:0.65rem;" data-key="p16_hotline_lbl">If you need to reach out</div>
+      <div class="scenario-lbl" style="margin-bottom:0.65rem;" data-key="p16_hotline_lbl">If a child is in danger right now</div>
       <div class="hotline-row"><span class="hotline-country">🇵🇭 Makabata Helpline</span><span class="hotline-num" style="color:var(--sky);">1383</span></div>
       <div class="hotline-row"><span class="hotline-country">🇻🇳 Child Protection Line</span><span class="hotline-num" style="color:var(--grass);">111</span></div>
       <div class="hotline-row"><span class="hotline-country">🇰🇭 Child Helpline</span><span class="hotline-num" style="color:var(--gold);">1280</span></div>
     </div>
 
     <div class="info-box" style="background:var(--cream);color:var(--ink2);margin-top:0.75rem;">
-      <span class="lbl" style="color:var(--ink3);" data-key="p16_learn_lbl">Keep learning positive discipline</span>
-      <span data-key="p16_learn_txt">Ask your barangay or local social welfare office about positive parenting sessions, or reach the Council for the Welfare of Children in the Philippines, the 111 counseling line in Vietnam, or the Ministry of Women's Affairs in Cambodia.</span>
+      <span class="lbl" style="color:var(--ink3);" data-key="p16_ph_lbl">🇵🇭 To keep building this skill, in the Philippines</span>
+      <div class="program-item">
+        <div class="ptitle" data-key="p16_ph_p1_title">Ask your 4Ps or barangay social worker about Family Development Sessions</div>
+        <div class="pdesc" data-key="p16_ph_p1_desc">These sessions now use the MaPa (Masayang Pamilya) module, a positive parenting program tested with Filipino families under DSWD's conditional cash transfer system.</div>
+      </div>
+      <div class="program-item">
+        <div class="ptitle" data-key="p16_ph_p2_title">Bring PETA's "Love Does Not Hurt" campaign to your community</div>
+        <div class="pdesc" data-key="p16_ph_p2_desc">PETA's ARTS Zone project uses theater and workshops to teach positive discipline in schools and barangays, including in Valenzuela. <a href="https://petatheater.com/arts-zone/" target="_blank" rel="noopener">petatheater.com/arts-zone ↗</a></div>
+      </div>
     </div>
 
-    <div class="video-section">
-      <div class="scenario-lbl" style="margin-top:0.85rem;margin-bottom:0.5rem;" data-key="p16_video1_head">Understanding the research</div>
-      <div class="video-toggle">
-        <button type="button" class="video-tab active" onclick="showVideo(this,'vid-cp-1')" data-key="p16_video1_tab1">Option 1</button>
-        <button type="button" class="video-tab" onclick="showVideo(this,'vid-cp-2')" data-key="p16_video1_tab2">Option 2</button>
+    <div class="info-box" style="background:var(--cream);color:var(--ink2);margin-top:0.6rem;">
+      <span class="lbl" style="color:var(--ink3);" data-key="p16_vn_lbl">🇻🇳 To keep building this skill, in Vietnam</span>
+      <div class="program-item">
+        <div class="ptitle" data-key="p16_vn_p1_title">Ask about "Nobody's Perfect" parenting training</div>
+        <div class="pdesc" data-key="p16_vn_p1_desc">Delivered with MOLISA and local employers or community centers for caregivers of children under 8.</div>
       </div>
-      <div class="video-frame-wrap">
-        <iframe id="vid-cp-1" class="video-frame" src="https://www.youtube.com/embed/yZON-FsIv2Y" title="Effects of Corporal Punishment on Children" loading="lazy" allowfullscreen></iframe>
-        <iframe id="vid-cp-2" class="video-frame" style="display:none" src="https://www.youtube.com/embed/0aw8caswKjE" title="Corporal Punishment of Children and Public Health" loading="lazy" allowfullscreen></iframe>
+      <div class="program-item">
+        <div class="ptitle" data-key="p16_vn_p2_title">Call 111 for more than emergencies</div>
+        <div class="pdesc" data-key="p16_vn_p2_desc">The national child protection line also offers ongoing parenting counseling, not only crisis reporting.</div>
       </div>
-      <div class="video-caption" id="vid-cp-1-cap" data-key="p16_video1_cap1">"Effects of Corporal Punishment on Children" · animated research summary (English) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
-      <div class="video-caption" id="vid-cp-2-cap" style="display:none" data-key="p16_video1_cap2">"Corporal Punishment of Children and Public Health" (English) · <a href="https://www.youtube.com/watch?v=0aw8caswKjE" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
     </div>
 
-    <div class="video-section" style="margin-top:0.9rem;">
-      <div class="scenario-lbl" style="margin-bottom:0.5rem;" data-key="p16_video2_head">What positive discipline looks like</div>
-      <div class="video-frame-wrap">
-        <iframe class="video-frame" src="https://www.youtube.com/embed/YNr6vSgkzBI" title="UNICEF Positive Discipline Short Film" loading="lazy" allowfullscreen></iframe>
+    <div class="info-box" style="background:var(--cream);color:var(--ink2);margin-top:0.6rem;">
+      <span class="lbl" style="color:var(--ink3);" data-key="p16_kh_lbl">🇰🇭 To keep building this skill, in Cambodia</span>
+      <div class="program-item">
+        <div class="ptitle" data-key="p16_kh_p1_title">Join a Positive Parenting Programme session</div>
+        <div class="pdesc" data-key="p16_kh_p1_desc">Run through your commune Ministry of Women's Affairs office, with training on communication and nonviolent discipline.</div>
       </div>
-      <div class="video-caption" data-key="p16_video2_cap">"Positive Discipline Short Film" · UNICEF (English) · <a href="https://www.youtube.com/watch?v=YNr6vSgkzBI" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
+      <div class="program-item">
+        <div class="ptitle" data-key="p16_kh_p2_title">Message the ParentingTips chatbot</div>
+        <div class="pdesc" data-key="p16_kh_p2_desc">Free on Telegram, or call 1279 to register for tips by voice call.</div>
+      </div>
     </div>
+
+    <div style="font-family:'Quicksand',sans-serif;font-size:12px;font-weight:500;line-height:1.6;color:var(--ink3);margin-top:0.75rem;" data-key="p16_note">Want to revisit the research or the film on positive discipline? They are on the earlier pages of this toolkit, anytime you need them again.</div>
   </div>
 </div>
 
@@ -1103,6 +1143,9 @@ en: {
   p2_box_txt: 'Across the Philippines, Vietnam, and Cambodia, most children experience some form of violent discipline at home. Most parents who use it experienced it themselves as children.',
   p2_box2_lbl: 'What the research found',
   p2_box2_txt: 'Decades of studies link it to more aggression, anxiety, and a weaker bond between parent and child, not better behavior. The one thing it reliably teaches is fear, in that moment.',
+  p2_box_cite: 'National Baseline Study on Violence Against Children, Council for the Welfare of Children & UNICEF, 2016 · Cambodia Demographic and Health Survey, 2021–2022',
+  p2_box2_cite: 'Gershoff & Grogan-Kaylor, meta-analysis of 75 studies, Journal of Family Psychology, 2016',
+  p2_video_cap: '"Effects of Corporal Punishment on Children" · animated research summary citing Alampay, Godwin & Lansford (English) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">Watch on YouTube ↗</a>',
   p2_note: 'That is why PAUSE exists. Not to judge you, but to give you what you were never given: another way.',
 
   p4_label: 'Before Step 1 · What is positive discipline?',
@@ -1110,6 +1153,9 @@ en: {
   p4_sub: 'Positive discipline is not permissiveness. It still says no. It still has rules and consequences. What changes is how you get there.',
   p4_box_lbl: 'Not new. Tested.',
   p4_box_txt: 'Programs built on positive discipline have been studied with thousands of parents across Asia, including here in the Philippines, and consistently lower harsh punishment.',
+  p4_box_cite: 'Lachman et al., randomized controlled trial of the MaPa parenting program, The Lancet Regional Health – Western Pacific, 2021',
+  p4_gold_cite: 'Positive discipline is also the standard named in Philippine law: Republic Act No. 11648 (2022)',
+  p4_video_cap: '"Positive Discipline Short Film" · UNICEF (English) · <a href="https://www.youtube.com/watch?v=YNr6vSgkzBI" target="_blank" rel="noopener">Watch on YouTube ↗</a>',
   p4_gold: 'The five steps ahead, Pause, Ask, Understand, Support, Encourage, are your tool for putting this into practice, one moment at a time.',
   p4_note: 'Punishment stops a behavior for a moment. Teaching changes it for good.',
 
@@ -1212,17 +1258,25 @@ en: {
   form_submit: 'Save my story',
 
   p16_label: 'Moving forward',
-  p16_head: 'You do not have to do this alone.',
-  p16_sub: 'If you want ongoing support, or you are worried about a child right now, here is where to go.',
-  p16_hotline_lbl: 'If you need to reach out',
-  p16_learn_lbl: 'Keep learning positive discipline',
-  p16_learn_txt: 'Ask your barangay or local social welfare office about positive parenting sessions, or reach the Council for the Welfare of Children in the Philippines, the 111 counseling line in Vietnam, or the Ministry of Women\'s Affairs in Cambodia.',
-  p16_video1_head: 'Understanding the research',
-  p16_video1_tab1: 'Option 1', p16_video1_tab2: 'Option 2',
-  p16_video1_cap1: '"Effects of Corporal Punishment on Children" · animated research summary (English) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">Watch on YouTube ↗</a>',
-  p16_video1_cap2: '"Corporal Punishment of Children and Public Health" (English) · <a href="https://www.youtube.com/watch?v=0aw8caswKjE" target="_blank" rel="noopener">Watch on YouTube ↗</a>',
-  p16_video2_head: 'What positive discipline looks like',
-  p16_video2_cap: '"Positive Discipline Short Film" · UNICEF (English) · <a href="https://www.youtube.com/watch?v=YNr6vSgkzBI" target="_blank" rel="noopener">Watch on YouTube ↗</a>',
+  p16_head: 'Your next step, guided.',
+  p16_sub: 'Whatever you need next, here is exactly where to go. You do not have to figure this out alone.',
+  p16_hotline_lbl: 'If a child is in danger right now',
+  p16_ph_lbl: '🇵🇭 To keep building this skill, in the Philippines',
+  p16_ph_p1_title: 'Ask your 4Ps or barangay social worker about Family Development Sessions',
+  p16_ph_p1_desc: 'These sessions now use the MaPa (Masayang Pamilya) module, a positive parenting program tested with Filipino families under DSWD\'s conditional cash transfer system.',
+  p16_ph_p2_title: 'Bring PETA\'s "Love Does Not Hurt" campaign to your community',
+  p16_ph_p2_desc: 'PETA\'s ARTS Zone project uses theater and workshops to teach positive discipline in schools and barangays, including in Valenzuela. <a href="https://petatheater.com/arts-zone/" target="_blank" rel="noopener">petatheater.com/arts-zone ↗</a>',
+  p16_vn_lbl: '🇻🇳 To keep building this skill, in Vietnam',
+  p16_vn_p1_title: 'Ask about "Nobody\'s Perfect" parenting training',
+  p16_vn_p1_desc: 'Delivered with MOLISA and local employers or community centers for caregivers of children under 8.',
+  p16_vn_p2_title: 'Call 111 for more than emergencies',
+  p16_vn_p2_desc: 'The national child protection line also offers ongoing parenting counseling, not only crisis reporting.',
+  p16_kh_lbl: '🇰🇭 To keep building this skill, in Cambodia',
+  p16_kh_p1_title: 'Join a Positive Parenting Programme session',
+  p16_kh_p1_desc: 'Run through your commune Ministry of Women\'s Affairs office, with training on communication and nonviolent discipline.',
+  p16_kh_p2_title: 'Message the ParentingTips chatbot',
+  p16_kh_p2_desc: 'Free on Telegram, or call 1279 to register for tips by voice call.',
+  p16_note: 'Want to revisit the research or the film on positive discipline? They are on the earlier pages of this toolkit, anytime you need them again.',
   tts_listen: '🔊 Listen',
 
   p17_label: 'Your pocket card · Keep this close',
@@ -1263,6 +1317,9 @@ fil: {
   p2_box_txt: 'Sa Pilipinas, Vietnam, at Cambodia, karamihan sa mga bata ay nakararanas ng ilang uri ng marahas na disiplina sa tahanan. Karamihan sa mga magulang na gumagamit nito ay naranasan din ito noong bata pa sila.',
   p2_box2_lbl: 'Ano ang natuklasan ng pananaliksik',
   p2_box2_txt: 'Dekada nang pag-aaral ang nag-uugnay nito sa higit na agresyon, pagkabalisa, at mas mahinang ugnayan ng magulang at anak, hindi mas mabuting asal. Ang tanging natutunan nito nang tiyak ay ang takot, sa sandaling iyon.',
+  p2_box_cite: 'National Baseline Study on Violence Against Children, Council for the Welfare of Children & UNICEF, 2016 · Cambodia Demographic and Health Survey, 2021–2022',
+  p2_box2_cite: 'Gershoff & Grogan-Kaylor, meta-analysis ng 75 pag-aaral, Journal of Family Psychology, 2016',
+  p2_video_cap: '"Effects of Corporal Punishment on Children" · animadong buod ng pananaliksik na may sipi mula kina Alampay, Godwin & Lansford (Ingles) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">Panoorin sa YouTube ↗</a>',
   p2_note: 'Kaya\'t umiiral ang PAUSE. Hindi para husgahan ka, kundi para bigyan ka ng hindi mo natanggap noon: ibang paraan.',
 
   p4_label: 'Bago ang Hakbang 1 · Ano ang positibong disiplina?',
@@ -1270,6 +1327,9 @@ fil: {
   p4_sub: 'Ang positibong disiplina ay hindi pagpapabaya. May "hindi" pa rin ito. May mga panuntunan at bunga pa rin. Ang nagbabago ay kung paano ka makakarating doon.',
   p4_box_lbl: 'Hindi bago. Napatunayan na.',
   p4_box_txt: 'Ang mga programang nakabatay sa positibong disiplina ay pinag-aralan na sa libu-libong magulang sa buong Asya, kabilang na dito sa Pilipinas, at pare-parehong nagpapababa ng malupit na parusa.',
+  p4_box_cite: 'Lachman et al., randomized controlled trial ng programang MaPa, The Lancet Regional Health – Western Pacific, 2021',
+  p4_gold_cite: 'Ang positibong disiplina ay siya ring pamantayang nakasaad sa batas ng Pilipinas: Republic Act No. 11648 (2022)',
+  p4_video_cap: '"Positive Discipline Short Film" · UNICEF (Ingles) · <a href="https://www.youtube.com/watch?v=YNr6vSgkzBI" target="_blank" rel="noopener">Panoorin sa YouTube ↗</a>',
   p4_gold: 'Ang limang hakbang sa susunod, Huminto, Magtanong, Umintindi, Suportahan, Hikayatin, ang iyong kagamitan upang isabuhay ito, isang sandali sa isang pagkakataon.',
   p4_note: 'Ang parusa ay pansamantalang nagpapatigil sa isang asal. Ang pagtuturo ay binabago ito nang tuluyan.',
 
@@ -1372,17 +1432,25 @@ fil: {
   form_submit: 'I-save ang aking kwento',
 
   p16_label: 'Pagpapatuloy',
-  p16_head: 'Hindi mo kailangang gawin ito nang mag-isa.',
-  p16_sub: 'Kung nais mo ng patuloy na suporta, o nag-aalala ka tungkol sa isang bata ngayon, narito kung saan pupunta.',
-  p16_hotline_lbl: 'Kung kailangan mong makipag-ugnayan',
-  p16_learn_lbl: 'Patuloy na matuto ng positibong disiplina',
-  p16_learn_txt: 'Magtanong sa inyong barangay o lokal na social welfare office tungkol sa mga positibong parenting session, o makipag-ugnayan sa Council for the Welfare of Children sa Pilipinas, sa 111 counseling line sa Vietnam, o sa Ministry of Women\'s Affairs sa Cambodia.',
-  p16_video1_head: 'Pag-unawa sa pananaliksik',
-  p16_video1_tab1: 'Opsyon 1', p16_video1_tab2: 'Opsyon 2',
-  p16_video1_cap1: '"Effects of Corporal Punishment on Children" · animadong buod ng pananaliksik (Ingles) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">Panoorin sa YouTube ↗</a>',
-  p16_video1_cap2: '"Corporal Punishment of Children and Public Health" (Ingles) · <a href="https://www.youtube.com/watch?v=0aw8caswKjE" target="_blank" rel="noopener">Panoorin sa YouTube ↗</a>',
-  p16_video2_head: 'Kung ano ang itsura ng positibong disiplina',
-  p16_video2_cap: '"Positive Discipline Short Film" · UNICEF (Ingles) · <a href="https://www.youtube.com/watch?v=YNr6vSgkzBI" target="_blank" rel="noopener">Panoorin sa YouTube ↗</a>',
+  p16_head: 'Ang susunod mong hakbang, ginagabayan.',
+  p16_sub: 'Anuman ang kailangan mo pagkatapos nito, narito nang eksakto kung saan pupunta. Hindi mo kailangang gawin itong mag-isa.',
+  p16_hotline_lbl: 'Kung nasa panganib ang isang bata ngayon',
+  p16_ph_lbl: '🇵🇭 Para patuloy na matuto, sa Pilipinas',
+  p16_ph_p1_title: 'Magtanong sa inyong 4Ps o barangay social worker tungkol sa Family Development Sessions',
+  p16_ph_p1_desc: 'Ginagamit na ng mga sesyong ito ang MaPa (Masayang Pamilya) module, isang positibong parenting program na sinubok sa mga pamilyang Pilipino sa ilalim ng conditional cash transfer system ng DSWD.',
+  p16_ph_p2_title: 'Dalhin ang "Love Does Not Hurt" campaign ng PETA sa inyong komunidad',
+  p16_ph_p2_desc: 'Gumagamit ang ARTS Zone project ng PETA ng teatro at workshop upang ituro ang positibong disiplina sa mga paaralan at barangay, kasama na ang Valenzuela. <a href="https://petatheater.com/arts-zone/" target="_blank" rel="noopener">petatheater.com/arts-zone ↗</a>',
+  p16_vn_lbl: '🇻🇳 Para patuloy na matuto, sa Vietnam',
+  p16_vn_p1_title: 'Magtanong tungkol sa "Nobody\'s Perfect" na pagsasanay sa pagiging magulang',
+  p16_vn_p1_desc: 'Ibinibigay kasama ng MOLISA at mga lokal na employer o community center para sa mga tagapag-alaga ng batang wala pang 8 taong gulang.',
+  p16_vn_p2_title: 'Tumawag sa 111 kahit hindi emerhensiya',
+  p16_vn_p2_desc: 'Ang pambansang child protection line ay nag-aalok din ng patuloy na parenting counseling, hindi lamang para sa pag-uulat ng krisis.',
+  p16_kh_lbl: '🇰🇭 Para patuloy na matuto, sa Cambodia',
+  p16_kh_p1_title: 'Sumali sa isang sesyon ng Positive Parenting Programme',
+  p16_kh_p1_desc: 'Isinasagawa sa pamamagitan ng commune Ministry of Women\'s Affairs office, na may pagsasanay sa komunikasyon at hindi marahas na disiplina.',
+  p16_kh_p2_title: 'Mag-message sa ParentingTips chatbot',
+  p16_kh_p2_desc: 'Libre sa Telegram, o tumawag sa 1279 upang magparehistro para sa mga tip sa pamamagitan ng tawag.',
+  p16_note: 'Gusto mo bang balikan ang pananaliksik o ang pelikula tungkol sa positibong disiplina? Nasa mga naunang pahina ng toolkit na ito, anumang oras mo kailangan ang mga ito.',
   tts_listen: '🔊 Pakinggan',
 
   p17_label: 'Ang iyong pocket card · Itago ito nang malapit',
@@ -1423,6 +1491,9 @@ vi: {
   p2_box_txt: 'Ở Philippines, Việt Nam, và Campuchia, hầu hết trẻ em đều từng trải qua một hình thức kỷ luật bạo lực nào đó tại nhà. Hầu hết phụ huynh dùng cách này cũng từng bị đối xử như vậy khi còn nhỏ.',
   p2_box2_lbl: 'Nghiên cứu đã phát hiện điều gì',
   p2_box2_txt: 'Nhiều thập kỷ nghiên cứu cho thấy nó liên quan đến sự hung hăng, lo âu nhiều hơn, và mối quan hệ cha mẹ - con cái yếu hơn, chứ không phải hành vi tốt hơn. Điều duy nhất nó chắc chắn dạy được là nỗi sợ, ngay tại thời điểm đó.',
+  p2_box_cite: 'National Baseline Study on Violence Against Children, Hội đồng Phúc lợi Trẻ em & UNICEF, 2016 · Khảo sát Nhân khẩu học và Sức khỏe Campuchia, 2021–2022',
+  p2_box2_cite: 'Gershoff & Grogan-Kaylor, phân tích tổng hợp 75 nghiên cứu, Journal of Family Psychology, 2016',
+  p2_video_cap: '"Effects of Corporal Punishment on Children" · tóm tắt nghiên cứu dạng hoạt hình, trích dẫn Alampay, Godwin & Lansford (tiếng Anh) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">Xem trên YouTube ↗</a>',
   p2_note: 'Đó là lý do PAUSE ra đời. Không phải để phán xét bạn, mà để trao cho bạn điều bạn chưa từng được dạy: một cách khác.',
 
   p4_label: 'Trước Bước 1 · Kỷ luật tích cực là gì?',
@@ -1430,6 +1501,9 @@ vi: {
   p4_sub: 'Kỷ luật tích cực không phải là dễ dãi. Nó vẫn nói không. Nó vẫn có quy tắc và hậu quả. Điều thay đổi là cách bạn đi đến đó.',
   p4_box_lbl: 'Không mới. Đã được kiểm chứng.',
   p4_box_txt: 'Các chương trình dựa trên kỷ luật tích cực đã được nghiên cứu với hàng nghìn phụ huynh khắp châu Á, kể cả tại Philippines, và luôn cho thấy giảm được hình phạt hà khắc.',
+  p4_box_cite: 'Lachman et al., thử nghiệm ngẫu nhiên có đối chứng chương trình MaPa, The Lancet Regional Health – Western Pacific, 2021',
+  p4_gold_cite: 'Kỷ luật tích cực cũng là tiêu chuẩn được nêu trong luật Philippines: Republic Act No. 11648 (2022)',
+  p4_video_cap: '"Positive Discipline Short Film" · UNICEF (tiếng Anh) · <a href="https://www.youtube.com/watch?v=YNr6vSgkzBI" target="_blank" rel="noopener">Xem trên YouTube ↗</a>',
   p4_gold: 'Năm bước phía sau, Dừng lại, Hỏi, Hiểu, Hỗ trợ, Động viên, chính là công cụ để bạn áp dụng điều này, từng khoảnh khắc một.',
   p4_note: 'Hình phạt chỉ ngăn hành vi trong chốc lát. Việc dạy dỗ thay đổi nó lâu dài.',
 
@@ -1532,17 +1606,25 @@ vi: {
   form_submit: 'Lưu câu chuyện của tôi',
 
   p16_label: 'Bước tiếp theo',
-  p16_head: 'Bạn không cần phải tự mình làm điều này.',
-  p16_sub: 'Nếu bạn muốn được hỗ trợ lâu dài, hoặc đang lo lắng cho một đứa trẻ ngay lúc này, đây là nơi bạn có thể liên hệ.',
-  p16_hotline_lbl: 'Nếu bạn cần liên hệ',
-  p16_learn_lbl: 'Tiếp tục học về kỷ luật tích cực',
-  p16_learn_txt: 'Hỏi văn phòng phúc lợi xã hội địa phương về các buổi nuôi dạy con tích cực, hoặc liên hệ Hội đồng Phúc lợi Trẻ em tại Philippines, đường dây tư vấn 111 tại Việt Nam, hoặc Bộ Phụ nữ tại Campuchia.',
-  p16_video1_head: 'Tìm hiểu nghiên cứu',
-  p16_video1_tab1: 'Lựa chọn 1', p16_video1_tab2: 'Lựa chọn 2',
-  p16_video1_cap1: '"Effects of Corporal Punishment on Children" · tóm tắt nghiên cứu dạng hoạt hình (tiếng Anh) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">Xem trên YouTube ↗</a>',
-  p16_video1_cap2: '"Corporal Punishment of Children and Public Health" (tiếng Anh) · <a href="https://www.youtube.com/watch?v=0aw8caswKjE" target="_blank" rel="noopener">Xem trên YouTube ↗</a>',
-  p16_video2_head: 'Kỷ luật tích cực trông như thế nào',
-  p16_video2_cap: '"Positive Discipline Short Film" · UNICEF (tiếng Anh) · <a href="https://www.youtube.com/watch?v=YNr6vSgkzBI" target="_blank" rel="noopener">Xem trên YouTube ↗</a>',
+  p16_head: 'Bước tiếp theo của bạn, có hướng dẫn.',
+  p16_sub: 'Dù bạn cần gì tiếp theo, đây chính xác là nơi để đến. Bạn không cần tự mình tìm hiểu điều này.',
+  p16_hotline_lbl: 'Nếu một đứa trẻ đang gặp nguy hiểm ngay lúc này',
+  p16_ph_lbl: '🇵🇭 Để tiếp tục học, tại Philippines',
+  p16_ph_p1_title: 'Hỏi nhân viên xã hội 4Ps hoặc barangay về Buổi Phát triển Gia đình',
+  p16_ph_p1_desc: 'Các buổi này hiện dùng mô-đun MaPa (Masayang Pamilya), một chương trình nuôi dạy con tích cực đã được thử nghiệm với các gia đình Philippines trong hệ thống chuyển tiền mặt có điều kiện của DSWD.',
+  p16_ph_p2_title: 'Mang chiến dịch "Love Does Not Hurt" của PETA đến cộng đồng bạn',
+  p16_ph_p2_desc: 'Dự án ARTS Zone của PETA dùng sân khấu và hội thảo để dạy kỷ luật tích cực tại trường học và cộng đồng, kể cả tại Valenzuela. <a href="https://petatheater.com/arts-zone/" target="_blank" rel="noopener">petatheater.com/arts-zone ↗</a>',
+  p16_vn_lbl: '🇻🇳 Để tiếp tục học, tại Việt Nam',
+  p16_vn_p1_title: 'Hỏi về khóa đào tạo nuôi dạy con "Nobody\'s Perfect"',
+  p16_vn_p1_desc: 'Được triển khai cùng MOLISA và các doanh nghiệp hoặc trung tâm cộng đồng địa phương cho người chăm sóc trẻ dưới 8 tuổi.',
+  p16_vn_p2_title: 'Gọi 111 không chỉ khi khẩn cấp',
+  p16_vn_p2_desc: 'Đường dây bảo vệ trẻ em quốc gia cũng cung cấp tư vấn nuôi dạy con liên tục, không chỉ để báo cáo khủng hoảng.',
+  p16_kh_lbl: '🇰🇭 Để tiếp tục học, tại Campuchia',
+  p16_kh_p1_title: 'Tham gia một buổi của Chương trình Nuôi dạy con Tích cực',
+  p16_kh_p1_desc: 'Được tổ chức qua văn phòng Bộ Phụ nữ cấp xã, với đào tạo về giao tiếp và kỷ luật phi bạo lực.',
+  p16_kh_p2_title: 'Nhắn tin cho chatbot ParentingTips',
+  p16_kh_p2_desc: 'Miễn phí trên Telegram, hoặc gọi 1279 để đăng ký nhận mẹo qua cuộc gọi thoại.',
+  p16_note: 'Muốn xem lại nghiên cứu hoặc đoạn phim về kỷ luật tích cực? Chúng nằm ở các trang trước của bộ công cụ này, bất cứ khi nào bạn cần lại.',
   tts_listen: '🔊 Nghe',
 
   p17_label: 'Thẻ bỏ túi · Giữ thẻ này bên mình',
@@ -1583,6 +1665,9 @@ kh: {
   p2_box_txt: 'នៅទូទាំងប្រទេសហ្វីលីពីន វៀតណាម និងកម្ពុជា កុមារភាគច្រើនជួបប្រទះនូវទម្រង់នៃវិន័យហិង្សាមួយចំនួននៅផ្ទះ។ ឪពុកម្តាយភាគច្រើនដែលប្រើវិធីនេះ ធ្លាប់ជួបប្រទះវាដូចគ្នាកាលពីនៅក្មេង។',
   p2_box2_lbl: 'អ្វីដែលការស្រាវជ្រាវបានរកឃើញ',
   p2_box2_txt: 'ការសិក្សារាប់ទសវត្សរ៍បានបង្ហាញថាទណ្ឌកម្មរាងកាយទាក់ទងនឹងអំពើឃោរឃៅ ការថប់បារម្ភកាន់តែច្រើន និងទំនាក់ទំនងឪពុកម្តាយកូនកាន់តែខ្សោយ មិនមែនអាកប្បកិរិយាល្អជាងនោះទេ។ អ្វីតែមួយគត់ដែលវាបង្រៀនប្រាកដគឺភាពភ័យខ្លាចនៅពេលនោះ។',
+  p2_box_cite: 'National Baseline Study on Violence Against Children, Council for the Welfare of Children & UNICEF, 2016 · Cambodia Demographic and Health Survey, 2021–2022',
+  p2_box2_cite: 'Gershoff & Grogan-Kaylor, meta-analysis of 75 studies, Journal of Family Psychology, 2016',
+  p2_video_cap: '"Effects of Corporal Punishment on Children" · សេចក្តីសង្ខេបស្រាវជ្រាវជានិមិតរូបផ្គែយពី Alampay, Godwin & Lansford (ភាសាអង្គ្លេស) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">មើលនៅលើ YouTube ↗</a>',
   p2_note: 'នេះហើយជាមូលហេតុដែល PAUSE កើតមាន។ មិនមែនដើម្បីវិនិច្ឆ័យអ្នកនោះទេ ប៉ុន្តែដើម្បីផ្តល់ឱ្យអ្នកនូវអ្វីដែលអ្នកមិនដែលទទួលបាន: មធ្យោបាយផ្សេង។',
 
   p4_label: 'មុនជំហានទី១ · តើវិន័យវិជ្ជមានជាអ្វី?',
@@ -1590,6 +1675,9 @@ kh: {
   p4_sub: 'វិន័យវិជ្ជមានមិនមែនជាការអនុញ្ញាតគ្រប់យ៉ាងនោះទេ។ វានៅតែនិយាយថាទេ។ វានៅតែមានច្បាប់ និងផលវិបាក។ អ្វីដែលផ្លាស់ប្តូរគឺរបៀបដែលអ្នកទៅដល់ទីនោះ។',
   p4_box_lbl: 'មិនថ្មីទេ។ បានសាកល្បងរួចហើយ។',
   p4_box_txt: 'កម្មវិធីដែលបង្កើតឡើងលើវិន័យវិជ្ជមានត្រូវបានសិក្សាជាមួយឪពុកម្តាយរាប់ពាន់នាក់ទូទាំងអាស៊ី រួមទាំងនៅហ្វីលីពីនផងដែរ ហើយជានិច្ចកាលបានកាត់បន្ថយទណ្ឌកម្មដ៏ធ្ងន់ធ្ងរ។',
+  p4_box_cite: 'Lachman et al., ការសិក្សាសាកល្បងចៃដន្យត្រួតពិនិត្យលើកម្មវិធី MaPa, The Lancet Regional Health – Western Pacific, 2021',
+  p4_gold_cite: 'វិន័យវិជ្ជមានក៏ជាស្តង់ដារដែលមានចែងក្នុងច្បាប់ហ្វីលីពីនផងដែរ: Republic Act No. 11648 (2022)',
+  p4_video_cap: '"Positive Discipline Short Film" · UNICEF (ភាសាអង្គ្លេស) · <a href="https://www.youtube.com/watch?v=YNr6vSgkzBI" target="_blank" rel="noopener">មើលនៅលើ YouTube ↗</a>',
   p4_gold: 'ជំហានទាំងប្រាំខាងមុខ ផ្អាក សួរ យល់ គាំទ្រ លើកទឹកចិត្ត គឺជាឧបករណ៍របស់អ្នកសម្រាប់អនុវត្តវានេះ ម្តងមួយភ្លែត។',
   p4_note: 'ទណ្ឌកម្មបញ្ឈប់អាកប្បកិរិយាមួយភ្លែតតែប៉ុណ្ណោះ។ ការបង្រៀនផ្លាស់ប្តូរវាជាអចិន្ត្រៃយ៍។',
 
@@ -1692,17 +1780,25 @@ kh: {
   form_submit: 'រក្សាទុករឿងរ៉ាវរបស់ខ្ញុំ',
 
   p16_label: 'ជំហានបន្ទាប់',
-  p16_head: 'អ្នកមិនចាំបាច់ធ្វើវាតែម្នាក់ឯងទេ។',
-  p16_sub: 'ប្រសិនបើអ្នកចង់បានការគាំទ្របន្ត ឬកំពុងព្រួយបារម្ភអំពីកុមារម្នាក់ឥឡូវនេះ នេះជាកន្លែងដែលអ្នកគួរទៅ។',
-  p16_hotline_lbl: 'ប្រសិនបើអ្នកត្រូវការទាក់ទង',
-  p16_learn_lbl: 'បន្តរៀនអំពីវិន័យវិជ្ជមាន',
-  p16_learn_txt: 'សាកសួរការិយាល័យសង្គមកិច្ចមូលដ្ឋានរបស់អ្នកអំពីវគ្គចិញ្ចឹមកូនវិជ្ជមាន ឬទាក់ទងក្រុមប្រឹក្សាសុខុមាលភាពកុមារនៅហ្វីលីពីន ខ្សែទូរស័ព្ទប្រឹក្សា 111 នៅវៀតណាម ឬក្រសួងកិច្ចការនារីនៅកម្ពុជា។',
-  p16_video1_head: 'ការយល់ដឹងអំពីការស្រាវជ្រាវ',
-  p16_video1_tab1: 'ជម្រើសទី១', p16_video1_tab2: 'ជម្រើសទី២',
-  p16_video1_cap1: '"Effects of Corporal Punishment on Children" · សេចក្តីសង្ខេបស្រាវជ្រាវជានិមិត្តរូប (ភាសាអង់គ្លេស) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">មើលនៅលើ YouTube ↗</a>',
-  p16_video1_cap2: '"Corporal Punishment of Children and Public Health" (ភាសាអង់គ្លេស) · <a href="https://www.youtube.com/watch?v=0aw8caswKjE" target="_blank" rel="noopener">មើលនៅលើ YouTube ↗</a>',
-  p16_video2_head: 'របៀបដែលវិន័យវិជ្ជមានមើលទៅ',
-  p16_video2_cap: '"Positive Discipline Short Film" · UNICEF (ភាសាអង់គ្លេស) · <a href="https://www.youtube.com/watch?v=YNr6vSgkzBI" target="_blank" rel="noopener">មើលនៅលើ YouTube ↗</a>',
+  p16_head: 'ជំហានបន្ទាប់របស់អ្នក ជាមួយការណែនាំ។',
+  p16_sub: 'ទោះបីអ្នកត្រូវការអ្វីបន្ទាប់ក៏ដោយ នេះជាកន្លែងច្បាស់លាស់ដែលអ្នកគួរទៅ។ អ្នកមិនចាំបាច់ស្វែងយល់រឿងនេះតែម្នាក់ឯងទេ។',
+  p16_hotline_lbl: 'ប្រសិនបើកុមារកំពុងស្ថិតក្នុងគ្រោះថ្នាក់ឥឡូវនេះ',
+  p16_ph_lbl: '🇵🇭 ដើម្បីបន្តរៀន នៅហ្វីលីពីន',
+  p16_ph_p1_title: 'សាកសួរបុគ្គលិកសង្គមកិច្ច 4Ps ឬបារាំងហ្គាយ អំពីវគ្គអភិវឌ្ឍន៍គ្រួសារ',
+  p16_ph_p1_desc: 'ឥឡូវនេះវគ្គទាំងនេះប្រើម៉ូឌុល MaPa (Masayang Pamilya) ដែលជាកម្មវិធីចិញ្ចឹមកូនវិជ្ជមានដែលបានសាកល្បងជាមួយគ្រួសារហ្វីលីពីនក្រោមប្រព័ន្ធផ្ទេរប្រាក់តាមលក្ខខណ្ឌរបស់ DSWD។',
+  p16_ph_p2_title: 'នាំយកយុទ្ធនាការ "Love Does Not Hurt" របស់ PETA មកកាន់សហគមន៍អ្នក',
+  p16_ph_p2_desc: 'គម្រោង ARTS Zone របស់ PETA ប្រើល្ខោននិងសិក្ខាសាលាដើម្បីបង្រៀនវិន័យវិជ្ជមាននៅសាលារៀននិងបារាំងហ្គាយ រួមទាំងនៅ Valenzuela ។ <a href="https://petatheater.com/arts-zone/" target="_blank" rel="noopener">petatheater.com/arts-zone ↗</a>',
+  p16_vn_lbl: '🇻🇳 ដើម្បីបន្តរៀន នៅវៀតណាម',
+  p16_vn_p1_title: 'សាកសួរអំពីវគ្គបណ្តុះបណ្តាលចិញ្ចឹមកូន "Nobody\'s Perfect"',
+  p16_vn_p1_desc: 'ផ្តល់ជូនរួមជាមួយ MOLISA និងនិយោជក ឬមជ្ឈមណ្ឌលសហគមន៍មូលដ្ឋានសម្រាប់អ្នកថែទាំកុមារអាយុក្រោម ៨ ឆ្នាំ។',
+  p16_vn_p2_title: 'ទូរស័ព្ទទៅលេខ 111 មិនមែនតែពេលមានអាសន្នប៉ុណ្ណោះទេ',
+  p16_vn_p2_desc: 'ខ្សែទូរស័ព្ទការពារកុមារថ្នាក់ជាតិក៏ផ្តល់ការប្រឹក្សាចិញ្ចឹមកូនជាបន្តដែរ មិនមែនត្រឹមតែការរាយការណ៍វិបត្តិទេ។',
+  p16_kh_lbl: '🇰🇭 ដើម្បីបន្តរៀន នៅកម្ពុជា',
+  p16_kh_p1_title: 'ចូលរួមវគ្គកម្មវិធីចិញ្ចឹមកូនវិជ្ជមាន',
+  p16_kh_p1_desc: 'រៀបចំតាមរយៈការិយាល័យក្រសួងកិច្ចការនារីថ្នាក់ឃុំ ជាមួយការបណ្តុះបណ្តាលអំពីការទំនាក់ទំនងនិងវិន័យគ្មានហិង្សា។',
+  p16_kh_p2_title: 'ផ្ញើសារទៅ chatbot ParentingTips',
+  p16_kh_p2_desc: 'ឥតគិតថ្លៃលើ Telegram ឬទូរស័ព្ទទៅលេខ 1279 ដើម្បីចុះឈ្មោះទទួលព័ត៌មានតាមការហៅទូរស័ព្ទ។',
+  p16_note: 'ចង់មើលឡើងវិញនូវការស្រាវជ្រាវ ឬភាពយន្តអំពីវិន័យវិជ្ជមានទេ? ពួកវានៅលើទំព័រមុននៃឧបករណ៍នេះ ពេលណាដែលអ្នកត្រូវការវាម្តងទៀត។',
   tts_listen: '🔊 ស្តាប់',
 
   p17_label: 'កាតហោប៉ករបស់អ្នក · រក្សាវាឱ្យជិត',
@@ -1786,17 +1882,6 @@ const PAGE_IMAGES = [
   'assets/14.png','assets/14.png','assets/15.png'
 ];
 const backdropEl = document.getElementById('backdrop');
-
-function showVideo(btn, targetId) {
-  const group = btn.closest('.video-section');
-  group.querySelectorAll('.video-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  group.querySelectorAll('.video-frame').forEach(f => f.style.display = 'none');
-  group.querySelectorAll('.video-caption').forEach(c => c.style.display = 'none');
-  document.getElementById(targetId).style.display = 'block';
-  const cap = document.getElementById(targetId + '-cap');
-  if (cap) cap.style.display = 'block';
-}
 
 const speechLangMap = { en: 'en-US', fil: 'fil-PH', vi: 'vi-VN', kh: 'km-KH' };
 
