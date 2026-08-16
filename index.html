@@ -65,6 +65,8 @@ body {
   gap: 6px;
   margin-bottom: clamp(4px, 1vh, 7px);
   flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .lang-btn {
   font-family: 'Quicksand', sans-serif;
@@ -616,7 +618,7 @@ textarea::placeholder, input::placeholder {
 </head>
 <body>
 
-<div class="backdrop" id="backdrop" style="background-image:url('assets1/1.png');"></div>
+<div class="backdrop" id="backdrop" style="background-image:url('assets2/1.png');"></div>
 
 <!-- ── Language switcher ── -->
 <div class="lang-bar">
@@ -624,6 +626,7 @@ textarea::placeholder, input::placeholder {
   <button class="lang-btn" onclick="setLang('fil')">FIL</button>
   <button class="lang-btn" onclick="setLang('vi')">VI</button>
   <button class="lang-btn" onclick="setLang('kh')">ខ្មែរ</button>
+  <button class="lang-btn" onclick="setLang('ceb')">BIS</button>
   <button class="tts-btn" id="tts-btn" onclick="speakCurrentPage()" data-key="tts_listen">🔊 Listen</button>
 </div>
 
@@ -633,7 +636,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 0: COVER ══ -->
 <div id="page-0" class="page active">
-  <div class="page-art" style="background-image:url('assets1/1.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/1.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p0_label">A positive discipline toolkit</div>
     <div class="cover-title" style="color:var(--earth);">PAUSE</div>
@@ -645,7 +648,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 1: SAFEGUARDING ══ -->
 <div id="page-1" class="page">
-  <div class="page-art" style="background-image:url('assets1/2.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/2.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p1_label">Before we begin</div>
     <div class="section-head" style="color:var(--sky);" data-key="p1_head">Our safeguarding commitment — to you, and to children</div>
@@ -688,7 +691,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 2: WHY THIS MATTERS ══ -->
 <div id="page-2" class="page">
-  <div class="page-art" style="background-image:url('assets1/2.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/2.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p2_label">Before you begin · The bigger picture</div>
     <div class="section-head" style="color:var(--sky);" data-key="p2_head">What is corporal punishment?</div>
@@ -718,7 +721,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 3: REFLECTION OPENER ══ -->
 <div id="page-3" class="page">
-  <div class="page-art" style="background-image:url('assets1/3.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/3.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p3_label">Opening reflection</div>
     <div class="refl-q" style="color:var(--grass);" data-key="p3_q">"Think about how you were disciplined as a child."</div>
@@ -734,7 +737,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 4: WHAT IS POSITIVE DISCIPLINE ══ -->
 <div id="page-4" class="page">
-  <div class="page-art" style="background-image:url('assets1/3.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/3.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p4_label">Before Step 1 · What is positive discipline?</div>
     <div class="section-head" style="color:var(--grass);" data-key="p4_head">What is positive discipline?</div>
@@ -759,7 +762,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 5: P ══ -->
 <div id="page-5" class="page">
-  <div class="page-art" style="background-image:url('assets1/4.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/4.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p5_label">Step 1 of 5</div>
     <div class="step-letter" style="color:var(--p-color);">P</div>
@@ -775,7 +778,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 4: A ══ -->
 <div id="page-6" class="page">
-  <div class="page-art" style="background-image:url('assets1/5.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/5.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p6_label">Step 2 of 5</div>
     <div class="step-letter" style="color:var(--a-color);">A</div>
@@ -791,7 +794,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 5: U ══ -->
 <div id="page-7" class="page">
-  <div class="page-art" style="background-image:url('assets1/6.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/6.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p7_label">Step 3 of 5</div>
     <div class="step-letter" style="color:var(--u-color);">U</div>
@@ -807,7 +810,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 6: S ══ -->
 <div id="page-8" class="page">
-  <div class="page-art" style="background-image:url('assets1/7.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/7.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p8_label">Step 4 of 5</div>
     <div class="step-letter" style="color:var(--s-color);">S</div>
@@ -823,7 +826,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 7: E ══ -->
 <div id="page-9" class="page">
-  <div class="page-art" style="background-image:url('assets1/8.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/8.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p9_label">Step 5 of 5</div>
     <div class="step-letter" style="color:var(--e-color);">E</div>
@@ -839,7 +842,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 8: CIRCLE OF CHANGE INTRO ══ -->
 <div id="page-10" class="page">
-  <div class="page-art" style="background-image:url('assets1/9.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/9.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p10_label">Circle of change</div>
     <div class="section-head" style="color:var(--earth);" data-key="p10_head">Your story matters.</div>
@@ -855,7 +858,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 9: YOUR PAST ══ -->
 <div id="page-11" class="page">
-  <div class="page-art" style="background-image:url('assets1/10.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/10.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p11_label">Circle of change · 1 of 5</div>
     <div class="refl-q" style="color:var(--earth);" data-key="p11_head">Your past</div>
@@ -885,7 +888,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 10: YOUR NOW ══ -->
 <div id="page-12" class="page">
-  <div class="page-art" style="background-image:url('assets1/11.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/11.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p12_label">Circle of change · 2 of 5</div>
     <div class="refl-q" style="color:var(--grass);" data-key="p12_head">Your now</div>
@@ -915,7 +918,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 11: THE SHIFT ══ -->
 <div id="page-13" class="page">
-  <div class="page-art" style="background-image:url('assets1/12.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/12.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p13_label">Circle of change · 3 of 5</div>
     <div class="refl-q" style="color:var(--gold);" data-key="p13_head">The shift</div>
@@ -933,7 +936,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 12: YOUR LIMITS ══ -->
 <div id="page-14" class="page">
-  <div class="page-art" style="background-image:url('assets1/13.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/13.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p14_label">Circle of change · 4 of 5</div>
     <div class="refl-q" style="color:var(--sky);" data-key="p14_head">Your limits</div>
@@ -963,7 +966,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 13: COMMITMENT + FORM ══ -->
 <div id="page-15" class="page">
-  <div class="page-art" style="background-image:url('assets1/14.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/14.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p15_label">Circle of change · 5 of 5</div>
     <div class="refl-q" style="color:var(--mauve);" data-key="p15_head">Your commitment</div>
@@ -1021,7 +1024,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 16: MOVING FORWARD ══ -->
 <div id="page-16" class="page">
-  <div class="page-art" style="background-image:url('assets1/14.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/14.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p16_label">Moving forward</div>
     <div class="section-head" style="color:var(--mauve);" data-key="p16_head">Your next step, guided.</div>
@@ -1102,7 +1105,7 @@ textarea::placeholder, input::placeholder {
 
 <!-- ══ PAGE 17: POCKET CARD ══ -->
 <div id="page-17" class="page">
-  <div class="page-art" style="background-image:url('assets1/15.png');"></div>
+  <div class="page-art" style="background-image:url('assets2/15.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p17_label">Your pocket card · Keep this close</div>
     <div style="font-family:'Quicksand',sans-serif;font-size:13.5px;font-weight:500;line-height:1.65;color:var(--ink3);margin-bottom:0.9rem;" data-key="p17_intro">
@@ -1823,7 +1826,7 @@ kh: {
 
   p8_label: 'ជំហានទី៤ ក្នុង ៥', p8_word: 'គាំទ្រ (Support)',
   p8_action: 'ឆ្លើយតបទៅនឹងតម្រូវការពិតប្រាកដនៅពីក្រោយឥរិយាបថ មិនមែនគ្រាន់តែឥរិយាបថនោះទេ។ ចូរណែនាំ កុំដាក់ទោស។',
-  p8_why: 'កុមាររៀនបានល្អជាងតាមរយៈការណែនាំជាជាងការភ័យខ្លាច។ កុមារដែលមានអារម្មណ៍ថាមានការគាំទ្រមានសុវត្ថិភាពគ្រប់គ្រាន់ដើម្បីធ្វើបានល្អជាងនៅពេលខាងមុខ។',
+  p8_why: 'កុមារនៀនបានល្អជាងតាមរយៈការណែនាំជាជាងការភ័យខ្លាច។ កុមារដែលមានអារម្មណ៍ថាមានការគាំទ្រមានសុវត្ថិភាពគ្រប់គ្រាន់ដើម្បីធ្វើបានល្អជាងនៅពេលខាងមុខ។',
   p8_sc_lbl: 'ក្នុងពេលនោះ',
   p8_sc_txt: 'ការបង្វែរទិសដៅដោយស្ងប់ស្ងាត់។ ព្រំដែនច្បាស់លាស់ ពន្យល់ដោយក្តីស្រលាញ់។ វត្តមានរបស់អ្នក មិនមែនកំហឹងរបស់អ្នកទេ។',
 
@@ -1939,6 +1942,199 @@ kh: {
   p17_credit: 'រចនាដោយយុវវ័យ · អំពើហិង្សាបញ្ចប់ជាមួយយើង · អាស៊ី-ប៉ាស៊ីហ្វិក',
 },
 
+/* ── BISAYA / CEBUANO ── */
+ceb: {
+  top_label: 'Violence Ends With Us · PAUSE Toolkit · Pilot 2026',
+  footer: '18 ka panid · Pilot nga edisyon · Pilipinas · Vietnam · Cambodia',
+  nav_back: 'Balik', nav_next: 'Sunod', nav_finish: 'Humana',
+
+  p0_label: 'Usa ka himan alang sa positibong disiplina',
+  p0_sub: 'Positibong mga Alternatibo sa Dili Luwas ug Sobra ka Hugot nga Pagpatuman sa Disiplina',
+  p0_hook: 'Unsa ang imong buhaton sa sunod nga lima ka segundo?',
+  p0_desc: 'Kining flipbook maggiya kanimo pinaagi sa lima ka simple nga lakang aron makatubag sa mga bata uban ang pag-atiman, dili pinaagi sa kahadlok.<br><br>Ang imong mga tubag mahimong kabahin sa usa ka nagpadayon nga koleksyon sa mga positibong kausaban nga ipaambit sa mga ginikanan, magtutudlo, ug mga komunidad sa tibuok Asia-Pacific.',
+
+  p1_label: 'Sa dili pa ta magsugod',
+  p1_head: 'Ang among pasalig sa pagpanalipod — kanimo, ug sa mga bata',
+  p1_sub: 'Kini nga toolkit maghangyo kanimo nga mahimong matinud-anon bahin sa paagi sa pagpadako kanimo sa imong pagkabata, ug kung giunsa nimo pagpadako ang mga bata nga anaa sa imong kinabuhi karon. Sa dili pa ka mosulti o mopadayag sa bisan unsa, mao kini ang among saad kanimo isip tubag.',
+  p1_parent_lbl: 'Among pasalig kanimo isip usa ka ginikanan o tig-atiman',
+  p1_promise_judge: '<strong>Walay paghukom.</strong> Ang pagpaambit nga nakasakit ka sa usa ka bata pinaagi sa pagpanghampak, pagpakaulaw, o nga nakaatubang ka og kalisod sa pag-atiman sa usa ka bata, dili magpasabot nga daotan ka nga ginikanan sa among panan-aw. Mao kini ang hinungdan nganong anaa kini nga toolkit.',
+  p1_promise_private: '<strong>Walay nagtan-aw kanimo.</strong> Kini usa ka toolkit nga ikaw mismo ang mogiya sa imong kaugalingon. Walay facilitator, magtutudlo, o opisyal sa barangay nga makakita kanimo samtang imong gitubag kini o makahibalo sa imong gisulat.',
+  p1_promise_anon: '<strong>Ang imong istorya magpabiling dili mailhan.</strong> Kung mopili ka nga ipaambit ang imong mga tubag sa Circle of Change, isagol kini sa mga tubag sa uban ug tangtangon ang bisan unsang impormasyon nga mahimong makaila kanimo sa dili pa kini ipakita sa bisan kinsa gawas sa PAUSE team, lakip na sa 2026 Ministerial Conference.',
+  p1_promise_optin: '<strong>Ang imong ngalan ug impormasyon sa pagkontak kanunay nga opsyonal.</strong> Ang pagbiya niini nga walay sulod dili makaapekto sa imong kasinatian sa paggamit niini nga toolkit.',
+  p1_promise_control: '<strong>Ikaw ang adunay kontrol.</strong> Mahimo nimong laktawan ang bisan unsang pangutana. Mahimo nimong isira kini nga tab bisan kanus-a. Walay bisan unsa dinhi nga usa ka eksaminasyon, report, o permanenteng rekord nga konektado kanimo, gawas kung mopili ka nga magbilin sa imong impormasyon sa pagkontak.',
+  p1_promise_notreport: '<strong>Dili kini usa ka reporting channel bahin kanimo.</strong> Ang pagpaambit sa imong kaugalingong mga pamaagi sa pagdisiplina kaniadto o karon dinhi dili awtomatikong mosangpot og child-welfare report. Kini usa ka lugar alang sa pagpamalandong, dili usa ka imbestigasyon.',
+  p1_box_lbl: 'Naa bay gihuna-huna bahin sa PAUSE?',
+  p1_box_txt: 'Mahimo kang direktang makigkontak sa PAUSE team alang sa bisan unsang butang: pangutana, kabalaka, o usa ka butang nga napukaw o nahuna-hunaan nimo tungod niini nga toolkit. Usa ka tinuod nga tawo ang mobasa sa matag mensahe, ug kini magpabilin nga kompidensyal tali kanimo ug kaniya.',
+  p1_hotline_lbl: 'Libre nga tawagan, bisan kanus-a, alang sa bisan unsang batang nagkinahanglan og tabang',
+  p1_footer: 'Ang PAUSE nagsunod sa mga prinsipyo sa pagpanalipod sa mga bata nga gipahaom gikan sa Save the Children Child Safeguarding Policy. Ang maong responsibilidad sa pag-atiman ug pagpanalipod magamit usab kanimo: walay bisan unsa nga imong ipaambit dinhi nga gamiton aron hukman, i-report, o mailhan ka.',
+
+  p2_label: 'Sa dili pa magpadayon · Ang mas dakong hulagway',
+  p2_head: 'Unsa ang corporal punishment?',
+  p2_sub: 'Ang corporal punishment nagpasabot sa paggamit og pisikal nga kusog, bisan gamay lamang, aron itul-id o disiplinahon ang usa ka bata. Ang pagpanghapak, pagkumot, ug pagpugos sa bata nga moluhod mao ang pipila sa kasagarang pananglitan niini sa atong rehiyon. Apil usab niini ang pagpakaulaw o pagpasipala sa bata pinaagi sa mga pulong.',
+  p2_box_lbl: 'Unsa gyud kini ka kasagaran?',
+  p2_box_txt: 'Dili lang kini problema sa Pilipinas, Vietnam, o Cambodia. Sa tibuok kalibotan, kadaghanan sa mga bata makasinati og usa ka porma sa mapintas o bayolenteng pagdisiplina sulod sa panimalay, ug kadaghanan sa mga ginikanan nga mogamit niini nga pamaagi nakasinati usab niini sa dihang sila mga bata pa.',
+  p2_box2_lbl: 'Unsay nakit-an sa mga pagtuon',
+  p2_box2_txt: 'Sulod sa daghang dekada, gipakita sa mga pagtuon nga ang paggamit niini nga pamaagi nalambigit sa mas agresibong pamatasan, kabalaka, ug mas huyang nga relasyon tali sa ginikanan ug anak, imbis nga mas maayong pamatasan. Ang usa ka butang nga kasaligan niini nga matudlo sa bata mao ang kahadlok, nianang higayona.',
+  p2_box_cite: 'National Baseline Study on Violence Against Children, Council for the Welfare of Children &amp; UNICEF, 2016 · Cambodia Demographic and Health Survey, 2021–2022',
+  p2_box2_cite: 'Gershoff &amp; Grogan-Kaylor, meta-analysis sa 75 ka pagtuon, Journal of Family Psychology, 2016',
+  p2_video_cap: '"Effects of Corporal Punishment on Children" · animated nga sumada sa research nga naghisgot bahin ni Alampay, Godwin &amp; Lansford (Ingles) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">Tan-awa sa YouTube ↗</a>',
+  p2_video2_cap: '"Equal Protection for Children" · Global Initiative to End All Corporal Punishment of Children (Ingles) · <a href="https://www.youtube.com/watch?v=QaNxPqBIL4w" target="_blank" rel="noopener">Tan-awa sa YouTube ↗</a>',
+  p2_note: 'Mao kana ang hinungdan nganong anaa ang PAUSE. Dili aron hukman ka, kondili aron mahatagan ka sa butang nga wala pa gyud gihatag kanimo kaniadto: laing paagi.',
+
+  p4_label: 'Sa dili pa ang Lakang 1 · Unsa ang positive discipline?',
+  p4_head: 'Unsa ang positive discipline?',
+  p4_sub: 'Ang positive discipline nagpasabot sa paggiya sa pamatasan sa bata pinaagi sa pagtudlo, dili pagsakit. Nagpasabot gihapon kini og "dili." Aduna gihapon kini og mga lagda ug tinuod nga mga sangpotanan, sama sa paghatag og panahon aron mokalma, pagkawala sa usa ka pribilehiyo, o pag-ayo sa butang nga ilang nadaot. Ang mausab mao ang paagi kung giunsa nimo kini pagpatuman: pinaagi sa kalmado nga mga pulong ug klarong mga rason, dili pinaagi sa kasakit o kahadlok.',
+  p4_box_lbl: 'Dili bag-o. Nasulayan na.',
+  p4_box_txt: 'Ang mga programa nga nakabase sa positive discipline gitun-an uban sa liboan ka mga ginikanan sa tibuok Asia, lakip na dinhi sa Pilipinas, ug kanunay nga nagpakita og pagkunhod sa mapintas o sobra ka estrikto nga pagdisiplina.',
+  p4_box_cite: 'Lachman et al., randomized controlled trial sa MaPa parenting program, The Lancet Regional Health – Western Pacific, 2021',
+  p4_video1_cap: '"Positive Discipline" · Coram, ang labing tigulang nga charity alang sa mga bata sa UK (Ingles) · <a href="https://youtu.be/gOFGPQR58TM" target="_blank" rel="noopener">Tan-awa sa YouTube ↗</a>',
+  p4_video2_cap: '"The Single Most Important Parenting Strategy" · Dr. Becky Kennedy, TED (Ingles) · <a href="https://youtu.be/PHpPtdk9rco" target="_blank" rel="noopener">Tan-awa sa YouTube ↗</a>',
+  p4_note: 'Ang silot nagpahunong lang sa pamatasan sa makadiyot. Ang pagtudlo nagausab niini sa dugay nga panahon.',
+
+  p3_label: 'Pagpamalandong sa pagsugod',
+  p3_q: '"Hunahunaa kung giunsa ka pagdisiplina sa bata pa ka."',
+  p3_sub: 'Unsa ang nahitabo sa dihang nakabuhat ka og sayop? Unsa ang imong gibati? Hangtod karon, dala pa ba nimo kana nga pagbati?',
+  p3_box_lbl: 'Higayon sa pagpamalandong',
+  p3_box_txt: 'Hatagi ang imong kaugalingon og 2 hangtod 3 ka minuto alang sa hilom nga pagpamalandong. Mahimo kang mopakigbahin kung andam na ka, o magpabilin ka lang uban sa maong handumanan.',
+  p3_gold: 'Kadaghanan kanato wala gayod matudloi og laing paagi. Ang PAUSE naghatag kanimo og usa, dili tungod kay sayop ka, kondili tungod kay angayan ka og mas maayong mga himan.',
+  p3_note: 'Samtang imong basahon ang matag lakang, hunahunaa ang usa ka tinuod nga nahitabo sa imong kaugalingong kinabuhi.',
+
+  p5_label: 'Lakang 1 sa 5', p5_word: 'Pahunong (Pause)',
+  p5_action: 'Hunong una sa dili pa ka motubag. Pagginhawa og usa ka higayon. Hatagi ang imong kaugalingon og lima ka segundo sa dili pa ka mobuhat o mosulti og bisan unsa.',
+  p5_why: 'Ang tinguha sa pag-react nagagikan sa lawas, dili sa hunahuna. Ang usa ka pagginhawa naghatag og igo nga higayon aron makapili ka kung unsa ang sunod nimong buhaton.',
+  p5_sc_lbl: 'Niini nga higayon',
+  p5_sc_txt: 'Ang imong anak nakaguba og usa ka butang human nimo siyang gisultihan nga dili kini buhaton. Gibati nimo nga misaka ang imong kasuko. Sa dili pa ang tanan, pagginhawa una.',
+
+  p6_label: 'Lakang 2 sa 5', p6_word: 'Pangutana (Ask)',
+  p6_action: 'Pangutan-a ang bata kung unsay nahitabo. Tugoti siya nga mosulti una. Paminawa siya ug ayaw disturboha ang iyang pagsulti.',
+  p6_why: 'Kasagaran, adunay mga rason ang mga bata sa ilang gibuhat nga dili makita sa mga hamtong. Ang pagpangutana una sa dili pa maghunahuna daan nagpakita og pagtahod ug nagdala kanimo duol sa kamatuoran.',
+  p6_sc_lbl: 'Niini nga higayon',
+  p6_sc_txt: '"Unsa ang nahitabo?" Isulti kini sa malinawon nga paagi, dili ingon nga pasangil. Hulata ang iyang tubag bisan pa og magkinahanglan siya og gamay nga oras alang sa pagtubag.',
+
+  p7_label: 'Lakang 3 sa 5', p7_word: 'Sabta (Understand)',
+  p7_action: 'Hunahunaa nganong nabuhat niya kini. Nahadlok ba siya? Nalibog? Gikapoy? Gisulayan ba niya ang mga limitasyon? O nagkat-on pa?',
+  p7_why: 'Ang pamatasan usa ka paagi sa pagpahibalo. Ang makita nga pagsupak kasagaran nagpasabot nga adunay panginahanglan ang bata nga wala pa niya mahibaloi unsaon pagpahayag.',
+  p7_sc_lbl: 'Niini nga higayon',
+  p7_sc_txt: '"Unsa kaha ang iyang giagian niadtong higayona?" Dili aron pasayloon ang iyang gibuhat, kondili aron masabtan una kini sa dili pa ka motubag.',
+
+  p8_label: 'Lakang 4 sa 5', p8_word: 'Suportahi (Support)',
+  p8_action: 'Tubaga ang tinuod nga panginahanglan nga anaa luyo sa iyang pamatasan, dili lang ang pamatasan mismo. Giyahi siya, ayaw siloti.',
+  p8_why: 'Mas maayo nga makakat-on ang mga bata pinaagi sa paggiya kaysa pinaagi sa kahadlok. Ang bata nga nakabati sa suporta luwas ug mas andam nga mobuhat og mas maayo sa sunod.',
+  p8_sc_lbl: 'Niini nga higayon',
+  p8_sc_txt: 'Malinawon nga paggiya pag-usab. Usa ka tin-aw nga utlanan, nga gipasabut uban sa gugma. Ang imong presensya, dili ang imong kasuko.',
+
+  p9_label: 'Lakang 5 sa 5', p9_word: 'Dasiga (Encourage)',
+  p9_action: 'Taposa pinaagi sa usa ka butang nga makapalig-on sa pagsalig, dili sa kahadlok. Ipahibalo kaniya nga ang iyang sayop dili makapausab sa gidak-on sa imong gugma alang kaniya.',
+  p9_why: 'Ang mga bata nga mobati nga gihigugma bisan human maka buhat sa sayop mas lagmit nga mahimong matinud-anon, mosulay pag-usab, ug mosalig sa mga hamtong sa ilang kinabuhi.',
+  p9_sc_lbl: 'Niini nga higayon',
+  p9_sc_txt: '"Kabalo ko nga kaya nimo nga mahimo kini nga mas maayo. Ania ra ko para nimo." Kana igo na.',
+
+  p10_label: 'Lingin sa kausaban',
+  p10_head: 'Importante ang imong istorya.',
+  p10_sub: 'Ang sunod nga mga panid mag-awhag kanimo sa matinud-anong pagpamalandong sa imong kagahapon, sa imong karon, ug sa kausaban nga gusto nimong himuon. Walay sayop nga tubag.',
+  p10_box_lbl: 'Unsa ang lingin sa kausaban?',
+  p10_box_txt: 'Kini ang panaw gikan sa paagi sa pagtratar kanimo sa bata pa ka, ngadto sa paagi nga nakaapekto kini sa imong pagdisiplina karon, ug ngadto sa mga utlanan nga gusto nimong ipatuman sa umaabot.',
+  p10_steps: 'Ang imong kagahapon · Ang imong karon · Ang kausaban · Ang imong mga utlanan · Ang imong paningkamot',
+  p10_note: 'Ang imong mga tubag mahimong kabahin sa usa ka koleksyon sa kausaban nga ipaambit nga walay pag-ila sa imong identidad isip usa ka module alang sa mga komunidad sa tibuok rehiyon.',
+
+  p11_label: 'Lingin sa kausaban · 1 sa 5', p11_head: 'Ang imong kagahapon',
+  p11_sub: 'Giunsa ka pagdisiplina sa bata pa ka? Unsa ang gibuhat sa mga hamtong sa imong palibot sa dihang nakasayop ka?',
+  p11_q1_lbl: 'Ihulagway kung unsa ang pagdisiplina sa inyong balay sa dihang nagdako ka',
+  p11_q1_ph: 'Isulat nga gawasnon — kini imong lugar.',
+  p11_q2_lbl: 'Unsa ang imong gibati?',
+  p11_opt1: '😟 Nahadlok ug nabalaka', p11_opt2: '💔 Naulaw o nasakitan',
+  p11_opt3: '😐 Nalibog. Wala ko makasabut ngano', p11_opt4: '🤷 Normal lang. Mao man gyud ang naandan',
+  p11_opt5: '🙂 Kasagaran okay ra. Makatarunganon man', p11_opt6: '🌱 Luwas ug giya-an',
+  p11_opt7: '✏️ Uban pa. Akong ihulagway', p11_other_ph: 'Ihulagway kung unsa ang imong gibati...',
+
+  p12_label: 'Lingin sa kausaban · 2 sa 5', p12_head: 'Ang imong karon',
+  p12_sub: 'Giunsa nimo pagdisiplina ang mga bata nga anaa sa imong pag-atiman karon? Pagmatinud-anon. Dili kini usa ka pagsulay.',
+  p12_q1_lbl: 'Kung magpasaway ang usa ka bata, unsa ang kasagaran nimong buhaton?',
+  p12_q1_ph: 'Magmatinud-anon ka sa imong kaugalingon dinhi.',
+  p12_q2_lbl: 'Nakita ba nimo ang susama nga pamaagi gikan sa imong pagkabata sa paagi sa imong pagtubag karon?',
+  p12_opt1: '😔 Oo. Gibalik nako ang akong nasinati', p12_opt2: '😶 Usahay, bisan wala nako tuyoa',
+  p12_opt3: '🤔 Wala pa gyud nako kini nahunahunaan', p12_opt4: '💪 Naningkamot ko nga dili kini masubli, apan lisod',
+  p12_opt5: '✨ Dili. Gituyo nako ang pagpili ug lahi nga paagi', p12_opt6: '📋 Wala koy mga bata nga akong giatiman',
+  p12_opt7: '✏️ Uban pa. Akong ihulagway', p12_other_ph: 'Ihulagway ang imong kasinatian...',
+
+  p13_label: 'Lingin sa kausaban · 3 sa 5', p13_head: 'Ang kausaban',
+  p13_sub: 'Unsa ang gusto nimong usbon? Unsa klase nga hamtong ang gusto nimong mahimo sa mga higayon nga labing importante?',
+  p13_q1_lbl: 'Ihulagway ang kausaban nga gusto nimong himoon',
+  p13_q1_ph: 'Unsa man ang hitsura sa "pagbuhat og mas maayo" alang kanimo?',
+  p13_q2_lbl: 'Unsa ang nagpakalisod kanimo sa pag-usab?',
+  p13_q2_ph: 'Stress, kakulang sa oras, o wala kahibalo unsa pa ang laing angay buhaton...',
+
+  p14_label: 'Lingin sa kausaban · 4 sa 5', p14_head: 'Ang imong mga limitasyon',
+  p14_sub: 'Ang positibong pagginikanan adunay gihapon mga limitasyon. Kinahanglan sa mga bata ang mga limitasyon nga gihatag uban sa gugma ug pagkamakanunayon, dili pinaagi sa kasakit o kahadlok.',
+  p14_q1_lbl: 'Unsang mga utlanan ang labing importante alang kanimo sa pagpadako sa mga bata?',
+  p14_q1_ph: 'Unsa nga mga maayong pamatasan ang gusto nimo nga madala sa imong anak sa iyang kinabuhi?',
+  p14_q2_lbl: 'Mahimo ba nga madisiplina ang usa ka bata nga walay pisikal nga silot?',
+  p14_opt1: '❌ Dili. Sa akong pagtuo, gikinahanglan ang pipila ka porma sa pisikal nga pagdisiplina',
+  p14_opt2: '🤷 Dili ko sigurado. Mao man gud ang akong nadak-an',
+  p14_opt3: '🌿 Aduna koy mga pagduhaduha, apan andam kong mosulay',
+  p14_opt4: '🙂 Nagsugod na ko og tuo nga posible kini',
+  p14_opt5: '✅ Oo. Bug-os ko nga nagtuo niini',
+  p14_opt6: '🌟 Gigamit na nako ang positibong pagdisiplina',
+  p14_opt7: '✏️ Uban pa. Akong ipaambit ang akong panglantaw', p14_other_ph: 'Ipaambit ang imong panglantaw...',
+
+  p15_label: 'Lingin sa kausaban · 5 sa 5', p15_head: 'Ang imong paningkamot',
+  p15_sub: '"Mao ba kana ang handumanan nga gusto nimong mabilin sa imong anak bahin kanimo?" Dili kinahanglan nga perpekto ka. Ang kinahanglan lang mao ang paghunong sa makadiyot, usa ka higayon matag usa.',
+  p15_name_lbl: 'Imong ngalan (opsyonal)', p15_name_ph: 'Unang ngalan (biyaang walay sulod)',
+  p15_country_lbl: 'Asa ka nag-apil gikan?',
+  p15_other_country_btn: 'Ubang nasud', p15_other_country_ph: 'Palihug sultihi kami sa imong nasud',
+  p15_commit_lbl: 'Maningkamot ko nga sulayan ang PAUSE kung...', p15_commit_ph: 'Ihulagway ang imong tin-aw nga kasinatian',
+  p15_support_lbl: 'Usa ka tawo nga mahimo nakong tawgan kung naglisod ko', p15_support_ph: 'Ilang pangalan',
+  p15_followup_lbl: 'Numero sa telepono o email alang sa follow-up (opsyonal)', p15_followup_ph: 'Imong numero o email',
+  form_error: 'Adunay nahitabong sayop. Palihug sulayi pag-usab.',
+  form_success: 'Nasave na ang imong istorya. Salamat sa pagpili nga moundang una. Ang kahadlok mohunong dinhi kanato.',
+  form_submit: 'I-save ang akong istorya',
+
+  p16_label: 'Sa pagpadayon',
+  p16_head: 'Ang imong sunod nga lakang, giya-an.',
+  p16_sub: 'Bisan unsa pa ang imong gikinahanglan sunod, ania dinhi kung asa ka tukma nga makapangayo og tabang. Dili nimo kinahanglan nga sulbaron kini nga ikaw ra.',
+  p16_hotline_lbl: 'Kung ang usa ka bata anaa sa peligro karon',
+  p16_ph_lbl: '🇵🇭 Aron padayon nga mapalambo kini nga kahibalo, sa Pilipinas',
+  p16_ph_p1_title: 'Pangutan-a ang imong 4Ps o barangay social worker bahin sa Family Development Sessions',
+  p16_ph_p1_desc: 'Kini nga mga sesyon naggamit na karon sa MaPa (Masayang Pamilya), usa ka programa sa positibong pagpadako sa mga anak nga gihimo alang sa mga pamilyang Pilipino ug napamatud-ang epektibo. Gihimo kini sa mga university researchers uban sa UNICEF Philippines. Tan-awa ang mga programa sa MaPa sa <a href="https://www.masayangpamilya.org/programs-and-services" target="_blank" rel="noopener">masayangpamilya.org ↗</a>',
+  p16_ph_p2_title: 'Dad-a ang "Love Does Not Hurt" campaign sa PETA ngadto sa inyong komunidad',
+  p16_ph_p2_desc: 'Ang PETA\'s ARTS Zone nga proyekto naggamit og teatro ug mga workshop aron itudlo ang positibong pagdisiplina sa mga eskwelahan ug barangay, lakip na sa Valenzuela. <a href="https://petatheater.com/arts-zone/" target="_blank" rel="noopener">petatheater.com/arts-zone ↗</a>',
+  p16_vn_lbl: '🇻🇳 Aron padayon nga mapalambo kini nga kahibalo, sa Vietnam',
+  p16_vn_p1_title: 'Pangutana bahin sa "Nobody\'s Perfect" parenting training',
+  p16_vn_p1_desc: 'Kini nga training gihatag uban sa MOLISA ug sa mga lokal nga employers o community centers alang sa mga tig-atiman sa mga batang ubos sa 8 anyos.',
+  p16_vn_p2_title: 'Tawag sa 111 bisan dili emergency',
+  p16_vn_p2_desc: 'Ang national child protection line naghatag usab og padayon nga parenting counseling, dili lamang alang sa pag-report sa mga krisis o emergency.',
+  p16_kh_lbl: '🇰🇭 Aron padayon nga mapalambo kini nga kahibalo, sa Cambodia',
+  p16_kh_p1_title: 'Apil sa usa ka Positive Parenting Programme session',
+  p16_kh_p1_desc: 'Kini ginapatuman pinaagi sa inyong commune Ministry of Women\'s Affairs office, uban ang training bahin sa komunikasyon ug nonviolent discipline o pagdisiplina nga walay pagpanghulga o pagpangpasakit.',
+  p16_kh_p2_title: 'I-message ang ParentingTips chatbot',
+  p16_kh_p2_desc: 'Libre kini sa Telegram, o tawag sa 1279 aron magparehistro ug makadawat og mga tips pinaagi sa voice call.',
+  p16_ph_p3_title: 'Pangutan-a ang inyong lokal nga POPCOM office bahin sa Responsible Parenting Classes',
+  p16_ph_p3_desc: 'Ang Commission on Population and Development nagpadagan og libre nga mga klase alang sa mga magtiayon ug ginikanan bahin sa family planning, pagplano sa gilay-on tali sa mga anak, ug kaayohan sa pamilya, kauban sa DSWD\'s Family Development Sessions.',
+  p16_global_lbl: '🌏 Gibasa nimo kini gikan sa laing dapit? Aduna gihapon kay mapadulongan',
+  p16_global_p1_title: 'Pangitaa ang usa ka helpline sa imong kaugalingong nasod',
+  p16_global_p1_desc: 'Ang Child Helpline International nagkonektar kanimo sa libre ug lokal nga mga child helpline sa kapin sa 140 ka mga nasod. <a href="https://childhelplineinternational.org/helplines/" target="_blank" rel="noopener">childhelplineinternational.org ↗</a>',
+  p16_global_p2_title: 'Pangitaa ang positive discipline training nga duol kanimo',
+  p16_global_p2_desc: 'Ang Positive Discipline Association adunay mga certified trainer sa kapin sa 90 ka mga nasod. <a href="https://www.positivediscipline.org/" target="_blank" rel="noopener">positivediscipline.org ↗</a>',
+  p16_global_p3_title: 'Susihon ang mga balaod sa imong nasud ug makakuha og dugang nga research',
+  p16_global_p3_desc: 'Ang Global Initiative to End All Corporal Punishment of Children nagsubay sa mga balaod ug research bahin niini sa tibuok kalibotan. <a href="https://endcorporalpunishment.org/" target="_blank" rel="noopener">endcorporalpunishment.org ↗</a>',
+  p16_global_p4_title: 'Pangitaa ang suporta bahin sa family planning ug reproductive health',
+  p16_global_p4_desc: 'Ang International Planned Parenthood Federation nagkonektar kanimo sa mga member clinic ug helpline sa tibuok kalibotan. <a href="https://www.ippf.org/about-us/member-associations" target="_blank" rel="noopener">ippf.org ↗</a>',
+  p16_orgs_intro: 'Ania sa ubos ang tinuod nga mga programa sa gobyerno ug komunidad. Ayaw kabalaka sa mga mubo nga ngalan niini; pangutana lang sa inyong lokal nga opisina ug mahibalo sila niini.',
+  p16_note: 'Gusto ba nimo nga balikan ang research o ang pelikula bahin sa positive discipline? Anaa kini sa mga naunang pahina niini nga toolkit, ug mahimo nimo silang balikan bisan kanus-a kung gikinahanglan nimo pag-usab.',
+  tts_listen: '🔊 Paminawa',
+
+  p17_label: 'Imong pocket card · Itago kini duol kanimo',
+  p17_intro: 'Sa higayon nga ma-stress ka, kini lang ang imong kinahanglan. I-screenshot kini ug ibutang sa dapit nga kanunay nimo makita.',
+  pc_p_word: 'Pahunong', pc_p_desc: 'Pagginhawa. Lima ka segundo sa dili pa ka motubag.',
+  pc_a_word: 'Pangutana', pc_a_desc: 'Pangutan-a ang bata kung unsa ang nahitabo. Paminaw una.',
+  pc_u_word: 'Sabta', pc_u_desc: 'Ngano nga nabuhat niya kini? Ang pamatasan usa ka paagi sa pagpahibalo.',
+  pc_s_word: 'Suportahi', pc_s_desc: 'Tubaga ang iyang tinuod nga panginahanglan. Giyahi siya, ayaw siloti.',
+  pc_e_word: 'Dasiga', pc_e_desc: 'Taposa uban sa gugma. Ang iyang sayop dili makapausab niana.',
+  p17_box_lbl: 'Asa maadto ang imong mga tubag',
+  p17_box_txt: 'Ang imong istorya, nga kolektahon nga walay pag-ila sa imong identidad uban sa mga istorya sa uban, ipresentar sa 2nd Global Ministerial Conference on Ending Violence Against Children, Manila, Nobyembre 2026.',
+  p17_credit: 'Gidisenyo sa mga kabatan-onan · Violence Ends With Us · Asia-Pacific',
+},
+
 }; /* end TRANSLATIONS */
 
 /* ══════════════════════════════════════════════
@@ -1953,7 +2149,7 @@ function setLang(lang) {
 
   // Update active button
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  const idx = {en:0,fil:1,vi:2,kh:3}[lang];
+  const idx = {en:0,fil:1,vi:2,kh:3,ceb:4}[lang];
   document.querySelectorAll('.lang-btn')[idx].classList.add('active');
 
   // Top label
@@ -2009,7 +2205,7 @@ const PAGE_IMAGES = [
 ];
 const backdropEl = document.getElementById('backdrop');
 
-const speechLangMap = { en: 'en-US', fil: 'fil-PH', vi: 'vi-VN', kh: 'km-KH' };
+const speechLangMap = { en: 'en-US', fil: 'fil-PH', vi: 'vi-VN', kh: 'km-KH', ceb: 'fil-PH' };
 
 function speakCurrentPage() {
   const ttsBtn = document.getElementById('tts-btn');
