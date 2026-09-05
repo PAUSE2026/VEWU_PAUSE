@@ -500,6 +500,9 @@ textarea::placeholder, input::placeholder {
 }
 .error-msg.visible { display: block; }
 
+.input-missing { border-bottom-color: var(--earth) !important; border-bottom-width: 2px !important; }
+.opts-missing { border: 1.5px solid var(--earth); border-radius: 14px; padding: 6px; }
+
 .flipbook-footer {
   font-family: 'Quicksand', sans-serif;
   font-size: 11px;
@@ -880,9 +883,10 @@ textarea::placeholder, input::placeholder {
       </div>
       <input type="hidden" id="past_feeling" />
       <div class="opt-other-input" id="past_feeling_other_wrap">
-        <input type="text" id="past_feeling_other" data-placeholder-key="p11_other_ph" placeholder="Describe how it felt..." oninput="document.getElementById('past_feeling').value='Other: '+this.value;syncHidden();" />
+        <input type="text" id="past_feeling_other" data-placeholder-key="p11_other_ph" placeholder="Describe how it felt..." oninput="document.getElementById('past_feeling').value='Other: '+this.value;syncHidden();clearHighlightIfValid(11);" />
       </div>
     </div>
+    <div class="error-msg" id="p11-warn" data-key="validation_warn">Please answer both questions before moving on.</div>
   </div>
 </div>
 
@@ -910,9 +914,10 @@ textarea::placeholder, input::placeholder {
       </div>
       <input type="hidden" id="pattern" />
       <div class="opt-other-input" id="pattern_other_wrap">
-        <input type="text" id="pattern_other" data-placeholder-key="p12_other_ph" placeholder="Describe your experience..." oninput="document.getElementById('pattern').value='Other: '+this.value;syncHidden();" />
+        <input type="text" id="pattern_other" data-placeholder-key="p12_other_ph" placeholder="Describe your experience..." oninput="document.getElementById('pattern').value='Other: '+this.value;syncHidden();clearHighlightIfValid(12);" />
       </div>
     </div>
+    <div class="error-msg" id="p12-warn" data-key="validation_warn">Please answer both questions before moving on.</div>
   </div>
 </div>
 
@@ -931,6 +936,7 @@ textarea::placeholder, input::placeholder {
       <label for="q_barrier" data-key="p13_q2_lbl">What makes it hard to change?</label>
       <textarea id="q_barrier" rows="2" data-placeholder-key="p13_q2_ph" placeholder="Stress, time, not knowing what else to do..."></textarea>
     </div>
+    <div class="error-msg" id="p13-warn" data-key="validation_warn">Please answer both questions before moving on.</div>
   </div>
 </div>
 
@@ -958,9 +964,10 @@ textarea::placeholder, input::placeholder {
       </div>
       <input type="hidden" id="belief_shift" />
       <div class="opt-other-input" id="belief_shift_other_wrap">
-        <input type="text" id="belief_shift_other" data-placeholder-key="p14_other_ph" placeholder="Share your view..." oninput="document.getElementById('belief_shift').value='Other: '+this.value;syncHidden();" />
+        <input type="text" id="belief_shift_other" data-placeholder-key="p14_other_ph" placeholder="Share your view..." oninput="document.getElementById('belief_shift').value='Other: '+this.value;syncHidden();clearHighlightIfValid(14);" />
       </div>
     </div>
+    <div class="error-msg" id="p14-warn" data-key="validation_warn">Please answer both questions before moving on.</div>
   </div>
 </div>
 
@@ -1015,6 +1022,7 @@ textarea::placeholder, input::placeholder {
         <input type="text" id="p_followup" name="followup_contact" data-placeholder-key="p15_followup_ph" placeholder="Your number or email" />
       </div>
 
+      <div class="error-msg" id="p15-warn" data-key="validation_warn">Please answer both questions before moving on.</div>
       <div class="error-msg" id="form-error" data-key="form_error">Something went wrong. Please try again.</div>
       <div class="success-msg" id="form-success" data-key="form_success">Your story has been saved. Thank you for choosing to pause. Violence ends with us.</div>
       <button type="submit" class="submit-btn" id="submit-btn" data-key="form_submit">Save my story</button>
@@ -1175,6 +1183,7 @@ en: {
   top_label: 'Violence Ends With Us · PAUSE Toolkit · Pilot 2026',
   footer: '18 pages · Pilot edition · Philippines · Vietnam · Cambodia',
   nav_back: 'Back', nav_next: 'Next', nav_finish: 'Finish',
+  validation_warn: 'Please answer both questions before moving on.',
 
   p0_label: 'A positive discipline toolkit',
   p0_sub: 'Positive Alternatives to Unsafe & Severe Enforcement',
@@ -1368,6 +1377,7 @@ fil: {
   top_label: 'Violence Ends With Us · PAUSE Toolkit · Pilot 2026',
   footer: '18 pahina · Pilot na edisyon · Philippines · Vietnam · Cambodia',
   nav_back: 'Bumalik', nav_next: 'Susunod', nav_finish: 'Tapusin',
+  validation_warn: 'Pakisagot muna ang parehong tanong bago magpatuloy.',
 
   p0_label: 'Isang toolkit para sa positibong disiplina',
   p0_sub: 'Mga Positibong Alternatibo sa Hindi Ligtas at Matinding Pagpapairal ng Disiplina',
@@ -1561,6 +1571,7 @@ vi: {
   top_label: 'Bạo lực Chấm dứt Cùng Chúng ta · PAUSE Toolkit · Thí điểm 2026',
   footer: '18 trang · Phiên bản thí điểm · Philippines · Việt Nam · Campuchia',
   nav_back: 'Quay lại', nav_next: 'Tiếp theo', nav_finish: 'Hoàn thành',
+  validation_warn: 'Vui lòng trả lời cả hai câu hỏi trước khi tiếp tục.',
 
   p0_label: 'Bộ công cụ kỷ luật tích cực',
   p0_sub: 'Những lựa chọn Tích cực Thay thế Hình phạt Quá tay & Gây hại',
@@ -1754,6 +1765,7 @@ kh: {
   top_label: 'អំពើហិង្សាបញ្ចប់ជាមួយយើង · PAUSE Toolkit · Pilot 2026',
   footer: '18 ទំព័រ · ការបោះពុម្ពសាក · ហ្វីលីពីន · វៀតណាម · កម្ពុជា',
   nav_back: 'ត្រឡប់', nav_next: 'បន្ត', nav_finish: 'បញ្ចប់',
+  validation_warn: 'សូមឆ្លើយសំណួរទាំងពីរមុននឹងបន្ត។',
 
   p0_label: 'ឧបករណ៍នៃការអប់រំវិជ្ជមាន',
   p0_sub: 'PAUSE : ជម្រើសវិជ្ជមានចំពោះការអនុវត្តដែលមិនមានសុវត្ថិភាព និងធ្ងន់ធ្ងរ',
@@ -1947,6 +1959,7 @@ ceb: {
   top_label: 'Violence Ends With Us · PAUSE Toolkit · Pilot 2026',
   footer: '18 ka panid · Pilot nga edisyon · Pilipinas · Vietnam · Cambodia',
   nav_back: 'Balik', nav_next: 'Sunod', nav_finish: 'Humana',
+  validation_warn: 'Palihug tubaga una ang duha ka pangutana sa dili pa mopadayon.',
 
   p0_label: 'Usa ka himan alang sa positibong disiplina',
   p0_sub: 'Positibong mga Alternatibo sa Dili Luwas ug Sobra ka Hugot nga Pagpatuman sa Disiplina',
@@ -2248,6 +2261,14 @@ function goTo(n) {
   if (ttsBtn) ttsBtn.classList.remove('speaking');
 }
 function changePage(dir) {
+  if (dir === 1 && REQUIRED_FIELDS[cur]) {
+    if (!validatePage(cur)) {
+      highlightMissing(cur);
+      showPageWarning(cur, true);
+      return;
+    }
+    showPageWarning(cur, false);
+  }
   if (dir === 1 && cur === TOTAL - 2) {
     submitStory(false);
   }
@@ -2265,6 +2286,7 @@ function pickOpt(el, field, val) {
     document.getElementById(field).value = val;
     syncHidden();
   }
+  if (CHOICE_FIELD_PAGE_MAP[field]) clearHighlightIfValid(CHOICE_FIELD_PAGE_MAP[field]);
 }
 
 function pickCountry(el, val) {
@@ -2296,6 +2318,61 @@ function syncAllToHidden() {
   });
   syncHidden();
 }
+
+/* ══════════════════════════════════════════════
+   RESPONSE VALIDATION
+   Blocks "Next" on pages with unanswered questions.
+   ══════════════════════════════════════════════ */
+const REQUIRED_FIELDS = {
+  11: [{ type: 'text', id: 'q_past' }, { type: 'choice', id: 'past_feeling', wrap: '#page-11 .opts' }],
+  12: [{ type: 'text', id: 'q_now' }, { type: 'choice', id: 'pattern', wrap: '#page-12 .opts' }],
+  13: [{ type: 'text', id: 'q_change' }, { type: 'text', id: 'q_barrier' }],
+  14: [{ type: 'text', id: 'q_limits' }, { type: 'choice', id: 'belief_shift', wrap: '#page-14 .opts' }],
+  15: [{ type: 'text', id: 'p_commit' }, { type: 'text', id: 'p_support' }]
+};
+const VALIDATION_WARN_ID = { 11: 'p11-warn', 12: 'p12-warn', 13: 'p13-warn', 14: 'p14-warn', 15: 'p15-warn' };
+const CHOICE_FIELD_PAGE_MAP = { past_feeling: 11, pattern: 12, belief_shift: 14 };
+const TEXT_FIELD_PAGE_MAP = { q_past: 11, q_now: 12, q_change: 13, q_barrier: 13, q_limits: 14, p_commit: 15, p_support: 15 };
+
+function validatePage(pageIndex) {
+  const fields = REQUIRED_FIELDS[pageIndex];
+  if (!fields) return true;
+  return fields.every(f => {
+    const el = document.getElementById(f.id);
+    return el && el.value.trim() !== '';
+  });
+}
+
+function highlightMissing(pageIndex) {
+  const fields = REQUIRED_FIELDS[pageIndex];
+  if (!fields) return;
+  fields.forEach(f => {
+    const el = document.getElementById(f.id);
+    const missing = !el || el.value.trim() === '';
+    if (f.type === 'text' && el) {
+      el.classList.toggle('input-missing', missing);
+    } else if (f.type === 'choice' && f.wrap) {
+      const wrap = document.querySelector(f.wrap);
+      if (wrap) wrap.classList.toggle('opts-missing', missing);
+    }
+  });
+}
+
+function showPageWarning(pageIndex, show) {
+  const warnId = VALIDATION_WARN_ID[pageIndex];
+  const warnEl = warnId ? document.getElementById(warnId) : null;
+  if (warnEl) warnEl.classList.toggle('visible', show);
+}
+
+function clearHighlightIfValid(pageIndex) {
+  highlightMissing(pageIndex);
+  if (validatePage(pageIndex)) showPageWarning(pageIndex, false);
+}
+
+Object.keys(TEXT_FIELD_PAGE_MAP).forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', () => clearHighlightIfValid(TEXT_FIELD_PAGE_MAP[id]));
+});
 
 const form = document.getElementById('pause-form');
 const submitBtn = document.getElementById('submit-btn');
