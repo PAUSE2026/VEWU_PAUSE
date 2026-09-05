@@ -2247,7 +2247,12 @@ function goTo(n) {
   const ttsBtn = document.getElementById('tts-btn');
   if (ttsBtn) ttsBtn.classList.remove('speaking');
 }
-function changePage(dir) { goTo(cur + dir); }
+function changePage(dir) {
+  if (dir === 1 && cur === TOTAL - 2) {
+    submitStory(false);
+  }
+  goTo(cur + dir);
+}
 
 function pickOpt(el, field, val) {
   el.closest('.opts').querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
@@ -2297,14 +2302,22 @@ const submitBtn = document.getElementById('submit-btn');
 const successMsg = document.getElementById('form-success');
 const errorMsg = document.getElementById('form-error');
 
-form.addEventListener('submit', async function(e) {
-  e.preventDefault();
+let storySubmitted = false;
+
+async function submitStory(showUI) {
+  if (storySubmitted) return;
+  storySubmitted = true;
   syncAllToHidden();
-  successMsg.classList.remove('visible');
-  errorMsg.classList.remove('visible');
-  submitBtn.disabled = true;
+
   const t = TRANSLATIONS[currentLang];
-  submitBtn.textContent = currentLang === 'vi' ? 'Đang lưu...' : currentLang === 'kh' ? 'កំពុងរក្សាទុក...' : currentLang === 'fil' ? 'Sini-save...' : 'Saving...';
+
+  if (showUI) {
+    successMsg.classList.remove('visible');
+    errorMsg.classList.remove('visible');
+    submitBtn.disabled = true;
+    submitBtn.textContent = currentLang === 'vi' ? 'Đang lưu...' : currentLang === 'kh' ? 'កំពុងរក្សាទុក...' : currentLang === 'fil' ? 'Sini-save...' : 'Saving...';
+  }
+
   const data = new FormData(form);
   const textFieldMap = {
     q_past: 'circle1_past_description',
@@ -2328,27 +2341,41 @@ form.addEventListener('submit', async function(e) {
   });
   const nameEl = document.getElementById('p_name');
   const countryEl = document.getElementById('h_country');
-  const subjectParts = ['PAUSE Response'];
-  if (countryEl && countryEl.value) subjectParts.push(countryEl.value.replace(/^[^\\s]+\\s/, ''));
+  const subjectParts = [showUI ? 'PAUSE Response' : 'PAUSE Response (auto-saved on finish)'];
+  if (countryEl && countryEl.value) subjectParts.push(countryEl.value.replace(/^[^\s]+\s/, ''));
   if (nameEl && nameEl.value) subjectParts.push(nameEl.value);
   data.set('_subject', subjectParts.join(' — '));
+
   try {
     const res = await fetch('https://formspree.io/f/mzdwqabv', {
       method:'POST', body:data, headers:{'Accept':'application/json'}
     });
     if (res.ok) {
-      successMsg.classList.add('visible');
-      submitBtn.style.display = 'none';
+      if (showUI) {
+        successMsg.classList.add('visible');
+        submitBtn.style.display = 'none';
+      }
     } else {
+      storySubmitted = false;
+      if (showUI) {
+        errorMsg.classList.add('visible');
+        submitBtn.disabled = false;
+        submitBtn.textContent = t ? t.form_submit : 'Save my story';
+      }
+    }
+  } catch(err) {
+    storySubmitted = false;
+    if (showUI) {
       errorMsg.classList.add('visible');
       submitBtn.disabled = false;
       submitBtn.textContent = t ? t.form_submit : 'Save my story';
     }
-  } catch(err) {
-    errorMsg.classList.add('visible');
-    submitBtn.disabled = false;
-    submitBtn.textContent = t ? t.form_submit : 'Save my story';
   }
+}
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  submitStory(true);
 });
 </script>
 </body>
