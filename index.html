@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>PAUSE — Positive Discipline Flipbook</title>
+<title>PAUSE,  Positive Discipline Flipbook</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -352,6 +352,77 @@ textarea::placeholder, input::placeholder {
 }
 
 .opts { display: flex; flex-direction: column; gap: 6px; margin-bottom: 0.75rem; }
+
+.answer-field {
+  border-radius: 16px;
+  border: 1.5px solid var(--border);
+  background: rgba(255,255,255,0.65);
+  padding: 0.75rem 0.95rem 0.6rem;
+  margin-top: 0.35rem;
+  transition: border-color 0.15s, background 0.15s;
+}
+.answer-field:focus-within { border-color: var(--ink2); background: #fff; }
+.answer-field textarea, .answer-field input[type="text"] {
+  border-bottom: none;
+  padding: 0;
+}
+.answer-hint {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink4);
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.answer-field.input-missing {
+  border-color: var(--earth) !important;
+  border-width: 2px;
+  background: var(--earth-light);
+}
+
+.coc-theme {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1;
+  margin-bottom: 0.85rem;
+}
+.coc-q-list {
+  margin: 0 0 0.9rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid rgba(123,175,212,0.20);
+}
+.coc-q-item {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--ink3);
+  margin-bottom: 0.42rem;
+}
+.coc-q-item:first-child {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink2);
+  margin-bottom: 0.48rem;
+}
+.coc-q-item:last-child { margin-bottom: 0; }
+.coc-secondary-field { margin-top: 0.35rem; }
+.coc-secondary-field label { font-size: 12.5px; font-weight: 600; color: var(--ink3); }
+.coc-closing {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink);
+  text-align: center;
+  margin: 1.1rem 0 0.3rem;
+  padding-top: 1rem;
+  border-top: 1.5px solid var(--border);
+}
 .opt-btn {
   border: 1.5px solid var(--border);
   border-radius: 14px;
@@ -459,7 +530,7 @@ textarea::placeholder, input::placeholder {
   padding: 11px;
   border: none;
   border-radius: 14px;
-  background: var(--ink);
+  background: var(--sky);
   color: #fff;
   cursor: pointer;
   margin-top: 0.75rem;
@@ -617,6 +688,89 @@ textarea::placeholder, input::placeholder {
 }
 .tts-btn:hover { background: rgba(255,255,255,0.80); }
 .tts-btn.speaking { background: var(--ink); color: #fff; }
+
+.lang-picker {
+  margin: 0.85rem 0 0.15rem;
+  padding: 0.8rem 0 0.1rem;
+  border-top: 1px solid rgba(123,175,212,0.22);
+}
+.lang-picker-label {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sky);
+  margin-bottom: 0.55rem;
+  text-align: left;
+}
+.lang-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 7px;
+}
+.lang-picker-btn {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0.5rem 0.35rem;
+  border-radius: 13px;
+  border: 1.5px solid rgba(44,40,32,0.12);
+  background: rgba(247,244,239,0.92);
+  color: var(--ink3);
+  cursor: pointer;
+  text-align: center;
+  box-shadow: none;
+  transition: transform 0.15s, border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+.lang-picker-btn::before {
+  content: attr(data-code);
+  min-width: 21px;
+  height: 21px;
+  padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background: rgba(44,40,32,0.06);
+  color: var(--ink4);
+  font-family: 'Fredoka', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.lang-picker-btn:hover {
+  transform: translateY(-1px);
+  background: #fff;
+  border-color: rgba(44,40,32,0.20);
+  box-shadow: 0 3px 10px rgba(44,40,32,0.06);
+}
+.lang-picker-btn.active {
+  background: var(--sky-light);
+  color: #315E7A;
+  border-color: var(--sky);
+  box-shadow: 0 3px 10px rgba(123,175,212,0.18);
+}
+.lang-picker-btn.active::before {
+  background: rgba(123,175,212,0.18);
+  color: #315E7A;
+}
+.lang-picker-btn:last-child {
+  grid-column: span 2;
+}
+@media (max-width: 410px) {
+  .lang-picker-grid { grid-template-columns: repeat(3, 1fr); }
+  .lang-picker-btn:last-child { grid-column: auto; }
+}
+@media (max-width: 360px) {
+  .lang-picker-btn { min-height: 40px; font-size: 10.5px; }
+  .lang-picker-btn::before { display: none; }
+}
 </style>
 </head>
 <body>
@@ -644,17 +798,85 @@ textarea::placeholder, input::placeholder {
     <div class="page-label" data-key="p0_label">A positive discipline toolkit</div>
     <div class="cover-title" style="color:var(--earth);">PAUSE</div>
     <div class="cover-sub" data-key="p0_sub">Positive Alternatives to Unsafe &amp; Severe Enforcement</div>
-    <div class="cover-hook" data-key="p0_hook">What will you do in the next five seconds?</div>
+    <div class="cover-hook" data-key="p0_hook_short">What will you do in the next five seconds?</div>
     <div class="cover-desc" data-key="p0_desc">This flipbook walks you through five simple steps for responding to children with care, not fear.<br><br>Your answers become part of a living collection of change shared with parents, teachers, and communities across the Asia-Pacific.</div>
+
+    <div class="lang-picker">
+      <div class="lang-picker-label" data-key="p0_lang_lbl">Choose your language</div>
+      <div class="lang-picker-grid">
+        <button type="button" class="lang-picker-btn active" data-lang="en" data-code="EN" onclick="setLang('en')">English</button>
+        <button type="button" class="lang-picker-btn" data-lang="fil" data-code="PH" onclick="setLang('fil')">Tagalog</button>
+        <button type="button" class="lang-picker-btn" data-lang="ceb" data-code="PH" onclick="setLang('ceb')">Bisaya</button>
+        <button type="button" class="lang-picker-btn" data-lang="vi" data-code="VN" onclick="setLang('vi')">Tiếng Việt</button>
+        <button type="button" class="lang-picker-btn" data-lang="kh" data-code="KH" onclick="setLang('kh')">ខ្មែរ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE BGINTRO: BACKGROUND / WHAT & WHY PAUSE ══ -->
+<div id="page-1" class="page">
+  <div class="page-art" style="background-image:url('assets2/1.png');"></div>
+  <div class="page-body">
+    <div class="page-label" data-key="p0_hook">A moment to look back. A moment to choose differently.</div>
+
+    <div class="section-head" style="color:var(--earth);margin-top:0.3rem;" data-key="p0_what_head">What is PAUSE?</div>
+    <div class="section-sub" data-key="p0_what_txt">PAUSE is a short, self-guided digital reflection experience that invites adults to look back at how they experienced discipline as children, recognize what they may be carrying into their responses today, and consider what they want to do differently.<br><br>It creates a gentle entry point into conversations about corporal punishment, positive discipline, and positive parenting, without judgment.<br><br>Because sometimes, before we can learn another way, we need a moment to remember the way we were taught. What happened to me? What do I do now? What do I want to change?</div>
+
+    <div class="section-head" style="color:var(--grass);" data-key="p0_why_head">Why PAUSE?</div>
+    <div class="section-sub" data-key="p0_why_txt">Many adults were never taught another way to respond when a child makes a mistake. PAUSE creates a space between what happened to us and what we choose to pass on, helping us reflect on the kind of response, relationship, and memory we want to leave with a child.<br><br>The goal is not perfect parenting. It is one different response, one moment at a time.</div>
+
+    <div class="section-head" style="color:var(--sky);" data-key="p0_complement_head">A complement to the work already happening</div>
+    <div class="section-sub" data-key="p0_complement_txt">PAUSE is created to complement existing parenting, child protection, family development, or community programs. It adds a moment of reflection from the perspective of children, creating a personal starting point for deeper learning and continued change.<br><br>Partners can use it before, during, or after existing sessions, or simply share it with families and communities as a resource they can return to. No new program to build. Just a space to pause.</div>
+
+    <div class="section-head" style="color:var(--gold);" data-key="p0_accessible_head">Made to be accessible</div>
+    <div class="section-sub" data-key="p0_accessible_txt">PAUSE can be explored in English, Tagalog, Bisaya, Vietnamese, and Khmer, with text-to-voice and video features to make the experience more accessible and engaging.<br><br>The website also provides ways to learn more, connect with support, and continue the conversation beyond the toolkit.</div>
+
+    <div class="section-head" style="color:var(--mauve);" data-key="p0_partners_head">How partners can use PAUSE</div>
+    <div class="pause-grid" style="margin-top:0.4rem;">
+      <div class="pause-item">
+        <span class="pi-letter" style="color:var(--earth);font-size:22px;">1</span>
+        <div>
+          <span class="pi-word" style="color:var(--earth);" data-key="p0_share_word">Share</span>
+          <span class="pi-desc" data-key="p0_share_desc">Send the toolkit through existing parent, caregiver, teacher, youth, or community networks.</span>
+        </div>
+      </div>
+      <div class="pause-item">
+        <span class="pi-letter" style="color:var(--grass);font-size:22px;">2</span>
+        <div>
+          <span class="pi-word" style="color:var(--grass);" data-key="p0_invite_word">Invite</span>
+          <span class="pi-desc" data-key="p0_invite_desc">Give participants a few quiet minutes to explore it privately.</span>
+        </div>
+      </div>
+      <div class="pause-item">
+        <span class="pi-letter" style="color:var(--gold);font-size:22px;">3</span>
+        <div>
+          <span class="pi-word" style="color:var(--gold);" data-key="p0_reflect_word">Reflect</span>
+          <span class="pi-desc" data-key="p0_reflect_desc">Let them move through the experience at their own pace and save their reflections along the way.</span>
+        </div>
+      </div>
+      <div class="pause-item">
+        <span class="pi-letter" style="color:var(--sky);font-size:22px;">4</span>
+        <div>
+          <span class="pi-word" style="color:var(--sky);" data-key="p0_connect_word">Connect &amp; continue</span>
+          <span class="pi-desc" data-key="p0_connect_desc">Use PAUSE to open conversations and connect people to your existing programs, services, resources, and support.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="background:var(--earth-light);color:var(--ink2);margin-top:0.9rem;">
+      <span class="lbl" style="color:var(--earth);" data-key="p0_cta_lbl">Let's create the pause before the change.</span>
+      <span data-key="p0_cta_txt">A few quiet minutes. A memory. An honest reflection. And the possibility of responding differently next time.</span>
+    </div>
   </div>
 </div>
 
 <!-- ══ PAGE 1: SAFEGUARDING ══ -->
-<div id="page-1" class="page">
+<div id="page-2" class="page">
   <div class="page-art" style="background-image:url('assets2/2.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p1_label">Before we begin</div>
-    <div class="section-head" style="color:var(--sky);" data-key="p1_head">Our safeguarding commitment — to you, and to children</div>
+    <div class="section-head" style="color:var(--sky);" data-key="p1_head">Our safeguarding commitment,  to you, and to children</div>
     <div class="section-sub" data-key="p1_sub">This toolkit will ask you to be honest about how you were raised, and how you raise the children in your life today. Before you say anything, here is what we promise you in return.</div>
 
     <div style="border-radius:14px;border:1.5px solid var(--border);padding:0.85rem 1.05rem;background:rgba(255,255,255,0.7);">
@@ -693,7 +915,7 @@ textarea::placeholder, input::placeholder {
 </div>
 
 <!-- ══ PAGE 2: WHY THIS MATTERS ══ -->
-<div id="page-2" class="page">
+<div id="page-3" class="page">
   <div class="page-art" style="background-image:url('assets2/2.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p2_label">Before you begin · The bigger picture</div>
@@ -723,23 +945,23 @@ textarea::placeholder, input::placeholder {
 
 
 <!-- ══ PAGE 3: REFLECTION OPENER ══ -->
-<div id="page-3" class="page">
+<div id="page-4" class="page">
   <div class="page-art" style="background-image:url('assets2/3.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p3_label">Opening reflection</div>
-    <div class="refl-q" style="color:var(--grass);" data-key="p3_q">"Think about how you were disciplined as a child."</div>
-    <div class="refl-sub" data-key="p3_sub">What happened when you made a mistake? How did it feel? Do you still carry that feeling today?</div>
     <div class="info-box" style="background:var(--grass-light);color:var(--ink2);">
       <span class="lbl" style="color:var(--grass);" data-key="p3_box_lbl">A moment to reflect</span>
       <span data-key="p3_box_txt">Allow 2 to 3 minutes of quiet reflection. You may share if you feel ready, or simply sit with the memory.</span>
     </div>
+    <div class="refl-q" style="color:var(--grass);" data-key="p3_q">Let's bring our minds back to when we were children.</div>
+    <div class="refl-sub" data-key="p3_sub">Think back to the home where you grew up. Remember where you used to sit, play, or hide. What did your surroundings look like? What sounds did you often hear, your mother's or father's voice, the television, a radio, footsteps, or noise from outside? Remember the familiar smells of the house too, food cooking, soap, coffee, or the smell after the rain.<br><br>Remember the people you were often around. Where they were back then, what they called you, and how it felt to be with them.<br><br>Now, from those memories, go back to one specific moment when you were a child and you made a mistake.<br><br>Remember where you were, what you did, and who noticed first. Go back to the moment you realized you had done something wrong.<br><br>What did you feel first? What happened in your body, did you go cold, did your heart race, did you look down, did you cry?<br><br>Remember the person who disciplined you. Listen again, in your memory, to their voice. What words did they say? Was it shouting, strict, quiet, or calm?<br><br>And as the child you were then, what did you do after? Did you cry? Hide? Stay silent? Ask for forgiveness? Or promise yourself it would never happen again?<br><br>Go back to that moment, and remember what the child you were felt.</div>
     <div class="info-box" style="background:var(--gold-light);color:var(--ink2);" data-key="p3_gold">Most of us were never taught another way. PAUSE gives you one, not because you are wrong, but because you deserve better tools.</div>
-    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);" data-key="p3_note">As you read each step, think of a real moment in your own life.</div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);" data-key="p3_note">Carry what you just remembered with you as we continue.</div>
   </div>
 </div>
 
 <!-- ══ PAGE 4: WHAT IS POSITIVE DISCIPLINE ══ -->
-<div id="page-4" class="page">
+<div id="page-5" class="page">
   <div class="page-art" style="background-image:url('assets2/3.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p4_label">Before Step 1 · What is positive discipline?</div>
@@ -762,9 +984,57 @@ textarea::placeholder, input::placeholder {
   </div>
 </div>
 
+<!-- ══ PAGE HISTORY: WHERE PAUSE CAME FROM ══ -->
+<div id="page-6" class="page">
+  <div class="page-art" style="background-image:url('assets2/3.png');"></div>
+  <div class="page-body">
+    <div class="page-label" data-key="ph_label">Before Step 1 · Where PAUSE came from</div>
+
+    <div class="section-head" style="color:var(--mauve);" data-key="ph_head">
+      Where PAUSE came from
+    </div>
+
+    <div class="section-sub" data-key="ph_body">
+      PAUSE began with a simple perspective: <strong>children deserve to grow up feeling safe, heard, guided, and supported as they learn and make mistakes.</strong>
+
+      <br><br>
+
+      From a child’s point of view, the way adults guide us can become part of how we understand ourselves, how we treat others, and how we learn to handle mistakes. This made us think about something important: <strong>what if discipline could help children grow without taking away their sense of safety, dignity, or worth?</strong>
+
+      <br><br>
+
+      PAUSE was created from that question.
+
+      <br><br>
+
+      It is not a lesson about being a perfect parent, nor is it about telling adults what they should or should not do. <strong>It is an invitation to pause, reflect, and discover the small changes that can make guidance more positive.</strong>
+
+      <br><br>
+
+      Because positive parenting is more than avoiding corporal punishment. It is about helping children understand boundaries, learn from mistakes, express their feelings, take responsibility, and grow with the support of the adults around them.
+
+      <br><br>
+
+      <strong>PAUSE is about making that shift together.</strong>
+    </div>
+
+    <div class="info-box" style="background:var(--mauve-light);color:var(--ink2);">
+      <div style="font-family:'Fredoka',sans-serif;font-size:17px;font-weight:600;line-height:1.7;color:var(--mauve);">
+        From punishment to guidance.<br>
+        From fear to understanding.<br>
+        From simply correcting behavior to helping children learn.<br>
+        From reacting in the moment to choosing a response that helps a child grow.
+      </div>
+    </div>
+
+    <div class="section-sub" style="margin-top:0.5rem;" data-key="ph_bridge">
+      And sometimes, meaningful change begins with something as simple as <strong>pausing.</strong>
+    </div>
+  </div>
+</div>
 
 <!-- ══ PAGE 5: P ══ -->
-<div id="page-5" class="page">
+<div id="page-7" class="page">
   <div class="page-art" style="background-image:url('assets2/4.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p5_label">Step 1 of 5</div>
@@ -780,7 +1050,7 @@ textarea::placeholder, input::placeholder {
 </div>
 
 <!-- ══ PAGE 4: A ══ -->
-<div id="page-6" class="page">
+<div id="page-8" class="page">
   <div class="page-art" style="background-image:url('assets2/5.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p6_label">Step 2 of 5</div>
@@ -796,7 +1066,7 @@ textarea::placeholder, input::placeholder {
 </div>
 
 <!-- ══ PAGE 5: U ══ -->
-<div id="page-7" class="page">
+<div id="page-9" class="page">
   <div class="page-art" style="background-image:url('assets2/6.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p7_label">Step 3 of 5</div>
@@ -812,7 +1082,7 @@ textarea::placeholder, input::placeholder {
 </div>
 
 <!-- ══ PAGE 6: S ══ -->
-<div id="page-8" class="page">
+<div id="page-10" class="page">
   <div class="page-art" style="background-image:url('assets2/7.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p8_label">Step 4 of 5</div>
@@ -828,7 +1098,7 @@ textarea::placeholder, input::placeholder {
 </div>
 
 <!-- ══ PAGE 7: E ══ -->
-<div id="page-9" class="page">
+<div id="page-11" class="page">
   <div class="page-art" style="background-image:url('assets2/8.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p9_label">Step 5 of 5</div>
@@ -844,31 +1114,38 @@ textarea::placeholder, input::placeholder {
 </div>
 
 <!-- ══ PAGE 8: CIRCLE OF CHANGE INTRO ══ -->
-<div id="page-10" class="page">
+<div id="page-12" class="page">
   <div class="page-art" style="background-image:url('assets2/9.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p10_label">Circle of change</div>
     <div class="section-head" style="color:var(--earth);" data-key="p10_head">Your story matters.</div>
-    <div class="section-sub" data-key="p10_sub">The next pages ask you to reflect honestly on your past, your present, and the change you want to make. There are no wrong answers.</div>
+    <div class="section-sub" data-key="p10_sub">The next five pages are a quiet space to notice what you learned, what you carry with you, and what you want to pass on differently. You do not have to have everything figured out. Just be honest with yourself.</div>
     <div class="info-box" style="background:var(--earth-light);color:var(--ink2);">
       <span class="lbl" style="color:var(--earth);" data-key="p10_box_lbl">What is the circle of change?</span>
-      <span data-key="p10_box_txt">The journey from how you were treated as a child, to how that shaped the way you discipline today, to the boundaries you want to set going forward.</span>
+      <span data-key="p10_box_txt">The Circle of Change helps you connect the dots: what happened to you, what you learned from it, how it may show up in your responses today, and what you want to change. It is a chance to understand your patterns without judging yourself, and to choose one small step toward a safer, more respectful relationship with a child.</span>
     </div>
-    <div style="font-family:'Quicksand',sans-serif;font-size:12px;font-weight:600;text-align:center;color:var(--ink4);margin-top:0.4rem;" data-key="p10_steps">Your past · Your now · The shift · Your limits · Your commitment</div>
-    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);margin-top:0.75rem;" data-key="p10_note">Your answers become part of a collection of change shared anonymously as a module for communities across the region.</div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:12px;font-weight:600;text-align:center;color:var(--ink4);margin-top:0.4rem;" data-key="p10_steps">Remember · Notice · Choose · Guide · Commit</div>
+    <div style="font-family:'Quicksand',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);margin-top:0.75rem;" data-key="p10_note">You are not being asked to judge the person you were, or the adults who raised you. You are being invited to notice what you want to keep, what you want to let go of, and what kind of memory you want a child to carry from you.</div>
   </div>
 </div>
 
 <!-- ══ PAGE 9: YOUR PAST ══ -->
-<div id="page-11" class="page">
+<div id="page-13" class="page">
   <div class="page-art" style="background-image:url('assets2/10.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p11_label">Circle of change · 1 of 5</div>
-    <div class="refl-q" style="color:var(--earth);" data-key="p11_head">Your past</div>
-    <div class="refl-sub" data-key="p11_sub">How were you disciplined as a child? What did the adults around you do when you made a mistake?</div>
+    <div class="coc-theme" style="color:var(--earth);" data-key="p11_head">Past</div>
+    <div class="refl-sub" data-key="p11_sub">Take a breath before you answer.</div>
+    <div class="coc-q-list">
+      <div class="coc-q-item" data-key="p11_q1">What did discipline look like when you were growing up?</div>
+      <div class="coc-q-item" data-key="p11_q2">Who taught you that way, and what did you carry from it?</div>
+      <div class="coc-q-item" data-key="p11_q3">How did it make you feel, then and now?</div>
+    </div>
     <div class="field">
-      <label for="q_past" data-key="p11_q1_lbl">Describe what discipline looked like in your home growing up</label>
-      <textarea id="q_past" rows="3" data-placeholder-key="p11_q1_ph" placeholder="Write freely. This is your space."></textarea>
+      <div class="answer-field">
+        <div class="answer-hint" data-key="answer_hint">✍️ Your answer</div>
+        <textarea id="q_past" rows="4" data-placeholder-key="p11_q1_ph" placeholder="Write freely. This is your space."></textarea>
+      </div>
     </div>
     <div class="field">
       <label data-key="p11_q2_lbl">How did it make you feel?</label>
@@ -883,23 +1160,31 @@ textarea::placeholder, input::placeholder {
       </div>
       <input type="hidden" id="past_feeling" />
       <div class="opt-other-input" id="past_feeling_other_wrap">
-        <input type="text" id="past_feeling_other" data-placeholder-key="p11_other_ph" placeholder="Describe how it felt..." oninput="document.getElementById('past_feeling').value='Other: '+this.value;syncHidden();clearHighlightIfValid(11);" />
+        <input type="text" id="past_feeling_other" data-placeholder-key="p11_other_ph" placeholder="Describe how it felt..." oninput="document.getElementById('past_feeling').value='Other: '+this.value;syncHidden();clearHighlightIfValid(13);" />
       </div>
     </div>
-    <div class="error-msg" id="p11-warn" data-key="validation_warn">Please answer both questions before moving on.</div>
+    <div class="error-msg" id="p11-warn" data-key="validation_warn">Please answer before moving on.</div>
   </div>
 </div>
 
 <!-- ══ PAGE 10: YOUR NOW ══ -->
-<div id="page-12" class="page">
+<div id="page-14" class="page">
   <div class="page-art" style="background-image:url('assets2/11.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p12_label">Circle of change · 2 of 5</div>
-    <div class="refl-q" style="color:var(--grass);" data-key="p12_head">Your now</div>
-    <div class="refl-sub" data-key="p12_sub">How do you discipline children in your life today? Be honest. This is not a test.</div>
+    <div class="coc-theme" style="color:var(--grass);" data-key="p12_head">Now</div>
+    <div class="refl-sub" data-key="p12_sub">Be honest with yourself here. This is not a test.</div>
+    <div class="coc-q-list">
+      <div class="coc-q-item" data-key="p12_q1">When a child makes a mistake, how do you usually respond, and what do you feel?</div>
+      <div class="coc-q-item" data-key="p12_q2">What do you think is behind that feeling?</div>
+      <div class="coc-q-item" data-key="p12_q3">Do you notice a connection to how you were raised?</div>
+      <div class="coc-q-item" data-key="p12_q4">When that feeling takes over, what happens to your response?</div>
+    </div>
     <div class="field">
-      <label for="q_now" data-key="p12_q1_lbl">When a child misbehaves, what do you usually do?</label>
-      <textarea id="q_now" rows="3" data-placeholder-key="p12_q1_ph" placeholder="Be honest with yourself here."></textarea>
+      <div class="answer-field">
+        <div class="answer-hint" data-key="answer_hint">✍️ Your answer</div>
+        <textarea id="q_now" rows="4" data-placeholder-key="p12_q1_ph" placeholder="Be honest with yourself here."></textarea>
+      </div>
     </div>
     <div class="field">
       <label data-key="p12_q2_lbl">Do you see a pattern from your own childhood in how you respond?</label>
@@ -914,42 +1199,59 @@ textarea::placeholder, input::placeholder {
       </div>
       <input type="hidden" id="pattern" />
       <div class="opt-other-input" id="pattern_other_wrap">
-        <input type="text" id="pattern_other" data-placeholder-key="p12_other_ph" placeholder="Describe your experience..." oninput="document.getElementById('pattern').value='Other: '+this.value;syncHidden();clearHighlightIfValid(12);" />
+        <input type="text" id="pattern_other" data-placeholder-key="p12_other_ph" placeholder="Describe your experience..." oninput="document.getElementById('pattern').value='Other: '+this.value;syncHidden();clearHighlightIfValid(14);" />
       </div>
     </div>
-    <div class="error-msg" id="p12-warn" data-key="validation_warn">Please answer both questions before moving on.</div>
+    <div class="error-msg" id="p12-warn" data-key="validation_warn">Please answer before moving on.</div>
   </div>
 </div>
 
 <!-- ══ PAGE 11: THE SHIFT ══ -->
-<div id="page-13" class="page">
+<div id="page-15" class="page">
   <div class="page-art" style="background-image:url('assets2/12.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p13_label">Circle of change · 3 of 5</div>
-    <div class="refl-q" style="color:var(--gold);" data-key="p13_head">The shift</div>
-    <div class="refl-sub" data-key="p13_sub">What do you want to change? What kind of adult do you want to be in the moments that matter?</div>
-    <div class="field">
-      <label for="q_change" data-key="p13_q1_lbl">Describe the change you want to make</label>
-      <textarea id="q_change" rows="3" data-placeholder-key="p13_q1_ph" placeholder="What does doing better look like for you?"></textarea>
+    <div class="coc-theme" style="color:var(--gold);" data-key="p13_head">Shift</div>
+    <div class="refl-sub" data-key="p13_sub">What kind of adult do you want to be in the moments that matter?</div>
+    <div class="coc-q-list">
+      <div class="coc-q-item" data-key="p13_q1">Describe the change you want to make.</div>
+      <div class="coc-q-item" data-key="p13_q2">Why does that change matter to you?</div>
+      <div class="coc-q-item" data-key="p13_q3">What small first step could you take?</div>
     </div>
     <div class="field">
+      <div class="answer-field">
+        <div class="answer-hint" data-key="answer_hint">✍️ Your answer</div>
+        <textarea id="q_change" rows="4" data-placeholder-key="p13_q1_ph" placeholder="What does doing better look like for you?"></textarea>
+      </div>
+    </div>
+    <div class="field coc-secondary-field">
       <label for="q_barrier" data-key="p13_q2_lbl">What makes it hard to change?</label>
-      <textarea id="q_barrier" rows="2" data-placeholder-key="p13_q2_ph" placeholder="Stress, time, not knowing what else to do..."></textarea>
+      <div class="answer-field">
+        <textarea id="q_barrier" rows="2" data-placeholder-key="p13_q2_ph" placeholder="Stress, time, not knowing what else to do..."></textarea>
+      </div>
     </div>
-    <div class="error-msg" id="p13-warn" data-key="validation_warn">Please answer both questions before moving on.</div>
+    <div class="error-msg" id="p13-warn" data-key="validation_warn">Please answer before moving on.</div>
   </div>
 </div>
 
 <!-- ══ PAGE 12: YOUR LIMITS ══ -->
-<div id="page-14" class="page">
+<div id="page-16" class="page">
   <div class="page-art" style="background-image:url('assets2/13.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p14_label">Circle of change · 4 of 5</div>
-    <div class="refl-q" style="color:var(--sky);" data-key="p14_head">Your limits</div>
-    <div class="refl-sub" data-key="p14_sub">Positive parenting still has boundaries. Children need limits given with love and consistency, not pain or fear.</div>
+    <div class="coc-theme" style="color:var(--sky);" data-key="p14_head">Limits</div>
+    <div class="refl-sub" data-key="p14_sub">Positive discipline still has boundaries.</div>
+    <div class="coc-q-list">
+      <div class="coc-q-item" data-key="p14_q1">What boundaries matter most to you in raising children?</div>
+      <div class="coc-q-item" data-key="p14_q2">Can a child be disciplined without physical punishment?</div>
+      <div class="coc-q-item" data-key="p14_q3">Are those boundaries clear to the child, and how do you explain the reason behind them?</div>
+      <div class="coc-q-item" data-key="p14_q4">How do you know when a boundary needs adjusting?</div>
+    </div>
     <div class="field">
-      <label for="q_limits" data-key="p14_q1_lbl">What boundaries matter most to you in raising children?</label>
-      <textarea id="q_limits" rows="3" data-placeholder-key="p14_q1_ph" placeholder="What values do you want your child to carry?"></textarea>
+      <div class="answer-field">
+        <div class="answer-hint" data-key="answer_hint">✍️ Your answer</div>
+        <textarea id="q_limits" rows="4" data-placeholder-key="p14_q1_ph" placeholder="What values do you want your child to carry?"></textarea>
+      </div>
     </div>
     <div class="field">
       <label data-key="p14_q2_lbl">Can a child be disciplined without physical punishment?</label>
@@ -964,38 +1266,55 @@ textarea::placeholder, input::placeholder {
       </div>
       <input type="hidden" id="belief_shift" />
       <div class="opt-other-input" id="belief_shift_other_wrap">
-        <input type="text" id="belief_shift_other" data-placeholder-key="p14_other_ph" placeholder="Share your view..." oninput="document.getElementById('belief_shift').value='Other: '+this.value;syncHidden();clearHighlightIfValid(14);" />
+        <input type="text" id="belief_shift_other" data-placeholder-key="p14_other_ph" placeholder="Share your view..." oninput="document.getElementById('belief_shift').value='Other: '+this.value;syncHidden();clearHighlightIfValid(16);" />
       </div>
     </div>
-    <div class="error-msg" id="p14-warn" data-key="validation_warn">Please answer both questions before moving on.</div>
+    <div class="error-msg" id="p14-warn" data-key="validation_warn">Please answer before moving on.</div>
   </div>
 </div>
 
 <!-- ══ PAGE 13: COMMITMENT + FORM ══ -->
-<div id="page-15" class="page">
+<div id="page-17" class="page">
   <div class="page-art" style="background-image:url('assets2/14.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p15_label">Circle of change · 5 of 5</div>
-    <div class="refl-q" style="color:var(--mauve);" data-key="p15_head">Your commitment</div>
-    <div class="refl-sub" data-key="p15_sub">"Is that the memory you want your child to have of you?" You don't have to be perfect. You just have to pause, one moment at a time.</div>
+    <div class="coc-theme" style="color:var(--mauve);" data-key="p15_head">Commitment</div>
 
     <form id="pause-form">
       <input type="hidden" name="toolkit_version" value="Pilot Edition · Asia-Pacific 2026" />
       <input type="hidden" id="form-subject" name="_subject" value="PAUSE Circle of Change Submission" />
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-      <input type="hidden" id="h_past_feeling" name="circle1_past_feeling" />
-      <input type="hidden" id="h_pattern" name="circle2_pattern_recognition" />
-      <input type="hidden" id="h_belief" name="circle4_belief_positive_discipline" />
       <input type="hidden" id="h_country" name="participant_country" />
       <input type="hidden" id="h_q_past" name="circle1_past_description" />
       <input type="hidden" id="h_q_now" name="circle2_now_description" />
       <input type="hidden" id="h_q_change" name="circle3_change_goal" />
       <input type="hidden" id="h_q_barrier" name="circle3_change_barrier" />
       <input type="hidden" id="h_q_limits" name="circle4_boundaries" />
+      <input type="hidden" id="h_past_feeling" name="circle1_past_feeling" />
+      <input type="hidden" id="h_pattern" name="circle2_pattern_recognition" />
+      <input type="hidden" id="h_belief" name="circle4_belief_positive_discipline" />
 
+      <div class="coc-q-list">
+        <div class="coc-q-item" data-key="p15_q1">Write a message or a promise for your child, or the children in your care.</div>
+      </div>
+      <div class="field">
+        <div class="answer-field">
+          <div class="answer-hint" data-key="answer_hint">✍️ Your answer</div>
+          <textarea id="p_commit" name="commitment_moment" rows="4" data-placeholder-key="p15_commit_ph" placeholder="Write your message here" required></textarea>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:0.9rem;">
+        <label for="p_support" data-key="p15_support_lbl">One person I can call when I'm struggling</label>
+        <div class="answer-field">
+          <input type="text" id="p_support" name="support_person" data-placeholder-key="p15_support_ph" placeholder="Their name" required />
+        </div>
+      </div>
       <div class="field">
         <label for="p_name" data-key="p15_name_lbl">Your name (optional)</label>
-        <input type="text" id="p_name" name="participant_name" data-placeholder-key="p15_name_ph" placeholder="First name or leave blank" />
+        <div class="answer-field">
+          <input type="text" id="p_name" name="participant_name" data-placeholder-key="p15_name_ph" placeholder="First name or leave blank" />
+        </div>
       </div>
       <div class="field">
         <label data-key="p15_country_lbl">Where are you joining from?</label>
@@ -1010,28 +1329,24 @@ textarea::placeholder, input::placeholder {
         </div>
       </div>
       <div class="field">
-        <label for="p_commit" data-key="p15_commit_lbl">I commit to trying PAUSE when...</label>
-        <textarea id="p_commit" name="commitment_moment" rows="2" data-placeholder-key="p15_commit_ph" placeholder="Describe your specific moment" required></textarea>
-      </div>
-      <div class="field">
-        <label for="p_support" data-key="p15_support_lbl">One person I can call when I'm struggling</label>
-        <input type="text" id="p_support" name="support_person" data-placeholder-key="p15_support_ph" placeholder="Their name" required />
-      </div>
-      <div class="field">
         <label for="p_followup" data-key="p15_followup_lbl">Phone or email for follow-up (optional)</label>
-        <input type="text" id="p_followup" name="followup_contact" data-placeholder-key="p15_followup_ph" placeholder="Your number or email" />
+        <div class="answer-field">
+          <input type="text" id="p_followup" name="followup_contact" data-placeholder-key="p15_followup_ph" placeholder="Your number or email" />
+        </div>
       </div>
 
-      <div class="error-msg" id="p15-warn" data-key="validation_warn">Please answer both questions before moving on.</div>
+      <div class="error-msg" id="p15-warn" data-key="validation_warn">Please answer before moving on.</div>
       <div class="error-msg" id="form-error" data-key="form_error">Something went wrong. Please try again.</div>
       <div class="success-msg" id="form-success" data-key="form_success">Your story has been saved. Thank you for choosing to pause. Violence ends with us.</div>
       <button type="submit" class="submit-btn" id="submit-btn" data-key="form_submit">Save my story</button>
     </form>
+
+    <div class="coc-closing" data-key="p15_closing">What you do next can become part of a child’s memory of growing up with you. You do not have to get it right every time. Each pause is a chance to choose a kinder way forward.</div>
   </div>
 </div>
 
 <!-- ══ PAGE 16: MOVING FORWARD ══ -->
-<div id="page-16" class="page">
+<div id="page-18" class="page">
   <div class="page-art" style="background-image:url('assets2/14.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p16_label">Moving forward</div>
@@ -1112,7 +1427,7 @@ textarea::placeholder, input::placeholder {
 </div>
 
 <!-- ══ PAGE 17: POCKET CARD ══ -->
-<div id="page-17" class="page">
+<div id="page-19" class="page">
   <div class="page-art" style="background-image:url('assets2/15.png');"></div>
   <div class="page-body">
     <div class="page-label" data-key="p17_label">Your pocket card · Keep this close</div>
@@ -1181,17 +1496,37 @@ const TRANSLATIONS = {
 /* ── ENGLISH ── */
 en: {
   top_label: 'Violence Ends With Us · PAUSE Toolkit · Pilot 2026',
-  footer: '18 pages · Pilot edition · Philippines · Vietnam · Cambodia',
+  footer: '20 pages · Pilot edition · Philippines · Vietnam · Cambodia',
   nav_back: 'Back', nav_next: 'Next', nav_finish: 'Finish',
-  validation_warn: 'Please answer both questions before moving on.',
 
   p0_label: 'A positive discipline toolkit',
   p0_sub: 'Positive Alternatives to Unsafe & Severe Enforcement',
-  p0_hook: 'What will you do in the next five seconds?',
+  p0_hook: 'A moment to look back. A moment to choose differently.',
+  p0_hook_short: 'What will you do in the next five seconds?',
   p0_desc: 'This flipbook walks you through five simple steps for responding to children with care, not fear.<br><br>Your answers become part of a living collection of change shared with parents, teachers, and communities across the Asia-Pacific.',
+  p0_lang_lbl: 'Choose your language',
+  p0_what_head: 'What is PAUSE?',
+  p0_what_txt: 'PAUSE is a short, self-guided digital reflection experience that invites adults to look back at how they experienced discipline as children, recognize what they may be carrying into their responses today, and consider what they want to do differently.<br><br>It creates a gentle entry point into conversations about corporal punishment, positive discipline, and positive parenting, without judgment.<br><br>Because sometimes, before we can learn another way, we need a moment to remember the way we were taught. What happened to me? What do I do now? What do I want to change?',
+  p0_why_head: 'Why PAUSE?',
+  p0_why_txt: 'Many adults were never taught another way to respond when a child makes a mistake. PAUSE creates a space between what happened to us and what we choose to pass on, helping us reflect on the kind of response, relationship, and memory we want to leave with a child.<br><br>The goal is not perfect parenting. It is one different response, one moment at a time.',
+  p0_complement_head: 'A complement to the work already happening',
+  p0_complement_txt: 'PAUSE is created to complement existing parenting, child protection, family development, or community programs. It adds a moment of reflection from the perspective of children, creating a personal starting point for deeper learning and continued change.<br><br>Partners can use it before, during, or after existing sessions, or simply share it with families and communities as a resource they can return to. No new program to build. Just a space to pause.',
+  p0_accessible_head: 'Made to be accessible',
+  p0_accessible_txt: 'PAUSE can be explored in English, Tagalog, Bisaya, Vietnamese, and Khmer, with text-to-voice and video features to make the experience more accessible and engaging.<br><br>The website also provides ways to learn more, connect with support, and continue the conversation beyond the toolkit.',
+  p0_partners_head: 'How partners can use PAUSE',
+  p0_share_word: 'Share',
+  p0_share_desc: 'Send the toolkit through existing parent, caregiver, teacher, youth, or community networks.',
+  p0_invite_word: 'Invite',
+  p0_invite_desc: 'Give participants a few quiet minutes to explore it privately.',
+  p0_reflect_word: 'Reflect',
+  p0_reflect_desc: 'Let them move through the experience at their own pace and save their reflections along the way.',
+  p0_connect_word: 'Connect & continue',
+  p0_connect_desc: 'Use PAUSE to open conversations and connect people to your existing programs, services, resources, and support.',
+  p0_cta_lbl: "Let's create the pause before the change.",
+  p0_cta_txt: 'A few quiet minutes. A memory. An honest reflection. And the possibility of responding differently next time.',
 
   p1_label: 'Before we begin',
-  p1_head: 'Our safeguarding commitment — to you, and to children',
+  p1_head: 'Our safeguarding commitment,  to you, and to children',
   p1_sub: 'This toolkit will ask you to be honest about how you were raised, and how you raise the children in your life today. Before you say anything, here is what we promise you in return.',
   p1_parent_lbl: 'Our promise to you as a parent or caregiver',
   p1_promise_judge: 'No judgment. Telling us you\'ve hit, shamed, or struggled with a child does not make you a bad parent in our eyes. It\'s why PAUSE exists.',
@@ -1228,13 +1563,21 @@ en: {
   p4_video2_cap: '"The Single Most Important Parenting Strategy" · Dr. Becky Kennedy, TED (English) · <a href="https://youtu.be/PHpPtdk9rco" target="_blank" rel="noopener">Watch on YouTube ↗</a>',
   p4_note: 'Punishment stops a behavior for a moment. Teaching changes it for good.',
 
+  ph_label: 'Before Step 1 · Where PAUSE came from',
+  ph_head: 'Made by children, for the grown-ups who raise them',
+  ph_body: 'PAUSE was shaped from the perspective of children and young people. We know what it can feel like to be on the receiving end of an adult\'s reaction, and we wanted that perspective to be part of the conversation.<br><br>This is not a lecture for parents about what they are doing wrong. It is an invitation to see discipline through a child\'s eyes: what helps us feel safe enough to speak, learn, make mistakes, and grow into better people?<br><br>Corporal punishment is part of the conversation, but it is not where the conversation ends. PAUSE also turns toward the shift we want to see: positive parenting that guides children with clear boundaries, calm responses, understanding, and support instead of pain or fear. It asks what adults can do differently, not to be perfect, but to help shape the kind of people children can become.',
+  ph_quote_lbl: 'In their own words',
+  ph_quote_txt: "We didn't want to write another lecture aimed at children. We wanted something that finally spoke to the adults who raise us, because we are the ones who remember what it felt like to be on the other side.",
+  ph_quote_cite: 'Youth co-creators of PAUSE, Asia-Pacific',
+  ph_bridge: 'That is why the five steps on the next pages begin with the child\'s perspective. They focus on the moments that shape us: pausing before reacting, asking what happened, understanding what is underneath the behavior, supporting the child, and ending with encouragement. These are simple shifts that can help children feel safer, learn from mistakes, and grow, while helping adults build a more positive way of parenting.',
+
   p3_label: 'Opening reflection',
-  p3_q: '"Think about how you were disciplined as a child."',
-  p3_sub: 'What happened when you made a mistake? How did it feel? Do you still carry that feeling today?',
+  p3_q: "Let's bring our minds back to when we were children.",
+  p3_sub: "Think back to the home where you grew up. Remember where you used to sit, play, or hide. What did your surroundings look like? What sounds did you often hear, your mother's or father's voice, the television, a radio, footsteps, or noise from outside? Remember the familiar smells of the house too, food cooking, soap, coffee, or the smell after the rain.<br><br>Remember the people you were often around. Where they were back then, what they called you, and how it felt to be with them.<br><br>Now, from those memories, go back to one specific moment when you were a child and you made a mistake.<br><br>Remember where you were, what you did, and who noticed first. Go back to the moment you realized you had done something wrong.<br><br>What did you feel first? What happened in your body, did you go cold, did your heart race, did you look down, did you cry?<br><br>Remember the person who disciplined you. Listen again, in your memory, to their voice. What words did they say? Was it shouting, strict, quiet, or calm?<br><br>And as the child you were then, what did you do after? Did you cry? Hide? Stay silent? Ask for forgiveness? Or promise yourself it would never happen again?<br><br>Go back to that moment, and remember what the child you were felt.",
   p3_box_lbl: 'A moment to reflect',
   p3_box_txt: 'Allow 2 to 3 minutes of quiet reflection. You may share if you feel ready, or simply sit with the memory.',
   p3_gold: 'Most of us were never taught another way. PAUSE gives you one, not because you are wrong, but because you deserve better tools.',
-  p3_note: 'As you read each step, think of a real moment in your own life.',
+  p3_note: 'Carry what you just remembered with you as we continue.',
 
   p5_label: 'Step 1 of 5', p5_word: 'Pause',
   p5_action: 'Stop before you react. Take one breath. Give yourself five seconds before you do or say anything.',
@@ -1268,15 +1611,17 @@ en: {
 
   p10_label: 'Circle of change',
   p10_head: 'Your story matters.',
-  p10_sub: 'The next pages ask you to reflect honestly on your past, your present, and the change you want to make. There are no wrong answers.',
+  p10_sub: 'The next five pages are a quiet space to notice what you learned, what you carry with you, and what you want to pass on differently. You do not have to have everything figured out. Just be honest with yourself.',
   p10_box_lbl: 'What is the circle of change?',
-  p10_box_txt: 'The journey from how you were treated as a child, to how that shaped the way you discipline today, to the boundaries you want to set going forward.',
-  p10_steps: 'Your past · Your now · The shift · Your limits · Your commitment',
-  p10_note: 'Your answers become part of a collection of change shared anonymously as a module for communities across the region.',
+  p10_box_txt: 'The Circle of Change helps you connect the dots: what happened to you, what you learned from it, how it may show up in your responses today, and what you want to change. It is a chance to understand your patterns without judging yourself, and to choose one small step toward a safer, more respectful relationship with a child.',
+  p10_steps: 'Remember · Notice · Choose · Guide · Commit',
+  p10_note: 'You are not being asked to judge the person you were, or the adults who raised you. You are being invited to notice what you want to keep, what you want to let go of, and what kind of memory you want a child to carry from you.',
 
-  p11_label: 'Circle of change · 1 of 5', p11_head: 'Your past',
-  p11_sub: 'How were you disciplined as a child? What did the adults around you do when you made a mistake?',
-  p11_q1_lbl: 'Describe what discipline looked like in your home growing up',
+  p11_label: 'Circle of change · 1 of 5', p11_head: 'Past',
+  p11_sub: 'Take a breath before you answer.',
+  p11_q1: 'Describe what discipline looked like in your home growing up.',
+  p11_q2: 'Who taught you that way, and what did you carry from it?',
+  p11_q3: 'How did it make you feel, then and now?',
   p11_q1_ph: 'Write freely. This is your space.',
   p11_q2_lbl: 'How did it make you feel?',
   p11_opt1: '😟 Afraid and anxious', p11_opt2: '💔 Ashamed or hurt',
@@ -1284,9 +1629,12 @@ en: {
   p11_opt5: '🙂 Mostly okay. It felt fair', p11_opt6: '🌱 Safe and guided',
   p11_opt7: '✏️ Other. I\'ll describe it', p11_other_ph: 'Describe how it felt...',
 
-  p12_label: 'Circle of change · 2 of 5', p12_head: 'Your now',
-  p12_sub: 'How do you discipline children in your life today? Be honest. This is not a test.',
-  p12_q1_lbl: 'When a child misbehaves, what do you usually do?',
+  p12_label: 'Circle of change · 2 of 5', p12_head: 'Now',
+  p12_sub: 'Be honest with yourself here. This is not a test.',
+  p12_q1: 'When a child misbehaves, what do you usually do?',
+  p12_q2: 'What do you think is behind that feeling?',
+  p12_q3: 'Do you notice a connection to how you were raised?',
+  p12_q4: 'When that feeling takes over, what happens to your response?',
   p12_q1_ph: 'Be honest with yourself here.',
   p12_q2_lbl: 'Do you see a pattern from your own childhood in how you respond?',
   p12_opt1: '😔 Yes. I repeat what I experienced', p12_opt2: '😶 Sometimes, without meaning to',
@@ -1294,16 +1642,21 @@ en: {
   p12_opt5: '✨ No. I actively choose differently', p12_opt6: '📋 I don\'t have children in my care',
   p12_opt7: '✏️ Other. I\'ll describe it', p12_other_ph: 'Describe your experience...',
 
-  p13_label: 'Circle of change · 3 of 5', p13_head: 'The shift',
-  p13_sub: 'What do you want to change? What kind of adult do you want to be in the moments that matter?',
-  p13_q1_lbl: 'Describe the change you want to make',
-  p13_q1_ph: 'What does doing better look like for you?',
+  p13_label: 'Circle of change · 3 of 5', p13_head: 'Shift',
+  p13_sub: 'What kind of adult do you want to be in the moments that matter?',
+  p13_q1: 'Describe the change you want to make.',
+  p13_q2: 'Why does that change matter to you?',
+  p13_q3: 'What small first step could you take?',
   p13_q2_lbl: 'What makes it hard to change?',
   p13_q2_ph: 'Stress, time, not knowing what else to do...',
+  p13_q1_ph: 'What does doing better look like for you?',
 
-  p14_label: 'Circle of change · 4 of 5', p14_head: 'Your limits',
-  p14_sub: 'Positive parenting still has boundaries. Children need limits given with love and consistency, not pain or fear.',
-  p14_q1_lbl: 'What boundaries matter most to you in raising children?',
+  p14_label: 'Circle of change · 4 of 5', p14_head: 'Limits',
+  p14_sub: 'Positive discipline still has boundaries.',
+  p14_q1: 'What boundaries matter most to you in raising children?',
+  p14_q2: 'Can a child be disciplined without physical punishment?',
+  p14_q3: 'How do you explain the reason behind them?',
+  p14_q4: 'How do you know when a boundary needs adjusting?',
   p14_q1_ph: 'What values do you want your child to carry?',
   p14_q2_lbl: 'Can a child be disciplined without physical punishment?',
   p14_opt1: '❌ No. I think some physical discipline is needed',
@@ -1314,17 +1667,20 @@ en: {
   p14_opt6: '🌟 I already practice positive discipline',
   p14_opt7: '✏️ Other. I\'ll share my view', p14_other_ph: 'Share your view...',
 
-  p15_label: 'Circle of change · 5 of 5', p15_head: 'Your commitment',
-  p15_sub: '"Is that the memory you want your child to have of you?" You don\'t have to be perfect. You just have to pause, one moment at a time.',
+  p15_label: 'Circle of change · 5 of 5', p15_head: 'Commitment',
+  p15_q1: 'Write a message or a promise for your child, or the children in your care.',
+  p15_closing: "What you do next can become part of a child’s memory of growing up with you. You do not have to get it right every time. Each pause is a chance to choose a kinder way forward.",
   p15_name_lbl: 'Your name (optional)', p15_name_ph: 'First name or leave blank',
   p15_country_lbl: 'Where are you joining from?',
   p15_other_country_btn: 'Other country', p15_other_country_ph: 'Please tell us your country',
-  p15_commit_lbl: 'I commit to trying PAUSE when...', p15_commit_ph: 'Describe your specific moment',
+  p15_commit_ph: 'Write your message here',
   p15_support_lbl: 'One person I can call when I\'m struggling', p15_support_ph: 'Their name',
   p15_followup_lbl: 'Phone or email for follow-up (optional)', p15_followup_ph: 'Your number or email',
   form_error: 'Something went wrong. Please try again.',
-  form_success: 'Your story has been saved. Thank you for choosing to pause. Violence ends with us.',
+  form_success: "Thank you for being brave enough to look back and to share it. That one pause you just made is already a change. Violence ends with us.",
   form_submit: 'Save my story',
+  answer_hint: '✍️ Your answer',
+  validation_warn: 'Please answer before moving on.',
 
   p16_label: 'Moving forward',
   p16_head: 'Your next step, guided.',
@@ -1375,211 +1731,453 @@ en: {
 /* ── FILIPINO ── */
 fil: {
   top_label: 'Violence Ends With Us · PAUSE Toolkit · Pilot 2026',
-  footer: '18 pahina · Pilot na edisyon · Philippines · Vietnam · Cambodia',
+  footer: '20 pahina · Pilot na edisyon · Pilipinas · Vietnam · Cambodia',
   nav_back: 'Bumalik', nav_next: 'Susunod', nav_finish: 'Tapusin',
-  validation_warn: 'Pakisagot muna ang parehong tanong bago magpatuloy.',
+  validation_warn: 'Pakisagot muna bago magpatuloy.',
 
+  /* ── COVER / INTRO ── */
   p0_label: 'Isang toolkit para sa positibong disiplina',
-  p0_sub: 'Mga Positibong Alternatibo sa Hindi Ligtas at Matinding Pagpapairal ng Disiplina',
-  p0_hook: 'Ano ang gagawin mo sa susunod na limang segundo?',
-  p0_desc: 'Gagabayan ka ng flipbook na ito sa limang simpleng hakbang para sa pagtugon sa mga bata nang may pagmamalasakit, hindi takot.<br><br>Ang iyong mga sagot ay magiging bahagi ng isang buhay na koleksyon ng pagbabago na ibabahagi sa mga magulang, guro, at komunidad sa buong Asya-Pasipiko.',
+  p0_sub: 'Mga Positibong Alternatibo sa Hindi Ligtas at Matinding Pagdidisiplina',
+  p0_hook: 'Isang sandali upang lumingon. Isang sandali upang piliing gawin nang iba.',
+  p0_hook_short: 'Ano ang gagawin mo sa susunod na limang segundo?',
+  p0_desc: 'Gagabayan ka ng flipbook na ito sa limang simpleng hakbang para matutong tumugon sa mga bata nang may malasakit, hindi takot.<br><br>Ang iyong mga sagot ay maaaring maging bahagi ng isang kolektibong kuwento ng pagbabago na ibabahagi sa mga magulang, guro, at komunidad sa buong Asya-Pasipiko.',
+  p0_lang_lbl: 'Piliin ang iyong wika',
 
+  p0_what_head: 'Ano ang PAUSE?',
+  p0_what_txt: 'Ang PAUSE ay isang maikli at sariling gabay na digital na karanasan sa pagninilay. Inaanyayahan ka nitong balikan kung paano ka dinisiplina noong bata ka, pansinin kung ano mula sa mga karanasang iyon ang maaaring dala mo sa paraan ng pagtugon mo ngayon, at pag-isipan kung ano ang gusto mong gawin nang iba.<br><br>Nilalayon nitong maging mahinahong simula ng mga usapan tungkol sa corporal punishment, positibong disiplina, at positibong pagpapalaki ng mga bata—nang walang paninisi o paghatol.<br><br>Dahil minsan, bago natin matutunan ang ibang paraan, kailangan muna nating balikan kung paano tayo tinuruan noon. Ano ang nangyari sa akin? Ano ang ginagawa ko ngayon? Ano ang gusto kong baguhin?',
+
+  p0_why_head: 'Bakit PAUSE?',
+  p0_why_txt: 'Marami sa atin ang lumaki nang hindi naturuan ng ibang paraan kapag may batang nagkamali. Minsan, kung ano ang nakita at naranasan natin noon, iyon din ang kusang lumalabas kapag tayo naman ang kailangang magdisiplina.<br><br>Binibigyan tayo ng PAUSE ng sandali sa pagitan ng naranasan natin noon at ng maaari nating piliing ipasa ngayon. Isang sandali upang mapansin kung paano tayo tumutugon, anong uri ng ugnayan ang nais nating mabuo, at anong alaala ang nais nating maiwan sa isang bata.<br><br>Hindi layunin ang maging perpektong magulang. Ang mahalaga ay ang isang ibang tugon, isang sandali sa bawat pagkakataon.',
+
+  p0_complement_head: 'Dagdag sa mga gawaing ginagawa na',
+  p0_complement_txt: 'Ang PAUSE ay nilikha upang makasabay at makatulong sa mga umiiral nang programa para sa pagpapalaki ng mga bata, proteksyon ng bata, pag-unlad ng pamilya, at mga gawaing pangkomunidad. Nagbibigay ito ng isang sandali ng pagninilay mula sa pananaw ng bata—isang personal na simula para sa mas malalim na pag-unawa at patuloy na pagbabago.<br><br>Maaari itong gamitin bago, habang, o pagkatapos ng mga sesyon. Maaari rin itong ibahagi sa mga pamilya at komunidad bilang gabay na maaari nilang balikan anumang oras. Walang bagong programang kailangang itayo. Isang puwang lamang upang huminto at magnilay.',
+
+  p0_accessible_head: 'Ginawa upang mas madaling maabot',
+  p0_accessible_txt: 'Maaaring gamitin ang PAUSE sa Ingles, Tagalog, Bisaya, Vietnamese, at Khmer. Mayroon din itong text-to-voice at video upang mas maging madali at makabuluhan ang karanasan.<br><br>May mga paraan din sa website upang matuto pa, makahanap ng suporta, at maipagpatuloy ang usapan kahit tapos na ang toolkit.',
+
+  p0_partners_head: 'Paano magagamit ng mga kasosyo ang PAUSE',
+  p0_share_word: 'Ibahagi',
+  p0_share_desc: 'Ipadala ang toolkit sa mga umiiral nang network ng mga magulang, tagapag-alaga, guro, kabataan, o komunidad.',
+
+  p0_invite_word: 'Anyayahan',
+  p0_invite_desc: 'Bigyan ang mga kalahok ng ilang tahimik na minuto upang basahin at pag-isipan ito nang pribado.',
+
+  p0_reflect_word: 'Magnilay',
+  p0_reflect_desc: 'Hayaan silang dumaan sa karanasan sa sarili nilang bilis at itala ang mga pagninilay habang nagpapatuloy.',
+
+  p0_connect_word: 'Kumonekta at magpatuloy',
+  p0_connect_desc: 'Gamitin ang PAUSE upang magsimula ng mga usapan at maiugnay ang mga tao sa mga umiiral nang programa, serbisyo, gabay, at suportang makatutulong sa kanila.',
+
+  p0_cta_lbl: 'Bago ang pagbabago, huminto muna tayo.',
+  p0_cta_txt: 'Ilang tahimik na minuto. Isang alaala. Isang tapat na pagninilay. At ang posibilidad na piliing tumugon nang iba sa susunod.',
+
+
+  /* ── SAFEGUARDING ── */
   p1_label: 'Bago tayo magsimula',
-  p1_head: 'Ang aming pangako sa kaligtasan — para sa iyo, at para sa mga bata',
-  p1_sub: 'Hihilingin sa iyo ng toolkit na ito na maging tapat tungkol sa kung paano ka pinalaki, at kung paano mo pinapalaki ang mga batang nasa buhay mo ngayon. Bago ka magsalita, ito ang ipinapangako namin sa iyo.',
-  p1_parent_lbl: 'Ang aming pangako sa iyo bilang magulang o tagapag-alaga',
-  p1_promise_judge: 'Walang paghatol. Ang pagsasabi mo sa amin na nasaktan, napahiya, o nahirapan kang alagaan ang isang bata ay hindi ka ginagawang masamang magulang sa aming paningin. Ito ang dahilan kung bakit umiiral ang PAUSE.',
-  p1_promise_private: 'Walang nakatingin sa iyo. Ito ay self-guided. Walang fasilitador, guro, o opisyal na nakakakita habang sinasagutan mo ito, o nakakaalam kung ano ang isinulat mo.',
-  p1_promise_anon: 'Mananatiling anonymous ang iyong kwento. Kung pipiliin mong ibahagi ang iyong mga sagot sa Circle of Change, pagsasamahin ang mga ito sa iba pa at aalisin ang anumang makapagpapakilala sa iyo bago ito ipakita sa sinuman sa labas ng PAUSE team.',
-  p1_promise_optin: 'Opsyonal palagi ang iyong pangalan at contact information. Ang hindi paglagay nito ay hindi nakakaapekto sa iyong karanasan sa toolkit na ito.',
-  p1_promise_control: 'Ikaw ang may kontrol. Laktawan ang anumang tanong. Isara ang tab na ito anumang oras. Wala sa mga ito ang isang pagsusulit o permanenteng record na nakatali sa iyo, maliban kung pipiliin mong mag-iwan ng contact details.',
-  p1_promise_notreport: 'Hindi ito isang daluyan ng pag-uulat tungkol sa iyo. Ang pagbabahagi ng iyong sariling nakaraan o kasalukuyang paraan ng disiplina dito ay hindi nagta-trigger ng report sa child welfare. Ito ay espasyo para sa pagninilay, hindi isang imbestigasyon.',
-  p1_box_lbl: 'Kung may mahirap na lumitaw',
-  p1_box_txt: 'Kung may anumang nagdudulot ng alalahanin tungkol sa kaligtasan ng isang bata, nandito ang PAUSE team upang tulungan kang makakonekta sa tamang suporta.',
-  p1_hotline_lbl: 'Libreng tumawag, anumang oras, para sa batang kailangan ng tulong',
-  p1_footer: 'Sinusunod ng espasyong ito ang totoong pamantayan sa kaligtasan ng bata, hindi lang mabuting intensyon. Ang PAUSE team ay sinanay upang malaman kung kailan at paano makakuha ng tunay na tulong ang isang bata, habang pinoprotektahan ang iyong privacy sa buong proseso.',
+  p1_head: 'Ang aming pangako sa iyong kaligtasan at sa kaligtasan ng mga bata',
+  p1_sub: 'Hihilingin sa iyo ng toolkit na ito na maging tapat tungkol sa paraan ng pagpapalaki sa iyo noon at sa paraan ng pakikitungo mo sa mga batang nasa buhay mo ngayon. Bago ka magbahagi, nais naming malaman mo kung ano ang aming ipinapangako sa iyo.',
 
+  p1_parent_lbl: 'Ang aming pangako sa iyo bilang magulang o tagapag-alaga',
+
+  p1_promise_judge: '<strong>Walang paninisi o paghatol.</strong> Kung sasabihin mong nakapagpalo ka, nakapanghiya, o nahirapan kang alagaan at disiplinahin ang isang bata, hindi ibig sabihin nito na masama kang magulang sa paningin namin. Bahagi ng dahilan kung bakit narito ang PAUSE ay upang magkaroon ng pagkakataong pag-isipan ang mga paraang maaari nating gawin nang iba.',
+
+  p1_promise_private: '<strong>Walang nakatingin sa iyo.</strong> Sarili mong bilis at desisyon ang masusunod dito. Walang facilitator, guro, o opisyal ng barangay na nakakakita habang sinasagutan mo ito o nakaaalam ng isinulat mo.',
+
+  p1_promise_anon: '<strong>Mananatiling anonymous ang iyong kuwento.</strong> Kung pipiliin mong ibahagi ang iyong mga sagot sa Siklo ng Pagbabago, pagsasamahin ang mga ito sa mga sagot ng iba at aalisin ang anumang impormasyong maaaring magpakilala sa iyo bago ito maipakita sa sinuman sa labas ng PAUSE team.',
+
+  p1_promise_optin: '<strong>Opsyonal ang iyong pangalan at contact information.</strong> Maaari mong iwanang blangko ang mga ito. Hindi nito mababago ang iyong karanasan sa toolkit.',
+
+  p1_promise_control: '<strong>Ikaw ang may kontrol.</strong> Maaari mong laktawan ang anumang tanong. Maaari mong isara ang pahinang ito anumang oras. Hindi ito pagsusulit, ulat, o permanenteng rekord na nakaugnay sa iyo, maliban kung kusa kang mag-iiwan ng contact details.',
+
+  p1_promise_notreport: '<strong>Hindi ito daluyan ng pag-uulat tungkol sa iyo.</strong> Ang pagbabahagi ng iyong sariling karanasan o paraan ng pagdidisiplina ay hindi awtomatikong nagiging child-welfare report. Ang espasyong ito ay para sa pagninilay, hindi para sa imbestigasyon.',
+
+  p1_box_lbl: 'Kung may mabigat na bagay na lumitaw',
+  p1_box_txt: 'Kung may anumang bahagi ng toolkit na magdulot sa iyo ng pag-aalala tungkol sa kaligtasan ng isang bata, narito ang PAUSE team upang tulungan kang makahanap ng tamang suporta.',
+
+  p1_hotline_lbl: 'Libreng tawag para sa batang nangangailangan ng tulong',
+  
+  p1_footer: 'Ang PAUSE ay sumusunod sa mga pamantayan sa pangangalaga at kaligtasan ng bata, hindi lamang sa mabuting hangarin. May pananagutan kaming tumulong kung may batang nangangailangan ng suporta, habang iginagalang at pinangangalagaan ang iyong privacy.',
+
+
+  /* ── CORPORAL PUNISHMENT ── */
   p2_label: 'Bago tayo magpatuloy · Ang mas malaking larawan',
   p2_head: 'Ano ang corporal punishment?',
-  p2_sub: 'Ang corporal punishment ay ang paggamit ng pisikal na lakas, kahit magaan, upang itama ang isang bata. Karaniwang halimbawa nito sa ating rehiyon ang pagpalo, pagkurot, at pagpapaluhod sa bata. Kasama rin dito ang panghihiya o pagmumura sa bata.',
-  p2_box_lbl: 'Gaano ba talaga ito karaniwan',
-  p2_box_txt: 'Hindi lang ito problema ng Pilipinas, Vietnam, o Cambodia. Sa buong mundo, karamihan sa mga bata ay nakararanas ng ilang uri ng marahas na disiplina sa tahanan, at karamihan sa mga magulang na gumagamit nito ay naranasan din ito noong bata pa sila.',
-  p2_box2_lbl: 'Ano ang natuklasan ng pananaliksik',
-  p2_box2_txt: 'Dekada nang pag-aaral ang nag-uugnay nito sa higit na agresyon, pagkabalisa, at mas mahinang ugnayan ng magulang at anak, hindi mas mabuting asal. Ang tanging natutunan nito nang tiyak ay ang takot, sa sandaling iyon.',
+
+  p2_sub: 'Ang corporal punishment ay paggamit ng pisikal na puwersa upang itama o disiplinahin ang isang bata, kahit gaano pa ito kagaan. Sa maraming tahanan, maaaring mas pamilyar sa atin ang mga salitang <strong>pagpalo, pagkurot, pagsampal, pagpitik, pagpapaluhod, o iba pang pananakit bilang paraan ng pagdidisiplina.</strong> Hindi lamang pisikal na pananakit ang maaaring makasakit. Kasama rin dito ang mga salitang nananakit—tulad ng pang-iinsulto, pagmumura, paninigaw, o pamamahiya sa bata.',
+
+  p2_box_lbl: 'Gaano ba talaga ito karaniwan?',
+  p2_box_txt: 'Hindi ito karanasan ng iilang pamilya lamang. Sa maraming bahagi ng mundo, maraming bata ang nakararanas ng marahas na paraan ng pagdidisiplina sa tahanan. At para sa maraming magulang, ang paraang ginagamit nila ngayon ay isa ring paraang naranasan nila noong sila ay bata pa.<br><br>Sa Pilipinas, may mga paraang naging pamilyar sa maraming henerasyon—“para matuto,” “para hindi na maulit,” o “para maging disiplinado.” Minsan, ang isang bagay na matagal na nating nakikita at nararanasan ay nagmumukhang normal. Ngunit ang pagiging pamilyar ay hindi nangangahulugang wala na tayong ibang maaaring piliin.',
+
+  p2_box2_lbl: 'Ano ang ipinapakita ng pananaliksik?',
+  p2_box2_txt: 'Sa paglipas ng mga dekada, maraming pag-aaral ang nag-ugnay sa marahas na pagdidisiplina sa mas mataas na agresyon at pagkabalisa at sa mas mahinang ugnayan ng magulang at anak. Maaaring tumigil ang bata sa sandaling iyon dahil sa takot, ngunit ang pagtigil ay hindi palaging nangangahulugang natutuhan na niya kung bakit mali ang ginawa niya o kung ano ang maaari niyang gawin sa halip.',
+
   p2_box_cite: 'National Baseline Study on Violence Against Children, Council for the Welfare of Children & UNICEF, 2016 · Cambodia Demographic and Health Survey, 2021–2022',
   p2_box2_cite: 'Gershoff & Grogan-Kaylor, meta-analysis ng 75 pag-aaral, Journal of Family Psychology, 2016',
-  p2_video_cap: '"Effects of Corporal Punishment on Children" · animadong buod ng pananaliksik na may sipi mula kina Alampay, Godwin & Lansford (Ingles) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">Panoorin sa YouTube ↗</a>',
-  p2_video2_cap: '"Equal Protection for Children" · Global Initiative to End All Corporal Punishment of Children (Ingles) · <a href="https://www.youtube.com/watch?v=QaNxPqBIL4w" target="_blank" rel="noopener">Panoorin sa YouTube ↗</a>',
-  p2_note: 'Kaya\'t umiiral ang PAUSE. Hindi para husgahan ka, kundi para bigyan ka ng hindi mo natanggap noon: ibang paraan.',
 
+  p2_video_cap: '"Effects of Corporal Punishment on Children" · animadong buod ng pananaliksik na may sipi mula kina Alampay, Godwin & Lansford (Ingles) · <a href="https://www.youtube.com/watch?v=yZON-FsIv2Y" target="_blank" rel="noopener">Panoorin sa YouTube ↗</a>',
+
+  p2_video2_cap: '"Equal Protection for Children" · Global Initiative to End All Corporal Punishment of Children (Ingles) · <a href="https://www.youtube.com/watch?v=QaNxPqBIL4w" target="_blank" rel="noopener">Panoorin sa YouTube ↗</a>',
+
+  p2_note: 'Kaya narito ang PAUSE. Hindi upang sabihin sa iyo na mali kang tao o masama kang magulang, kundi upang bigyan ka ng isang bagay na maaaring hindi mo natutunan noon: <strong>ibang paraan.</strong>',
+
+
+  /* ── POSITIVE DISCIPLINE ── */
   p4_label: 'Bago ang Hakbang 1 · Ano ang positibong disiplina?',
   p4_head: 'Ano ang positibong disiplina?',
-  p4_sub: 'Ang positibong disiplina ay ang paggabay sa asal ng bata sa pamamagitan ng pagtuturo, hindi pagsakit. May "hindi" pa rin ito. May mga panuntunan at tunay na bunga pa rin, tulad ng oras para huminahon, pagkawala ng pribilehiyo, o pag-aayos ng nasira nila. Ang nagbabago ay kung paano ka makakarating doon: sa pamamagitan ng mahinahong salita at malinaw na dahilan, hindi sakit o takot.',
-  p4_box_lbl: 'Hindi bago. Napatunayan na.',
-  p4_box_txt: 'Ang mga programang nakabatay sa positibong disiplina ay pinag-aralan na sa libu-libong magulang sa buong Asya, kabilang na dito sa Pilipinas, at pare-parehong nagpapababa ng malupit na parusa.',
+
+  p4_sub: 'Ang positibong disiplina ay paggabay sa bata upang matuto, hindi pananakit upang sumunod. Maaari ka pa ring magsabi ng “hindi.” Maaari ka pa ring magtakda ng malinaw na mga tuntunin at may mga bunga pa rin kapag nilabag ang mga ito—halimbawa, pagbibigay ng oras upang kumalma, pansamantalang pagkawala ng isang pribilehiyo, o pag-aayos sa bagay na nasira.<br><br>Ang nagbabago ay hindi ang hangganan. Ang nagbabago ay ang paraan ng pag-abot dito: malinaw na paliwanag, mahinahong salita, at paggabay—hindi sakit o takot.',
+
+  p4_box_lbl: 'Hindi bago. May ebidensya na.',
+  p4_box_txt: 'Ang mga programang nakabatay sa positibong disiplina ay pinag-aralan na kasama ang libu-libong magulang sa buong Asya, kabilang ang Pilipinas, at nakitang nakatutulong sa pagbawas ng malulupit na paraan ng pagdidisiplina.',
+
   p4_box_cite: 'Lachman et al., randomized controlled trial ng programang MaPa, The Lancet Regional Health – Western Pacific, 2021',
-  p4_video1_cap: '"Positive Discipline" · Coram, ang pinakamatandang charity para sa bata sa UK (Ingles) · <a href="https://youtu.be/gOFGPQR58TM" target="_blank" rel="noopener">Panoorin sa YouTube ↗</a>',
+
+  p4_video1_cap: '"Positive Discipline" · Coram, ang pinakamatandang charity para sa mga bata sa UK (Ingles) · <a href="https://youtu.be/gOFGPQR58TM" target="_blank" rel="noopener">Panoorin sa YouTube ↗</a>',
+
   p4_video2_cap: '"The Single Most Important Parenting Strategy" · Dr. Becky Kennedy, TED (Ingles) · <a href="https://youtu.be/PHpPtdk9rco" target="_blank" rel="noopener">Panoorin sa YouTube ↗</a>',
-  p4_note: 'Ang parusa ay pansamantalang nagpapatigil sa isang asal. Ang pagtuturo ay binabago ito nang tuluyan.',
 
+  p4_note: 'Maaaring pansamantalang mapahinto ng parusa ang isang asal. Ang pagtuturo ang tumutulong sa bata na matutong pumili nang iba sa susunod.',
+
+
+  /* ── WHERE PAUSE CAME FROM ── */
+  ph_label: 'Bago ang Hakbang 1 · Saan nagmula ang PAUSE',
+  ph_head: 'Kung saan nagsimula ang PAUSE',
+
+  ph_body: 'Nagsimula ang PAUSE sa isang simpleng pananaw: <strong>karapatang lumaki ang bawat bata nang ligtas, napapakinggan, nagagabayan, at nasusuportahan habang natututo at nagkakamali.</strong><br><br>Sa pananaw ng isang bata, ang paraan ng paggabay sa atin ng mga matatanda ay maaaring maging bahagi ng kung paano natin nakikilala ang ating sarili, kung paano natin pakikitunguhan ang iba, at kung paano natin natututunang harapin ang ating mga pagkakamali. Kaya napaisip kami sa isang mahalagang tanong: <strong>paano kung maaaring makatulong ang disiplina sa paglaki ng bata nang hindi inaalis sa kanya ang kanyang kaligtasan, dignidad, o halaga sa sarili?</strong><br><br>Sa tanong na iyon nagsimula ang PAUSE.<br><br>Hindi ito aralin tungkol sa pagiging perpektong magulang. Hindi rin ito tungkol sa pagsasabi sa mga matatanda kung ano ang dapat o hindi dapat nilang gawin. <strong>Isa itong paanyayang huminto, magnilay, at tuklasin ang maliliit na pagbabagong maaaring gawing mas positibo ang paggabay sa isang bata.</strong><br><br>Dahil ang positibong pagpapalaki ay higit pa sa pag-iwas sa corporal punishment. Tungkol ito sa pagtulong sa mga bata na maunawaan ang mga hangganan, matuto mula sa kanilang mga pagkakamali, maipahayag ang kanilang nararamdaman, matutong managot sa kanilang mga ginawa, at lumaking may suporta mula sa mga matatandang nasa paligid nila.<br><br><strong>Ang PAUSE ay tungkol sa paglalakbay na ito nang magkakasama.</strong>',
+
+  ph_quote_lbl: 'Mula sa tanong na iyon',
+  ph_quote_txt: 'Mula sa parusa tungo sa paggabay.<br><br>Mula sa takot tungo sa pag-unawa.<br><br>Mula sa simpleng pagtutuwid ng asal tungo sa pagtulong sa bata na matuto.<br><br>Mula sa agarang reaksyon tungo sa pagpiling tumugon sa paraang makatutulong sa bata na lumaki.<br><br>At kung minsan, ang makabuluhang pagbabago ay nagsisimula sa isang simpleng bagay: <strong>ang paghinto muna.</strong>',
+  ph_quote_cite: 'PAUSE · mula sa pananaw ng mga bata at kabataan',
+
+  ph_bridge: 'Dahil dito, ang limang hakbang na susunod ay hindi lamang mga tagubiling kailangang sundin. Nagsisimula ang mga ito sa isang simpleng sandali—ang limang segundo bago maging alaala ang isang reaksyon. Huminto. Magtanong. Unawain. Suportahan. Hikayatin.',
+
+
+  /* ── OPENING REFLECTION ── */
   p3_label: 'Panimulang pagninilay',
-  p3_q: '"Isipin ang paraan ng iyong pagdidisiplina noong bata ka."',
-  p3_sub: 'Ano ang nangyari nang magkamali ka? Paano mo naramdaman ito? Dala-dala mo pa rin ba ang pakiramdam na iyon ngayon?',
-  p3_box_lbl: 'Isang sandali para mag-isip',
-  p3_box_txt: 'Maglaan ng 2 hanggang 3 minuto ng tahimik na pagninilay. Maaari kang magbahagi kung handa ka na, o manatili lamang kasama ang alaala.',
-  p3_gold: 'Karamihan sa atin ay hindi natutuan ng ibang paraan. Ibinibigay ng PAUSE ang isang paraan — hindi dahil mali ka, kundi dahil nararapat kang magkaroon ng mas magagandang kagamitan.',
-  p3_note: 'Habang binabasa mo ang bawat hakbang, mag-isip ng tunay na sandali sa iyong sariling buhay.',
 
-  p5_label: 'Hakbang 1 ng 5', p5_word: 'Huminto (Pause)',
-  p5_action: 'Huminto bago ka kumilos. Huminga nang isang beses. Bigyan ang iyong sarili ng limang segundo bago ka gumawa o magsabi ng anuman.',
-  p5_why: 'Ang pagnanais na kumilos ay nagmumula sa katawan, hindi sa isip. Ang isang paghinga ay lumilikha ng sapat na espasyo upang pumili kung ano ang mangyayari sa susunod.',
+  p3_q: 'Ibalik natin ang ating sarili sa panahong tayo ay bata pa.',
+
+  p3_sub: 'Balikan mo sa isip ang bahay na kinalakihan mo. Nasaan ka madalas umupo, maglaro, o magtago? Ano ang itsura ng paligid? May partikular bang sulok na pamilyar sa iyo—ang sala, kusina, silid, hagdan, o labas ng bahay?<br><br>Pakinggan mo sa alaala ang mga tunog noon. Ang boses ng iyong nanay o tatay. Ang telebisyon o radyo. Mga yapak sa sahig. Ingay mula sa labas. Baka may tunog ng mga kapitbahay, sasakyan, ulan, o mga taong nag-uusap.<br><br>Alalahanin din ang mga amoy na pamilyar sa bahay. Pagkaing niluluto. Sabon. Kape. Pawis pagkatapos maglaro. O iyong amoy ng paligid pagkatapos ng ulan.<br><br>Balikan ang mga taong madalas mong kasama. Nasaan sila noon? Ano ang tawag nila sa iyo? Paano ka nila kausapin? At ano ang pakiramdam kapag kasama mo sila?<br><br>Ngayon, mula sa mga alaalang iyon, pumili ng isang partikular na sandali noong bata ka kung kailan may nagawa kang mali.<br><br>Nasaan ka noon? Ano ang ginawa mo? Sino ang unang nakapansin? Balikan ang sandaling napagtanto mong may nagawa kang hindi tama.<br><br>Ano ang unang nangyari sa iyo? Nanlamig ka ba? Bumilis ang tibok ng puso mo? Napayuko ka ba? Napaluha? Nanikip ba ang dibdib mo? Gusto mo bang tumakbo, magtago, o manahimik na lang?<br><br>Alalahanin ang taong nagdisiplina sa iyo. Pakinggan muli sa alaala ang boses niya. Ano ang mga salitang sinabi niya? Pasigaw ba? Mahigpit? Tahimik? O mahinahon?<br><br>At bilang batang ikaw noon, ano ang ginawa mo pagkatapos? Umiyak? Nagtago? Nanahimik? Humingi ng tawad? Nangako na hindi na ito mauulit? O sinubukan mo na lang maging mas maingat sa susunod?<br><br>Huwag muna itong husgahan. Balikan lamang ang sandaling iyon. At subukang maramdaman kung ano ang naramdaman ng batang ikaw noon.',
+
+  p3_box_lbl: 'Isang sandali upang magnilay',
+  p3_box_txt: 'Maglaan ng 2 hanggang 3 minuto para tahimik na makabalik sa alaala. Maaari kang magbahagi kung handa ka, o manatili muna sa alaala nang ikaw lamang.',
+
+  p3_gold: 'Marami sa atin ang hindi naturuan ng ibang paraan. Hindi kasalanan na iyon lang ang alam natin noon. Ngunit ngayon, maaari nating matutunan na may iba pang paraan—dahil may karapatan ang bawat bata na matuto at magkamali nang hindi kailangang matakot o masaktan.',
+
+  p3_note: 'Dalhin mo ang alaalang iyon habang nagpapatuloy tayo.',
+
+
+  /* ── PAUSE STEPS ── */
+  p5_label: 'Hakbang 1 ng 5',
+  p5_word: 'Huminto',
+
+  p5_action: 'Huminto muna bago tumugon. Huminga nang isang beses. Bigyan ang sarili ng limang segundo bago magsabi o gumawa ng anuman.',
+
+  p5_why: 'May mga sandaling nauuna ang katawan bago pa tayo makapag-isip nang malinaw. Isang hinga lamang ang maaaring magbigay sa iyo ng sapat na pagitan upang hindi agad sumunod sa galit at makapili kung paano ka tutugon.',
+
   p5_sc_lbl: 'Sa sandaling iyon',
-  p5_sc_txt: 'Sinira ng iyong anak ang isang bagay pagkatapos sabihin mong huwag. Nararamdaman mong tumataas ang galit. Bago ang lahat ng iba pa, huminga.',
+  p5_sc_txt: 'May nabasag o nasira ang bata kahit sinabi mo nang huwag. Ramdam mong umaakyat ang galit. Bago magsalita. Bago humawak. Bago kumilos—<strong>huminga muna.</strong>',
 
-  p6_label: 'Hakbang 2 ng 5', p6_word: 'Magtanong (Ask)',
-  p6_action: 'Tanungin ang bata kung ano ang nangyari. Hayaan silang magsalita muna. Makinig nang hindi nakakaabala.',
-  p6_why: 'Ang mga bata ay madalas na kumikilos nang may mga dahilan na hindi nakikita ng mga matatanda. Ang pagtatanong bago mag-assume ay nagpapakita ng paggalang at nagdadala sa iyo nang mas malapit sa katotohanan.',
+
+  p6_label: 'Hakbang 2 ng 5',
+  p6_word: 'Magtanong',
+
+  p6_action: 'Tanungin ang bata kung ano ang nangyari. Hayaan mo muna siyang magsalita. Makinig bago sumagot.',
+
+  p6_why: 'Madalas, may dahilan ang ginagawa ng bata na hindi agad nakikita ng matanda. Kapag nagtanong tayo bago magbintang o mag-isip ng konklusyon, ipinapakita nating mahalaga sa atin ang kanyang panig. At mas nagiging malinaw kung ano talaga ang nangyari.',
+
   p6_sc_lbl: 'Sa sandaling iyon',
-  p6_sc_txt: '"Ano ang nangyari?" Sinabi nang mahinahon, hindi bilang isang akusasyon. Hintayin ang sagot kahit tumagal pa ng sandali.',
+  p6_sc_txt: '<strong>“Ano ang nangyari?”</strong> Sabihin ito nang mahinahon, hindi bilang paratang. Hayaan siyang mag-isip at magsalita, kahit kailangan mong maghintay nang kaunti.',
 
-  p7_label: 'Hakbang 3 ng 5', p7_word: 'Umintindi (Understand)',
-  p7_action: 'Isaalang-alang kung bakit nila ito ginawa. Takot ba sila? Nalilito? Nababagot? Sinusubukan ang mga limitasyon? Nag-aaral pa?',
-  p7_why: 'Ang pag-uugali ay komunikasyon. Ang mukhang pagiging suwail ay madalas na isang pangangailangan na hindi pa alam ng bata kung paano ipahayag.',
+
+  p7_label: 'Hakbang 3 ng 5',
+  p7_word: 'Unawain',
+
+  p7_action: 'Isipin kung ano ang maaaring dahilan ng ginawa niya. Natakot ba siya? Nalito? Nainip? Sinusubukan kung hanggang saan ang hangganan? O hindi pa niya alam kung paano ito gagawin nang tama?',
+
+  p7_why: 'May sinasabi ang bawat kilos ng bata. Ang mukhang pagsuway ay maaaring pagtatangkang ipahayag ang isang pangangailangan na hindi pa niya kayang sabihin sa salita.',
+
   p7_sc_lbl: 'Sa sandaling iyon',
-  p7_sc_txt: '"Ano ang nangyayari sa kanila?" Hindi upang bigyang-dahilan ang pag-uugali, kundi upang maunawaan ito bago ka tumugon.',
+  p7_sc_txt: '<strong>“Ano kaya ang nangyayari sa kanya?”</strong> Hindi upang sabihing tama ang ginawa niya, kundi upang maunawaan muna bago tumugon.',
 
-  p8_label: 'Hakbang 4 ng 5', p8_word: 'Suportahan (Support)',
-  p8_action: 'Tumugon sa tunay na pangangailangan sa likod ng pag-uugali, hindi lamang sa pag-uugali mismo. Gabayan, huwag parusahan.',
-  p8_why: 'Mas natututo ang mga bata sa pamamagitan ng gabay kaysa sa takot. Ang isang batang nakaramdam ng suporta ay ligtas na gumawa ng mas mabuti sa susunod na pagkakataon.',
+
+  p8_label: 'Hakbang 4 ng 5',
+  p8_word: 'Suportahan',
+
+  p8_action: 'Tingnan kung ano talaga ang kailangan ng bata sa likod ng kanyang ginagawa, hindi lamang ang asal na nakikita mo. Gabayan siya; huwag siyang saktan o parusahan.',
+
+  p8_why: 'Mas natututo ang bata kapag may gumagabay sa kanya kaysa kapag takot ang nangingibabaw. Kapag alam niyang ligtas siyang magkamali at matuto, mas may puwang siyang subukang gawin nang mas mabuti sa susunod.',
+
   p8_sc_lbl: 'Sa sandaling iyon',
-  p8_sc_txt: 'Mahinahong pagsasaayos. Isang malinaw na hangganan, ipinaliwanag nang may pagmamahal. Ang iyong presensya, hindi ang iyong galit.',
+  p8_sc_txt: 'Mahinahon ngunit malinaw na paggabay. Sabihin ang hangganan at ipaliwanag kung bakit ito mahalaga. Manatili sa tabi niya—<strong>presensya mo, hindi galit mo.</strong>',
 
-  p9_label: 'Hakbang 5 ng 5', p9_word: 'Hikayatin (Encourage)',
-  p9_action: 'Tapusin nang may isang bagay na nagtatayo ng tiwala, hindi takot. Ipaalam sa kanila na ang pagkakamali ay hindi nagbabago kung gaano mo sila kamahal.',
-  p9_why: 'Ang mga batang nakaramdam ng pagmamahal pagkatapos ng isang pagkakamali ay mas malamang na maging tapat, subukan muli, at magtiwala sa mga matatanda sa kanilang buhay.',
+
+  p9_label: 'Hakbang 5 ng 5',
+  p9_word: 'Hikayatin',
+
+  p9_action: 'Tapusin ang sandali sa paraang nagpapatibay ng tiwala, hindi takot. Ipaalam sa bata na ang pagkakamali niya ay hindi nagbabago sa pagmamahal mo sa kanya.',
+
+  p9_why: 'Kapag alam ng bata na maaari pa rin siyang mahalin kahit nagkamali siya, mas nagiging bukas siyang magsabi ng totoo, sumubok muli, at humingi ng tulong kapag kailangan niya.',
+
   p9_sc_lbl: 'Sa sandaling iyon',
-  p9_sc_txt: '"Alam kong kaya mong gumawa ng mas mabuti. Nandito ako." Sapat na iyon.',
+  p9_sc_txt: '<strong>“Alam kong kaya mong gawin nang mas mabuti. Nandito ako para tulungan ka.”</strong> Minsan, sapat na ang marinig iyon.',
 
-  p10_label: 'Bilog ng pagbabago',
-  p10_head: 'Mahalaga ang iyong kwento.',
-  p10_sub: 'Hihilingin sa iyo ng mga susunod na pahina na taimtim na pagnilayan ang iyong nakaraan, kasalukuyan, at ang pagbabagong nais mong gawin. Walang maling sagot.',
-  p10_box_lbl: 'Ano ang bilog ng pagbabago?',
-  p10_box_txt: 'Ang paglalakbay mula sa kung paano ka tinrato noong bata, patungo sa kung paano ito humubog sa paraan ng iyong pagdidisiplina ngayon, patungo sa mga hangganan na nais mong itakda sa hinaharap.',
-  p10_steps: 'Ang iyong nakaraan · Ang iyong ngayon · Ang pagbabago · Ang iyong mga limitasyon · Ang iyong pangako',
-  p10_note: 'Ang iyong mga sagot ay magiging bahagi ng isang koleksyon ng pagbabago na ibabahagi nang hindi kilala bilang isang modyul para sa mga komunidad sa buong rehiyon.',
 
-  p11_label: 'Bilog ng pagbabago · 1 ng 5', p11_head: 'Ang iyong nakaraan',
-  p11_sub: 'Paano ka nadisiplina noong bata ka? Ano ang ginagawa ng mga matatanda sa paligid mo nang magkamali ka?',
-  p11_q1_lbl: 'Ilarawan kung ano ang hitsura ng disiplina sa iyong tahanan noong lumalaki ka',
-  p11_q1_ph: 'Sumulat nang malaya. Ito ang iyong espasyo.',
-  p11_q2_lbl: 'Paano ka naramdaman nito?',
-  p11_opt1: '😟 Takot at nag-aalala', p11_opt2: '💔 Nahihiyang o nasaktan',
-  p11_opt3: '😐 Nalito. Hindi ko naintindihan kung bakit', p11_opt4: '🤷 Normal lang para sa akin. Ganoon na ang mga bagay',
-  p11_opt5: '🙂 Medyo okay. Parang patas naman', p11_opt6: '🌱 Ligtas at ginagabayan',
-  p11_opt7: '✏️ Iba pa. Ilalarawan ko ito', p11_other_ph: 'Ilarawan kung paano mo naramdaman...',
+  /* ── CIRCLE OF CHANGE ── */
+  p10_label: 'Siklo ng Pagbabago',
+  p10_head: 'Mahalaga ang iyong kuwento.',
 
-  p12_label: 'Bilog ng pagbabago · 2 ng 5', p12_head: 'Ang iyong ngayon',
-  p12_sub: 'Paano mo nadidisiplina ang mga bata sa iyong buhay ngayon? Maging tapat. Hindi ito isang pagsubok.',
-  p12_q1_lbl: 'Kapag nag-asal nang masama ang isang bata, ano ang karaniwang ginagawa mo?',
-  p12_q1_ph: 'Maging tapat sa iyong sarili dito.',
-  p12_q2_lbl: 'Nakikita mo ba ang isang pattern mula sa iyong sariling pagkabata sa iyong pagtugon?',
-  p12_opt1: '😔 Oo. Inuulit ko ang aking naranasan', p12_opt2: '😶 Minsan, nang hindi sinasadya',
-  p12_opt3: '🤔 Hindi ko pa ito naiisip', p12_opt4: '💪 Sinisikap kong huwag, pero mahirap',
-  p12_opt5: '✨ Hindi. Aktibo akong pumipili ng iba', p12_opt6: '📋 Wala akong mga batang nasa aking pag-aalaga',
-  p12_opt7: '✏️ Iba pa. Ilalarawan ko ito', p12_other_ph: 'Ilarawan ang iyong karanasan...',
+  p10_sub: 'Ang susunod na limang pahina ay isang tahimik na espasyo upang mapansin kung ano ang natutuhan mo, ano ang dala mo hanggang ngayon, at ano ang gusto mong ipasa sa susunod na henerasyon nang iba. Hindi mo kailangang nasa iyo na ang lahat ng sagot. Maging tapat ka lamang sa sarili mo.',
 
-  p13_label: 'Bilog ng pagbabago · 3 ng 5', p13_head: 'Ang pagbabago',
-  p13_sub: 'Ano ang nais mong baguhin? Anong uri ng matatanda ang nais mong maging sa mga sandaling mahalaga?',
-  p13_q1_lbl: 'Ilarawan ang pagbabagong nais mong gawin',
-  p13_q1_ph: 'Ano ang hitsura ng paggawa ng mas mabuti para sa iyo?',
-  p13_q2_lbl: 'Ano ang nagpapadali sa pagbabago?',
-  p13_q2_ph: 'Stress, oras, hindi alam kung ano pa ang gagawin...',
+  p10_box_lbl: 'Ano ang Siklo ng Pagbabago?',
 
-  p14_label: 'Bilog ng pagbabago · 4 ng 5', p14_head: 'Ang iyong mga limitasyon',
-  p14_sub: 'Ang positibong pagiging magulang ay may mga hangganan pa rin. Kailangan ng mga bata ng mga limitasyong ibinibigay nang may pagmamahal at pagkakapare-pareho, hindi sakit o takot.',
-  p14_q1_lbl: 'Anong mga hangganan ang pinakamahalaga sa iyo sa pagpapalaki ng mga bata?',
-  p14_q1_ph: 'Anong mga halaga ang nais mong dalhin ng iyong anak?',
-  p14_q2_lbl: 'Maaari bang maparusahan ang isang bata nang walang pisikal na parusa?',
-  p14_opt1: '❌ Hindi. Sa tingin ko kailangan ang ilang pisikal na disiplina',
-  p14_opt2: '🤷 Hindi ako sigurado. Iyon ang lumaki ako',
-  p14_opt3: '🌿 May mga duda ako pero bukas akong subukan',
-  p14_opt4: '🙂 Nagsisimula na akong maniwala na posible ito',
-  p14_opt5: '✅ Oo. Naniniwala ako rito nang buong-buo',
-  p14_opt6: '🌟 Nagsasanay na ako ng positibong disiplina',
-  p14_opt7: '✏️ Iba pa. Ibabahagi ko ang aking pananaw', p14_other_ph: 'Ibahagi ang iyong pananaw...',
+  p10_box_txt: 'Tinutulungan ka ng Siklo ng Pagbabago na makita ang ugnayan ng mga karanasan: ano ang nangyari sa iyo, ano ang natutuhan mo mula rito, paano ito maaaring lumitaw sa paraan ng pagtugon mo ngayon, at ano ang gusto mong baguhin.<br><br>Hindi ito para sisihin ang sarili. Ito ay pagkakataong mapansin ang mga nakasanayan, maunawaan kung saan maaaring nanggaling ang mga ito, at pumili ng isang maliit na hakbang tungo sa mas ligtas at mas magalang na ugnayan sa isang bata.',
 
-  p15_label: 'Bilog ng pagbabago · 5 ng 5', p15_head: 'Ang iyong pangako',
-  p15_sub: '"Iyon ba ang alaala na nais mong maiwanan sa iyong anak tungkol sa iyo?" Hindi mo kailangang maging perpekto. Huminto ka lang, isang sandali sa isang pagkakataon.',
-  p15_name_lbl: 'Ang iyong pangalan (opsyonal)', p15_name_ph: 'Unang pangalan o iwan nang blangko',
-  p15_country_lbl: 'Saan ka sumasali?',
-  p15_other_country_btn: 'Ibang bansa', p15_other_country_ph: 'Sabihin sa amin ang iyong bansa',
-  p15_commit_lbl: 'Nangangako ako na subukan ang PAUSE kapag...', p15_commit_ph: 'Ilarawan ang iyong tiyak na sandali',
-  p15_support_lbl: 'Isang tao na maaari kong tawagan kapag nahihirapan ako', p15_support_ph: 'Kanilang pangalan',
-  p15_followup_lbl: 'Telepono o email para sa follow-up (opsyonal)', p15_followup_ph: 'Ang iyong numero o email',
+  p10_steps: 'Alalahanin · Pansinin · Pumili · Gumabay · Mangako',
+
+  p10_note: 'Hindi ka hinihilingang husgahan ang batang ikaw, o ang mga matatandang nagpalaki sa iyo. Inaanyayahan kang pansinin kung ano ang gusto mong dalhin sa hinaharap, ano ang handa mong bitawan, at anong uri ng alaala ang nais mong maiwan sa isang batang lumaki kasama ka.',
+
+
+  /* ── PAST ── */
+  p11_label: 'Siklo ng Pagbabago · 1 ng 5',
+  p11_head: 'Nakaraan',
+
+  p11_sub: 'Huminga muna bago sumagot.',
+
+  p11_q1: 'Ano ang itsura ng pagdidisiplina sa tahanang kinalakihan mo?',
+  p11_q2: 'Sino ang nagturo sa iyo ng ganoong paraan? Ano ang natutuhan mo mula rito, at ano ang dala mo pa rin hanggang ngayon?',
+  p11_q3: 'Ano ang naramdaman mo noon? At kapag naiisip mo ito ngayon, ano ang nararamdaman mo?',
+
+  p11_q1_ph: 'Sumulat nang malaya. Iyo ang espasyong ito.',
+
+  p11_q2_lbl: 'Ano ang naramdaman mo noon?',
+
+  p11_opt1: '😟 Natakot at nabalisa',
+  p11_opt2: '💔 Napahiya o nasaktan',
+  p11_opt3: '😐 Nalito. Hindi ko naunawaan kung bakit',
+  p11_opt4: '🤷 Normal lang para sa akin. Ganoon na talaga',
+  p11_opt5: '🙂 Ayos lang naman. Parang patas naman',
+  p11_opt6: '🌱 Ligtas at ginagabayan',
+  p11_opt7: '✏️ Iba pa. Ilalarawan ko',
+
+  p11_other_ph: 'Ilarawan kung ano ang naramdaman mo...',
+
+
+  /* ── NOW ── */
+  p12_label: 'Siklo ng Pagbabago · 2 ng 5',
+  p12_head: 'Ngayon',
+
+  p12_sub: 'Maging tapat ka sa sarili mo rito. Hindi ito pagsusulit.',
+
+  p12_q1: 'Kapag nagkamali ang isang bata, paano ka karaniwang tumutugon? At ano ang nararamdaman mo sa mga sandaling iyon?',
+  p12_q2: 'Sa tingin mo, ano ang nasa likod ng damdaming iyon?',
+  p12_q3: 'May napapansin ka bang kaugnayan nito sa paraan ng pagpapalaki sa iyo noon?',
+  p12_q4: 'Kapag nangingibabaw ang damdaming iyon, ano ang nagbabago sa paraan ng pagtugon mo?',
+
+  p12_q1_ph: 'Maging tapat ka sa sarili mo rito.',
+
+  p12_q2_lbl: 'May nakikita ka bang paraan ng pagtugon mo ngayon na kahawig ng naranasan mo noong bata ka?',
+
+  p12_opt1: '😔 Oo. Nauulit ko ang naranasan ko noon',
+  p12_opt2: '😶 Minsan, kahit hindi ko naman sinasadya',
+  p12_opt3: '🤔 Hindi ko pa talaga ito napag-isipan',
+  p12_opt4: '💪 Sinisikap kong huwag ulitin, pero mahirap minsan',
+  p12_opt5: '✨ Hindi. Pinipili kong gawin ito nang iba',
+  p12_opt6: '📋 Wala akong batang inaalagaan',
+  p12_opt7: '✏️ Iba pa. Ilalarawan ko',
+
+  p12_other_ph: 'Ilarawan ang iyong karanasan...',
+
+
+  /* ── SHIFT ── */
+  p13_label: 'Siklo ng Pagbabago · 3 ng 5',
+  p13_head: 'Pagbabago',
+
+  p13_sub: 'Anong klaseng matanda ang gusto mong maging sa mga sandaling mahalaga?',
+
+  p13_q1: 'Anong pagbabago ang gusto mong gawin?',
+  p13_q2: 'Bakit mahalaga sa iyo ang pagbabagong ito?',
+  p13_q3: 'Ano ang isang maliit na unang hakbang na kaya mong gawin?',
+
+  p13_q1_ph: 'Ano ang hitsura ng “mas mabuti” para sa iyo?',
+
+  p13_q2_lbl: 'Ano ang nagpapahirap sa pagbabago?',
+
+  p13_q2_ph: 'Stress, kakulangan sa oras, hindi alam kung ano ang ibang maaaring gawin...',
+
+
+  /* ── LIMITS ── */
+  p14_label: 'Siklo ng Pagbabago · 4 ng 5',
+  p14_head: 'Mga Hangganan',
+
+  p14_sub: 'May mga hangganan pa rin ang positibong disiplina.',
+
+  p14_q1: 'Anong mga hangganan ang pinakamahalaga sa iyo sa pagpapalaki ng mga bata?',
+  p14_q2: 'Maaari bang disiplinahin ang isang bata nang hindi gumagamit ng pisikal na parusa?',
+  p14_q3: 'Malinaw ba sa bata ang mga hangganang ito? Paano mo ipinapaliwanag kung bakit mahalaga ang mga ito?',
+  p14_q4: 'Paano mo nalalaman kung kailangang baguhin o ayusin ang isang hangganan?',
+
+  p14_q1_ph: 'Anong mga pagpapahalaga ang gusto mong dalhin ng iyong anak paglaki niya?',
+
+  p14_q2_lbl: 'Maaari bang disiplinahin ang isang bata nang hindi gumagamit ng pisikal na parusa?',
+
+  p14_opt1: '❌ Hindi. Sa tingin ko, kailangan pa rin minsan ang pisikal na disiplina',
+  p14_opt2: '🤷 Hindi ako sigurado. Ito ang nakasanayan ko noong lumalaki ako',
+  p14_opt3: '🌿 May pag-aalinlangan ako, pero bukas akong sumubok',
+  p14_opt4: '🙂 Nagsisimula akong maniwala na posible pala',
+  p14_opt5: '✅ Oo. Naniniwala ako rito',
+  p14_opt6: '🌟 Isinasabuhay ko na ang positibong disiplina',
+  p14_opt7: '✏️ Iba pa. Ibinabahagi ko ang pananaw ko',
+
+  p14_other_ph: 'Ibahagi ang iyong pananaw...',
+
+
+  /* ── COMMITMENT ── */
+  p15_label: 'Siklo ng Pagbabago · 5 ng 5',
+  p15_head: 'Pangako',
+
+  p15_q1: 'Sumulat ng isang mensahe o pangako para sa iyong anak, o para sa mga batang nasa iyong pangangalaga.',
+
+  p15_closing: 'Ang susunod mong gawin ay maaaring maging bahagi ng alaala ng isang bata sa kanyang paglaki kasama ka. Hindi mo kailangang maging tama sa bawat pagkakataon. At kung minsan, maaari kang magkamali rin. <strong>Bawat paghinto ay isang pagkakataong pumili ng mas mahinahon at mas ligtas na paraan.</strong>',
+
+  p15_name_lbl: 'Ang iyong pangalan (opsyonal)',
+  p15_name_ph: 'Unang pangalan o iwanang blangko',
+
+  p15_country_lbl: 'Saan ka nanggagaling?',
+  p15_other_country_btn: 'Ibang bansa',
+  p15_other_country_ph: 'Sabihin sa amin kung anong bansa',
+
+  p15_commit_ph: 'Isulat dito ang iyong mensahe',
+
+  p15_support_lbl: 'Isang taong maaari kong tawagan kapag nahihirapan ako',
+  p15_support_ph: 'Pangalan niya',
+
+  p15_followup_lbl: 'Telepono o email para sa follow-up (opsyonal)',
+  p15_followup_ph: 'Iyong numero o email',
+
   form_error: 'May nangyaring mali. Subukan muli.',
-  form_success: 'Nai-save na ang iyong kwento. Salamat sa pagpili na huminto. Ang karahasan ay nagtatapos sa atin.',
-  form_submit: 'I-save ang aking kwento',
 
+  form_success: 'Salamat sa iyong tapang na lumingon at magbahagi. Ang paghintong ginawa mo ngayon ay isa nang maliit na pagbabago. Sa bawat pagkakataong pinipili nating huwag manakit, may nabubuksang ibang paraan. <strong>Ang karahasan ay nagtatapos sa atin.</strong>',
+
+  form_submit: 'I-save ang aking kuwento',
+
+  answer_hint: '✍️ Ang iyong sagot',
+
+
+  /* ── MOVING FORWARD ── */
   p16_label: 'Pagpapatuloy',
-  p16_head: 'Ang susunod mong hakbang, ginagabayan.',
-  p16_sub: 'Anuman ang kailangan mo pagkatapos nito, narito nang eksakto kung saan pupunta. Hindi mo kailangang gawin itong mag-isa.',
+  p16_head: 'May susunod pang hakbang.',
+  p16_sub: 'Anuman ang kailangan mo pagkatapos nito, may mga taong, programa, at serbisyong maaari mong lapitan. Hindi mo kailangang alamin at gawin ang lahat nang mag-isa.',
+
   p16_hotline_lbl: 'Kung nasa panganib ang isang bata ngayon',
-  p16_ph_lbl: '🇵🇭 Para patuloy na matuto, sa Pilipinas',
+
+  p16_ph_lbl: '🇵🇭 Para patuloy na matuto at magkaroon ng suporta, sa Pilipinas',
+
   p16_ph_p1_title: 'Magtanong sa inyong 4Ps o barangay social worker tungkol sa Family Development Sessions',
-  p16_ph_p1_desc: 'Ginagamit na ng mga sesyong ito ang MaPa (Masayang Pamilya), isang positibong parenting program na ginawa para sa mga pamilyang Pilipino at napatunayang nakakatulong talaga. Ginawa ito ng mga mananaliksik mula sa unibersidad, kasama ang UNICEF Philippines. Tingnan ang mga programa ng MaPa sa <a href="https://www.masayangpamilya.org/programs-and-services" target="_blank" rel="noopener">masayangpamilya.org ↗</a>',
-  p16_ph_p2_title: 'Dalhin ang "Love Does Not Hurt" campaign ng PETA sa inyong komunidad',
-  p16_ph_p2_desc: 'Gumagamit ang ARTS Zone project ng PETA ng teatro at workshop upang ituro ang positibong disiplina sa mga paaralan at barangay, kasama na ang Valenzuela. <a href="https://petatheater.com/arts-zone/" target="_blank" rel="noopener">petatheater.com/arts-zone ↗</a>',
-  p16_vn_lbl: '🇻🇳 Para patuloy na matuto, sa Vietnam',
-  p16_vn_p1_title: 'Magtanong tungkol sa "Nobody\'s Perfect" na pagsasanay sa pagiging magulang',
-  p16_vn_p1_desc: 'Ibinibigay kasama ng MOLISA at mga lokal na employer o community center para sa mga tagapag-alaga ng batang wala pang 8 taong gulang.',
-  p16_vn_p2_title: 'Tumawag sa 111 kahit hindi emerhensiya',
-  p16_vn_p2_desc: 'Ang pambansang child protection line ay nag-aalok din ng patuloy na parenting counseling, hindi lamang para sa pag-uulat ng krisis.',
-  p16_kh_lbl: '🇰🇭 Para patuloy na matuto, sa Cambodia',
-  p16_kh_p1_title: 'Sumali sa isang sesyon ng Positive Parenting Programme',
-  p16_kh_p1_desc: 'Isinasagawa sa pamamagitan ng commune Ministry of Women\'s Affairs office, na may pagsasanay sa komunikasyon at hindi marahas na disiplina.',
-  p16_kh_p2_title: 'Mag-message sa ParentingTips chatbot',
-  p16_kh_p2_desc: 'Libre sa Telegram, o tumawag sa 1279 upang magparehistro para sa mga tip sa pamamagitan ng tawag.',
+  p16_ph_p1_desc: 'Ang mga sesyong ito ay gumagamit ng MaPa (Masayang Pamilya), isang programang positibong pagpapalaki na ginawa para sa mga pamilyang Pilipino at pinag-aralan upang masukat ang epekto nito. Binuo ito ng mga mananaliksik mula sa unibersidad kasama ang UNICEF Philippines. Tingnan ang mga programa ng MaPa sa <a href="https://www.masayangpamilya.org/programs-and-services" target="_blank" rel="noopener">masayangpamilya.org ↗</a>',
+
+  p16_ph_p2_title: 'Dalhin ang “Love Does Not Hurt” campaign ng PETA sa inyong komunidad',
+  p16_ph_p2_desc: 'Gumagamit ang ARTS Zone ng PETA ng teatro at mga workshop upang talakayin at ituro ang positibong disiplina sa mga paaralan at barangay, kabilang ang Valenzuela. <a href="https://petatheater.com/arts-zone/" target="_blank" rel="noopener">petatheater.com/arts-zone ↗</a>',
+
   p16_ph_p3_title: 'Magtanong sa inyong lokal na POPCOM office tungkol sa Responsible Parenting Classes',
-  p16_ph_p3_desc: 'Ang Commission on Population and Development ay may libreng klase para sa mag-asawa at magulang tungkol sa family planning, pagpapaagwat ng anak, at kabuuang kalagayan ng pamilya, kasabay ng Family Development Sessions ng DSWD.',
-  p16_global_lbl: '🌏 Nagbabasa ka mula sa ibang bansa? May patutunguhan ka pa rin',
-  p16_global_p1_title: 'Hanapin ang helpline sa iyong sariling bansa',
-  p16_global_p1_desc: 'Ang Child Helpline International ay nag-uugnay sa libre, lokal na child helpline sa mahigit 140 bansa. <a href="https://childhelplineinternational.org/helplines/" target="_blank" rel="noopener">childhelplineinternational.org ↗</a>',
-  p16_global_p2_title: 'Humanap ng positive discipline training malapit sa iyo',
-  p16_global_p2_desc: 'Ang Positive Discipline Association ay may mga certified trainer sa mahigit 90 bansa. <a href="https://www.positivediscipline.org/" target="_blank" rel="noopener">positivediscipline.org ↗</a>',
-  p16_global_p3_title: 'Tingnan ang batas ng iyong bansa at makakuha ng karagdagang pananaliksik',
-  p16_global_p3_desc: 'Ang Global Initiative to End All Corporal Punishment of Children ay sumusubaybay sa mga batas at pananaliksik sa buong mundo. <a href="https://endcorporalpunishment.org/" target="_blank" rel="noopener">endcorporalpunishment.org ↗</a>',
+  p16_ph_p3_desc: 'Ang Commission on Population and Development ay may mga libreng klase para sa mga mag-asawa at magulang tungkol sa family planning, pagitan ng panganganak, at kapakanan ng pamilya, kasabay ng mga Family Development Sessions ng DSWD.',
+
+  p16_vn_lbl: '🇻🇳 Para patuloy na matuto, sa Vietnam',
+  p16_vn_p1_title: 'Magtanong tungkol sa “Nobody’s Perfect” parenting training',
+  p16_vn_p1_desc: 'Isinasagawa ito kasama ang MOLISA at mga lokal na employer o community center para sa mga tagapag-alaga ng mga batang wala pang 8 taong gulang.',
+
+  p16_vn_p2_title: 'Tumawag sa 111 kahit hindi emergency',
+  p16_vn_p2_desc: 'Nagbibigay rin ang national child protection line ng patuloy na counseling tungkol sa pagpapalaki ng mga bata, hindi lamang para sa pag-uulat ng krisis.',
+
+  p16_kh_lbl: '🇰🇭 Para patuloy na matuto, sa Cambodia',
+  p16_kh_p1_title: 'Dumalo sa isang Positive Parenting Programme session',
+  p16_kh_p1_desc: 'Isinasagawa ito sa pamamagitan ng lokal na tanggapan ng Ministry of Women’s Affairs, na may pagsasanay tungkol sa komunikasyon at hindi marahas na pagdidisiplina.',
+
+  p16_kh_p2_title: 'Mag-message sa ParentingTips chatbot',
+  p16_kh_p2_desc: 'Libre ito sa Telegram, o tumawag sa 1279 upang makatanggap ng mga payo sa pamamagitan ng voice call.',
+
+  p16_global_lbl: '🌏 Nagbabasa mula sa ibang lugar? May mapupuntahan ka rin',
+
+  p16_global_p1_title: 'Humanap ng helpline sa iyong bansa',
+  p16_global_p1_desc: 'Iniuugnay ng Child Helpline International ang mga bata at pamilya sa mga libre at lokal na child helpline sa mahigit 140 bansa. <a href="https://childhelplineinternational.org/helplines/" target="_blank" rel="noopener">childhelplineinternational.org ↗</a>',
+
+  p16_global_p2_title: 'Humanap ng positibong disiplina training malapit sa iyo',
+  p16_global_p2_desc: 'May mga certified trainer ang Positive Discipline Association sa mahigit 90 bansa. <a href="https://www.positivediscipline.org/" target="_blank" rel="noopener">positivediscipline.org ↗</a>',
+
+  p16_global_p3_title: 'Tingnan ang batas sa iyong bansa at magbasa pa ng pananaliksik',
+  p16_global_p3_desc: 'Sinusubaybayan ng Global Initiative to End All Corporal Punishment of Children ang mga batas at pananaliksik tungkol sa corporal punishment sa iba’t ibang bansa. <a href="https://endcorporalpunishment.org/" target="_blank" rel="noopener">endcorporalpunishment.org ↗</a>',
+
   p16_global_p4_title: 'Humanap ng suporta para sa family planning at reproductive health',
-  p16_global_p4_desc: 'Ang International Planned Parenthood Federation ay nag-uugnay sa mga miyembrong clinic at helpline sa buong mundo. <a href="https://www.ippf.org/about-us/member-associations" target="_blank" rel="noopener">ippf.org ↗</a>',
-  p16_orgs_intro: 'Narito ang mga totoong programa ng gobyerno at komunidad. Huwag mag-alala sa mga maikling pangalan, itanong lang sa iyong lokal na opisina at alam nila ito.',
-  p16_note: 'Gusto mo bang balikan ang pananaliksik o ang pelikula tungkol sa positibong disiplina? Nasa mga naunang pahina ng toolkit na ito, anumang oras mo kailangan ang mga ito.',
+  p16_global_p4_desc: 'Iniuugnay ng International Planned Parenthood Federation ang mga tao sa mga member clinic at helpline sa iba’t ibang panig ng mundo. <a href="https://www.ippf.org/about-us/member-associations" target="_blank" rel="noopener">ippf.org ↗</a>',
+
+  p16_orgs_intro: 'Narito ang ilang aktuwal na programa ng gobyerno at komunidad. Huwag mag-alala sa mga acronym o maikling pangalan. Maaari kang magtanong sa inyong lokal na tanggapan—karaniwan, alam na nila kung saan ka maaaring idirekta.',
+
+  p16_note: 'Gusto mo bang balikan ang pananaliksik o mga video tungkol sa positibong disiplina? Nasa mga naunang pahina ng toolkit ang mga ito at maaari mong balikan anumang oras.',
+
   tts_listen: '🔊 Pakinggan',
 
-  p17_label: 'Ang iyong pocket card · Itago ito nang malapit',
-  p17_intro: 'Sa sandali ng stress, ito na ang kailangan mo. I-screenshot ito at ilagay sa lugar na makikita mo.',
-  pc_p_word: 'Huminto', pc_p_desc: 'Huminga. Limang segundo bago kumilos.',
-  pc_a_word: 'Magtanong', pc_a_desc: 'Tanungin ang bata kung ano ang nangyari. Makinig muna.',
-  pc_u_word: 'Umintindi', pc_u_desc: 'Bakit nila ito ginawa? Ang pag-uugali ay komunikasyon.',
-  pc_s_word: 'Suportahan', pc_s_desc: 'Tumugon sa pangangailangan. Gabayan, huwag parusahan.',
-  pc_e_word: 'Hikayatin', pc_e_desc: 'Tapusin nang may pagmamahal. Ang pagkakamali ay hindi nagbabago nito.',
-  p17_box_lbl: 'Kung saan napupunta ang iyong mga tugon',
-  p17_box_txt: 'Ang iyong kwento, na nakolekta nang hindi kilala kasama ang iba, ay ipapakita sa ika-2 Global Ministerial Conference on Ending Violence Against Children, Manila, Nobyembre 2026.',
-  p17_credit: 'Dinisenyo ng mga kabataan · Ang Karahasan ay Nagtatapos sa Atin · Asya-Pasipiko',
+
+  /* ── POCKET CARD ── */
+  p17_label: 'Munting gabay · Itago at balikan',
+
+  p17_intro: 'Kapag mabigat ang sandali at mabilis nang tumataas ang emosyon, ito muna ang tandaan. I-screenshot ito at ilagay sa lugar na madalas mong makita.',
+
+  pc_p_word: 'Huminto',
+  pc_p_desc: 'Huminga. Limang segundo muna bago tumugon.',
+
+  pc_a_word: 'Magtanong',
+  pc_a_desc: 'Tanungin ang bata kung ano ang nangyari. Makinig muna.',
+
+  pc_u_word: 'Unawain',
+  pc_u_desc: 'Ano kaya ang dahilan? May sinasabi ang kilos ng bata.',
+
+  pc_s_word: 'Suportahan',
+  pc_s_desc: 'Tingnan kung ano ang kailangan. Gabayan, huwag parusahan.',
+
+  pc_e_word: 'Hikayatin',
+  pc_e_desc: 'Tapusin nang may pagmamahal. Ang pagkakamali ay hindi nag-aalis ng pagmamahal.',
+
+  p17_box_lbl: 'Saan napupunta ang iyong mga tugon',
+  p17_box_txt: 'Ang iyong kuwento, na kokolektahin nang anonymous kasama ng mga kuwento ng iba, ay ilalahad sa 2nd Global Ministerial Conference on Ending Violence Against Children sa Maynila sa Nobyembre 2026.',
+
+  p17_credit: 'Dinisenyo ng mga kabataan · Violence Ends With Us · Asya-Pasipiko',
 },
 
 /* ── VIETNAMESE ── */
 vi: {
   top_label: 'Bạo lực Chấm dứt Cùng Chúng ta · PAUSE Toolkit · Thí điểm 2026',
-  footer: '18 trang · Phiên bản thí điểm · Philippines · Việt Nam · Campuchia',
+  footer: '20 trang · Phiên bản thí điểm · Philippines · Việt Nam · Campuchia',
   nav_back: 'Quay lại', nav_next: 'Tiếp theo', nav_finish: 'Hoàn thành',
-  validation_warn: 'Vui lòng trả lời cả hai câu hỏi trước khi tiếp tục.',
+  validation_warn: 'Vui lòng trả lời trước khi tiếp tục.',
 
   p0_label: 'Bộ công cụ kỷ luật tích cực',
   p0_sub: 'Những lựa chọn Tích cực Thay thế Hình phạt Quá tay & Gây hại',
-  p0_hook: 'Trong năm giây tới, bạn sẽ làm gì?',
+  p0_hook: 'Một khoảnh khắc để nhìn lại. Một khoảnh khắc để chọn một cách khác.',
+  p0_hook_short: 'Trong năm giây tới, bạn sẽ làm gì?',
   p0_desc: 'Cuốn sách lật này hướng dẫn bạn qua năm bước đơn giản để ứng xử với trẻ em bằng sự quan tâm, không phải bằng nỗi sợ hãi.<br><br>Những gì bạn chia sẻ sẽ được gom lại cùng với câu chuyện của nhiều người khác, và được mang đến các cộng đồng khắp khu vực Châu Á - Thái Bình Dương.',
+  p0_lang_lbl: 'Chọn ngôn ngữ của bạn',
+  p0_what_head: 'PAUSE là gì?',
+  p0_what_txt: 'PAUSE là một trải nghiệm suy ngẫm kỹ thuật số ngắn, tự thực hiện, mời gọi người lớn nhìn lại cách họ từng được kỷ luật khi còn nhỏ, nhận ra điều họ có thể đang mang theo trong cách phản ứng hôm nay, và suy nghĩ về điều họ muốn làm khác đi.<br><br>Nó tạo ra một điểm khởi đầu nhẹ nhàng cho những cuộc trò chuyện về trừng phạt thân thể, kỷ luật tích cực, và nuôi dạy con tích cực, không phán xét.<br><br>Bởi vì đôi khi, trước khi có thể học một cách khác, chúng ta cần một khoảnh khắc để nhớ lại cách mình đã từng được dạy dỗ. Điều gì đã xảy ra với tôi? Tôi đang làm gì bây giờ? Tôi muốn thay đổi điều gì?',
+  p0_why_head: 'Tại sao lại PAUSE?',
+  p0_why_txt: 'Nhiều người lớn chưa từng được dạy một cách khác để phản ứng khi trẻ mắc lỗi. PAUSE tạo ra một khoảng cách giữa điều đã xảy ra với chúng ta và điều chúng ta chọn truyền lại, giúp chúng ta suy ngẫm về kiểu phản ứng, mối quan hệ, và ký ức mà chúng ta muốn để lại cho một đứa trẻ.<br><br>Mục tiêu không phải là làm cha mẹ hoàn hảo. Đó là một phản ứng khác đi, từng khoảnh khắc một.',
+  p0_complement_head: 'Bổ sung cho những công việc đang diễn ra',
+  p0_complement_txt: 'PAUSE được tạo ra để bổ sung cho các chương trình nuôi dạy con, bảo vệ trẻ em, phát triển gia đình, hoặc chương trình cộng đồng hiện có. Nó thêm vào một khoảnh khắc suy ngẫm từ góc nhìn của trẻ em, tạo ra điểm khởi đầu cá nhân cho việc học sâu hơn và sự thay đổi tiếp diễn.<br><br>Các đối tác có thể sử dụng nó trước, trong, hoặc sau các buổi sinh hoạt hiện có, hoặc đơn giản là chia sẻ nó với các gia đình và cộng đồng như một nguồn tài liệu họ có thể quay lại. Không cần xây dựng chương trình mới. Chỉ cần một không gian để dừng lại.',
+  p0_accessible_head: 'Được thiết kế để dễ tiếp cận',
+  p0_accessible_txt: 'PAUSE có thể được khám phá bằng tiếng Anh, Tagalog, Bisaya, Việt, và Khmer, với các tính năng chuyển văn bản thành giọng nói và video để làm cho trải nghiệm dễ tiếp cận và hấp dẫn hơn.<br><br>Trang web cũng cung cấp các cách để tìm hiểu thêm, kết nối với hỗ trợ, và tiếp tục cuộc trò chuyện ngoài phạm vi bộ công cụ.',
+  p0_partners_head: 'Đối tác có thể sử dụng PAUSE như thế nào',
+  p0_share_word: 'Chia sẻ',
+  p0_share_desc: 'Gửi bộ công cụ qua các mạng lưới phụ huynh, người chăm sóc, giáo viên, thanh niên, hoặc cộng đồng hiện có.',
+  p0_invite_word: 'Mời',
+  p0_invite_desc: 'Cho người tham gia vài phút yên tĩnh để tự khám phá một cách riêng tư.',
+  p0_reflect_word: 'Suy ngẫm',
+  p0_reflect_desc: 'Để họ trải nghiệm theo tốc độ riêng của mình và lưu lại những suy ngẫm dọc đường.',
+  p0_connect_word: 'Kết nối & tiếp tục',
+  p0_connect_desc: 'Sử dụng PAUSE để mở ra các cuộc trò chuyện và kết nối mọi người với các chương trình, dịch vụ, tài nguyên, và hỗ trợ hiện có của bạn.',
+  p0_cta_lbl: 'Hãy tạo ra khoảng dừng trước sự thay đổi.',
+  p0_cta_txt: 'Vài phút yên tĩnh. Một ký ức. Một sự suy ngẫm chân thành. Và khả năng phản ứng khác đi vào lần sau.',
 
   p1_label: 'Trước khi bắt đầu',
-  p1_head: 'Cam kết an toàn của chúng tôi — dành cho bạn, và cho trẻ em',
+  p1_head: 'Cam kết an toàn của chúng tôi,  dành cho bạn, và cho trẻ em',
   p1_sub: 'Bộ công cụ này sẽ hỏi bạn một cách trung thực về cách bạn được nuôi dạy, và cách bạn nuôi dạy những đứa trẻ trong cuộc sống của bạn hôm nay. Trước khi bạn chia sẻ bất cứ điều gì, đây là những gì chúng tôi cam kết với bạn.',
   p1_parent_lbl: 'Cam kết của chúng tôi với bạn, với tư cách là cha mẹ hoặc người chăm sóc',
   p1_promise_judge: 'Không phán xét. Việc bạn nói với chúng tôi rằng bạn đã từng đánh, làm xấu hổ, hoặc gặp khó khăn khi chăm sóc một đứa trẻ không khiến bạn trở thành một phụ huynh tồi trong mắt chúng tôi. Đó là lý do PAUSE tồn tại.',
@@ -1616,103 +2214,123 @@ vi: {
   p4_video2_cap: '"The Single Most Important Parenting Strategy" · Dr. Becky Kennedy, TED (tiếng Anh) · <a href="https://youtu.be/PHpPtdk9rco" target="_blank" rel="noopener">Xem trên YouTube ↗</a>',
   p4_note: 'Hình phạt chỉ ngăn hành vi trong chốc lát. Việc dạy dỗ thay đổi nó lâu dài.',
 
+  ph_label: 'Trước Bước 1 · PAUSE bắt nguồn từ đâu',
+  ph_head: 'Được tạo ra bởi trẻ em, dành cho những người lớn nuôi dạy chúng',
+  ph_body: 'PAUSE được định hình từ góc nhìn của trẻ em và người trẻ. Chúng tôi biết cảm giác ở phía nhận của một phản ứng từ người lớn, và chúng tôi muốn góc nhìn đó được hiện diện trong cuộc trò chuyện.<br><br>Đây không phải là một bài giảng dành cho cha mẹ về những điều họ làm sai. Đây là lời mời nhìn việc kỷ luật qua đôi mắt của trẻ: điều gì giúp chúng tôi cảm thấy đủ an toàn để nói ra, học hỏi, mắc lỗi và lớn lên thành những người tốt hơn?<br><br>Trừng phạt thân thể là một phần của cuộc trò chuyện, nhưng không phải điểm kết thúc. PAUSE cũng hướng đến sự thay đổi mà chúng tôi mong muốn: cách làm cha mẹ tích cực, với ranh giới rõ ràng, phản ứng bình tĩnh, sự thấu hiểu và hỗ trợ thay vì đau đớn hay sợ hãi. Nó hỏi người lớn có thể làm gì khác đi, không phải để trở nên hoàn hảo, mà để giúp trẻ phát triển thành những con người tốt hơn.',
+  ph_quote_lbl: 'Trong lời của chính họ',
+  ph_quote_txt: 'Chúng tôi không muốn viết thêm một bài giảng nhắm vào trẻ em. Chúng tôi muốn điều gì đó cuối cùng nói với những người lớn đang nuôi dạy chúng tôi, bởi vì chính chúng tôi là những người nhớ rõ cảm giác đứng ở phía bên kia.',
+  ph_quote_cite: 'Những người trẻ đồng sáng tạo PAUSE, Châu Á Thái Bình Dương',
+  ph_bridge: 'Vì vậy, năm bước ở những trang tiếp theo bắt đầu từ góc nhìn của trẻ. Chúng tập trung vào những khoảnh khắc có thể định hình chúng ta: dừng lại trước khi phản ứng, hỏi điều gì đã xảy ra, hiểu điều nằm phía sau hành vi, hỗ trợ trẻ và kết thúc bằng sự khích lệ. Đây là những thay đổi nhỏ có thể giúp trẻ cảm thấy an toàn hơn, học từ lỗi lầm và lớn lên, đồng thời giúp người lớn xây dựng một cách nuôi dạy tích cực hơn.',
+
   p3_label: 'Dừng lại một chút',
-  p3_q: '"Hãy nghĩ về cách bạn được dạy dỗ khi còn nhỏ."',
-  p3_sub: 'Điều gì đã xảy ra khi bạn mắc lỗi? Lúc đó bạn cảm thấy thế nào? Và đến bây giờ, cảm giác đó còn đó không?',
+  p3_q: 'Hãy đưa tâm trí chúng ta trở về khi còn là một đứa trẻ.',
+  p3_sub: 'Nhớ lại ngôi nhà nơi bạn lớn lên. Nhớ nơi bạn thường ngồi, chơi, hay trốn. Xung quanh bạn trông như thế nào? Bạn thường nghe âm thanh gì, giọng nói của mẹ hay cha, tiếng tivi, radio, tiếng bước chân, hay tiếng động từ bên ngoài? Cũng nhớ lại những mùi quen thuộc của ngôi nhà, mùi thức ăn đang nấu, mùi xà phòng, mùi cà phê, hay mùi sau cơn mưa.<br><br>Nhớ lại những người bạn thường ở cùng. Họ ở đâu lúc đó, họ gọi bạn là gì, và cảm giác thế nào khi ở cùng họ.<br><br>Bây giờ, từ những ký ức đó, hãy quay về một khoảnh khắc cụ thể khi bạn còn nhỏ, khi bạn mắc một lỗi.<br><br>Nhớ lại bạn đã ở đâu, bạn đã làm gì, và ai là người phát hiện ra đầu tiên. Quay lại khoảnh khắc bạn nhận ra mình đã làm sai điều gì đó.<br><br>Bạn đã cảm thấy gì đầu tiên? Cơ thể bạn đã phản ứng ra sao, có lạnh người không, tim có đập nhanh không, có cúi đầu không, có khóc không?<br><br>Nhớ lại người đã kỷ luật bạn. Lắng nghe lại, trong ký ức, giọng nói của họ. Họ đã nói những lời gì? Có phải la hét, nghiêm khắc, im lặng, hay bình tĩnh?<br><br>Và là đứa trẻ khi đó, bạn đã làm gì sau đó? Bạn có khóc không? Trốn đi? Im lặng? Xin lỗi? Hay tự hứa với bản thân rằng điều đó sẽ không lặp lại?<br><br>Hãy quay về khoảnh khắc đó, và nhớ lại đứa trẻ khi đó đã cảm thấy như thế nào.',
   p3_box_lbl: 'Một khoảnh khắc để chiêm nghiệm',
   p3_box_txt: 'Dành 2–3 phút im lặng suy ngẫm. Bạn có thể chia sẻ nếu sẵn sàng, hoặc chỉ ngồi với ký ức đó.',
-  p3_gold: 'Hầu hết chúng ta lớn lên mà không ai dạy cho một cách khác. PAUSE cho bạn một cách mới — không phải vì bạn sai, mà vì bạn xứng đáng có những công cụ tốt hơn để nuôi dạy con.',
-  p3_note: 'Khi đọc từng bước, hãy nghĩ đến một khoảnh khắc thực tế trong cuộc sống của bạn.',
+  p3_gold: 'Hầu hết chúng ta lớn lên mà không ai dạy cho một cách khác. PAUSE cho bạn một cách mới,  không phải vì bạn sai, mà vì bạn xứng đáng có những công cụ tốt hơn để nuôi dạy con.',
+  p3_note: 'Hãy mang theo điều bạn vừa nhớ lại khi chúng ta tiếp tục.',
 
-  p5_label: 'Bước 1 / 5', p5_word: 'Dừng lại — Pause',
-  p5_action: 'Hãy ngừng lại trước khi phản ứng. Hít một hơi thật sâu. Cho bản thân 5 giây — trước khi nói hay làm bất cứ điều gì.',
-  p5_why: 'Cơn bực bội đến từ trong người, không phải từ lý trí. Chỉ một hơi thở thôi — và bạn đã có đủ khoảng lặng để chọn cách phản ứng tiếp theo.',
+  p5_label: 'Bước 1 / 5', p5_word: 'Dừng lại,  Pause',
+  p5_action: 'Hãy ngừng lại trước khi phản ứng. Hít một hơi thật sâu. Cho bản thân 5 giây,  trước khi nói hay làm bất cứ điều gì.',
+  p5_why: 'Cơn bực bội đến từ trong người, không phải từ lý trí. Chỉ một hơi thở thôi,  và bạn đã có đủ khoảng lặng để chọn cách phản ứng tiếp theo.',
   p5_sc_lbl: 'Ví dụ thực tế',
-  p5_sc_txt: 'Con bạn lại làm vỡ thứ gì đó dù đã được nhắc. Bạn cảm thấy cơn tức giận dâng lên. Hãy thở — trước hết hãy thở đã.',
+  p5_sc_txt: 'Con bạn lại làm vỡ thứ gì đó dù đã được nhắc. Bạn cảm thấy cơn tức giận dâng lên. Hãy thở,  trước hết hãy thở đã.',
 
-  p6_label: 'Bước 2 / 5', p6_word: 'Hỏi — Ask',
-  p6_action: 'Hỏi con chuyện gì đã xảy ra. Để con nói trước. Lắng nghe — đừng ngắt lời.',
-  p6_why: 'Trẻ con làm chuyện gì đó thường có lý do mà người lớn không thấy được. Hỏi trước khi kết luận — đó là cách thể hiện sự tôn trọng, và là cách nhanh nhất để hiểu đúng sự việc.',
+  p6_label: 'Bước 2 / 5', p6_word: 'Hỏi,  Ask',
+  p6_action: 'Hỏi con chuyện gì đã xảy ra. Để con nói trước. Lắng nghe,  đừng ngắt lời.',
+  p6_why: 'Trẻ con làm chuyện gì đó thường có lý do mà người lớn không thấy được. Hỏi trước khi kết luận,  đó là cách thể hiện sự tôn trọng, và là cách nhanh nhất để hiểu đúng sự việc.',
   p6_sc_lbl: 'Ví dụ thực tế',
-  p6_sc_txt: '"Con kể cho ba/mẹ nghe đi, chuyện gì xảy ra vậy?" — Nói thật bình tĩnh, không phải như một lời buộc tội. Chờ con trả lời, dù phải đợi một chút.',
+  p6_sc_txt: '"Con kể cho ba/mẹ nghe đi, chuyện gì xảy ra vậy?",  Nói thật bình tĩnh, không phải như một lời buộc tội. Chờ con trả lời, dù phải đợi một chút.',
 
-  p7_label: 'Bước 3 / 5', p7_word: 'Hiểu — Understand',
+  p7_label: 'Bước 3 / 5', p7_word: 'Hiểu,  Understand',
   p7_action: 'Nghĩ xem tại sao con làm vậy. Con đang sợ? Đang bối rối? Chán? Đang thử xem giới hạn ở đâu? Hay đơn giản là chưa biết cách làm khác?',
   p7_why: 'Hành vi của trẻ là một cách truyền đạt. Điều trông có vẻ như bướng bỉnh thật ra là một nhu cầu mà con chưa biết nói ra thành lời.',
   p7_sc_lbl: 'Trong khoảnh khắc đó',
-  p7_sc_txt: '"Điều gì đang xảy ra với trẻ?" — Không phải để bào chữa cho hành vi, mà để hiểu trước khi phản ứng.',
+  p7_sc_txt: '"Điều gì đang xảy ra với trẻ?",  Không phải để bào chữa cho hành vi, mà để hiểu trước khi phản ứng.',
 
-  p8_label: 'Bước 4 / 5', p8_word: 'Hỗ trợ — Support',
-  p8_action: 'Đáp ứng nhu cầu thật sự đằng sau hành vi đó — không chỉ phản ứng với bề ngoài. Hướng dẫn, đừng trừng phạt.',
+  p8_label: 'Bước 4 / 5', p8_word: 'Hỗ trợ,  Support',
+  p8_action: 'Đáp ứng nhu cầu thật sự đằng sau hành vi đó,  không chỉ phản ứng với bề ngoài. Hướng dẫn, đừng trừng phạt.',
   p8_why: 'Trẻ tiếp thu tốt hơn khi được hướng dẫn, không phải khi bị trừng phạt. Một đứa trẻ cảm thấy được nâng đỡ sẽ tự tin hơn để làm tốt hơn lần sau.',
   p8_sc_lbl: 'Trong khoảnh khắc đó',
   p8_sc_txt: 'Hướng dẫn nhẹ nhàng. Một giới hạn rõ ràng, được giải thích với tình yêu thương. Sự hiện diện của bạn, không phải cơn giận của bạn.',
 
-  p9_label: 'Bước 5 / 5', p9_word: 'Động viên — Encourage',
-  p9_action: 'Kết thúc bằng điều gì đó xây dựng lại niềm tin — không phải nỗi sợ. Cho con biết rằng mắc lỗi không làm thay đổi tình yêu của bạn dành cho con.',
-  p9_why: 'Đứa trẻ nào cảm thấy được yêu thương ngay cả sau khi mắc lỗi — đứa trẻ đó sẽ dễ nói thật hơn, dễ cố gắng hơn, và tin tưởng người lớn hơn.',
+  p9_label: 'Bước 5 / 5', p9_word: 'Động viên,  Encourage',
+  p9_action: 'Kết thúc bằng điều gì đó xây dựng lại niềm tin,  không phải nỗi sợ. Cho con biết rằng mắc lỗi không làm thay đổi tình yêu của bạn dành cho con.',
+  p9_why: 'Đứa trẻ nào cảm thấy được yêu thương ngay cả sau khi mắc lỗi,  đứa trẻ đó sẽ dễ nói thật hơn, dễ cố gắng hơn, và tin tưởng người lớn hơn.',
   p9_sc_lbl: 'Trong khoảnh khắc đó',
-  p9_sc_txt: '"Ba/Mẹ tin con làm được. Ba/Mẹ luôn ở đây với con." — Chỉ vậy thôi là đủ.',
+  p9_sc_txt: '"Ba/Mẹ tin con làm được. Ba/Mẹ luôn ở đây với con.",  Chỉ vậy thôi là đủ.',
 
   p10_label: 'Vòng tròn thay đổi',
   p10_head: 'Câu chuyện của bạn có giá trị.',
-  p10_sub: 'Các trang tiếp theo yêu cầu bạn suy ngẫm thành thật về quá khứ, hiện tại, và sự thay đổi bạn muốn thực hiện. Không có câu trả lời đúng hay sai.',
+  p10_sub: 'Năm trang tiếp theo là một khoảng lặng để bạn nhận ra mình đã học được gì, đang mang theo điều gì, và muốn truyền lại điều gì theo một cách khác. Bạn không cần phải có mọi câu trả lời. Chỉ cần thành thật với chính mình.',
   p10_box_lbl: 'Vòng tròn thay đổi là gì?',
-  p10_box_txt: 'Hành trình từ cách bạn được đối xử khi còn là trẻ, đến cách điều đó định hình cách bạn kỷ luật ngày hôm nay, đến những giới hạn bạn muốn đặt ra trong tương lai.',
-  p10_steps: 'Quá khứ của bạn · Hiện tại của bạn · Điều bạn muốn đổi · Giới hạn của bạn · Cam kết của bạn',
-  p10_note: 'Câu chuyện của bạn sẽ trở thành một phần trong bộ sưu tập thay đổi được chia sẻ ẩn danh như một mô-đun cho các cộng đồng trong khu vực.',
+  p10_box_txt: 'Vòng tròn Thay đổi giúp bạn kết nối các điểm: điều gì đã xảy ra với bạn, bạn đã học được gì từ đó, nó có thể xuất hiện thế nào trong cách bạn phản ứng hôm nay, và bạn muốn thay đổi điều gì. Đây là cơ hội để nhìn ra những khuôn mẫu mà không phán xét bản thân và chọn một bước nhỏ hướng tới mối quan hệ an toàn, tôn trọng hơn với trẻ.',
+  p10_steps: 'Nhớ lại · Nhận ra · Lựa chọn · Hướng dẫn · Cam kết',
+  p10_note: 'Bạn không cần phán xét con người của mình khi còn nhỏ hay những người lớn đã nuôi dạy bạn. Hãy nhận ra điều bạn muốn giữ lại, điều bạn muốn buông bỏ, và ký ức bạn muốn một đứa trẻ mang theo về bạn.',
 
-  p11_label: 'Vòng tròn thay đổi · 1 / 5', p11_head: 'Quá khứ của bạn',
-  p11_sub: 'Bạn đã được dạy dỗ như thế nào khi còn nhỏ? Những người lớn xung quanh bạn đã làm gì khi bạn mắc lỗi?',
-  p11_q1_lbl: 'Kể lại cách kỷ luật trong gia đình bạn ngày đó trông như thế nào',
+  p11_label: 'Vòng tròn thay đổi · 1 / 5', p11_head: 'Quá khứ (Past)',
+  p11_sub: 'Hãy hít một hơi trước khi trả lời.',
+  p11_q1: 'Kỷ luật trông như thế nào khi bạn còn nhỏ?',
+  p11_q2: 'Ai đã dạy bạn cách đó, và bạn đã mang theo điều gì từ đó?',
+  p11_q3: 'Khi ấy và bây giờ, bạn cảm thấy thế nào?',
   p11_q1_ph: 'Viết tự do. Đây là không gian của bạn.',
   p11_q2_lbl: 'Lúc đó bạn cảm thấy thế nào?',
   p11_opt1: '😟 Sợ hãi và bất an', p11_opt2: '💔 Xấu hổ, tủi thân',
-  p11_opt3: '😐 Bối rối — không hiểu tại sao lại bị phạt', p11_opt4: '🤷 Bình thường — đó là cách ai cũng làm',
+  p11_opt3: '😐 Bối rối,  không hiểu tại sao lại bị phạt', p11_opt4: '🤷 Bình thường,  đó là cách ai cũng làm',
   p11_opt5: '🙂 Ổn, thấy cũng hợp lý', p11_opt6: '🌱 Được yêu thương và hướng dẫn',
-  p11_opt7: '✏️ Khác — tôi sẽ mô tả', p11_other_ph: 'Mô tả cảm giác của bạn...',
+  p11_opt7: '✏️ Khác,  tôi sẽ mô tả', p11_other_ph: 'Mô tả cảm giác của bạn...',
 
-  p12_label: 'Vòng tròn thay đổi · 2 / 5', p12_head: 'Hiện tại của bạn',
-  p12_sub: 'Bây giờ khi trẻ trong nhà làm sai, bạn thường xử lý thế nào? Hãy thành thật — đây không phải bài kiểm tra.',
-  p12_q1_lbl: 'Khi con hư, bạn thường làm gì?',
+  p12_label: 'Vòng tròn thay đổi · 2 / 5', p12_head: 'Hiện tại (Now)',
+  p12_sub: 'Hãy thành thật với bản thân ở đây. Đây không phải bài kiểm tra.',
+  p12_q1: 'Khi một đứa trẻ mắc lỗi hoặc cư xử không đúng, bạn thường làm gì?',
+  p12_q2: 'Bạn nghĩ điều gì nằm phía sau cảm xúc đó?',
+  p12_q3: 'Bạn có nhận thấy mối liên hệ với cách mình được nuôi dạy không?',
+  p12_q4: 'Khi cảm xúc đó lấn át, điều gì xảy ra với cách bạn phản ứng?',
   p12_q1_ph: 'Hãy thành thật với bản thân ở đây.',
   p12_q2_lbl: 'Bạn có thấy mình đang lặp lại điều từng xảy ra với mình hồi nhỏ không?',
-  p12_opt1: '😔 Có — tôi đang làm y như những gì tôi từng trải qua', p12_opt2: '😶 Đôi khi, dù không cố ý',
+  p12_opt1: '😔 Có,  tôi đang làm y như những gì tôi từng trải qua', p12_opt2: '😶 Đôi khi, dù không cố ý',
   p12_opt3: '🤔 Chưa bao giờ nghĩ đến chuyện này', p12_opt4: '💪 Tôi cố tránh, nhưng không dễ',
-  p12_opt5: '✨ Không — tôi chủ động chọn cách khác', p12_opt6: '📋 Tôi không có trẻ trong sự chăm sóc',
-  p12_opt7: '✏️ Khác — tôi sẽ mô tả', p12_other_ph: 'Mô tả trải nghiệm của bạn...',
+  p12_opt5: '✨ Không,  tôi chủ động chọn cách khác', p12_opt6: '📋 Tôi không có trẻ trong sự chăm sóc',
+  p12_opt7: '✏️ Khác,  tôi sẽ mô tả', p12_other_ph: 'Mô tả trải nghiệm của bạn...',
 
-  p13_label: 'Vòng tròn thay đổi · 3 / 5', p13_head: 'Điều bạn muốn thay đổi',
-  p13_sub: 'Bạn muốn thay đổi điều gì? Bạn muốn trở thành người lớn như thế nào trong những khoảnh khắc quan trọng?',
-  p13_q1_lbl: 'Mô tả sự thay đổi bạn muốn thực hiện',
+  p13_label: 'Vòng tròn thay đổi · 3 / 5', p13_head: 'Sự thay đổi (Shift)',
+  p13_sub: 'Bạn muốn trở thành người lớn như thế nào trong những khoảnh khắc quan trọng?',
+  p13_q1: 'Hãy mô tả sự thay đổi bạn muốn thực hiện.',
+  p13_q2: 'Vì sao thay đổi đó quan trọng với bạn?',
+  p13_q3: 'Bước nhỏ đầu tiên bạn có thể thực hiện là gì?',
   p13_q1_ph: 'Làm tốt hơn trông như thế nào với bạn?',
   p13_q2_lbl: 'Điều gì khiến việc thay đổi trở nên khó khăn?',
   p13_q2_ph: 'Căng thẳng, thời gian, không biết phải làm gì khác...',
 
-  p14_label: 'Vòng tròn thay đổi · 4 / 5', p14_head: 'Giới hạn của bạn',
-  p14_sub: 'Nuôi dạy con tích cực không có nghĩa là không có giới hạn. Trẻ vẫn cần khuôn khổ rõ ràng — nhưng được đặt ra bằng tình yêu và sự nhất quán, không phải đau đớn hay sợ hãi.',
-  p14_q1_lbl: 'Với bạn, điều gì là ranh giới quan trọng nhất khi nuôi dạy trẻ?',
+  p14_label: 'Vòng tròn thay đổi · 4 / 5', p14_head: 'Giới hạn (Limits)',
+  p14_sub: 'Kỷ luật tích cực vẫn có giới hạn.',
+  p14_q1: 'Với bạn, những ranh giới nào quan trọng nhất khi nuôi dạy trẻ?',
+  p14_q2: 'Trẻ em có thể được kỷ luật mà không có hình phạt thể chất không?',
+  p14_q3: 'Những ranh giới đó có rõ ràng với trẻ, và bạn giải thích lý do đằng sau chúng như thế nào?',
+  p14_q4: 'Bạn biết khi nào một ranh giới cần được điều chỉnh bằng cách nào?',
   p14_q1_ph: 'Bạn muốn con mang theo những giá trị gì?',
   p14_q2_lbl: 'Trẻ em có thể được kỷ luật mà không có hình phạt thể chất không?',
-  p14_opt1: '❌ Không — tôi vẫn nghĩ đôi khi cần dùng',
-  p14_opt2: '🤷 Chưa chắc — đó là cách tôi lớn lên',
+  p14_opt1: '❌ Không,  tôi vẫn nghĩ đôi khi cần dùng',
+  p14_opt2: '🤷 Chưa chắc,  đó là cách tôi lớn lên',
   p14_opt3: '🌿 Còn hoài nghi, nhưng tôi sẵn sàng thử',
   p14_opt4: '🙂 Tôi bắt đầu tin là có thể',
-  p14_opt5: '✅ Có — tôi tin điều này hoàn toàn',
+  p14_opt5: '✅ Có,  tôi tin điều này hoàn toàn',
   p14_opt6: '🌟 Tôi đã đang làm được rồi',
-  p14_opt7: '✏️ Khác — tôi sẽ chia sẻ thêm', p14_other_ph: 'Chia sẻ quan điểm của bạn...',
+  p14_opt7: '✏️ Khác,  tôi sẽ chia sẻ thêm', p14_other_ph: 'Chia sẻ quan điểm của bạn...',
 
-  p15_label: 'Vòng tròn thay đổi · 5 / 5', p15_head: 'Cam kết của bạn',
-  p15_sub: '"Đó có phải là ký ức bạn muốn để lại trong lòng con không?" Bạn không cần phải hoàn hảo. Chỉ cần dừng lại — từng khoảnh khắc một.',
+  p15_label: 'Vòng tròn thay đổi · 5 / 5', p15_head: 'Cam kết (Commitment)',
+  p15_q1: 'Viết một lời nhắn hoặc một lời hứa cho con bạn, hoặc những đứa trẻ trong sự chăm sóc của bạn.',
+  p15_closing: 'Điều bạn làm tiếp theo có thể trở thành một phần trong ký ức của trẻ về những năm tháng lớn lên bên bạn. Bạn không cần phải làm đúng mọi lúc. Mỗi lần dừng lại là một cơ hội để chọn một cách nhẹ nhàng hơn.',
   p15_name_lbl: 'Tên của bạn (không bắt buộc)', p15_name_ph: 'Tên hoặc để trống',
   p15_country_lbl: 'Bạn đang ở đâu?',
   p15_other_country_btn: 'Quốc gia khác', p15_other_country_ph: 'Vui lòng cho chúng tôi biết quốc gia của bạn',
-  p15_commit_lbl: 'Tôi cam kết sử dụng PAUSE khi...', p15_commit_ph: 'Mô tả khoảnh khắc cụ thể của bạn',
+  p15_commit_ph: 'Viết lời nhắn của bạn ở đây',
   p15_support_lbl: 'Một người tôi có thể gọi khi gặp khó khăn', p15_support_ph: 'Tên của họ',
   p15_followup_lbl: 'Điện thoại hoặc email để theo dõi (không bắt buộc)', p15_followup_ph: 'Số điện thoại hoặc email của bạn',
   form_error: 'Đã xảy ra lỗi. Vui lòng thử lại.',
-  form_success: 'Câu chuyện của bạn đã được lưu lại. Cảm ơn vì đã chọn dừng lại. Bạo lực chấm dứt cùng chúng ta.',
+  form_success: 'Cảm ơn bạn đã đủ can đảm để nhìn lại và chia sẻ điều đó. Khoảng dừng đó mà bạn vừa thực hiện đã là một sự thay đổi. Bạo lực chấm dứt cùng chúng ta.',
   form_submit: 'Lưu câu chuyện của tôi',
+  answer_hint: '✍️ Câu trả lời của bạn',
 
   p16_label: 'Bước tiếp theo',
   p16_head: 'Bước tiếp theo của bạn, có hướng dẫn.',
@@ -1763,17 +2381,38 @@ vi: {
 /* ── KHMER ── */
 kh: {
   top_label: 'អំពើហិង្សាបញ្ចប់ជាមួយយើង · PAUSE Toolkit · Pilot 2026',
-  footer: '18 ទំព័រ · ការបោះពុម្ពសាក · ហ្វីលីពីន · វៀតណាម · កម្ពុជា',
+  footer: '20 ទំព័រ · ការបោះពុម្ពសាក · ហ្វីលីពីន · វៀតណាម · កម្ពុជា',
   nav_back: 'ត្រឡប់', nav_next: 'បន្ត', nav_finish: 'បញ្ចប់',
-  validation_warn: 'សូមឆ្លើយសំណួរទាំងពីរមុននឹងបន្ត។',
+  validation_warn: 'សូមឆ្លើយមុននឹងបន្ត។',
 
   p0_label: 'ឧបករណ៍នៃការអប់រំវិជ្ជមាន',
   p0_sub: 'PAUSE : ជម្រើសវិជ្ជមានចំពោះការអនុវត្តដែលមិនមានសុវត្ថិភាព និងធ្ងន់ធ្ងរ',
-  p0_hook: 'តើអ្នកនឹងធ្វើអ្វីក្នុងរយៈពេលប្រាំវិនាទីបន្ទាប់?',
+  p0_hook: 'ខណៈពេលមួយដើម្បីក្រឡេកមើលថយក្រោយ។ ខណៈពេលមួយដើម្បីជ្រើសរើសផ្សេង។',
+  p0_hook_short: 'តើអ្នកនឹងធ្វើអ្វីក្នុងរយៈពេលប្រាំវិនាទីបន្ទាប់?',
   p0_desc: 'សៀវភៅណែនាំនេះនឹងណែនាំអ្នកអំពីជំហានសាមញ្ញប្រាំសម្រាប់ឆ្លើយតបទៅនឹងកុមារដោយយកចិត្តទុកដាក់ មិនមែនដោយការភ័យខ្លាចនោះទេ។<br><br>ចម្លើយរបស់អ្នកក្លាយជាផ្នែកមួយនៃការបណ្តុំផ្លាស់ប្តូរដែលបានចែករំលែកជាមួយឪពុកម្តាយ គ្រូបង្រៀន និងសហគមន៍នានានៅទូទាំងតំបន់អាស៊ីប៉ាស៊ីហ្វិក។',
+  p0_lang_lbl: 'ជ្រើសរើសភាសារបស់អ្នក',
+  p0_what_head: 'តើ PAUSE ជាអ្វី?',
+  p0_what_txt: 'PAUSE គឺជាបទពិសោធន៍ឆ្លុះបញ្ចាំងឌីជីថលខ្លីមួយ ធ្វើដោយខ្លួនឯង ដែលអញ្ជើញមនុស្សពេញវ័យឱ្យក្រឡេកមើលថយក្រោយចំពោះរបៀបដែលពួកគេត្រូវបានផ្តន្ទាទោសកាលនៅក្មេង ទទួលស្គាល់នូវអ្វីដែលពួកគេអាចកំពុងកាន់យកទៅក្នុងការឆ្លើយតបរបស់ពួកគេនាពេលបច្ចុប្បន្ន ហើយពិចារណាអំពីអ្វីដែលពួកគេចង់ធ្វើខុសពីមុន។<br><br>វាបង្កើតទ្វារចូលដ៏ទន់ភ្លន់ទៅកាន់ការសន្ទនាអំពីទណ្ឌកម្មរាងកាយ វិន័យវិជ្ជមាន និងការចិញ្ចឹមកូនវិជ្ជមាន ដោយគ្មានការវិនិច្ឆ័យ។<br><br>ព្រោះថាពេលខ្លះ មុននឹងយើងអាចរៀនមធ្យោបាយផ្សេង យើងត្រូវការពេលវេលាមួយដើម្បីចងចាំពីរបៀបដែលយើងត្រូវបានបង្រៀន។ តើមានអ្វីកើតឡើងចំពោះខ្ញុំ? តើខ្ញុំកំពុងធ្វើអ្វីឥឡូវនេះ? តើខ្ញុំចង់ផ្លាស់ប្តូរអ្វី?',
+  p0_why_head: 'ហេតុអ្វី PAUSE?',
+  p0_why_txt: 'មនុស្សពេញវ័យជាច្រើនមិនដែលត្រូវបានបង្រៀនមធ្យោបាយផ្សេងដើម្បីឆ្លើយតបនៅពេលកុមារធ្វើខុសនោះទេ។ PAUSE បង្កើតគម្លាតរវាងអ្វីដែលបានកើតឡើងចំពោះយើង និងអ្វីដែលយើងជ្រើសរើសបញ្ជូនបន្ត ដោយជួយឱ្យយើងឆ្លុះបញ្ចាំងលើប្រភេទនៃការឆ្លើយតប ទំនាក់ទំនង និងការចងចាំដែលយើងចង់ទុកចោលជាមួយកុមារ។<br><br>គោលដៅមិនមែនជាឪពុកម្តាយដ៏ល្អឥតខ្ចះនោះទេ។ វាគឺជាការឆ្លើយតបផ្សេងមួយ ម្តងមួយភ្លែត។',
+  p0_complement_head: 'ការបំពេញបន្ថែមដល់ការងារដែលកំពុងកើតឡើងស្រាប់',
+  p0_complement_txt: 'PAUSE ត្រូវបានបង្កើតឡើងដើម្បីបំពេញបន្ថែមកម្មវិធីចិញ្ចឹមកូន ការការពារកុមារ ការអភិវឌ្ឍគ្រួសារ ឬកម្មវិធីសហគមន៍ដែលមានស្រាប់។ វាបន្ថែមខណៈពេលនៃការឆ្លុះបញ្ចាំងពីទស្សនៈរបស់កុមារ ដោយបង្កើតចំណុចចាប់ផ្តើមផ្ទាល់ខ្លួនសម្រាប់ការសិក្សាកាន់តែស៊ីជម្រៅ និងការផ្លាស់ប្តូរជាបន្តបន្ទាប់។<br><br>ដៃគូអាចប្រើវាមុន ក្នុងអំឡុងពេល ឬក្រោយវគ្គដែលមានស្រាប់ ឬគ្រាន់តែចែករំលែកវាជាមួយគ្រួសារ និងសហគមន៍ជាធនធានដែលពួកគេអាចត្រឡប់ទៅវិញ។ គ្មានកម្មវិធីថ្មីត្រូវសាងសង់ទេ។ គ្រាន់តែជាទីកន្លែងសម្រាប់ការផ្អាក។',
+  p0_accessible_head: 'បង្កើតឡើងឱ្យងាយស្រួលចូលប្រើ',
+  p0_accessible_txt: 'PAUSE អាចរុករកបានជាភាសាអង់គ្លេស តាហ្គាឡុក បីសាយ៉ា វៀតណាម និងខ្មែរ ជាមួយនឹងលក្ខណៈពិសេសអានជាសំឡេង និងវីដេអូ ដើម្បីធ្វើឱ្យបទពិសោធន៍កាន់តែងាយស្រួលចូលប្រើ និងទាក់ទាញ។<br><br>គេហទំព័រក៏ផ្តល់ជូននូវមធ្យោបាយដើម្បីស្វែងយល់បន្ថែម ភ្ជាប់ជាមួយការគាំទ្រ និងបន្តការសន្ទនាលើសពីឧបករណ៍នេះ។',
+  p0_partners_head: 'តើដៃគូអាចប្រើ PAUSE ដោយរបៀបណា',
+  p0_share_word: 'ចែករំលែក',
+  p0_share_desc: 'ផ្ញើឧបករណ៍នេះតាមរយៈបណ្តាញឪពុកម្តាយ អ្នកថែទាំ គ្រូបង្រៀន យុវជន ឬសហគមន៍ដែលមានស្រាប់។',
+  p0_invite_word: 'អញ្ជើញ',
+  p0_invite_desc: 'ផ្តល់ឱ្យអ្នកចូលរួមនូវពេលវេលាស្ងប់ស្ងាត់ពីរបីនាទីដើម្បីរុករកវាដោយឯកជន។',
+  p0_reflect_word: 'ឆ្លុះបញ្ចាំង',
+  p0_reflect_desc: 'អនុញ្ញាតឱ្យពួកគេឆ្លងកាត់បទពិសោធន៍តាមល្បឿនផ្ទាល់ខ្លួន និងរក្សាទុកការឆ្លុះបញ្ចាំងរបស់ពួកគេនៅតាមផ្លូវ។',
+  p0_connect_word: 'ភ្ជាប់ និងបន្ត',
+  p0_connect_desc: 'ប្រើ PAUSE ដើម្បីបើកការសន្ទនា និងភ្ជាប់មនុស្សទៅនឹងកម្មវិធី សេវាកម្ម ធនធាន និងការគាំទ្រដែលមានស្រាប់របស់អ្នក។',
+  p0_cta_lbl: 'តោះបង្កើតការផ្អាកមុននឹងការផ្លាស់ប្តូរ។',
+  p0_cta_txt: 'ពេលវេលាស្ងប់ស្ងាត់ពីរបីនាទី។ ការចងចាំមួយ។ ការឆ្លុះបញ្ចាំងដ៏ស្មោះត្រង់មួយ។ និងលទ្ធភាពនៃការឆ្លើយតបខុសគ្នានៅពេលក្រោយ។',
 
   p1_label: 'មុនពេលយើងចាប់ផ្តើម',
-  p1_head: 'ការប្តេជ្ញាចិត្តរបស់យើងចំពោះសុវត្ថិភាព — សម្រាប់អ្នក និងសម្រាប់កុមារ',
+  p1_head: 'ការប្តេជ្ញាចិត្តរបស់យើងចំពោះសុវត្ថិភាព,  សម្រាប់អ្នក និងសម្រាប់កុមារ',
   p1_sub: 'ឧបករណ៍នេះនឹងសួរអ្នកឱ្យស្មោះត្រង់អំពីរបៀបដែលអ្នកត្រូវបានចិញ្ចឹមបីបាច់ និងរបៀបដែលអ្នកចិញ្ចឹមបីបាច់កុមារនៅក្នុងជីវិតរបស់អ្នកសព្វថ្ងៃនេះ។ មុនពេលអ្នកចែករំលែកអ្វីមួយ នេះជាការសន្យារបស់យើងចំពោះអ្នក។',
   p1_parent_lbl: 'ការសន្យារបស់យើងចំពោះអ្នកក្នុងនាមជាឪពុកម្តាយ ឬអ្នកថែទាំ',
   p1_promise_judge: 'គ្មានការវិនិច្ឆ័យទេ។ ការប្រាប់យើងថាអ្នកធ្លាប់វាយ ធ្វើឱ្យខ្មាស ឬពិបាកក្នុងការមើលថែកុមារម្នាក់ មិនធ្វើឱ្យអ្នកក្លាយជាឪពុកម្តាយអាក្រក់ក្នុងទស្សនៈរបស់យើងឡើយ។ នេះជាមូលហេតុដែល PAUSE មាន។',
@@ -1810,13 +2449,21 @@ kh: {
   p4_video2_cap: '"The Single Most Important Parenting Strategy" · Dr. Becky Kennedy, TED (ភាសាអង់គ្លេស) · <a href="https://youtu.be/PHpPtdk9rco" target="_blank" rel="noopener">មើលនៅលើ YouTube ↗</a>',
   p4_note: 'ទណ្ឌកម្មបញ្ឈប់អាកប្បកិរិយាមួយភ្លែតតែប៉ុណ្ណោះ។ ការបង្រៀនផ្លាស់ប្តូរវាជាអចិន្ត្រៃយ៍។',
 
+  ph_label: 'មុនជំហានទី១ · តើ PAUSE មកពីណា',
+  ph_head: 'បង្កើតឡើងដោយកុមារ សម្រាប់មនុស្សពេញវ័យដែលចិញ្ចឹមបីបាច់ពួកគេ',
+  ph_body: 'PAUSE ត្រូវបានបង្កើតឡើងពីទស្សនៈរបស់កុមារ និងយុវជន។ យើងដឹងថាការស្ថិតនៅខាងទទួលប្រតិកម្មរបស់មនុស្សពេញវ័យមានអារម្មណ៍យ៉ាងដូចម្តេច ហើយយើងចង់ឱ្យទស្សនៈនេះមាននៅក្នុងការសន្ទនា។<br><br>នេះមិនមែនជាមេរៀនសម្រាប់ឪពុកម្តាយអំពីអ្វីដែលពួកគេធ្វើខុសនោះទេ។ វាជាការអញ្ជើញឱ្យមើលវិន័យតាមភ្នែកកុមារ៖ តើអ្វីជួយឱ្យយើងមានអារម្មណ៍ថាមានសុវត្ថិភាពគ្រប់គ្រាន់ ដើម្បីនិយាយ រៀន ធ្វើខុស និងធំឡើងជាមនុស្សល្អជាងមុន?<br><br>ទណ្ឌកម្មរាងកាយគឺជាផ្នែកមួយនៃការសន្ទនា ប៉ុន្តែមិនមែនជាចំណុចបញ្ចប់ទេ។ PAUSE ក៏បង្ហាញផ្លូវទៅកាន់ការផ្លាស់ប្តូរដែលយើងចង់ឃើញ៖ ការចិញ្ចឹមកូនបែបវិជ្ជមាន ដែលមានព្រំដែនច្បាស់ ការឆ្លើយតបដោយស្ងប់ស្ងាត់ ការយល់ចិត្ត និងការគាំទ្រ ជំនួសឱ្យការឈឺចាប់ ឬការភ័យខ្លាច។ វាសួរថា មនុស្សពេញវ័យអាចធ្វើអ្វីខុសពីមុនបានខ្លះ មិនមែនដើម្បីឱ្យល្អឥតខ្ចោះទេ ប៉ុន្តែដើម្បីជួយកុមារលូតលាស់ទៅជាមនុស្សល្អជាងមុន។',
+  ph_quote_lbl: 'តាមពាក្យសម្តីផ្ទាល់របស់ពួកគេ',
+  ph_quote_txt: 'យើងមិនចង់សរសេរមេរៀនមួយទៀតដែលមានគោលដៅទៅលើកុមារនោះទេ។ យើងចង់បានអ្វីមួយដែលទីបំផុតនិយាយទៅកាន់មនុស្សពេញវ័យដែលចិញ្ចឹមបីបាច់យើង ព្រោះយើងហើយជាអ្នកចងចាំថាមានអារម្មណ៍យ៉ាងណានៅភាគីម្ខាងទៀត។',
+  ph_quote_cite: 'យុវជនសហការបង្កើត PAUSE អាស៊ីប៉ាស៊ីហ្វិក',
+  ph_bridge: 'ដូច្នេះ ជំហានទាំងប្រាំនៅទំព័របន្ទាប់ចាប់ផ្តើមពីទស្សនៈរបស់កុមារ។ វាផ្តោតលើពេលវេលាដែលអាចកំណត់យើង៖ ផ្អាកមុនពេលប្រតិកម្ម សួរថាមានអ្វីកើតឡើង យល់ពីអ្វីនៅពីក្រោយអាកប្បកិរិយា គាំទ្រកុមារ និងបញ្ចប់ដោយការលើកទឹកចិត្ត។ ការផ្លាស់ប្តូរតូចៗទាំងនេះអាចជួយឱ្យកុមារមានអារម្មណ៍ថាមានសុវត្ថិភាព រៀនពីកំហុស និងលូតលាស់ ខណៈជួយមនុស្សពេញវ័យកសាងវិធីចិញ្ចឹមកូនដែលវិជ្ជមានជាងមុន។',
+
   p3_label: 'ការឆ្លុះបញ្ចាំងបើក',
-  p3_q: '"សូមគិតអំពីរបៀបដែលអ្នកត្រូវបានអប់រំតាំងពីកុមារភាព"។',
-  p3_sub: 'មានអ្វីកើតឡើងនៅពេលអ្នកធ្វើខុស? តើវាមានអារម្មណ៍យ៉ាងណា? តើអ្នកនៅតែមានអារម្មណ៍បែបនោះរហូតមកដល់សព្វថ្ងៃនេះទេ?',
+  p3_q: 'សូមនាំគំនិតរបស់យើងត្រឡប់ទៅកាន់ពេលដែលយើងនៅជាកុមារ។',
+  p3_sub: 'ចងចាំផ្ទះដែលអ្នកធំធាត់ឡើង។ ចងចាំកន្លែងដែលអ្នកតែងតែអង្គុយ លេង ឬលាក់ខ្លួន។ តើបរិយាកាសជុំវិញអ្នកមានលក្ខណៈបែបណា? តើសំឡេងអ្វីដែលអ្នកតែងតែឮ សំឡេងម្តាយឬឪពុករបស់អ្នក សំឡេងទូរទស្សន៍ វិទ្យុ ជើងដើរ ឬសំឡេងពីខាងក្រៅ? ចងចាំផងដែរនូវក្លិនធម្មតារបស់ផ្ទះ ក្លិនម្ហូបកំពុងចម្អិន សាប៊ូ កាហ្វេ ឬក្លិនក្រោយភ្លៀង។<br><br>ចងចាំមនុស្សដែលអ្នកតែងតែនៅជាមួយ។ តើពួកគេនៅឯណានៅពេលនោះ តើពួកគេហៅអ្នកថាអ្វី និងអារម្មណ៍យ៉ាងណានៅពេលនៅជាមួយពួកគេ។<br><br>ឥឡូវនេះ ចេញពីអនុស្សាវរីយ៍ទាំងនោះ សូមត្រឡប់ទៅកាន់ខណៈពេលជាក់លាក់មួយនៅពេលអ្នកនៅជាកុមារ ដែលអ្នកបានធ្វើខុស។<br><br>ចងចាំថាតើអ្នកនៅឯណា អ្នកបានធ្វើអ្វី និងអ្នកណាជាអ្នកដំបូងដែលកត់សម្គាល់។ ត្រឡប់ទៅកាន់ខណៈពេលដែលអ្នកដឹងថាអ្នកបានធ្វើអ្វីមួយខុស។<br><br>តើអ្នកមានអារម្មណ៍អ្វីដំបូង? តើមានអ្វីកើតឡើងចំពោះរាងកាយរបស់អ្នក តើអ្នកមានអារម្មណ៍ត្រជាក់ដែរឬទេ បេះដូងលោតលឿនដែរឬទេ ឬឱនក្បាល ឬយំ?<br><br>ចងចាំមនុស្សដែលបានផ្តន្ទាទោសអ្នក។ ស្តាប់ម្តងទៀត ក្នុងការចងចាំរបស់អ្នក នូវសំឡេងរបស់ពួកគេ។ តើពួកគេបាននិយាយពាក្យអ្វី? តើវាជាការស្រែក តឹងរ៉ឹង ស្ងាត់ ឬស្ងប់?<br><br>ហើយក្នុងនាមជាកុមារនៅពេលនោះ តើអ្នកបានធ្វើអ្វីបន្ទាប់ពីនោះ? តើអ្នកយំដែរឬទេ? លាក់ខ្លួន? នៅស្ងៀម? សុំទោស? ឬសន្យាជាមួយខ្លួនឯងថាវានឹងមិនកើតឡើងម្តងទៀត?<br><br>ត្រឡប់ទៅកាន់ខណៈពេលនោះ ហើយចងចាំនូវអារម្មណ៍របស់កុមារដែលអ្នកធ្លាប់ជា។',
   p3_box_lbl: 'ពេលវេលាមួយដើម្បីគិតវិញ',
   p3_box_txt: 'សូមចំណាយពេល 2 ទៅ 3 នាទីសម្រាប់ការឆ្លុះបញ្ចាំងដោយស្ងប់ស្ងាត់។ អ្នកអាចចែករំលែកបើសិនជាអ្នកមានអារម្មណ៍ថារួចរាល់ ឬគ្រាន់តែអង្គុយជាមួយការចងចាំ។',
-  p3_gold: 'យើងភាគច្រើនមិនដែលត្រូវបានបង្រៀនតាមរបៀបផ្សេងទៀតទេ។ ការផ្អាកផ្តល់ឱ្យអ្នកនូវមួយ — មិនមែនដោយសារតែអ្នកខុសនោះទេ ប៉ុន្តែដោយសារតែអ្នកសមនឹងទទួលបានឧបករណ៍ល្អជាង។',
-  p3_note: 'នៅពេលអ្នកអានជំហាននីមួយៗ សូមគិតអំពីពេលវេលាពិតប្រាកដមួយនៅក្នុងជីវិតរបស់អ្នកផ្ទាល់។',
+  p3_gold: 'យើងភាគច្រើនមិនដែលត្រូវបានបង្រៀនតាមរបៀបផ្សេងទៀតទេ។ ការផ្អាកផ្តល់ឱ្យអ្នកនូវមួយ,  មិនមែនដោយសារតែអ្នកខុសនោះទេ ប៉ុន្តែដោយសារតែអ្នកសមនឹងទទួលបានឧបករណ៍ល្អជាង។',
+  p3_note: 'សូមនាំយកអ្វីដែលអ្នកទើបតែចងចាំមកជាមួយ ខណៈពេលយើងបន្ត។',
 
   p5_label: 'ជំហានទី១ ក្នុង ៥', p5_word: 'ផ្អាក (Pause)',
   p5_action: 'ឈប់មុនពេលអ្នកប្រតិកម្មទៅនឹងអ្វីមួយ។ ដកដង្ហើមមួយ! ផ្តល់ពេលឱ្យខ្លួនឯងប្រាំវិនាទីមុនពេលអ្នកធ្វើឬនិយាយអ្វីមួយ។',
@@ -1850,15 +2497,17 @@ kh: {
 
   p10_label: 'រង្វង់នៃការផ្លាស់ប្តូរ',
   p10_head: 'រឿងរ៉ាវរបស់អ្នកមានសារៈសំខាន់។',
-  p10_sub: 'ទំព័របន្ទាប់សូមឱ្យអ្នកឆ្លុះបញ្ចាំងដោយស្មោះត្រង់អំពីអតីតកាល បច្ចុប្បន្នកាលរបស់អ្នក និងការផ្លាស់ប្តូរដែលអ្នកចង់ធ្វើ។ មិនមានចម្លើយខុសទេ។',
+  p10_sub: 'ទំព័រប្រាំបន្ទាប់គឺជាកន្លែងស្ងប់ស្ងាត់មួយ ដើម្បីកត់សម្គាល់អ្វីដែលអ្នកបានរៀន អ្វីដែលអ្នកកំពុងយកតាមខ្លួន និងអ្វីដែលអ្នកចង់បន្តទៅជំនាន់ក្រោយតាមរបៀបផ្សេង។ អ្នកមិនចាំបាច់មានចម្លើយគ្រប់យ៉ាងទេ។ សូមស្មោះត្រង់ជាមួយខ្លួនឯង។',
   p10_box_lbl: 'តើរង្វង់នៃការផ្លាស់ប្តូរជាអ្វី?',
-  p10_box_txt: 'ដំណើរពីរបៀបដែលអ្នកត្រូវបានគប់បង្ខំកាលពីនៅក្មេង រហូតដល់របៀបដែលវាបានបង្កើតវិធីដែលអ្នកអប់រំនៅថ្ងៃនេះ រហូតដល់ព្រំដែនដែលអ្នកចង់កំណត់នៅពេលអនាគត។',
-  p10_steps: 'អតីតកាលរបស់អ្នក · បច្ចុប្បន្នកាលរបស់អ្នក · ការផ្លាស់ប្តូរ · ដែនកំណត់របស់អ្នក · ការប្តេជ្ញាចិត្តរបស់អ្នក',
-  p10_note: 'ចម្លើយរបស់អ្នកក្លាយជាផ្នែកមួយនៃការបណ្តុំផ្លាស់ប្តូរដែលបានចែករំលែកដោយអនាមិកជាម៉ូឌុលសម្រាប់សហគមន៍នានាទូទាំងតំបន់។',
+  p10_box_txt: 'Circle of Change ជួយអ្នកភ្ជាប់ចំណុចនានា៖ អ្វីដែលបានកើតឡើងចំពោះអ្នក អ្វីដែលអ្នកបានរៀនពីវា វាអាចបង្ហាញខ្លួនក្នុងការឆ្លើយតបរបស់អ្នកសព្វថ្ងៃយ៉ាងដូចម្តេច និងអ្វីដែលអ្នកចង់ផ្លាស់ប្តូរ។ វាជាឱកាសដើម្បីស្គាល់លំនាំរបស់អ្នកដោយមិនវិនិច្ឆ័យខ្លួនឯង ហើយជ្រើសរើសជំហានតូចមួយឆ្ពោះទៅរកទំនាក់ទំនងដែលមានសុវត្ថិភាព និងការគោរពជាងមុនជាមួយកុមារ។',
+  p10_steps: 'ចងចាំ · កត់សម្គាល់ · ជ្រើសរើស · ណែនាំ · ប្តេជ្ញា',
+  p10_note: 'អ្នកមិនត្រូវបានស្នើឱ្យវិនិច្ឆ័យខ្លួនអ្នកកាលពីក្មេង ឬមនុស្សពេញវ័យដែលបានចិញ្ចឹមអ្នកទេ។ សូមកត់សម្គាល់អ្វីដែលអ្នកចង់រក្សាទុក អ្វីដែលអ្នកចង់លះបង់ និងអនុស្សាវរីយ៍ប្រភេទណាដែលអ្នកចង់ឱ្យកុមារម្នាក់យកតាមខ្លួនពីអ្នក។',
 
-  p11_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ១ ក្នុង ៥', p11_head: 'អតីតកាលរបស់អ្នក',
-  p11_sub: 'តើអ្នកត្រូវបានវិន័យយ៉ាងដូចម្តេចកាលនៅក្មេង? តើមនុស្សពេញវ័យនៅជុំវិញអ្នកបានធ្វើអ្វីខ្លះនៅពេលអ្នកធ្វើខុស?',
-  p11_q1_lbl: 'ពិពណ៌នាអំពីរបៀបដែលវិន័យមើលទៅដូចនៅក្នុងផ្ទះរបស់អ្នកនៅពេលធំឡើង',
+  p11_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ១ ក្នុង ៥', p11_head: 'អតីតកាល (Past)',
+  p11_sub: 'សូមដកដង្ហើមមុននឹងឆ្លើយ។',
+  p11_q1: 'តើវិន័យមានលក្ខណៈដូចម្តេចនៅពេលអ្នកកំពុងធំឡើង?',
+  p11_q2: 'តើនរណាបានបង្រៀនអ្នកតាមរបៀបនោះ, ហើយតើអ្នកបានយកអ្វីមកជាមួយពីវា?',
+  p11_q3: 'តើអ្នកមានអារម្មណ៍យ៉ាងដូចម្តេចនៅពេលនោះ និងឥឡូវនេះ?',
   p11_q1_ph: 'សរសេរដោយសេរី។ នេះជាកន្លែងរបស់អ្នក។',
   p11_q2_lbl: 'តើវាធ្វើឱ្យអ្នកមានអារម្មណ៍យ៉ាងណា?',
   p11_opt1: '😟 ភ័យខ្លាច និងថប់បារម្ភ', p11_opt2: '💔 ខ្មាស់អៀន ឬឈឺចាប់',
@@ -1866,9 +2515,12 @@ kh: {
   p11_opt5: '🙂 ភាគច្រើនមិនអីទេ។ វាមានអារម្មណ៍យុត្តិធម៌', p11_opt6: '🌱 មានសុវត្ថិភាព និងត្រូវបានណែនាំ',
   p11_opt7: '✏️ ផ្សេងទៀត។ ខ្ញុំនឹងពិពណ៌នាវា', p11_other_ph: 'ពិពណ៌នាអំពីអារម្មណ៍...',
 
-  p12_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ២ ក្នុង ៥', p12_head: 'បច្ចុប្បន្នកាលរបស់អ្នក',
-  p12_sub: 'តើអ្នកអប់រំកូនៗយ៉ាងដូចម្តេចនៅក្នុងជីវិតរបស់អ្នកនៅថ្ងៃនេះ? ចូរនិយាយដោយស្មោះត្រង់។ នេះមិនមែនជាការសាកល្បងទេ។',
-  p12_q1_lbl: 'នៅពេលកូនធ្វើខុស តើអ្នកតែងតែធ្វើអ្វី?',
+  p12_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ២ ក្នុង ៥', p12_head: 'បច្ចុប្បន្នកាល (Now)',
+  p12_sub: 'ចូរស្មោះត្រង់ជាមួយខ្លួនឯង។ នេះមិនមែនជាការសាកល្បងទេ។',
+  p12_q1: 'នៅពេលកុមារធ្វើខុស តើអ្នកជាធម្មតាឆ្លើយតបយ៉ាងដូចម្តេច, ហើយអ្នកមានអារម្មណ៍អ្វី?',
+  p12_q2: 'តើអ្នកគិតថាមានអ្វីនៅពីក្រោយអារម្មណ៍នោះ?',
+  p12_q3: 'តើអ្នកសង្កេតឃើញទំនាក់ទំនងជាមួយរបៀបដែលអ្នកត្រូវបានចិញ្ចឹមទេ?',
+  p12_q4: 'នៅពេលអារម្មណ៍នោះគ្របដណ្តប់ តើមានអ្វីកើតឡើងចំពោះការឆ្លើយតបរបស់អ្នក?',
   p12_q1_ph: 'ចូរស្មោះត្រង់ជាមួយខ្លួនឯង។',
   p12_q2_lbl: 'តើអ្នកឃើញគំរូពីកុមារភាពរបស់អ្នកក្នុងរបៀបដែលអ្នកឆ្លើយតបទេ?',
   p12_opt1: '😔 បាទ/ចាស។ ខ្ញុំនិយាយឡើងវិញនូវអ្វីដែលខ្ញុំបានជួបប្រទះ', p12_opt2: '😶 ពេលខ្លះ ដោយមិនមានបំណង',
@@ -1876,16 +2528,21 @@ kh: {
   p12_opt5: '✨ ទេ។ ខ្ញុំជើសរើសខុសគ្នាយ៉ាងសកម្ម', p12_opt6: '📋 ខ្ញុំមិនមានកូននៅក្នុងការថែទាំរបស់ខ្ញុំទេ',
   p12_opt7: '✏️ ផ្សេងទៀត។ ខ្ញុំនឹងពិពណ៌នាវា', p12_other_ph: 'ពិពណ៌នាបទពិសោធន៍របស់អ្នក...',
 
-  p13_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ៣ ក្នុង ៥', p13_head: 'ការផ្លាស់ប្តូរ',
-  p13_sub: 'តើអ្នកចង់ផ្លាស់ប្តូរអ្វី? តើអ្នកចង់ក្លាយជាមនុស្សពេញវ័យប្រភេទណានៅក្នុងគ្រាដ៏សំខាន់?',
-  p13_q1_lbl: 'ពិពណ៌នាអំពីការផ្លាស់ប្តូរដែលអ្នកចង់ធ្វើ',
+  p13_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ៣ ក្នុង ៥', p13_head: 'ការផ្លាស់ប្តូរ (Shift)',
+  p13_sub: 'តើអ្នកចង់ក្លាយជាមនុស្សពេញវ័យប្រភេទណានៅក្នុងគ្រាដ៏សំខាន់?',
+  p13_q1: 'ពិពណ៌នាអំពីការផ្លាស់ប្តូរដែលអ្នកចង់ធ្វើ។',
+  p13_q2: 'ហេតុអ្វីការផ្លាស់ប្តូរនោះសំខាន់សម្រាប់អ្នក?',
+  p13_q3: 'តើជំហានតូចដំបូងមួយណាដែលអ្នកអាចធ្វើបាន?',
   p13_q1_ph: 'តើការធ្វើបានល្អជាងមើលទៅដូចម្តេចសម្រាប់អ្នក?',
-  p13_q2_lbl: 'អ្វីដែលធ្វើឱ្យវាពិបាកក្នុងការផ្លាស់ប្តូរ?',
-  p13_q2_ph: 'ភាពតានតឹង ពេលវេលា មិនដឹងថាត្រូវធ្វើអ្វីផ្សេង...',
+  p13_q2_lbl: 'តើអ្វីធ្វើឱ្យការផ្លាស់ប្តូរពិបាក?',
+  p13_q2_ph: 'ភាពតានតឹង ពេលវេលា ឬមិនដឹងថាត្រូវធ្វើអ្វីផ្សេង...',
 
-  p14_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ៤ ក្នុង ៥', p14_head: 'ដែនកំណត់របស់អ្នក',
-  p14_sub: 'ការចិញ្ចឹមកូនដោយវិជ្ជមាននៅតែមានព្រំដែន។ កុមារត្រូវការដែនកំណត់ដែលផ្តល់ឱ្យដោយស្នេហា និងភាពស៊ីសង្វាក់គ្នា មិនមែនការឈឺចាប់ ឬការភ័យខ្លាចទេ។',
-  p14_q1_lbl: 'តើព្រំដែនអ្វីដែលសំខាន់បំផុតសម្រាប់អ្នកក្នុងការចិញ្ចឹមកូន?',
+  p14_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ៤ ក្នុង ៥', p14_head: 'ដែនកំណត់ (Limits)',
+  p14_sub: 'វិន័យវិជ្ជមាននៅតែមានដែនកំណត់។',
+  p14_q1: 'តើព្រំដែនអ្វីខ្លះសំខាន់បំផុតសម្រាប់អ្នកក្នុងការចិញ្ចឹមកុមារ?',
+  p14_q2: 'តើកុមារអាចត្រូវបានដាក់វិន័យដោយមិនដាក់ទណ្ឌកម្មរាងកាយបានទេ?',
+  p14_q3: 'តើព្រំដែនទាំងនោះច្បាស់សម្រាប់កុមារទេ ហើយតើអ្នកពន្យល់ហេតុផលនៅពីក្រោយវាយ៉ាងដូចម្តេច?',
+  p14_q4: 'តើអ្នកដឹងដោយរបៀបណាថាព្រំដែនមួយត្រូវការកែសម្រួល?',
   p14_q1_ph: 'តើអ្នកចង់ឱ្យកូនរបស់អ្នកដឹកនាំតម្លៃអ្វីខ្លះ?',
   p14_q2_lbl: 'តើកុមារអាចត្រូវបានដាក់វិន័យដោយមិនដាក់ទណ្ឌកម្មរាងកាយបានទេ?',
   p14_opt1: '❌ ទេ។ ខ្ញុំគិតថាវិន័យរាងកាយខ្លះគឺត្រូវការ',
@@ -1896,17 +2553,19 @@ kh: {
   p14_opt6: '🌟 ខ្ញុំបានអនុវត្តវិន័យវិជ្ជមានរួចហើយ',
   p14_opt7: '✏️ ផ្សេងទៀត។ ខ្ញុំនឹងចែករំលែកទស្សនៈរបស់ខ្ញុំ', p14_other_ph: 'ចែករំលែកទស្សនៈរបស់អ្នក...',
 
-  p15_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ៥ ក្នុង ៥', p15_head: 'ការប្តេជ្ញាចិត្តរបស់អ្នក',
-  p15_sub: '"តើនោះជាការចងចាំដែលអ្នកចង់ឱ្យកូនរបស់អ្នកមានចំពោះអ្នកមែនទេ?" អ្នកមិនចាំបាច់ល្អឥតខ្ចះនោះទេ។ អ្នកគ្រាន់តែត្រូវផ្អាកមួយភ្លែតម្តងមួយៗ។',
+  p15_label: 'រង្វង់នៃការផ្លាស់ប្តូរ · ៥ ក្នុង ៥', p15_head: 'ការប្តេជ្ញាចិត្ត (Commitment)',
+  p15_q1: 'សរសេរសារ ឬការសន្យាមួយសម្រាប់កូនរបស់អ្នក ឬកុមារនៅក្នុងការថែទាំរបស់អ្នក។',
+  p15_closing: 'អ្វីដែលអ្នកធ្វើបន្ទាប់អាចក្លាយជាផ្នែកមួយនៃអនុស្សាវរីយ៍របស់កុមារ អំពីការធំឡើងជាមួយអ្នក។ អ្នកមិនចាំបាច់ធ្វើបានត្រឹមត្រូវគ្រប់ពេលទេ។ រាល់ការផ្អាក គឺជាឱកាសមួយដើម្បីជ្រើសរើសវិធីដែលទន់ភ្លន់ជាងមុន។',
   p15_name_lbl: 'ឈ្មោះរបស់អ្នក (ស្ម័គ្រចិត្ត)', p15_name_ph: 'ឈ្មោះដំបូង ឬទុកទំនេរ',
   p15_country_lbl: 'តើអ្នកចូលរួមមកពីណា?',
   p15_other_country_btn: 'ប្រទេសផ្សេងទៀត', p15_other_country_ph: 'សូមប្រាប់ប្រទេសរបស់អ្នក',
-  p15_commit_lbl: 'ខ្ញុំប្តេជ្ញាចិត្តសាកល្បងផ្អាកនៅពេល...', p15_commit_ph: 'ពណ៌នាពេលវេលាជាក់លាក់របស់អ្នក',
+  p15_commit_ph: 'សរសេរសាររបស់អ្នកនៅទីនេះ',
   p15_support_lbl: 'មនុស្សម្នាក់ដែលខ្ញុំអាចទូរស័ព្ទទៅបាននៅពេលដែលខ្ញុំកំពុងជួបការលំបាក', p15_support_ph: 'ឈ្មោះរបស់ពួកគេ',
   p15_followup_lbl: 'ទូរស័ព្ទឬអ៊ីម៉ែលសម្រាប់ការតាមដាន (ស្ម័គ្រចិត្ត)', p15_followup_ph: 'លេខ ឬអ៊ីម៉ែលរបស់អ្នក',
   form_error: 'មានអ្វីមួយខុស។ សូមព្យាយាមមើ្តងទៀត។',
-  form_success: 'រឿងរ៉ាវរបស់អ្នកត្រូវបានរក្សាទុក។ សូមអរគុណដែលបានជ្រើសរើសផ្អាក។ អំពើហិង្សាបញ្ចប់ជាមួយយើង។',
+  form_success: 'សូមអរគុណចំពោះភាពក្លាហានរបស់អ្នកក្នុងការក្រឡេកមើលថយក្រោយ និងចែករំលែកវា។ ការផ្អាកតែមួយដងនោះដែលអ្នកទើបតែធ្វើ គឺជាការផ្លាស់ប្តូរមួយរួចទៅហើយ។ អំពើហិង្សាបញ្ចប់ជាមួយយើង។',
   form_submit: 'រក្សាទុករឿងរ៉ាវរបស់ខ្ញុំ',
+  answer_hint: '✍️ ចម្លើយរបស់អ្នក',
 
   p16_label: 'ជំហានបន្ទាប់',
   p16_head: 'ជំហានបន្ទាប់របស់អ្នក ជាមួយការណែនាំ។',
@@ -1957,17 +2616,38 @@ kh: {
 /* ── BISAYA / CEBUANO ── */
 ceb: {
   top_label: 'Violence Ends With Us · PAUSE Toolkit · Pilot 2026',
-  footer: '18 ka panid · Pilot nga edisyon · Pilipinas · Vietnam · Cambodia',
+  footer: '20 ka panid · Pilot nga edisyon · Pilipinas · Vietnam · Cambodia',
   nav_back: 'Balik', nav_next: 'Sunod', nav_finish: 'Humana',
-  validation_warn: 'Palihug tubaga una ang duha ka pangutana sa dili pa mopadayon.',
+  validation_warn: 'Palihug tubaga una sa dili pa mopadayon.',
 
   p0_label: 'Usa ka himan alang sa positibong disiplina',
   p0_sub: 'Positibong mga Alternatibo sa Dili Luwas ug Sobra ka Hugot nga Pagpatuman sa Disiplina',
-  p0_hook: 'Unsa ang imong buhaton sa sunod nga lima ka segundo?',
+  p0_hook: 'Usa ka higayon aron molingi balik. Usa ka higayon aron mopili og lahi.',
+  p0_hook_short: 'Unsa ang imong buhaton sa sunod nga lima ka segundo?',
   p0_desc: 'Kining flipbook maggiya kanimo pinaagi sa lima ka simple nga lakang aron makatubag sa mga bata uban ang pag-atiman, dili pinaagi sa kahadlok.<br><br>Ang imong mga tubag mahimong kabahin sa usa ka nagpadayon nga koleksyon sa mga positibong kausaban nga ipaambit sa mga ginikanan, magtutudlo, ug mga komunidad sa tibuok Asia-Pacific.',
+  p0_lang_lbl: 'Pilia ang imong pinulongan',
+  p0_what_head: 'Unsa ang PAUSE?',
+  p0_what_txt: 'Ang PAUSE usa ka mubo, self-guided nga digital nga kasinatian sa pagpamalandong nga nag-awhag sa mga hamtong nga molingi balik kung giunsa sila pagdisiplina sa bata pa sila, mailhan kung unsa ang tingali ilang gidala ngadto sa ilang mga tubag karon, ug maghunahuna kung unsa ang ilang gustong himuong lahi.<br><br>Naghatag kini og malumo nga entry point ngadto sa mga panagsulti bahin sa corporal punishment, positive discipline, ug positive parenting, nga walay paghukom.<br><br>Tungod kay usahay, sa dili pa kita makakat-on og laing paagi, kinahanglan nato ang usa ka higayon aron mahinumdoman ang paagi nga gitudlo kanato. Unsa ang nahitabo kanako? Unsa ang akong gibuhat karon? Unsa ang akong gustong usbon?',
+  p0_why_head: 'Nganong PAUSE?',
+  p0_why_txt: 'Kadaghanan sa mga hamtong wala gyud matudloi og laing paagi sa pagtubag kung ang usa ka bata masayop. Ang PAUSE naghimo og luna tali sa nahitabo kanato ug sa atong gipili nga ipasa, nga makatabang kanato sa pagpamalandong sa matang sa tubag, relasyon, ug handumanan nga gusto nato ibilin sa usa ka bata.<br><br>Ang tumong dili ang perpekto nga pagginikanan. Kini usa ka lahi nga tubag, usa ka higayon matag usa.',
+  p0_complement_head: 'Usa ka dugang sa buluhaton nga nagpadayon na',
+  p0_complement_txt: 'Gihimo ang PAUSE aron mahimong dugang sa naglungtad nga mga programa sa pagginikanan, panalipod sa bata, kalamboan sa pamilya, o komunidad. Gidugang niini ang usa ka higayon sa pagpamalandong gikan sa panglantaw sa mga bata, nga naghimo og personal nga sinugdanan alang sa mas lawom nga pagkat-on ug padayon nga kausaban.<br><br>Ang mga kaubang organisasyon mahimong mogamit niini una, samtang, o human sa naglungtad nga mga sesyon, o mahimo lang nga ipaambit kini sa mga pamilya ug komunidad isip kapanguhaan nga ilang mabalikan. Walay bag-ong programa nga tukoron. Usa lang ka luna aron mohunong.',
+  p0_accessible_head: 'Gihimo aron maabot sa tanan',
+  p0_accessible_txt: 'Ang PAUSE mahimong siyasaton sa Iningles, Tagalog, Bisaya, Vietnamese, ug Khmer, uban ang mga feature nga text-to-voice ug video aron mahimong mas maabot ug makadani ang kasinatian.<br><br>Ang website naghatag usab og mga paagi aron makakat-on pa, makig-connect sa suporta, ug ipadayon ang panagsulti lapas sa toolkit.',
+  p0_partners_head: 'Giunsa paggamit sa mga kaubang organisasyon ang PAUSE',
+  p0_share_word: 'Ipaambit',
+  p0_share_desc: 'Ipadala ang toolkit pinaagi sa naglungtad nga network sa mga ginikanan, tig-atiman, magtutudlo, kabatan-onan, o komunidad.',
+  p0_invite_word: 'Dapita',
+  p0_invite_desc: 'Hatagi ang mga partisipante og pipila ka hilom nga minuto aron siyasaton kini sa pribado.',
+  p0_reflect_word: 'Pamalandong',
+  p0_reflect_desc: 'Tugoti sila nga moagi sa kasinatian sa ilang kaugalingong tulin ug i-save ang ilang mga pagpamalandong sa dalan.',
+  p0_connect_word: 'Pag-connect ug padayon',
+  p0_connect_desc: 'Gamita ang PAUSE aron ablihan ang mga panagsulti ug ikonektar ang mga tawo sa inyong naglungtad nga mga programa, serbisyo, kapanguhaan, ug suporta.',
+  p0_cta_lbl: 'Buhaton nato ang paghunong sa dili pa ang kausaban.',
+  p0_cta_txt: 'Pipila ka hilom nga minuto. Usa ka handumanan. Usa ka matinud-anon nga pagpamalandong. Ug ang posibilidad sa pagtubag og lahi sa sunod nga higayon.',
 
   p1_label: 'Sa dili pa ta magsugod',
-  p1_head: 'Ang among pasalig sa pagpanalipod — kanimo, ug sa mga bata',
+  p1_head: 'Ang among pasalig sa pagpanalipod,  kanimo, ug sa mga bata',
   p1_sub: 'Kini nga toolkit maghangyo kanimo nga mahimong matinud-anon bahin sa paagi sa pagpadako kanimo sa imong pagkabata, ug kung giunsa nimo pagpadako ang mga bata nga anaa sa imong kinabuhi karon. Sa dili pa ka mosulti o mopadayag sa bisan unsa, mao kini ang among saad kanimo isip tubag.',
   p1_parent_lbl: 'Among pasalig kanimo isip usa ka ginikanan o tig-atiman',
   p1_promise_judge: '<strong>Walay paghukom.</strong> Ang pagpaambit nga nakasakit ka sa usa ka bata pinaagi sa pagpanghampak, pagpakaulaw, o nga nakaatubang ka og kalisod sa pag-atiman sa usa ka bata, dili magpasabot nga daotan ka nga ginikanan sa among panan-aw. Mao kini ang hinungdan nganong anaa kini nga toolkit.',
@@ -2004,13 +2684,21 @@ ceb: {
   p4_video2_cap: '"The Single Most Important Parenting Strategy" · Dr. Becky Kennedy, TED (Ingles) · <a href="https://youtu.be/PHpPtdk9rco" target="_blank" rel="noopener">Tan-awa sa YouTube ↗</a>',
   p4_note: 'Ang silot nagpahunong lang sa pamatasan sa makadiyot. Ang pagtudlo nagausab niini sa dugay nga panahon.',
 
+  ph_label: 'Sa dili pa ang Lakang 1 · Diin naggikan ang PAUSE',
+  ph_head: 'Gihimo sa mga bata, alang sa mga hamtong nga nagpadako kanila',
+  ph_body: 'Ang PAUSE gihulma gikan sa panglantaw sa mga bata ug kabatan-onan. Nahibalo kami unsa ang pagbati nga naa sa pikas bahin sa reaksyon sa usa ka hamtong, ug gusto namong apil kana nga panglantaw sa panaghisgot.<br><br>Dili kini lecture alang sa mga ginikanan bahin sa ilang sayop nga gibuhat. Usa kini ka pagdapit sa pagtan-aw sa disiplina pinaagi sa mata sa bata: unsa ang makatabang kanamo nga mobati nga luwas aron makasulti, makakat-on, masayop, ug motubo nga mas maayong tawo?<br><br>Ang corporal punishment kabahin sa panaghisgot, apan dili kini ang katapusan. Ang PAUSE nagtutok usab sa kausaban nga gusto namong makita: positibong pagginikanan nga adunay klarong mga utlanan, kalmado nga pagtubag, pagsabot, ug suporta imbis kasakit o kahadlok. Nangutana kini unsay mahimo sa mga hamtong nga lahi, dili aron mahimong perpekto, kondili aron makatabang sa mga bata nga mahimong mas maayong mga tawo.',
+  ph_quote_lbl: 'Sa ilang kaugalingong mga pulong',
+  ph_quote_txt: 'Wala kami magtinguha nga mosulat og laing leksyon nga gitumong sa mga bata. Gusto namon og butang nga sa katapusan misulti ngadto sa mga hamtong nga nagpadako kanamo, tungod kay kami ang nahibalo unsa ang pagbati sa pikas bahin.',
+  ph_quote_cite: 'Mga batan-ong ko-magbubuhat sa PAUSE, Asia-Pacific',
+  ph_bridge: 'Mao nga ang lima ka lakang sa sunod nga mga panid nagsugod sa panglantaw sa bata. Nagtutok kini sa mga higayon nga makahulma kanato: pagpahunong sa wala pa motubag, pagpangutana unsay nahitabo, pagsabot sa luyo sa pamatasan, pagsuporta sa bata, ug pagtapos pinaagi sa pagdasig. Kini nga gagmay nga kausaban makatabang sa mga bata nga mobati nga mas luwas, makat-on gikan sa ilang mga sayop, ug motubo, samtang makatabang sa mga hamtong sa paghimo og mas positibong paagi sa pagginikanan.',
+
   p3_label: 'Pagpamalandong sa pagsugod',
-  p3_q: '"Hunahunaa kung giunsa ka pagdisiplina sa bata pa ka."',
-  p3_sub: 'Unsa ang nahitabo sa dihang nakabuhat ka og sayop? Unsa ang imong gibati? Hangtod karon, dala pa ba nimo kana nga pagbati?',
+  p3_q: 'Ibalik nato ang atong hunahuna sa dihang bata pa kita.',
+  p3_sub: 'Balikan ang balay diin kamo nagdako. Hinumdomi kung asa kamo kasagarang molingkod, magdula, o motago. Unsa man ang hitsura sa palibot? Unsa nga mga tingog ang inyong kasagarang madungog, ang tingog sa inyong inahan o amahan, tingog sa telebisyon, radyo, mga tunob, o saba gikan sa gawas? Hinumdomi usab ang mga pamilyar nga baho sa balay, ang gilutong pagkaon, sabon, kape, o baho human sa ulan.<br><br>Hinumdomi ang mga tawo nga inyong kasagarang kauban. Asa sila niadtong panahona, unsa ang ilang tawag kaninyo, ug unsa ang pagbati kung kauban sila.<br><br>Karon, gikan niadtong mga handumanan, balikan ang usa ka piho nga higayon sa dihang bata pa kamo diin kamo nakabuhat og sayop.<br><br>Hinumdomi kung asa kamo, unsa ang inyong gibuhat, ug kinsa ang una nga nakamatikod. Balikan ang higayon nga inyong nasayran nga adunay nabuhat kamong sayop.<br><br>Unsa ang una ninyong gibati? Unsa ang nahitabo sa inyong lawas, gibati ba ninyo ang katugnaw, midagan ba ang inyong kasingkasing, miyukbo ba, o mihilak ba kamo?<br><br>Hinumdomi ang tawo nga nagdisiplina kaninyo. Paminawa pag-usab, sulod sa inyong handumanan, ang iyang tingog. Unsa nga mga pulong ang iyang gisulti? Kini ba usa ka pagsinggit, higpit, hilom, o kalma?<br><br>Ug isip bata niadtong panahona, unsa ang inyong gibuhat human niini? Mihilak ba kamo? Mitago? Naghilom? Nangayo og pasaylo? O nanaad sa inyong kaugalingon nga dili na kini mahitabo pag-usab?<br><br>Balikan kanang higayona, ug hinumdomi kung unsa ang gibati sa batang kamo kaniadto.',
   p3_box_lbl: 'Higayon sa pagpamalandong',
   p3_box_txt: 'Hatagi ang imong kaugalingon og 2 hangtod 3 ka minuto alang sa hilom nga pagpamalandong. Mahimo kang mopakigbahin kung andam na ka, o magpabilin ka lang uban sa maong handumanan.',
   p3_gold: 'Kadaghanan kanato wala gayod matudloi og laing paagi. Ang PAUSE naghatag kanimo og usa, dili tungod kay sayop ka, kondili tungod kay angayan ka og mas maayong mga himan.',
-  p3_note: 'Samtang imong basahon ang matag lakang, hunahunaa ang usa ka tinuod nga nahitabo sa imong kaugalingong kinabuhi.',
+  p3_note: 'Dad-a ang inyong nahinumdoman samtang kita magpadayon.',
 
   p5_label: 'Lakang 1 sa 5', p5_word: 'Pahunong (Pause)',
   p5_action: 'Hunong una sa dili pa ka motubag. Pagginhawa og usa ka higayon. Hatagi ang imong kaugalingon og lima ka segundo sa dili pa ka mobuhat o mosulti og bisan unsa.',
@@ -2044,25 +2732,30 @@ ceb: {
 
   p10_label: 'Lingin sa kausaban',
   p10_head: 'Importante ang imong istorya.',
-  p10_sub: 'Ang sunod nga mga panid mag-awhag kanimo sa matinud-anong pagpamalandong sa imong kagahapon, sa imong karon, ug sa kausaban nga gusto nimong himuon. Walay sayop nga tubag.',
+  p10_sub: 'Ang sunod nga lima ka panid usa ka hilom nga luna aron mapansin kung unsa ang imong nakat-onan, unsa ang imong gidala hangtod karon, ug unsa ang gusto nimong ipasa sa laing paagi. Dili nimo kinahanglan mahibaloan ang tanan. Matinud-anon lang sa imong kaugalingon.',
   p10_box_lbl: 'Unsa ang lingin sa kausaban?',
-  p10_box_txt: 'Kini ang panaw gikan sa paagi sa pagtratar kanimo sa bata pa ka, ngadto sa paagi nga nakaapekto kini sa imong pagdisiplina karon, ug ngadto sa mga utlanan nga gusto nimong ipatuman sa umaabot.',
-  p10_steps: 'Ang imong kagahapon · Ang imong karon · Ang kausaban · Ang imong mga utlanan · Ang imong paningkamot',
-  p10_note: 'Ang imong mga tubag mahimong kabahin sa usa ka koleksyon sa kausaban nga ipaambit nga walay pag-ila sa imong identidad isip usa ka module alang sa mga komunidad sa tibuok rehiyon.',
+  p10_box_txt: 'Ang Circle of Change motabang kanimo sa pagkonektar sa mga punto: unsay nahitabo kanimo, unsay imong nakat-onan niini, giunsa niini pagpakita sa imong pagtubag karon, ug unsay gusto nimong usbon. Higayon kini nga masabtan ang imong mga sumbanan nga walay paghukom sa imong kaugalingon, ug mopili og usa ka gamay nga lakang padulong sa mas luwas ug mas matinahuron nga relasyon sa bata.',
+  p10_steps: 'Hinumdomi · Pansina · Pilia · Giya · Paningkamot',
+  p10_note: 'Dili ka gihangyo nga hukman ang imong kaugalingon sa pagkabata o ang mga hamtong nga nagpadako kanimo. Gidapit ka nga pansinon unsay gusto nimong tipigan, unsay gusto nimong buhian, ug unsang handumanan ang gusto nimong madala sa bata gikan kanimo.',
 
-  p11_label: 'Lingin sa kausaban · 1 sa 5', p11_head: 'Ang imong kagahapon',
-  p11_sub: 'Giunsa ka pagdisiplina sa bata pa ka? Unsa ang gibuhat sa mga hamtong sa imong palibot sa dihang nakasayop ka?',
-  p11_q1_lbl: 'Ihulagway kung unsa ang pagdisiplina sa inyong balay sa dihang nagdako ka',
-  p11_q1_ph: 'Isulat nga gawasnon — kini imong lugar.',
+  p11_label: 'Lingin sa kausaban · 1 sa 5', p11_head: 'Kagahapon (Past)',
+  p11_sub: 'Pagginhawa una sa dili pa motubag.',
+  p11_q1: 'Unsa may hitsura sa disiplina sa dihang nagdako ka?',
+  p11_q2: 'Kinsa ang nagtudlo kanimo nianang paagiha, ug unsa ang imong gidala gikan niini?',
+  p11_q3: 'Unsaon nimo pagbati niadto, ug unsaon nimo pagbati karon?',
+  p11_q1_ph: 'Isulat nga gawasnon. Kini imong lugar.',
   p11_q2_lbl: 'Unsa ang imong gibati?',
   p11_opt1: '😟 Nahadlok ug nabalaka', p11_opt2: '💔 Naulaw o nasakitan',
   p11_opt3: '😐 Nalibog. Wala ko makasabut ngano', p11_opt4: '🤷 Normal lang. Mao man gyud ang naandan',
   p11_opt5: '🙂 Kasagaran okay ra. Makatarunganon man', p11_opt6: '🌱 Luwas ug giya-an',
   p11_opt7: '✏️ Uban pa. Akong ihulagway', p11_other_ph: 'Ihulagway kung unsa ang imong gibati...',
 
-  p12_label: 'Lingin sa kausaban · 2 sa 5', p12_head: 'Ang imong karon',
-  p12_sub: 'Giunsa nimo pagdisiplina ang mga bata nga anaa sa imong pag-atiman karon? Pagmatinud-anon. Dili kini usa ka pagsulay.',
-  p12_q1_lbl: 'Kung magpasaway ang usa ka bata, unsa ang kasagaran nimong buhaton?',
+  p12_label: 'Lingin sa kausaban · 2 sa 5', p12_head: 'Karon (Now)',
+  p12_sub: 'Magmatinud-anon ka sa imong kaugalingon dinhi. Dili kini usa ka pagsulay.',
+  p12_q1: 'Kung masayop ang usa ka bata, unsaon nimo kasagarang pagtubag, ug unsa ang imong gibati?',
+  p12_q2: 'Sa imong hunahuna, unsa ang anaa sa luyo nianang pagbati?',
+  p12_q3: 'Namatikdan ba nimo ang koneksyon niini sa paagi sa pagpadako kanimo?',
+  p12_q4: 'Kung modominar kana nga pagbati, unsay mahitabo sa imong pagtubag?',
   p12_q1_ph: 'Magmatinud-anon ka sa imong kaugalingon dinhi.',
   p12_q2_lbl: 'Nakita ba nimo ang susama nga pamaagi gikan sa imong pagkabata sa paagi sa imong pagtubag karon?',
   p12_opt1: '😔 Oo. Gibalik nako ang akong nasinati', p12_opt2: '😶 Usahay, bisan wala nako tuyoa',
@@ -2070,16 +2763,21 @@ ceb: {
   p12_opt5: '✨ Dili. Gituyo nako ang pagpili ug lahi nga paagi', p12_opt6: '📋 Wala koy mga bata nga akong giatiman',
   p12_opt7: '✏️ Uban pa. Akong ihulagway', p12_other_ph: 'Ihulagway ang imong kasinatian...',
 
-  p13_label: 'Lingin sa kausaban · 3 sa 5', p13_head: 'Ang kausaban',
-  p13_sub: 'Unsa ang gusto nimong usbon? Unsa klase nga hamtong ang gusto nimong mahimo sa mga higayon nga labing importante?',
-  p13_q1_lbl: 'Ihulagway ang kausaban nga gusto nimong himoon',
+  p13_label: 'Lingin sa kausaban · 3 sa 5', p13_head: 'Kausaban (Shift)',
+  p13_sub: 'Unsa klase nga hamtong ang gusto nimong mahimo sa mga higayon nga labing importante?',
+  p13_q1: 'Ihulagway ang kausaban nga gusto nimong himoon.',
+  p13_q2: 'Nganong importante kanimo kana nga kausaban?',
+  p13_q3: 'Unsa nga gamay nga unang lakang ang mahimo nimo?',
   p13_q1_ph: 'Unsa man ang hitsura sa "pagbuhat og mas maayo" alang kanimo?',
   p13_q2_lbl: 'Unsa ang nagpakalisod kanimo sa pag-usab?',
   p13_q2_ph: 'Stress, kakulang sa oras, o wala kahibalo unsa pa ang laing angay buhaton...',
 
-  p14_label: 'Lingin sa kausaban · 4 sa 5', p14_head: 'Ang imong mga limitasyon',
-  p14_sub: 'Ang positibong pagginikanan adunay gihapon mga limitasyon. Kinahanglan sa mga bata ang mga limitasyon nga gihatag uban sa gugma ug pagkamakanunayon, dili pinaagi sa kasakit o kahadlok.',
-  p14_q1_lbl: 'Unsang mga utlanan ang labing importante alang kanimo sa pagpadako sa mga bata?',
+  p14_label: 'Lingin sa kausaban · 4 sa 5', p14_head: 'Mga Utlanan (Limits)',
+  p14_sub: 'Ang positibong disiplina naa gihapoy mga limitasyon.',
+  p14_q1: 'Unsang mga utlanan ang labing importante kanimo sa pagpadako sa mga bata?',
+  p14_q2: 'Mahimo ba nga madisiplina ang usa ka bata nga walay pisikal nga silot?',
+  p14_q3: 'Klaro ba sa bata ang mga utlanan, ug giunsa nimo pagpasabot ang rason sa likod niini?',
+  p14_q4: 'Giunsa nimo pagkahibalo kung kinahanglan usbon ang usa ka utlanan?',
   p14_q1_ph: 'Unsa nga mga maayong pamatasan ang gusto nimo nga madala sa imong anak sa iyang kinabuhi?',
   p14_q2_lbl: 'Mahimo ba nga madisiplina ang usa ka bata nga walay pisikal nga silot?',
   p14_opt1: '❌ Dili. Sa akong pagtuo, gikinahanglan ang pipila ka porma sa pisikal nga pagdisiplina',
@@ -2090,17 +2788,19 @@ ceb: {
   p14_opt6: '🌟 Gigamit na nako ang positibong pagdisiplina',
   p14_opt7: '✏️ Uban pa. Akong ipaambit ang akong panglantaw', p14_other_ph: 'Ipaambit ang imong panglantaw...',
 
-  p15_label: 'Lingin sa kausaban · 5 sa 5', p15_head: 'Ang imong paningkamot',
-  p15_sub: '"Mao ba kana ang handumanan nga gusto nimong mabilin sa imong anak bahin kanimo?" Dili kinahanglan nga perpekto ka. Ang kinahanglan lang mao ang paghunong sa makadiyot, usa ka higayon matag usa.',
+  p15_label: 'Lingin sa kausaban · 5 sa 5', p15_head: 'Saad (Commitment)',
+  p15_q1: 'Sulat og usa ka mensahe o saad alang sa imong anak, o sa mga bata nga anaa sa imong pag-atiman.',
+  p15_closing: 'Ang imong sunod nga buhat mahimong mahimong bahin sa handumanan sa usa ka bata sa iyang pagdako uban kanimo. Dili nimo kinahanglan nga sakto pirmi. Ang matag pagpahunong usa ka higayon sa pagpili og mas malumo nga paagi padulong.',
   p15_name_lbl: 'Imong ngalan (opsyonal)', p15_name_ph: 'Unang ngalan (biyaang walay sulod)',
   p15_country_lbl: 'Asa ka nag-apil gikan?',
   p15_other_country_btn: 'Ubang nasud', p15_other_country_ph: 'Palihug sultihi kami sa imong nasud',
-  p15_commit_lbl: 'Maningkamot ko nga sulayan ang PAUSE kung...', p15_commit_ph: 'Ihulagway ang imong tin-aw nga kasinatian',
+  p15_commit_ph: 'Isulat ang imong mensahe dinhi',
   p15_support_lbl: 'Usa ka tawo nga mahimo nakong tawgan kung naglisod ko', p15_support_ph: 'Ilang pangalan',
   p15_followup_lbl: 'Numero sa telepono o email alang sa follow-up (opsyonal)', p15_followup_ph: 'Imong numero o email',
   form_error: 'Adunay nahitabong sayop. Palihug sulayi pag-usab.',
-  form_success: 'Nasave na ang imong istorya. Salamat sa pagpili nga moundang una. Ang kahadlok mohunong dinhi kanato.',
+  form_success: 'Salamat sa imong kaisog nga molingi balik ug ipaambit kini. Kanang usa ka paghunong nga imong gihimo usa na ka kausaban. Ang kahadlok mohunong dinhi kanato.',
   form_submit: 'I-save ang akong istorya',
+  answer_hint: '✍️ Imong tubag',
 
   p16_label: 'Sa pagpadayon',
   p16_head: 'Ang imong sunod nga lakang, giya-an.',
@@ -2165,6 +2865,10 @@ function setLang(lang) {
   const idx = {en:0,fil:1,vi:2,kh:3,ceb:4}[lang];
   document.querySelectorAll('.lang-btn')[idx].classList.add('active');
 
+  document.querySelectorAll('.lang-picker-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+
   // Top label
   const topEl = document.getElementById('top-label');
   if (topEl) topEl.textContent = t.top_label;
@@ -2209,12 +2913,12 @@ function updateNavText() {
    FLIPBOOK NAVIGATION
    ══════════════════════════════════════════════ */
 let cur = 0;
-const TOTAL = 18;
+const TOTAL = 20;
 const PAGE_IMAGES = [
-  'assets/1.png','assets/2.png','assets/2.png','assets/3.png','assets/3.png',
-  'assets/4.png','assets/5.png','assets/6.png','assets/7.png','assets/8.png',
-  'assets/9.png','assets/10.png','assets/11.png','assets/12.png','assets/13.png',
-  'assets/14.png','assets/14.png','assets/15.png'
+  'assets/1.png','assets/1.png','assets/2.png','assets/2.png','assets/3.png',
+  'assets/3.png','assets/3.png','assets/4.png','assets/5.png','assets/6.png',
+  'assets/7.png','assets/8.png','assets/9.png','assets/10.png','assets/11.png',
+  'assets/12.png','assets/13.png','assets/14.png','assets/14.png','assets/15.png'
 ];
 const backdropEl = document.getElementById('backdrop');
 
@@ -2276,17 +2980,25 @@ function changePage(dir) {
 }
 
 function pickOpt(el, field, val) {
-  el.closest('.opts').querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+  const opts = el.closest('.opts');
+  if (opts) opts.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
   el.classList.add('selected');
+
   const otherWrap = document.getElementById(field + '_other_wrap');
+  const fieldEl = document.getElementById(field);
+
   if (val === 'other') {
     if (otherWrap) otherWrap.classList.add('visible');
+    if (fieldEl) fieldEl.value = '';
   } else {
     if (otherWrap) otherWrap.classList.remove('visible');
-    document.getElementById(field).value = val;
+    if (fieldEl) fieldEl.value = val;
     syncHidden();
   }
-  if (CHOICE_FIELD_PAGE_MAP[field]) clearHighlightIfValid(CHOICE_FIELD_PAGE_MAP[field]);
+
+  if (CHOICE_FIELD_PAGE_MAP[field]) {
+    clearHighlightIfValid(CHOICE_FIELD_PAGE_MAP[field]);
+  }
 }
 
 function pickCountry(el, val) {
@@ -2303,18 +3015,22 @@ function pickCountry(el, val) {
 }
 
 function syncHidden() {
-  const map = { past_feeling:'h_past_feeling', pattern:'h_pattern', belief_shift:'h_belief' };
+  const map = {
+    past_feeling: 'h_past_feeling',
+    pattern: 'h_pattern',
+    belief_shift: 'h_belief'
+  };
   Object.entries(map).forEach(([src,dst]) => {
     const s = document.getElementById(src), d = document.getElementById(dst);
-    if (s && d && s.value) d.value = s.value;
+    if (s && d) d.value = s.value || '';
   });
 }
 
 function syncAllToHidden() {
-  [['q_past','h_q_past'],['q_now','h_q_now'],['q_change','h_q_change'],
-   ['q_barrier','h_q_barrier'],['q_limits','h_q_limits']].forEach(([src,dst]) => {
+  [['q_past','h_q_past'],['q_now','h_q_now'],['q_change','h_q_change'],['q_barrier','h_q_barrier'],
+   ['q_limits','h_q_limits']].forEach(([src,dst]) => {
     const s = document.getElementById(src), d = document.getElementById(dst);
-    if (s && d && s.value) d.value = s.value;
+    if (s && d) d.value = s.value || '';
   });
   syncHidden();
 }
@@ -2324,15 +3040,15 @@ function syncAllToHidden() {
    Blocks "Next" on pages with unanswered questions.
    ══════════════════════════════════════════════ */
 const REQUIRED_FIELDS = {
-  11: [{ type: 'text', id: 'q_past' }, { type: 'choice', id: 'past_feeling', wrap: '#page-11 .opts' }],
-  12: [{ type: 'text', id: 'q_now' }, { type: 'choice', id: 'pattern', wrap: '#page-12 .opts' }],
-  13: [{ type: 'text', id: 'q_change' }, { type: 'text', id: 'q_barrier' }],
-  14: [{ type: 'text', id: 'q_limits' }, { type: 'choice', id: 'belief_shift', wrap: '#page-14 .opts' }],
-  15: [{ type: 'text', id: 'p_commit' }, { type: 'text', id: 'p_support' }]
+  13: [{ type: 'text', id: 'q_past' }, { type: 'choice', id: 'past_feeling', wrap: '#page-13 .opts' }],
+  14: [{ type: 'text', id: 'q_now' }, { type: 'choice', id: 'pattern', wrap: '#page-14 .opts' }],
+  15: [{ type: 'text', id: 'q_change' }],
+  16: [{ type: 'text', id: 'q_limits' }, { type: 'choice', id: 'belief_shift', wrap: '#page-16 .opts' }],
+  17: [{ type: 'text', id: 'p_commit' }, { type: 'text', id: 'p_support' }]
 };
-const VALIDATION_WARN_ID = { 11: 'p11-warn', 12: 'p12-warn', 13: 'p13-warn', 14: 'p14-warn', 15: 'p15-warn' };
-const CHOICE_FIELD_PAGE_MAP = { past_feeling: 11, pattern: 12, belief_shift: 14 };
-const TEXT_FIELD_PAGE_MAP = { q_past: 11, q_now: 12, q_change: 13, q_barrier: 13, q_limits: 14, p_commit: 15, p_support: 15 };
+const VALIDATION_WARN_ID = { 13: 'p11-warn', 14: 'p12-warn', 15: 'p13-warn', 16: 'p14-warn', 17: 'p15-warn' };
+const CHOICE_FIELD_PAGE_MAP = { past_feeling: 13, pattern: 14, belief_shift: 16 };
+const TEXT_FIELD_PAGE_MAP = { q_past: 13, q_now: 14, q_change: 15, q_barrier: 15, q_limits: 16, p_commit: 17, p_support: 17 };
 
 function validatePage(pageIndex) {
   const fields = REQUIRED_FIELDS[pageIndex];
@@ -2350,7 +3066,8 @@ function highlightMissing(pageIndex) {
     const el = document.getElementById(f.id);
     const missing = !el || el.value.trim() === '';
     if (f.type === 'text' && el) {
-      el.classList.toggle('input-missing', missing);
+      const wrapEl = el.closest('.answer-field') || el;
+      wrapEl.classList.toggle('input-missing', missing);
     } else if (f.type === 'choice' && f.wrap) {
       const wrap = document.querySelector(f.wrap);
       if (wrap) wrap.classList.toggle('opts-missing', missing);
@@ -2400,7 +3117,6 @@ async function submitStory(showUI) {
     q_past: 'circle1_past_description',
     q_now: 'circle2_now_description',
     q_change: 'circle3_change_goal',
-    q_barrier: 'circle3_change_barrier',
     q_limits: 'circle4_boundaries'
   };
   Object.entries(textFieldMap).forEach(([id, fieldName]) => {
@@ -2421,7 +3137,7 @@ async function submitStory(showUI) {
   const subjectParts = [showUI ? 'PAUSE Response' : 'PAUSE Response (auto-saved on finish)'];
   if (countryEl && countryEl.value) subjectParts.push(countryEl.value.replace(/^[^\s]+\s/, ''));
   if (nameEl && nameEl.value) subjectParts.push(nameEl.value);
-  data.set('_subject', subjectParts.join(' — '));
+  data.set('_subject', subjectParts.join(',  '));
 
   try {
     const res = await fetch('https://formspree.io/f/mzdwqabv', {
