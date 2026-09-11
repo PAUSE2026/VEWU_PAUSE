@@ -771,6 +771,122 @@ textarea::placeholder, input::placeholder {
   .lang-picker-btn { min-height: 40px; font-size: 10.5px; }
   .lang-picker-btn::before { display: none; }
 }
+
+
+/* ══ EXPANDED MOVING-FORWARD RESOURCES ══ */
+.resource-choice-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:0.8rem; }
+.resource-choice { display:block; padding:0.9rem; border:1.5px solid var(--border); border-radius:16px; background:rgba(255,255,255,.72); color:var(--ink2); text-decoration:none; transition:transform .15s,box-shadow .15s,background .15s; }
+.resource-choice:hover { transform:translateY(-2px); background:#fff; box-shadow:0 7px 18px rgba(44,40,32,.08); }
+.resource-choice-icon { font-size:22px; margin-bottom:.35rem; }
+.resource-choice-title { font-family:'Quicksand',sans-serif; font-size:13px; font-weight:800; margin-bottom:.18rem; }
+.resource-choice-desc { font-family:'Quicksand',sans-serif; font-size:11.5px; font-weight:500; line-height:1.5; color:var(--ink3); }
+.resource-section { margin-top:1rem; padding-top:.85rem; border-top:1px solid rgba(44,40,32,.10); }
+.resource-section-title { font-family:'Quicksand',sans-serif; font-size:15px; font-weight:800; color:var(--ink2); }
+.resource-section-sub { font-family:'Quicksand',sans-serif; font-size:12px; line-height:1.55; color:var(--ink3); margin-top:.2rem; }
+.resource-video-card { margin-top:.7rem; padding:.75rem; border:1.5px solid var(--border); border-radius:16px; background:rgba(255,255,255,.78); }
+.resource-video-top { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:.55rem; }
+.resource-tag { font-family:'Quicksand',sans-serif; font-size:9px; font-weight:800; letter-spacing:.12em; color:var(--sky); }
+.resource-time { font-family:'Quicksand',sans-serif; font-size:10px; font-weight:600; color:var(--ink3); }
+.resource-video-body { padding:.6rem .15rem .1rem; }
+.resource-video-title { font-family:'Quicksand',sans-serif; font-size:13px; font-weight:800; color:var(--ink2); }
+.resource-video-desc { font-family:'Quicksand',sans-serif; font-size:11.5px; font-weight:500; line-height:1.5; color:var(--ink3); margin-top:.2rem; }
+.resource-credit { font-family:'Quicksand',sans-serif; font-size:10px; line-height:1.45; color:var(--ink3); margin-top:.4rem; }
+.resource-link { display:inline-flex; align-items:center; justify-content:center; gap:6px; margin-top:.65rem; padding:.55rem .85rem; border-radius:999px; background:rgba(255,255,255,.9); border:1.5px solid var(--border); color:var(--ink2); text-decoration:none; font-family:'Quicksand',sans-serif; font-size:10.5px; font-weight:800; }
+.resource-link:hover { background:#fff; box-shadow:0 4px 12px rgba(44,40,32,.08); }
+.cwc-feature { padding:1rem; border-radius:18px; background:linear-gradient(135deg,rgba(255,248,228,.95),rgba(239,248,242,.95)); border:1.5px solid var(--border); margin-top:.75rem; }
+.cwc-badge { display:inline-flex; padding:.3rem .55rem; border-radius:999px; background:#fff; border:1px solid var(--border); font-family:'Quicksand',sans-serif; font-size:9px; font-weight:800; letter-spacing:.08em; color:var(--ink3); }
+.cwc-title { font-family:'Quicksand',sans-serif; font-size:16px; font-weight:800; color:var(--ink2); margin-top:.55rem; }
+.cwc-text { font-family:'Quicksand',sans-serif; font-size:12px; font-weight:500; line-height:1.6; color:var(--ink3); margin-top:.3rem; }
+.source-list { display:grid; gap:7px; margin-top:.7rem; }
+.source-card { display:flex; gap:10px; align-items:flex-start; padding:.72rem .8rem; border-radius:13px; background:rgba(255,255,255,.72); border:1px solid var(--border); }
+.source-mark { flex:0 0 26px; width:26px; height:26px; display:flex; align-items:center; justify-content:center; border-radius:9px; background:var(--cream); font-size:13px; }
+.source-card-title { font-family:'Quicksand',sans-serif; font-size:11.5px; font-weight:800; color:var(--ink2); }
+.source-card-desc { font-family:'Quicksand',sans-serif; font-size:10.5px; line-height:1.45; color:var(--ink3); margin-top:.12rem; }
+.source-card a { color:var(--ink2); font-weight:800; }
+.copyright-note { font-family:'Quicksand',sans-serif; font-size:10.5px; line-height:1.5; color:var(--ink3); padding:.7rem .8rem; margin-top:.7rem; border-radius:12px; background:rgba(123,175,212,.08); }
+@media (max-width:620px){ .resource-choice-grid{grid-template-columns:1fr;} }
+
+
+
+/* ══ MOVING FORWARD · LONG, CALM RESOURCE HUB ══ */
+.moving-forward-page { padding-bottom: 1.4rem; }
+.mf-help-card {
+  border:1.5px solid var(--border); border-radius:18px; padding:1rem 1.05rem;
+  background:linear-gradient(135deg,rgba(255,248,228,.95),rgba(239,248,242,.95));
+  box-shadow:0 5px 18px rgba(44,40,32,.045);
+}
+.mf-card-kicker {
+  font-family:'Quicksand',sans-serif; font-size:9px; line-height:1.35;
+  letter-spacing:.11em; font-weight:800; color:var(--ink3); margin-bottom:.38rem;
+}
+.mf-help-title { font-family:'Quicksand',sans-serif; font-size:17px; line-height:1.25; font-weight:800; color:var(--ink2); margin:.15rem 0 .3rem; }
+.mf-help-text { font-family:'Quicksand',sans-serif; font-size:11.5px; line-height:1.58; color:var(--ink3); margin:0 0 .7rem; }
+.mf-hotline-stack { display:grid; gap:.5rem; }
+.mf-hotline {
+  display:flex; align-items:center; justify-content:space-between; gap:.7rem;
+  padding:.7rem .78rem; border:1.5px solid var(--border); border-radius:13px;
+  background:rgba(255,255,255,.82); color:var(--ink2); text-decoration:none;
+  transition:transform .15s, box-shadow .15s, background .15s;
+}
+.mf-hotline:hover { transform:translateY(-1px); box-shadow:0 5px 12px rgba(44,40,32,.08); background:#fff; }
+.mf-hotline b { display:block; font-family:'Quicksand',sans-serif; font-size:11.5px; }
+.mf-hotline small { display:block; margin-top:2px; font-family:'Quicksand',sans-serif; font-size:9.5px; color:var(--ink3); }
+.mf-hotline strong { font-family:'Quicksand',sans-serif; font-size:18px; color:var(--sky); white-space:nowrap; }
+.mf-intro { font-family:'Quicksand',sans-serif; font-size:12px; font-weight:600; line-height:1.6; color:var(--ink3); margin:1rem 0 .75rem; }
+.mf-jump { display:flex; flex-wrap:wrap; gap:.4rem; margin:.65rem 0 1rem; }
+.mf-jump a { padding:.42rem .65rem; border:1px solid var(--border); border-radius:999px; background:#fff; color:var(--ink2); text-decoration:none; font-family:'Quicksand',sans-serif; font-size:9.5px; font-weight:800; }
+.mf-jump a:hover { background:var(--cream); }
+.mf-section { margin-top:1.1rem; scroll-margin-top:1rem; }
+.mf-section:first-of-type { margin-top:.4rem; }
+.mf-section-head { padding:.1rem 0 .45rem; border-bottom:1px solid rgba(44,40,32,.10); }
+.mf-section-kicker { font-family:'Quicksand',sans-serif; font-size:9px; letter-spacing:.11em; font-weight:800; color:var(--ink3); }
+.mf-section-head h3 { margin:.22rem 0 .15rem; font-family:'Quicksand',sans-serif; font-size:17px; line-height:1.25; color:var(--ink2); }
+.mf-section-head p { margin:0; font-family:'Quicksand',sans-serif; font-size:10.5px; line-height:1.55; color:var(--ink3); }
+.mf-resource-stack { display:grid; gap:.58rem; margin-top:.65rem; }
+.mf-resource-card {
+  display:block; padding:.88rem .95rem; border:1.5px solid var(--border); border-radius:16px;
+  background:rgba(255,255,255,.82); color:var(--ink2); box-shadow:0 4px 14px rgba(44,40,32,.035);
+}
+.mf-resource-card.mf-feature { background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(235,246,255,.78)); border-color:rgba(91,154,191,.3); }
+.mf-resource-card.mf-soft { background:rgba(255,250,241,.78); }
+.mf-resource-icon { font-size:18px; line-height:1; margin-bottom:.42rem; }
+.mf-resource-main h4 { margin:0 0 .25rem; font-family:'Quicksand',sans-serif; font-size:14px; line-height:1.3; color:var(--ink); }
+.mf-resource-main p { margin:0; font-family:'Quicksand',sans-serif; font-size:10.8px; font-weight:500; line-height:1.6; color:var(--ink3); }
+.mf-link-row { display:flex; flex-wrap:wrap; gap:.38rem; margin-top:.65rem; }
+.mf-link-row a { display:inline-flex; align-items:center; gap:.25rem; padding:.45rem .68rem; border:1px solid var(--border); border-radius:999px; background:#fff; color:var(--ink2); text-decoration:none; font-family:'Quicksand',sans-serif; font-size:9.5px; font-weight:800; }
+.mf-link-row a.primary { background:var(--ink2); color:#fff; border-color:var(--ink2); }
+.mf-link-row a:hover { transform:translateY(-1px); box-shadow:0 4px 10px rgba(44,40,32,.07); }
+.mf-note { margin-top:.55rem; padding:.62rem .7rem; border-radius:11px; background:rgba(123,175,212,.08); font-family:'Quicksand',sans-serif; font-size:9.5px; line-height:1.5; color:var(--ink3); }
+.mf-closing { margin-top:1rem; padding:.9rem .95rem; border-radius:15px; background:var(--cream); border:1px solid var(--border); font-family:'Quicksand',sans-serif; color:var(--ink2); }
+.mf-closing strong { display:block; font-size:12px; margin-bottom:.2rem; }
+.mf-closing span { display:block; font-size:10.5px; line-height:1.55; color:var(--ink3); }
+.mf-inline-back { display:inline-block; margin-top:.45rem; color:var(--sky); text-decoration:none; font-size:9.5px; font-weight:700; }
+.mf-source-note { margin-top:.65rem; font-family:'Quicksand',sans-serif; font-size:8.5px; line-height:1.5; color:var(--ink3); opacity:.9; }
+@media (max-width:620px) {
+  .mf-link-row a { flex:1 1 auto; justify-content:center; }
+  .mf-resource-card { padding:.82rem; }
+}
+
+/* ══ MOVING FORWARD · MEDIA / VIDEO FEATURES ══ */
+.mf-media-section { margin-top:1.15rem; padding-top:.2rem; scroll-margin-top:1rem; }
+.mf-media-grid { display:grid; gap:.7rem; margin-top:.7rem; }
+.mf-media-card { border:1.5px solid var(--border); border-radius:17px; overflow:hidden; background:#fff; box-shadow:0 4px 15px rgba(44,40,32,.04); }
+.mf-media-copy { padding:.82rem .9rem .9rem; }
+.mf-media-copy h4 { margin:0 0 .25rem; font-family:'Quicksand',sans-serif; font-size:14px; line-height:1.3; color:var(--ink); }
+.mf-media-copy p { margin:0; font-family:'Quicksand',sans-serif; font-size:10.5px; line-height:1.55; color:var(--ink3); }
+.mf-media-kicker { font-family:'Quicksand',sans-serif; font-size:8.5px; letter-spacing:.1em; font-weight:800; color:var(--ink3); margin-bottom:.25rem; }
+.mf-video { position:relative; width:100%; aspect-ratio:16/9; background:#eee; }
+.mf-video iframe { width:100%; height:100%; border:0; display:block; }
+.mf-photo-link { display:block; position:relative; background:#eee; }
+.mf-photo-link img { width:100%; height:auto; max-height:235px; object-fit:cover; display:block; }
+.mf-photo-link span { position:absolute; right:.65rem; bottom:.6rem; padding:.38rem .55rem; border-radius:999px; background:rgba(255,255,255,.92); color:var(--ink2); font:800 9px 'Quicksand',sans-serif; }
+.mf-credit { margin-top:.45rem; font:500 8.5px/1.45 'Quicksand',sans-serif; color:var(--ink3); }
+.mf-credit a { color:var(--sky); font-weight:800; text-decoration:none; }
+.mf-media-actions { display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.6rem; }
+.mf-media-actions a { display:inline-flex; padding:.42rem .62rem; border:1px solid var(--border); border-radius:999px; background:#fff; color:var(--ink2); text-decoration:none; font:800 9px 'Quicksand',sans-serif; }
+.mf-media-actions a.primary { background:var(--ink2); color:#fff; border-color:var(--ink2); }
+@media (min-width:680px) { .mf-media-grid.two { grid-template-columns:1fr 1fr; } }
+
 </style>
 </head>
 <body>
@@ -1348,81 +1464,334 @@ textarea::placeholder, input::placeholder {
 <!-- ══ PAGE 16: MOVING FORWARD ══ -->
 <div id="page-18" class="page">
   <div class="page-art" style="background-image:url('assets2/14.png');"></div>
-  <div class="page-body">
+  <div class="page-body moving-forward-page">
     <div class="page-label" data-key="p16_label">Moving forward</div>
     <div class="section-head" style="color:var(--mauve);" data-key="p16_head">Your next step, guided.</div>
     <div class="section-sub" data-key="p16_sub">Whatever you need next, here is exactly where to go. You do not have to figure this out alone.</div>
 
-    <div style="border-radius:14px;border:1.5px solid var(--border);padding:0.85rem 1.05rem;background:rgba(255,255,255,0.7);">
-      <div class="scenario-lbl" style="margin-bottom:0.65rem;" data-key="p16_hotline_lbl">If a child is in danger right now</div>
-      <div class="hotline-row"><span class="hotline-country">🇵🇭 Makabata Helpline</span><span class="hotline-num" style="color:var(--sky);">1383</span></div>
-      <div class="hotline-row"><span class="hotline-country">🇻🇳 Child Protection Line</span><span class="hotline-num" style="color:var(--grass);">111</span></div>
-      <div class="hotline-row"><span class="hotline-country">🇰🇭 Child Helpline</span><span class="hotline-num" style="color:var(--gold);">1280</span></div>
-    </div>
-
-    <div style="font-family:'Quicksand',sans-serif;font-size:12.5px;font-weight:600;line-height:1.6;color:var(--ink3);margin-top:0.8rem;margin-bottom:0.3rem;" data-key="p16_orgs_intro">Below are real government and community programs. Do not worry about the short names, just ask your local office and they will know them.</div>
-
-    <div class="info-box" style="background:var(--cream);color:var(--ink2);margin-top:0.45rem;">
-      <span class="lbl" style="color:var(--ink3);" data-key="p16_ph_lbl">🇵🇭 To keep building this skill, in the Philippines</span>
-      <div class="program-item">
-        <div class="ptitle" data-key="p16_ph_p1_title">Ask your 4Ps or barangay social worker about Family Development Sessions</div>
-        <div class="pdesc" data-key="p16_ph_p1_desc">These sessions now use MaPa (Masayang Pamilya), a positive parenting program made for Filipino families and shown to actually work. It was built by university researchers with UNICEF Philippines. See MaPa's programs at <a href="https://www.masayangpamilya.org/programs-and-services" target="_blank" rel="noopener">masayangpamilya.org ↗</a></div>
-      </div>
-      <div class="program-item">
-        <div class="ptitle" data-key="p16_ph_p2_title">Bring PETA's "Love Does Not Hurt" campaign to your community</div>
-        <div class="pdesc" data-key="p16_ph_p2_desc">PETA's ARTS Zone project uses theater and workshops to teach positive discipline in schools and barangays, including in Valenzuela. <a href="https://petatheater.com/arts-zone/" target="_blank" rel="noopener">petatheater.com/arts-zone ↗</a></div>
-      </div>
-      <div class="program-item">
-        <div class="ptitle" data-key="p16_ph_p3_title">Ask your local POPCOM office about Responsible Parenting Classes</div>
-        <div class="pdesc" data-key="p16_ph_p3_desc">The Commission on Population and Development runs free classes for couples and parents on family planning, spacing children, and family wellbeing, alongside DSWD's Family Development Sessions.</div>
+    <div class="mf-help-card" id="help-now">
+      <div class="mf-card-kicker">NEED HELP NOW?</div>
+      <div class="mf-help-title">MAKABATA 1383 and child protection lines</div>
+      <p class="mf-help-text" data-key="p16_hotline_lbl">If a child is in danger right now</p>
+      <div class="mf-hotline-stack">
+        <a class="mf-hotline" href="tel:1383">
+          <span><b>🇵🇭 MAKABATA Helpline 1383</b><small>Council for the Welfare of Children</small></span>
+          <strong>1383</strong>
+        </a>
+        <a class="mf-hotline" href="tel:111">
+          <span><b>🇻🇳 Child Protection Line 111</b><small>Vietnam</small></span>
+          <strong>111</strong>
+        </a>
+        <a class="mf-hotline" href="tel:1280">
+          <span><b>🇰🇭 Child Helpline 1280</b><small>Cambodia</small></span>
+          <strong>1280</strong>
+        </a>
       </div>
     </div>
 
-    <div class="info-box" style="background:var(--cream);color:var(--ink2);margin-top:0.6rem;">
-      <span class="lbl" style="color:var(--ink3);" data-key="p16_vn_lbl">🇻🇳 To keep building this skill, in Vietnam</span>
-      <div class="program-item">
-        <div class="ptitle" data-key="p16_vn_p1_title">Ask about "Nobody's Perfect" parenting training</div>
-        <div class="pdesc" data-key="p16_vn_p1_desc">Delivered with MOLISA and local employers or community centers for caregivers of children under 8.</div>
+    <div class="mf-intro" data-key="p16_orgs_intro">Below are real government and community programs. Do not worry about the short names, just ask your local office and they will know them.</div>
+
+    <nav class="mf-jump" aria-label="Moving forward sections">
+      <a href="#cwc">CWC</a>
+      <a href="#media">Watch &amp; see</a>
+      <a href="#philippines">Philippines</a>
+      <a href="#vietnam">Vietnam</a>
+      <a href="#cambodia">Cambodia</a>
+      <a href="#global">Wherever you are</a>
+    </nav>
+
+    <section class="mf-section" id="cwc">
+      <div class="mf-section-head">
+        <div class="mf-section-kicker">PHILIPPINES · CHILD PROTECTION</div>
+        <h3>Council for the Welfare of Children</h3>
+        <p>Start here if you want official Philippine child protection information, positive parenting guidance, reporting pathways, and tools for families and communities.</p>
       </div>
-      <div class="program-item">
-        <div class="ptitle" data-key="p16_vn_p2_title">Call 111 for more than emergencies</div>
-        <div class="pdesc" data-key="p16_vn_p2_desc">The national child protection line also offers ongoing parenting counseling, not only crisis reporting.</div>
+      <div class="mf-resource-stack">
+        <article class="mf-resource-card mf-feature">
+          <div class="mf-resource-icon">🛡️</div>
+          <div class="mf-resource-main">
+            <div class="mf-card-kicker" data-key="p19_cwc_badge">COUNCIL FOR THE WELFARE OF CHILDREN</div>
+            <h4 data-key="p19_cwc_title">MAKABATA Helpline 1383</h4>
+            <p data-key="p19_cwc_text">The Council for the Welfare of Children identifies MAKABATA 1383 as the country’s central reporting mechanism for Children in Need of Special Protection. It can be a pathway for reporting child protection concerns, seeking guidance, and connecting with services.</p>
+            <div class="mf-link-row">
+              <a class="primary" href="https://cwc.gov.ph/" target="_blank" rel="noopener" data-key="p19_cwc_link">Visit CWC ↗</a>
+              <a href="tel:1383" data-key="p19_cwc_call">Call 1383</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">🌱</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p19_card1_title">CWC and positive parenting</h4>
+            <p data-key="p19_card1_desc">Read CWC’s own message on creating a warm, caring environment where children can grow and build healthy relationships.</p>
+            <div class="mf-link-row">
+              <a class="primary" href="https://cwc.gov.ph/cwc-supports-positive-parenting/6344/" target="_blank" rel="noopener">Read CWC's positive parenting message ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">💬</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p19_card2_title">How do you discipline your child?</h4>
+            <p data-key="p19_card2_desc">A CWC resource that opens a conversation about physical discipline and positive parenting.</p>
+            <div class="mf-link-row">
+              <a class="primary" href="https://cwc.gov.ph/how-do-you-discipline-your-child/5191/" target="_blank" rel="noopener">Read the CWC resource ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">🧰</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p19_card3_title">Child protection tools & standards</h4>
+            <p data-key="p19_card3_desc">Explore CWC protocols, referral pathways, the Enhanced Guidebook on Child Participation, and other tools.</p>
+            <div class="mf-link-row">
+              <a class="primary" href="https://cwc.gov.ph/protocol-tools-and-standard/" target="_blank" rel="noopener">Explore CWC tools ↗</a>
+              <a href="https://cwc.gov.ph/child-protection-2/" target="_blank" rel="noopener">Child protection resources ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">📚</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p19_card4_title">CWC plans & programs</h4>
+            <p data-key="p19_card4_desc">Learn how the national child welfare system connects policies, programmes, local councils and child protection work.</p>
+            <div class="mf-link-row">
+              <a class="primary" href="https://cwc.gov.ph/plans-and-programs/" target="_blank" rel="noopener">Explore plans & programs ↗</a>
+              <a href="https://cwc.gov.ph/frameworks-for-plan-development-for-children/" target="_blank" rel="noopener">National plans for children ↗</a>
+            </div>
+          </div>
+        </article>
       </div>
+    </section>
+
+    <section class="mf-media-section" id="media">
+      <div class="mf-section-head">
+        <div class="mf-section-kicker">WATCH · LOOK · EXPLORE</div>
+        <h3>See the ideas in action</h3>
+        <p>You do not have to read every link. Here are a few videos and visual stories from organisations already working with parents, caregivers and communities.</p>
+      </div>
+
+      <div class="mf-media-grid">
+        <article class="mf-media-card">
+          <a class="mf-photo-link" href="https://cwc.gov.ph/cwc-supports-positive-parenting/6344/" target="_blank" rel="noopener">
+            <img src="https://cwc.gov.ph/wp-content/uploads/2023/12/Untitled-design-4.gif" alt="CWC positive parenting visual">
+            <span>Open CWC page ↗</span>
+          </a>
+          <div class="mf-media-copy">
+            <div class="mf-media-kicker">CWC · PHILIPPINES</div>
+            <h4>Positive parenting starts with a warm, caring environment</h4>
+            <p>CWC's own positive parenting message focuses on helping children grow and build healthy relationships with themselves, their families and communities.</p>
+            <div class="mf-media-actions"><a class="primary" href="https://cwc.gov.ph/cwc-supports-positive-parenting/6344/" target="_blank" rel="noopener">Read the CWC message ↗</a></div>
+            <div class="mf-credit">Visual/source: <a href="https://cwc.gov.ph/cwc-supports-positive-parenting/6344/" target="_blank" rel="noopener">Council for the Welfare of Children</a>.</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="mf-media-grid two">
+        <article class="mf-media-card">
+          <div class="mf-video">
+            <iframe src="https://www.youtube-nocookie.com/embed/cQBHh-kEE2s?rel=0" title="Probe Media feature on PETA Rated: PG" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="mf-media-copy">
+            <div class="mf-media-kicker">PETA · POSITIVE DISCIPLINE</div>
+            <h4>Rated: PG · Positive discipline through theater</h4>
+            <p>A short feature on PETA's <em>Rated: PG</em>, a play created around positive discipline. This gives the toolkit a more human, story-based way to encounter the idea.</p>
+            <div class="mf-media-actions"><a class="primary" href="https://www.youtube.com/watch?v=cQBHh-kEE2s" target="_blank" rel="noopener">Watch on YouTube ↗</a><a href="https://petatheater.com/arts-zone/" target="_blank" rel="noopener">Explore PETA ARTS Zone ↗</a></div>
+            <div class="mf-credit">Video: <a href="https://www.youtube.com/watch?v=cQBHh-kEE2s" target="_blank" rel="noopener">PETA Theater Online / Probe Media</a>. Embedded from the original YouTube source.</div>
+          </div>
+        </article>
+
+        <article class="mf-media-card">
+          <div class="mf-video">
+            <iframe src="https://www.youtube-nocookie.com/embed/XeacTcdubYM?rel=0" title="UNICEF Philippines Science of Play" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="mf-media-copy">
+            <div class="mf-media-kicker">UNICEF PHILIPPINES · PLAY</div>
+            <h4>Science of Play</h4>
+            <p>A UNICEF Philippines mini-parenting masterclass on how play supports children's physical, emotional, cognitive and creative development.</p>
+            <div class="mf-media-actions"><a class="primary" href="https://www.unicef.org/philippines/stories/science-play-0" target="_blank" rel="noopener">Open UNICEF story ↗</a></div>
+            <div class="mf-credit">Video and page: <a href="https://www.unicef.org/philippines/stories/science-play-0" target="_blank" rel="noopener">UNICEF Philippines</a>. Embedded from the original source.</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="mf-media-grid">
+        <article class="mf-media-card">
+          <a class="mf-photo-link" href="https://www.unicef.org/parenting/raising-parents" target="_blank" rel="noopener">
+            <img src="https://www.unicef.org/parenting/sites/unicef.org.parenting/files/styles/hero_desktop/public/UNI631224Q_WEB.webp?itok=jmUUxu7p" alt="UNICEF Raising Parents documentary visual">
+            <span>Meet the families ↗</span>
+          </a>
+          <div class="mf-media-copy">
+            <div class="mf-media-kicker">UNICEF · RAISING PARENTS</div>
+            <h4>Raising Parents</h4>
+            <p>A documentary about four families and the realities of learning, growing and finding support as a caregiver. It is a gentle way to remember that parenting is a journey, not something anyone has to do perfectly.</p>
+            <div class="mf-media-actions"><a class="primary" href="https://www.youtube.com/watch?v=y_rrPdKrBs4" target="_blank" rel="noopener">Watch the documentary ↗</a><a href="https://www.unicef.org/parenting/raising-parents" target="_blank" rel="noopener">Explore the stories ↗</a></div>
+            <div class="mf-credit">Photo and documentary: <a href="https://www.unicef.org/parenting/raising-parents" target="_blank" rel="noopener">UNICEF</a>. Photo credit: UNICEF. Linked to the original source.</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="mf-section" id="philippines">
+      <div class="mf-section-head">
+        <div class="mf-section-kicker" data-key="p16_ph_lbl">🇵🇭 To keep building this skill, in the Philippines</div>
+        <h3>Family and community support</h3>
+        <p data-key="p19_local_sub">PAUSE is not a replacement for professional or community support. Ask your local social worker, 4Ps Family Development Session facilitator, barangay, or child protection worker what is available in your area.</p>
+      </div>
+      <div class="mf-resource-stack">
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">🤝</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p16_ph_p1_title">Ask your 4Ps or barangay social worker about Family Development Sessions</h4>
+            <p data-key="p16_ph_p1_desc">These sessions now use MaPa (Masayang Pamilya), a positive parenting program made for Filipino families and shown to actually work. It was built by university researchers with UNICEF Philippines. See MaPa's programs at masayangpamilya.org ↗</p>
+            <div class="mf-link-row"><a class="primary" href="https://www.masayangpamilya.org/programs-and-services" target="_blank" rel="noopener">Explore MaPa ↗</a></div>
+          </div>
+        </article>
+
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">🎭</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p16_ph_p2_title">Bring PETA's “Love Does Not Hurt” campaign to your community</h4>
+            <p data-key="p16_ph_p2_desc">PETA's ARTS Zone project uses theater and workshops to teach positive discipline in schools and barangays, including in Valenzuela.</p>
+            <div class="mf-link-row"><a class="primary" href="https://petatheater.com/arts-zone/" target="_blank" rel="noopener">Explore PETA ARTS Zone ↗</a></div>
+          </div>
+        </article>
+
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">🌿</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p16_ph_p3_title">Ask your local POPCOM office about Responsible Parenting Classes</h4>
+            <p data-key="p16_ph_p3_desc">The Commission on Population and Development runs free classes for couples and parents on family planning, spacing children, and family wellbeing, alongside DSWD's Family Development Sessions.</p>
+            <div class="mf-link-row"><a class="primary" href="https://popcom.gov.ph/" target="_blank" rel="noopener">Explore POPCOM ↗</a></div>
+          </div>
+        </article>
+
+        <article class="mf-resource-card mf-soft">
+          <div class="mf-resource-icon">🌼</div>
+          <div class="mf-resource-main">
+            <h4>UNICEF Philippines · parenting and child protection</h4>
+            <p data-key="p19_unicef_desc">Learn about prevention, family and community support, child protection systems, and services in the Philippines.</p>
+            <div class="mf-link-row">
+              <a class="primary" href="https://www.unicef.org/philippines/unicef-guide-parenting" target="_blank" rel="noopener">Parenting guide ↗</a>
+              <a href="https://www.unicef.org/philippines/child-protection" target="_blank" rel="noopener">Child protection ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="mf-section" id="vietnam">
+      <div class="mf-section-head">
+        <div class="mf-section-kicker" data-key="p16_vn_lbl">🇻🇳 To keep building this skill, in Vietnam</div>
+        <h3>Vietnam support</h3>
+      </div>
+      <div class="mf-resource-stack">
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">🌿</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p16_vn_p1_title">Ask about “Nobody’s Perfect” parenting training</h4>
+            <p data-key="p16_vn_p1_desc">Delivered with MOLISA and local employers or community centers for caregivers of children under 8.</p>
+          </div>
+        </article>
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">📞</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p16_vn_p2_title">Call 111 for more than emergencies</h4>
+            <p data-key="p16_vn_p2_desc">The national child protection line also offers ongoing parenting counseling, not only crisis reporting.</p>
+            <div class="mf-link-row"><a class="primary" href="tel:111">Call 111</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="mf-section" id="cambodia">
+      <div class="mf-section-head">
+        <div class="mf-section-kicker" data-key="p16_kh_lbl">🇰🇭 To keep building this skill, in Cambodia</div>
+        <h3>Cambodia support</h3>
+      </div>
+      <div class="mf-resource-stack">
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">🌱</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p16_kh_p1_title">Join a Positive Parenting Programme session</h4>
+            <p data-key="p16_kh_p1_desc">Run through your commune Ministry of Women's Affairs office, with training on communication and nonviolent discipline.</p>
+          </div>
+        </article>
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">💬</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p16_kh_p2_title">Message the ParentingTips chatbot</h4>
+            <p data-key="p16_kh_p2_desc">Free on Telegram, or call 1279 to register for tips by voice call.</p>
+            <div class="mf-link-row"><a class="primary" href="tel:1279">Call 1279</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="mf-section" id="global">
+      <div class="mf-section-head">
+        <div class="mf-section-kicker" data-key="p16_global_lbl">🌏 Reading this from somewhere else? You still have a place to go</div>
+        <h3>Wherever you are</h3>
+        <p>Choose the resource that fits what you need right now. Each link takes you to the organisation's own website.</p>
+      </div>
+      <div class="mf-resource-stack">
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">📞</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p16_global_p1_title">Find a helpline in your own country</h4>
+            <p data-key="p16_global_p1_desc">Child Helpline International connects to free, local child helplines in over 140 countries.</p>
+            <div class="mf-link-row"><a class="primary" href="https://childhelplineinternational.org/helplines/" target="_blank" rel="noopener">Find a child helpline ↗</a></div>
+          </div>
+        </article>
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">🌱</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p16_global_p2_title">Find positive discipline training near you</h4>
+            <p data-key="p16_global_p2_desc">The Positive Discipline Association has certified trainers in more than 90 countries.</p>
+            <div class="mf-link-row"><a class="primary" href="https://www.positivediscipline.org/" target="_blank" rel="noopener">Explore Positive Discipline Association ↗</a></div>
+          </div>
+        </article>
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">⚖️</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p16_global_p3_title">Check your country's laws and get more research</h4>
+            <p data-key="p16_global_p3_desc">The Global Initiative to End All Corporal Punishment of Children tracks laws and research worldwide.</p>
+            <div class="mf-link-row"><a class="primary" href="https://endcorporalpunishment.org/" target="_blank" rel="noopener">Read the research and laws ↗</a></div>
+          </div>
+        </article>
+        <article class="mf-resource-card">
+          <div class="mf-resource-icon">💚</div>
+          <div class="mf-resource-main">
+            <h4 data-key="p16_global_p4_title">Find family planning and reproductive health support</h4>
+            <p data-key="p16_global_p4_desc">The International Planned Parenthood Federation links to member clinics and helplines worldwide.</p>
+            <div class="mf-link-row"><a class="primary" href="https://www.ippf.org/about-us/member-associations" target="_blank" rel="noopener">Find an IPPF member association ↗</a></div>
+          </div>
+        </article>
+        <article class="mf-resource-card mf-soft">
+          <div class="mf-resource-icon">🩺</div>
+          <div class="mf-resource-main">
+            <h4>WHO · corporal punishment and health</h4>
+            <p>Read the World Health Organization's evidence summary on corporal punishment and health.</p>
+            <div class="mf-link-row"><a class="primary" href="https://www.who.int/news-room/fact-sheets/detail/corporal-punishment-of-children-and-health" target="_blank" rel="noopener">Read WHO ↗</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="mf-closing">
+      <strong>You do not have to do everything here.</strong>
+      <span>Choose one place to begin. A conversation. A helpline. A resource. One different response, one moment at a time.</span>
+      <a class="mf-inline-back" href="#help-now">↑ Back to the beginning of this page</a>
+      <span class="mf-inline-back" data-key="p16_note">Want to revisit the research or the film on positive discipline? They are on the earlier pages of this toolkit, anytime you need them again.</span>
     </div>
 
-    <div class="info-box" style="background:var(--cream);color:var(--ink2);margin-top:0.6rem;">
-      <span class="lbl" style="color:var(--ink3);" data-key="p16_kh_lbl">🇰🇭 To keep building this skill, in Cambodia</span>
-      <div class="program-item">
-        <div class="ptitle" data-key="p16_kh_p1_title">Join a Positive Parenting Programme session</div>
-        <div class="pdesc" data-key="p16_kh_p1_desc">Run through your commune Ministry of Women's Affairs office, with training on communication and nonviolent discipline.</div>
-      </div>
-      <div class="program-item">
-        <div class="ptitle" data-key="p16_kh_p2_title">Message the ParentingTips chatbot</div>
-        <div class="pdesc" data-key="p16_kh_p2_desc">Free on Telegram, or call 1279 to register for tips by voice call.</div>
-      </div>
+    <div class="mf-source-note">
+      <b>Sources & attribution:</b> Links above point to the original organisations and their own resources. PAUSE does not reproduce their materials; it connects you to them. For urgent child protection concerns, use the appropriate local emergency or child protection service.
     </div>
-
-    <div class="info-box" style="background:var(--sky-light);color:var(--ink2);margin-top:0.6rem;">
-      <span class="lbl" style="color:var(--sky);" data-key="p16_global_lbl">🌏 Reading this from somewhere else? You still have a place to go</span>
-      <div class="program-item">
-        <div class="ptitle" data-key="p16_global_p1_title">Find a helpline in your own country</div>
-        <div class="pdesc" data-key="p16_global_p1_desc">Child Helpline International connects to free, local child helplines in over 140 countries. <a href="https://childhelplineinternational.org/helplines/" target="_blank" rel="noopener">childhelplineinternational.org ↗</a></div>
-      </div>
-      <div class="program-item">
-        <div class="ptitle" data-key="p16_global_p2_title">Find positive discipline training near you</div>
-        <div class="pdesc" data-key="p16_global_p2_desc">The Positive Discipline Association has certified trainers in more than 90 countries. <a href="https://www.positivediscipline.org/" target="_blank" rel="noopener">positivediscipline.org ↗</a></div>
-      </div>
-      <div class="program-item">
-        <div class="ptitle" data-key="p16_global_p3_title">Check your country's laws and get more research</div>
-        <div class="pdesc" data-key="p16_global_p3_desc">The Global Initiative to End All Corporal Punishment of Children tracks laws and research worldwide. <a href="https://endcorporalpunishment.org/" target="_blank" rel="noopener">endcorporalpunishment.org ↗</a></div>
-      </div>
-      <div class="program-item">
-        <div class="ptitle" data-key="p16_global_p4_title">Find family planning and reproductive health support</div>
-        <div class="pdesc" data-key="p16_global_p4_desc">The International Planned Parenthood Federation links to member clinics and helplines worldwide. <a href="https://www.ippf.org/about-us/member-associations" target="_blank" rel="noopener">ippf.org ↗</a></div>
-      </div>
-    </div>
-
-    <div style="font-family:'Quicksand',sans-serif;font-size:12px;font-weight:500;line-height:1.6;color:var(--ink3);margin-top:0.75rem;" data-key="p16_note">Want to revisit the research or the film on positive discipline? They are on the earlier pages of this toolkit, anytime you need them again.</div>
   </div>
 </div>
 
@@ -1479,7 +1848,7 @@ textarea::placeholder, input::placeholder {
   </div>
 </div>
 
-<div class="flipbook-footer" id="flipbook-footer" data-key="footer">18 pages · Pilot edition · Philippines · Vietnam · Cambodia</div>
+<div class="flipbook-footer" id="flipbook-footer" data-key="footer">23 pages · Pilot edition · Philippines · Vietnam · Cambodia</div>
 <div class="nav">
   <button id="prev-btn" onclick="changePage(-1)" disabled data-key="nav_back">Back</button>
   <button id="next-btn" onclick="changePage(1)" data-key="nav_next">Next</button>
@@ -1496,7 +1865,7 @@ const TRANSLATIONS = {
 /* ── ENGLISH ── */
 en: {
   top_label: 'Violence Ends With Us · PAUSE Toolkit · Pilot 2026',
-  footer: '20 pages · Pilot edition · Philippines · Vietnam · Cambodia',
+  footer: '23 pages · Pilot edition · Philippines · Vietnam · Cambodia',
   nav_back: 'Back', nav_next: 'Next', nav_finish: 'Finish',
 
   p0_label: 'A positive discipline toolkit',
@@ -1716,6 +2085,11 @@ en: {
   p16_note: 'Want to revisit the research or the film on positive discipline? They are on the earlier pages of this toolkit, anytime you need them again.',
   tts_listen: '🔊 Listen',
 
+
+  p16_choice1_title:'See another way', p16_choice1_desc:'Watch short videos about corporal punishment and positive discipline.', p16_choice2_title:'Find Philippine support', p16_choice2_desc:'Explore CWC, MAKABATA 1383, MaPa and child protection pathways.', p16_choice3_title:'Keep learning', p16_choice3_desc:'Go deeper into the evidence, guidance and sources behind PAUSE.', p16_choice4_title:'Keep your promise close', p16_choice4_desc:'Return to your pocket card and the response you want to practise.',
+  p18_label: 'Watch & explore', p18_head: 'See another way.', p18_sub: 'You have already reflected. These short videos can help you see what the evidence and positive discipline can look like beyond this page.', p18_watch1_tag:'UNDERSTAND', p18_watch_time:'A few minutes', p18_watch1_title:'Effects of Corporal Punishment on Children', p18_watch1_desc:'A short animated research summary that helps connect corporal punishment with children’s wellbeing and behaviour.', p18_watch1_credit:'Source: animated research summary citing Alampay, Godwin & Lansford · English', p18_watch_link:'Watch the original on YouTube ↗', p18_watch2_tag:'TRY ANOTHER WAY', p18_watch_time2:'A few minutes', p18_watch2_title:'Positive Discipline', p18_watch2_desc:'A simple introduction to guiding children’s behaviour without violence, while keeping connection and respect.', p18_watch2_credit:'Source: Coram · English', p18_watch_link2:'Watch the original on YouTube ↗', p18_copyright:'PAUSE does not copy or re-upload these videos. They are embedded from their original YouTube sources. Attribution and the original links are kept here so you can visit the creators directly. Embedding does not transfer ownership of third-party content.',
+  p19_label:'Philippines · Child protection', p19_head:'You do not have to carry this alone.', p19_sub:'If you are in the Philippines, there are government and community pathways that connect families, children, caregivers and local child protection systems.', p19_cwc_badge:'COUNCIL FOR THE WELFARE OF CHILDREN', p19_cwc_title:'MAKABATA Helpline 1383', p19_cwc_text:'The Council for the Welfare of Children identifies MAKABATA 1383 as the country’s central reporting mechanism for Children in Need of Special Protection. It can be a pathway for reporting child protection concerns, seeking guidance, and connecting with services.', p19_cwc_link:'Visit CWC ↗', p19_cwc_call:'Call 1383', p19_card1_title:'CWC and positive parenting', p19_card1_desc:'Read CWC’s own message on creating a warm, caring environment where children can grow and build healthy relationships.', p19_card2_title:'How do you discipline your child?', p19_card2_desc:'A CWC resource that opens a conversation about physical discipline and positive parenting.', p19_card3_title:'Child protection tools & standards', p19_card3_desc:'Explore CWC protocols, referral pathways, the Enhanced Guidebook on Child Participation, and other tools.', p19_card4_title:'CWC plans & programs', p19_card4_desc:'Learn how the national child welfare system connects policies, programmes, local councils and child protection work.', p19_local_title:'Keep learning with Philippine family support', p19_local_sub:'PAUSE is not a replacement for professional or community support. Ask your local social worker, 4Ps Family Development Session facilitator, barangay, or child protection worker what is available in your area.', p19_mapa_desc:'A Philippine-adapted positive parenting intervention developed through Parenting for Lifelong Health partnerships. <a href="https://www.masayangpamilya.org/programs-and-services" target="_blank" rel="noopener">Explore MaPa ↗</a>', p19_unicef_desc:'Learn about prevention, family and community support, child protection systems, and services in the Philippines. <a href="https://www.unicef.org/philippines/child-protection" target="_blank" rel="noopener">Explore UNICEF ↗</a>',
+  p20_label:'Keep learning', p20_head:'The pause can end here. The learning does not have to.', p20_sub:'If you want to go deeper, start with the sources behind this toolkit. You do not need to read everything. Choose one thing that feels useful today.', p20_cwc_desc:'Philippine child welfare policy, child protection tools, positive parenting advocacy, local child protection systems and MAKABATA 1383. <a href="https://cwc.gov.ph/" target="_blank" rel="noopener">CWC website ↗</a>', p20_unicef2_desc:'Child protection, parenting guidance, evidence and national programmes supporting safe and nurturing environments for children. <a href="https://www.unicef.org/philippines/child-protection" target="_blank" rel="noopener">Child protection ↗</a> · <a href="https://www.unicef.org/philippines/unicef-guide-parenting" target="_blank" rel="noopener">Parenting guide ↗</a>', p20_who_desc:'Evidence on corporal punishment and evidence-based parenting interventions that support non-violent, nurturing relationships. <a href="https://www.who.int/news-room/fact-sheets/detail/corporal-punishment-and-health" target="_blank" rel="noopener">Corporal punishment & health ↗</a>', p20_pda_desc:'Practical positive discipline resources for parents, caregivers and educators. <a href="https://www.positivediscipline.org/free-downloads" target="_blank" rel="noopener">Free resources ↗</a>', p20_npac_desc:'The national framework developed by CWC with UNICEF support, including child protection, participation and systems strengthening. <a href="https://www.unicef.org/philippines/reports/4th-national-plan-action-children" target="_blank" rel="noopener">Read the plan ↗</a>', p20_rights:'Source note: PAUSE links to and embeds third-party materials rather than copying them into the toolkit. Names, logos, videos, photographs and publications remain the property of their respective owners. Where a source provides a reuse licence, follow that licence; otherwise use the official page or embedded player rather than downloading and republishing the material.', p20_last_title:'One next step is enough.', p20_last_sub:'Read one page. Watch one video. Ask one person. Try one different response. Change does not have to happen all at once.',
   p17_label: 'Your pocket card · Keep this close',
   p17_intro: 'In a moment of stress, this is all you need. Screenshot it and put it somewhere you will see it.',
   pc_p_word: 'Pause', pc_p_desc: 'Breathe. Five seconds before you react.',
@@ -1731,7 +2105,7 @@ en: {
 /* ── FILIPINO ── */
 fil: {
   top_label: 'Violence Ends With Us · PAUSE Toolkit · Pilot 2026',
-  footer: '20 pahina · Pilot na edisyon · Pilipinas · Vietnam · Cambodia',
+  footer: '23 pahina · Pilot na edisyon · Pilipinas · Vietnam · Cambodia',
   nav_back: 'Bumalik', nav_next: 'Susunod', nav_finish: 'Tapusin',
   validation_warn: 'Pakisagot muna bago magpatuloy.',
 
@@ -2118,6 +2492,11 @@ fil: {
 
 
   /* ── POCKET CARD ── */
+
+  p16_choice1_title:'Tingnan ang ibang paraan', p16_choice1_desc:'Manood ng maiikling video tungkol sa corporal punishment at positibong pagdidisiplina.', p16_choice2_title:'Humanap ng suportang nasa Pilipinas', p16_choice2_desc:'Tingnan ang CWC, MAKABATA 1383, MaPa at mga child protection pathway.', p16_choice3_title:'Patuloy na matuto', p16_choice3_desc:'Mas kilalanin ang ebidensya, gabay at sources sa likod ng PAUSE.', p16_choice4_title:'Itago ang iyong pangako', p16_choice4_desc:'Balikan ang pocket card at ang tugon na gusto mong sanayin.',
+  p18_label:'Manood at mag-explore', p18_head:'Tingnan ang ibang paraan.', p18_sub:'Nakalingon ka na sa iyong sariling karanasan. Makakatulong ang maiikling video na ito para makita kung ano ang sinasabi ng ebidensya at kung paano maaaring isabuhay ang positibong pagdidisiplina.', p18_watch1_tag:'UNAWAIN', p18_watch_time:'Ilang minuto', p18_watch1_title:'Effects of Corporal Punishment on Children', p18_watch1_desc:'Isang maikling animated research summary tungkol sa ugnayan ng corporal punishment sa kapakanan at kilos ng mga bata.', p18_watch1_credit:'Source: animated research summary na tumutukoy kina Alampay, Godwin & Lansford · English', p18_watch_link:'Panoorin ang original sa YouTube ↗', p18_watch2_tag:'SUBUKAN ANG IBANG PARAAN', p18_watch_time2:'Ilang minuto', p18_watch2_title:'Positive Discipline', p18_watch2_desc:'Isang simpleng pagpapakilala sa paggabay sa kilos ng bata nang walang karahasan, habang pinananatili ang koneksyon at respeto.', p18_watch2_credit:'Source: Coram · English', p18_watch_link2:'Panoorin ang original sa YouTube ↗', p18_copyright:'Hindi kinokopya o nire-reupload ng PAUSE ang mga video na ito. Naka-embed ang mga ito mula sa kanilang original na YouTube source. Nananatili rito ang attribution at original links para direktang mapuntahan ang gumawa. Ang pag-embed ay hindi nangangahulugang pagmamay-ari ng third-party content.',
+  p19_label:'Pilipinas · Proteksyon sa bata', p19_head:'Hindi mo kailangang dalhin ito nang mag-isa.', p19_sub:'Kung nasa Pilipinas ka, may mga paraan upang makalapit sa mga serbisyo at sistemang nag-uugnay sa mga bata, pamilya, tagapag-alaga at lokal na child protection.', p19_cwc_badge:'COUNCIL FOR THE WELFARE OF CHILDREN', p19_cwc_title:'MAKABATA Helpline 1383', p19_cwc_text:'Itinuturing ng Council for the Welfare of Children ang MAKABATA 1383 bilang central reporting mechanism para sa Children in Need of Special Protection. Maaari itong lapitan para mag-report ng child protection concern, humingi ng gabay, at makaugnay sa mga serbisyo.', p19_cwc_link:'Puntahan ang CWC ↗', p19_cwc_call:'Tumawag sa 1383', p19_card1_title:'CWC at positive parenting', p19_card1_desc:'Basahin ang mismong mensahe ng CWC tungkol sa mainit at maalagang kapaligiran kung saan maaaring lumago ang mga bata.', p19_card2_title:'Paano mo dinidisiplina ang iyong anak?', p19_card2_desc:'Isang CWC resource na nagbubukas ng pag-uusap tungkol sa physical discipline at positive parenting.', p19_card3_title:'Child protection tools at standards', p19_card3_desc:'Tingnan ang CWC protocols, referral pathways, Enhanced Guidebook on Child Participation, at iba pang tools.', p19_card4_title:'CWC plans at programs', p19_card4_desc:'Alamin kung paano nag-uugnay ang mga polisiya, programa, local councils at child protection work.', p19_local_title:'Patuloy na matuto kasama ang mga suportang nasa Pilipinas', p19_local_sub:'Hindi kapalit ng professional o community support ang PAUSE. Magtanong sa inyong social worker, 4Ps Family Development Session facilitator, barangay, o child protection worker tungkol sa available na tulong.', p19_mapa_desc:'Isang positive parenting intervention na inangkop para sa Pilipinas. <a href="https://www.masayangpamilya.org/programs-and-services" target="_blank" rel="noopener">Tingnan ang MaPa ↗</a>', p19_unicef_desc:'Magbasa tungkol sa prevention, family at community support, child protection systems, at mga serbisyo sa Pilipinas. <a href="https://www.unicef.org/philippines/child-protection" target="_blank" rel="noopener">Tingnan ang UNICEF ↗</a>',
+  p20_label:'Patuloy na matuto', p20_head:'Dito maaaring magtapos ang pause. Hindi kailangang dito magtapos ang pagkatuto.', p20_sub:'Kung gusto mong mas lumalim, magsimula sa mga source na nasa likod ng toolkit na ito. Hindi mo kailangang basahin lahat. Pumili ng isang bagay na makakatulong sa iyo ngayon.', p20_cwc_desc:'Mga child welfare policy, child protection tools, positive parenting advocacy, local child protection systems at MAKABATA 1383. <a href="https://cwc.gov.ph/" target="_blank" rel="noopener">CWC website ↗</a>', p20_unicef2_desc:'Child protection, parenting guidance, ebidensya at mga programang tumutulong sa ligtas at maalagang kapaligiran para sa mga bata. <a href="https://www.unicef.org/philippines/child-protection" target="_blank" rel="noopener">Child protection ↗</a> · <a href="https://www.unicef.org/philippines/unicef-guide-parenting" target="_blank" rel="noopener">Parenting guide ↗</a>', p20_who_desc:'Ebidensya tungkol sa corporal punishment at evidence-based parenting interventions para sa hindi marahas at maalagang relasyon. <a href="https://www.who.int/news-room/fact-sheets/detail/corporal-punishment-and-health" target="_blank" rel="noopener">Corporal punishment & health ↗</a>', p20_pda_desc:'Mga praktikal na positive discipline resource para sa magulang, tagapag-alaga at educators. <a href="https://www.positivediscipline.org/free-downloads" target="_blank" rel="noopener">Free resources ↗</a>', p20_npac_desc:'Pambansang framework na binuo ng CWC kasama ang UNICEF, kabilang ang child protection, participation at systems strengthening. <a href="https://www.unicef.org/philippines/reports/4th-national-plan-action-children" target="_blank" rel="noopener">Basahin ang plan ↗</a>', p20_rights:'Source note: Nagli-link at nag-e-embed ang PAUSE ng third-party materials sa halip na kopyahin ang mga ito. Nananatiling pagmamay-ari ng kani-kanilang may-ari ang names, logos, videos, photographs at publications. Kung may reuse licence ang source, sundin ito; kung wala, gamitin ang official page o embedded player sa halip na i-download at i-republish ang materyal.', p20_last_title:'Sapat na ang isang susunod na hakbang.', p20_last_sub:'Magbasa ng isang page. Manood ng isang video. Magtanong sa isang tao. Subukan ang isang ibang tugon. Hindi kailangang sabay-sabay ang pagbabago.',
   p17_label: 'Munting gabay · Itago at balikan',
 
   p17_intro: 'Kapag mabigat ang sandali at mabilis nang tumataas ang emosyon, ito muna ang tandaan. I-screenshot ito at ilagay sa lugar na madalas mong makita.',
@@ -2146,7 +2525,7 @@ fil: {
 /* ── VIETNAMESE ── */
 vi: {
   top_label: 'Bạo lực Chấm dứt Cùng Chúng ta · PAUSE Toolkit · Thí điểm 2026',
-  footer: '20 trang · Phiên bản thí điểm · Philippines · Việt Nam · Campuchia',
+  footer: '23 trang · Phiên bản thí điểm · Philippines · Việt Nam · Campuchia',
   nav_back: 'Quay lại', nav_next: 'Tiếp theo', nav_finish: 'Hoàn thành',
   validation_warn: 'Vui lòng trả lời trước khi tiếp tục.',
 
@@ -2381,7 +2760,7 @@ vi: {
 /* ── KHMER ── */
 kh: {
   top_label: 'អំពើហិង្សាបញ្ចប់ជាមួយយើង · PAUSE Toolkit · Pilot 2026',
-  footer: '20 ទំព័រ · ការបោះពុម្ពសាក · ហ្វីលីពីន · វៀតណាម · កម្ពុជា',
+  footer: '23 ទំព័រ · ការបោះពុម្ពសាក · ហ្វីលីពីន · វៀតណាម · កម្ពុជា',
   nav_back: 'ត្រឡប់', nav_next: 'បន្ត', nav_finish: 'បញ្ចប់',
   validation_warn: 'សូមឆ្លើយមុននឹងបន្ត។',
 
@@ -2616,7 +2995,7 @@ kh: {
 /* ── BISAYA / CEBUANO ── */
 ceb: {
   top_label: 'Violence Ends With Us · PAUSE Toolkit · Pilot 2026',
-  footer: '20 ka panid · Pilot nga edisyon · Pilipinas · Vietnam · Cambodia',
+  footer: '23 ka panid · Pilot nga edisyon · Pilipinas · Vietnam · Cambodia',
   nav_back: 'Balik', nav_next: 'Sunod', nav_finish: 'Humana',
   validation_warn: 'Palihug tubaga una sa dili pa mopadayon.',
 
@@ -2973,7 +3352,7 @@ function changePage(dir) {
     }
     showPageWarning(cur, false);
   }
-  if (dir === 1 && cur === TOTAL - 2) {
+  if (dir === 1 && cur === 17) {
     submitStory(false);
   }
   goTo(cur + dir);
