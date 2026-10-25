@@ -3378,6 +3378,8 @@ let currentLang = 'en';
 
 function setLang(lang) {
   currentLang = lang;
+  document.documentElement.lang =
+  ({en:'en',fil:'tl',vi:'vi',kh:'km',ceb:'ceb',id:'id'}[lang] || 'en');
   const t = TRANSLATIONS[lang];
   if (!t) return;
 
