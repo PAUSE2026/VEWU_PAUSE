@@ -3385,7 +3385,7 @@ function setLang(lang) {
 
   // Update active button
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  const idx = {en:0,fil:1,vi:2,kh:3,ceb:4,id:5}[lang];
+  const idx = {en:0,fil:1,vi:2,kh:3,id:4,ceb:5}[lang];
   document.querySelectorAll('.lang-btn')[idx].classList.add('active');
 
   document.querySelectorAll('.lang-picker-btn').forEach(b => {
