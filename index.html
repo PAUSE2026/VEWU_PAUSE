@@ -899,6 +899,7 @@ textarea::placeholder, input::placeholder {
   <button class="lang-btn" onclick="setLang('fil')">FIL</button>
   <button class="lang-btn" onclick="setLang('vi')">VI</button>
   <button class="lang-btn" onclick="setLang('kh')">ខ្មែរ</button>
+  <button class="lang-btn" onclick="setLang('id')">ID</button>
   <button class="lang-btn" onclick="setLang('ceb')">BIS</button>
   <button class="tts-btn" id="tts-btn" onclick="speakCurrentPage()" data-key="tts_listen">🔊 Listen</button>
 </div>
@@ -922,9 +923,10 @@ textarea::placeholder, input::placeholder {
       <div class="lang-picker-grid">
         <button type="button" class="lang-picker-btn active" data-lang="en" data-code="EN" onclick="setLang('en')">English</button>
         <button type="button" class="lang-picker-btn" data-lang="fil" data-code="PH" onclick="setLang('fil')">Tagalog</button>
-        <button type="button" class="lang-picker-btn" data-lang="ceb" data-code="PH" onclick="setLang('ceb')">Bisaya</button>
         <button type="button" class="lang-picker-btn" data-lang="vi" data-code="VN" onclick="setLang('vi')">Tiếng Việt</button>
         <button type="button" class="lang-picker-btn" data-lang="kh" data-code="KH" onclick="setLang('kh')">ខ្មែរ</button>
+        <button type="button" class="lang-picker-btn" data-lang="id" data-code="ID" onclick="setLang('id')">Bahasa Indonesia</button>
+        <button type="button" class="lang-picker-btn" data-lang="ceb" data-code="PH" onclick="setLang('ceb')">Bisaya</button>
       </div>
     </div>
   </div>
@@ -3242,6 +3244,131 @@ ceb: {
   p17_credit: 'Gidisenyo sa mga kabatan-onan · Violence Ends With Us · Asia-Pacific',
 },
 
+  /* ── INDONESIAN TRANSLATIONS ── */
+TRANSLATIONS.id = Object.assign({}, TRANSLATIONS.en, {
+  top_label: 'Violence Ends With Us · PAUSE Toolkit · 2026',
+  footer: 'Edisi Uji Coba · Filipina · Vietnam · Kamboja',
+
+  nav_back: 'Kembali',
+  nav_next: 'Lanjut',
+  nav_finish: 'Selesai',
+  tts_listen: '🔊 Dengarkan',
+  validation_warn: 'Silakan jawab sebelum melanjutkan.',
+
+  p0_label: 'Panduan Disiplin Positif',
+  p0_sub: 'Alternatif Positif untuk Pendekatan Disiplin yang Tidak Aman dan Terlalu Keras',
+  p0_hook: 'Saatnya melihat kembali. Saatnya memilih cara yang berbeda.',
+  p0_hook_short: 'Apa yang akan kamu lakukan dalam lima detik ke depan?',
+  p0_lang_lbl: 'Pilih bahasamu',
+
+  p0_what_head: 'Apa itu PAUSE?',
+  p0_what_txt: 'PAUSE adalah pengalaman refleksi digital singkat yang dapat kamu ikuti sendiri. Kamu diajak mengingat bagaimana kamu didisiplinkan saat kecil, memahami bagaimana pengalaman itu memengaruhi responsmu sekarang, dan mempertimbangkan perubahan yang ingin kamu lakukan.',
+
+  p1_label: 'Sebelum kita mulai',
+  p1_head: 'Komitmen kami untuk menjaga keamananmu dan anak-anak',
+  p1_parent_lbl: 'Janji kami untukmu sebagai orang tua atau pengasuh',
+  p1_promise_judge: 'Tanpa menghakimi. Mengakui bahwa kamu pernah kesulitan menghadapi anak tidak membuatmu menjadi orang tua yang buruk.',
+  p1_promise_private: 'Kamu dapat mengikuti panduan ini sendiri dan merenungkan jawabanmu secara pribadi.',
+  p1_promise_optin: 'Nama dan informasi kontak bersifat opsional.',
+
+  p2_head: 'Apa itu hukuman fisik?',
+  p2_box_lbl: 'Seberapa umum hal ini?',
+  p2_box2_lbl: 'Apa yang ditemukan penelitian?',
+  p2_note: 'PAUSE hadir bukan untuk menghakimi, tetapi untuk membantumu menemukan cara lain.',
+
+  p3_label: 'Refleksi pembuka',
+  p3_q: 'Mari mengingat kembali masa kecil kita.',
+  p3_box_lbl: 'Saat untuk merenung',
+  p3_note: 'Bawa kenangan itu bersamamu saat kita melanjutkan.',
+
+  p4_head: 'Apa itu disiplin positif?',
+  p4_box_lbl: 'Bukan hal baru. Sudah diteliti.',
+  p4_note: 'Hukuman menghentikan perilaku sesaat. Pengajaran membantu mengubahnya dalam jangka panjang.',
+
+  p5_label: 'Langkah 1 dari 5',
+  p5_word: 'Berhenti sejenak',
+  p5_action: 'Berhentilah sebelum bereaksi. Tarik napas. Beri dirimu lima detik sebelum melakukan atau mengatakan sesuatu.',
+  p5_sc_lbl: 'Saat itu terjadi',
+
+  p6_label: 'Langkah 2 dari 5',
+  p6_word: 'Bertanya',
+  p6_action: 'Tanyakan kepada anak apa yang terjadi. Biarkan dia berbicara terlebih dahulu. Dengarkan tanpa menyela.',
+
+  p7_label: 'Langkah 3 dari 5',
+  p7_word: 'Memahami',
+  p7_action: 'Cobalah memahami alasan di balik perilaku anak sebelum memberikan respons.',
+
+  p8_label: 'Langkah 4 dari 5',
+  p8_word: 'Mendukung',
+  p8_action: 'Tanggapi kebutuhan di balik perilaku anak. Bimbing, jangan menghukum.',
+
+  p9_label: 'Langkah 5 dari 5',
+  p9_word: 'Memberi semangat',
+  p9_action: 'Akhiri dengan sesuatu yang membangun kepercayaan, bukan rasa takut.',
+
+  p10_label: 'Lingkaran Perubahan',
+  p10_head: 'Kisahmu berarti.',
+  p10_box_lbl: 'Apa itu Lingkaran Perubahan?',
+  p10_steps: 'Mengingat · Menyadari · Memilih · Membimbing · Berkomitmen',
+
+  p11_label: 'Lingkaran Perubahan · 1 dari 5',
+  p11_head: 'Masa lalu',
+  p11_q1: 'Ceritakan seperti apa disiplin di rumahmu saat kamu tumbuh besar.',
+  p11_q2_lbl: 'Bagaimana perasaanmu saat itu?',
+  p11_opt1: 'Takut dan cemas',
+  p11_opt2: 'Malu atau terluka',
+  p11_opt3: 'Bingung, aku tidak mengerti alasannya',
+  p11_opt4: 'Terasa biasa saja. Memang begitu adanya',
+  p11_opt5: 'Sebagian besar baik-baik saja',
+  p11_opt6: 'Merasa aman dan dibimbing',
+  p11_opt7: 'Lainnya',
+
+  p12_label: 'Lingkaran Perubahan · 2 dari 5',
+  p12_head: 'Sekarang',
+  p12_q1: 'Apa yang biasanya kamu lakukan saat anak berperilaku buruk?',
+  p12_q2_lbl: 'Apakah pola masa kecilmu muncul kembali dalam caramu merespons?',
+  p12_opt1: 'Ya, aku mengulangi pengalaman yang pernah kualami.',
+  p12_opt2: 'Kadang, tanpa sengaja.',
+  p12_opt3: 'Aku belum benar-benar memikirkannya.',
+  p12_opt4: 'Aku berusaha tidak mengulanginya, tetapi sulit.',
+  p12_opt5: 'Aku secara sadar memilih cara berbeda.',
+  p12_opt6: 'Aku tidak sedang mengasuh anak.',
+  p12_opt7: 'Lainnya',
+
+  p13_label: 'Lingkaran Perubahan · 3 dari 5',
+  p13_head: 'Perubahan',
+  p13_q1: 'Ceritakan perubahan yang ingin kamu lakukan.',
+  p13_q2: 'Mengapa perubahan itu penting bagimu?',
+  p13_q3: 'Langkah kecil pertama apa yang bisa kamu ambil?',
+
+  p14_label: 'Lingkaran Perubahan · 4 dari 5',
+  p14_head: 'Batasan',
+  p14_sub: 'Disiplin positif tetap memiliki batasan.',
+  p14_q2_lbl: 'Bisakah anak didisiplinkan tanpa hukuman fisik?',
+  p14_opt1: 'Tidak, menurutku hukuman fisik terkadang diperlukan.',
+  p14_opt2: 'Aku belum yakin. Aku tumbuh dengan cara itu.',
+  p14_opt3: 'Aku masih ragu, tetapi terbuka untuk mencoba.',
+  p14_opt4: 'Aku mulai percaya bahwa itu mungkin.',
+  p14_opt5: 'Ya, aku sepenuhnya yakin.',
+  p14_opt6: 'Aku sudah menerapkan disiplin positif.',
+  p14_opt7: 'Lainnya',
+
+  p15_label: 'Lingkaran Perubahan · 5 dari 5',
+  p15_head: 'Komitmen',
+  p15_q1: 'Tulislah pesan atau janji untuk anakmu atau anak-anak yang kamu asuh.',
+  p15_name_lbl: 'Namamu (opsional)',
+  p15_country_lbl: 'Dari negara mana kamu bergabung?',
+  p15_commit_ph: 'Tuliskan pesanmu di sini',
+  p15_support_lbl: 'Satu orang yang bisa kuhubungi saat aku kesulitan',
+  p15_followup_lbl: 'Nomor telepon atau email untuk tindak lanjut (opsional)',
+  form_submit: 'Simpan kisahku',
+  form_success: 'Terima kasih telah membagikan refleksimu.',
+
+  p16_label: 'Melangkah ke depan',
+  p16_head: 'Langkah berikutnya, dengan panduan.',
+  p16_hotline_lbl: 'Jika seorang anak sedang dalam bahaya'
+});
+
 }; /* end TRANSLATIONS */
 
 /* ══════════════════════════════════════════════
@@ -3256,7 +3383,7 @@ function setLang(lang) {
 
   // Update active button
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  const idx = {en:0,fil:1,vi:2,kh:3,ceb:4}[lang];
+  const idx = {en:0,fil:1,vi:2,kh:3,ceb:4,id:5}[lang];
   document.querySelectorAll('.lang-btn')[idx].classList.add('active');
 
   document.querySelectorAll('.lang-picker-btn').forEach(b => {
@@ -3316,7 +3443,7 @@ const PAGE_IMAGES = [
 ];
 const backdropEl = document.getElementById('backdrop');
 
-const speechLangMap = { en: 'en-US', fil: 'fil-PH', vi: 'vi-VN', kh: 'km-KH', ceb: 'fil-PH' };
+const speechLangMap = { en: 'en-US', fil: 'fil-PH', vi: 'vi-VN', kh: 'km-KH', ceb: 'fil-PH', id: 'id-ID' };
 
 function speakCurrentPage() {
   const ttsBtn = document.getElementById('tts-btn');
